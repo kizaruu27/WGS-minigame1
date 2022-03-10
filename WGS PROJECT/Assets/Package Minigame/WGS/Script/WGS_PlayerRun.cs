@@ -34,6 +34,10 @@ public class WGS_PlayerRun : MonoBehaviour
             TargetAnimator.Play(AnimIdle);
         }
 
+        if (PlayerSpeed >= 10 ){ // speed max = 10
+            PlayerSpeed = 10;
+        }
+
         Player.transform.position += new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
     }
 }
