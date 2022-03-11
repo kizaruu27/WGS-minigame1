@@ -10,6 +10,7 @@ public class WGS_PlayerRun : MonoBehaviour
     public string AnimIdle;
     public string AnimRun;
     public float PlayerSpeed;
+    public bool CanMove;
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +21,15 @@ public class WGS_PlayerRun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            PlayerSpeed += 1f;
-            TargetAnimator.Play(AnimRun);
+        if (CanMove){
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                PlayerSpeed += 1f;
+                TargetAnimator.Play(AnimRun);
+            }
+        }else{
+            PlayerSpeed = 0;
+            TargetAnimator.Play(AnimIdle);
         }
 
         if (PlayerSpeed >= 0)
