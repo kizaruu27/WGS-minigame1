@@ -27,8 +27,8 @@ public class ItemStop : MonoBehaviour
 
             yield return new WaitForSeconds(TimeFreeze);
             
+            Destroy(gameObject);
             PlayerMove.CanMove = true;
-            Destroy (this.gameObject);
     }
     IEnumerator FreezeNPCCanMove(Collider collider){
             WGS_NPCRun NPCPlayerMove = collider.GetComponent<WGS_NPCRun>();
@@ -36,7 +36,7 @@ public class ItemStop : MonoBehaviour
 
             yield return new WaitForSeconds(TimeFreeze);
             
+            Destroy(gameObject);
             NPCPlayerMove.NPCCanMove = true;
-            Destroy (this.gameObject);
     }
 }

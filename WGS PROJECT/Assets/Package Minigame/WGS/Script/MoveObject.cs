@@ -33,7 +33,7 @@ public class MoveObject : MonoBehaviour
    private void OnTriggerEnter(Collider other)
    {
        if (other.gameObject.tag == "Player" || other.gameObject.tag == "NPC") {
-           Destroy(gameObject);
+        //! Destroy(gameObject); -> bikin can movenya di ItemStop gak jalan
        }
    }
 
