@@ -22,19 +22,17 @@ public class MoveObject : MonoBehaviour
    {
         if (isRight && !isLeft) {
             rb.velocity = transform.right * speed;
-            //transform.localRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + 65, transform.rotation.z);
             isLeft = false;
         }
         if (isLeft && !isRight) {
             rb.velocity = transform.forward * speed;
-            //transform.localRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y - 65, transform.rotation.z);
             isRight = false;
         }
    }
 
    private void OnTriggerEnter(Collider other)
    {
-       if (other.gameObject.tag == "Player") {
+       if (other.gameObject.tag == "Player" || other.gameObject.tag == "NPC") {
            Destroy(gameObject);
        }
    }
