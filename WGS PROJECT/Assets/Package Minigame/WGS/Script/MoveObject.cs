@@ -9,10 +9,10 @@ public class MoveObject : MonoBehaviour
    [SerializeField] bool isRight, isLeft;
 
    private void Awake() {
+       rb = GetComponent<Rigidbody>();
    }
 
    private void Start() {
-       rb = GetComponent<Rigidbody>();
        isRight = true;
        isLeft = false;
        StartCoroutine(ItemMove());
@@ -28,13 +28,6 @@ public class MoveObject : MonoBehaviour
             rb.velocity = transform.forward * speed;
             isRight = false;
         }
-   }
-
-   private void OnTriggerEnter(Collider other)
-   {
-       if (other.gameObject.tag == "Player" || other.gameObject.tag == "NPC") {
-        //! Destroy(gameObject); -> bikin can movenya di ItemStop gak jalan
-       }
    }
 
    IEnumerator ItemMove() {
