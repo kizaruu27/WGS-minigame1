@@ -10,8 +10,10 @@ public class WGS_NPCRun : MonoBehaviour
     public string AnimIdle;
     public string AnimRun;
     public float MaxPlayerSpeed;
-    float PlayerSpeed;
+    public float PlayerSpeed;
     public bool NPCCanMove;
+    public bool IsItemSpeedActivce = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,18 +24,22 @@ public class WGS_NPCRun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (NPCCanMove){
+        if (NPCCanMove && !IsItemSpeedActivce)
+        {
             PlayerSpeed += 0.01f;
             TargetAnimator.Play(AnimRun);
-        }else{
+        }
+        else
+        {
             PlayerSpeed = 0;
             TargetAnimator.Play(AnimIdle);
         }
 
-        if (PlayerSpeed >= MaxPlayerSpeed)
+        if (PlayerSpeed >= MaxPlayerSpeed && !IsItemSpeedActivce)
         {
             PlayerSpeed = MaxPlayerSpeed;
         }
+
         Player.transform.position += new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
     }
 }

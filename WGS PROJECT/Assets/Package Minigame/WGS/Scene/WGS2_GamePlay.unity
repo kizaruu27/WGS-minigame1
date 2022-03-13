@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1404,6 +1404,7 @@ MonoBehaviour:
   AnimIdle: IDLE
   AnimRun: RUN
   MaxPlayerSpeed: 7.8
+  PlayerSpeed: 0
   NPCCanMove: 1
 --- !u!54 &291065138
 Rigidbody:
@@ -1804,6 +1805,7 @@ MonoBehaviour:
   AnimIdle: IDLE
   AnimRun: RUN
   MaxPlayerSpeed: 8.5
+  PlayerSpeed: 0
   NPCCanMove: 1
 --- !u!54 &510055538
 Rigidbody:
@@ -1992,6 +1994,7 @@ MonoBehaviour:
   AnimIdle: IDLE
   AnimRun: RUN
   MaxPlayerSpeed: 7.9
+  PlayerSpeed: 0
   NPCCanMove: 1
 --- !u!54 &699370279
 Rigidbody:
@@ -2814,6 +2817,7 @@ MonoBehaviour:
   AnimIdle: IDLE
   AnimRun: RUN
   MaxPlayerSpeed: 9
+  PlayerSpeed: 0
   NPCCanMove: 1
 --- !u!54 &991029427
 Rigidbody:
@@ -4259,6 +4263,7 @@ MonoBehaviour:
   AnimIdle: IDLE
   AnimRun: RUN
   MaxPlayerSpeed: 8
+  PlayerSpeed: 0
   NPCCanMove: 1
 --- !u!54 &1689245202
 Rigidbody:
@@ -4840,6 +4845,7 @@ MonoBehaviour:
   AnimIdle: IDLE
   AnimRun: RUN
   MaxPlayerSpeed: 8.8
+  PlayerSpeed: 0
   NPCCanMove: 1
 --- !u!54 &1958678279
 Rigidbody:
@@ -5032,6 +5038,7 @@ MonoBehaviour:
   AnimIdle: IDLE
   AnimRun: RUN
   MaxPlayerSpeed: 8.9
+  PlayerSpeed: 0
   NPCCanMove: 1
 --- !u!54 &2023859245
 Rigidbody:
