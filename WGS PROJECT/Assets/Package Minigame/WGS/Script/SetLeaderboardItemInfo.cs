@@ -8,10 +8,6 @@ public class SetLeaderboardItemInfo : MonoBehaviour
 
     public TextMeshProUGUI positionText;
     public TextMeshProUGUI playerNameText;
-    void Start()
-    {
-        
-    }
 
     public void SetPositionText(string newPosition)
     {

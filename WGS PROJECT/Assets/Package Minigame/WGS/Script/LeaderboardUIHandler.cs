@@ -11,7 +11,7 @@ public class LeaderboardUIHandler : MonoBehaviour
 
     void Awake()
     {
-        GridLayoutGroup leaderboardLayoutGroup = GetComponent<GridLayoutGroup>();
+        VerticalLayoutGroup leaderboardLayoutGroup = GetComponentInChildren<VerticalLayoutGroup>();
 
         LapCounter[] lapCounterArray = FindObjectsOfType<LapCounter>();
 
@@ -25,12 +25,6 @@ public class LeaderboardUIHandler : MonoBehaviour
 
             setLeaderboardItemInfo[i].SetPositionText($"{i + 1}.");
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     public void UpdateList(List<LapCounter> lapCounters)

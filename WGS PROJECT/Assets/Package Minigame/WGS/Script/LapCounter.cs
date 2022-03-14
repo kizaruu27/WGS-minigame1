@@ -11,13 +11,13 @@ public class LapCounter : MonoBehaviour
     float timeAtLastPassCheckpoint = 0;
     int numberOfPassedCheckpoints = 0;
     int lapsCompleted = 0;
-    const int lapsToComplete = 2; 
+    const int lapsToComplete = 2;
     bool isRaceCompleted = false;
     int playerPosition = 0;
 
     public event Action <LapCounter> OnPassCheckpoint;
 
-    public void setPlayerPosition(int position) 
+    public void setPlayerPosition(int position)
     {
         playerPosition = position;
     }
@@ -32,15 +32,15 @@ public class LapCounter : MonoBehaviour
         return timeAtLastPassCheckpoint;
     }
 
-    IEnumerator ShowPosition(float delayUntilHidePosition)
-    {
-        playerPositionTxt.text = playerPosition.ToString();
-        playerPositionTxt.gameObject.SetActive(true);
+    // IEnumerator ShowPosition(float delayUntilHidePosition)
+    // {
+    //     playerPositionTxt.text = playerPosition.ToString();
+    //     playerPositionTxt.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(delayUntilHidePosition);
+    //     yield return new WaitForSeconds(delayUntilHidePosition);
 
-        playerPositionTxt.gameObject.SetActive(false);
-    }
+    //     playerPositionTxt.gameObject.SetActive(false);
+    // }
 
     private void OnTriggerEnter(Collider coll)
     {
@@ -72,14 +72,14 @@ public class LapCounter : MonoBehaviour
 
                 OnPassCheckpoint?.Invoke(this);
 
-                if (isRaceCompleted)
-                {
-                    StartCoroutine(ShowPosition(100));
-                }
-                else
-                {
-                    StartCoroutine(ShowPosition(1.5f));
-                }
+                // if (isRaceCompleted)
+                // {
+                //     StartCoroutine(ShowPosition(100));
+                // }
+                // else
+                // {
+                //     StartCoroutine(ShowPosition(1.5f));
+                // }
             }
         }
     }
