@@ -9,10 +9,17 @@ public class ItemStop : MonoBehaviour
     string PlayerEnemy = "NPC";
 
     MeshRenderer mesh;
+    SphereCollider sphereCollider;
 
 
     private void Start() {
         mesh = GetComponent<MeshRenderer>();
+        sphereCollider = GetComponent<SphereCollider>();
+    }
+
+    private void Update()
+    {
+        Destroy(gameObject, 60);
     }
 
 
@@ -20,11 +27,13 @@ public class ItemStop : MonoBehaviour
         if(collider.gameObject.tag == PlayerTag){
             // print ("bisa bro");
             mesh.enabled = false;
+            sphereCollider.enabled = false;
             StartCoroutine(FreezeCanMove(collider));
         }
         if(collider.gameObject.tag == PlayerEnemy){
             // print ("bisa bro");
             mesh.enabled = false;
+            sphereCollider.enabled = false;
             StartCoroutine(FreezeNPCCanMove(collider));
         }
         
@@ -35,8 +44,8 @@ public class ItemStop : MonoBehaviour
 
             yield return new WaitForSeconds(TimeFreeze);
             
-            //Destroy(gameObject);
             PlayerMove.CanMove = true;
+            Destroy(gameObject);
     }
     IEnumerator FreezeNPCCanMove(Collider collider){
             WGS_NPCRun NPCPlayerMove = collider.GetComponent<WGS_NPCRun>();
@@ -44,7 +53,7 @@ public class ItemStop : MonoBehaviour
 
             yield return new WaitForSeconds(TimeFreeze);
             
-            //Destroy(gameObject);
             NPCPlayerMove.NPCCanMove = true;
+            Destroy(gameObject);
     }
 }
