@@ -35,8 +35,6 @@ public class WGS_PlayerRun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(transform.position.y);
-
         IsJump = Input.GetKeyDown(KeyCode.Space) && IsGrounded;
 
         if (CanMove)
