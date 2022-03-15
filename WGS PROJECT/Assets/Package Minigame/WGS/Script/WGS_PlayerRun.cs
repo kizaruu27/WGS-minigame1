@@ -10,6 +10,7 @@ public class WGS_PlayerRun : MonoBehaviour
     public string AnimIdle;
     public string AnimRun;
     public float PlayerSpeed;
+    public float maxSpeed;
     public bool CanMove;
     public float JumpHeight = .1f;
     public float GravityValue = -9.81f;
@@ -28,6 +29,8 @@ public class WGS_PlayerRun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Debug.Log(IsGrounded);
         if (IsGrounded)
         {
 
@@ -41,6 +44,8 @@ public class WGS_PlayerRun : MonoBehaviour
                     TargetAnimator.Play(AnimRun);
                 }
 
+                if (IsItemSpeedActive) TargetAnimator.Play(AnimRun);
+
             }
             else
             {
@@ -52,18 +57,14 @@ public class WGS_PlayerRun : MonoBehaviour
             {
                 PlayerSpeed -= 0.01f;
             }
-            else if (PlayerSpeed >= 0 && IsItemSpeedActive)
-            {
-                TargetAnimator.Play(AnimRun);
-            }
             else
             {
                 TargetAnimator.Play(AnimIdle);
             }
 
-            if (PlayerSpeed >= 10)
+            if (PlayerSpeed >= maxSpeed)
             { // speed max = 10
-                PlayerSpeed = 10;
+                PlayerSpeed = maxSpeed;
             }
 
             Player.transform.position += new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
