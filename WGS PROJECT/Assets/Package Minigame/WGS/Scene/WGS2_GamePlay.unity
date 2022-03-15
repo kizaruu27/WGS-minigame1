@@ -3930,7 +3930,7 @@ MonoBehaviour:
   AnimRun: RUN
   PlayerSpeed: 0
   CanMove: 1
-  JumpHeight: 0.1
+  JumpHeight: 6
   GravityValue: -9.81
   IsItemSpeedActive: 0
 --- !u!136 &816288753
