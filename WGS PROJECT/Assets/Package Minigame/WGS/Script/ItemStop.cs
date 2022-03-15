@@ -12,7 +12,8 @@ public class ItemStop : MonoBehaviour
     SphereCollider sphereCollider;
 
 
-    private void Start() {
+    private void Start()
+    {
         mesh = GetComponent<MeshRenderer>();
         sphereCollider = GetComponent<SphereCollider>();
     }
@@ -23,37 +24,44 @@ public class ItemStop : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider collider) {
-        if(collider.gameObject.tag == PlayerTag){
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.tag == PlayerTag)
+        {
             // print ("bisa bro");
             mesh.enabled = false;
             sphereCollider.enabled = false;
             StartCoroutine(FreezeCanMove(collider));
         }
-        if(collider.gameObject.tag == PlayerEnemy){
+        if (collider.gameObject.tag == PlayerEnemy)
+        {
             // print ("bisa bro");
             mesh.enabled = false;
             sphereCollider.enabled = false;
             StartCoroutine(FreezeNPCCanMove(collider));
         }
-        
-    }
-    IEnumerator FreezeCanMove(Collider collider){
-            WGS_PlayerRun PlayerMove = collider.GetComponent<WGS_PlayerRun>();
-            PlayerMove.CanMove = false;
 
-            yield return new WaitForSeconds(TimeFreeze);
-            
-            PlayerMove.CanMove = true;
-            Destroy(gameObject);
     }
-    IEnumerator FreezeNPCCanMove(Collider collider){
-            WGS_NPCRun NPCPlayerMove = collider.GetComponent<WGS_NPCRun>();
-            NPCPlayerMove.NPCCanMove = false;
+    IEnumerator FreezeCanMove(Collider collider)
+    {
+        WGS_PlayerRun PlayerMove = collider.GetComponent<WGS_PlayerRun>();
+        PlayerMove.CanMove = false;
+        PlayerMove.IsItemSpeedActive = false;
 
-            yield return new WaitForSeconds(TimeFreeze);
-            
-            NPCPlayerMove.NPCCanMove = true;
-            Destroy(gameObject);
+        yield return new WaitForSeconds(TimeFreeze);
+
+        PlayerMove.CanMove = true;
+        Destroy(gameObject);
+    }
+    IEnumerator FreezeNPCCanMove(Collider collider)
+    {
+        WGS_NPCRun NPCPlayerMove = collider.GetComponent<WGS_NPCRun>();
+        NPCPlayerMove.NPCCanMove = false;
+        NPCPlayerMove.IsItemSpeedActive = false;
+
+        yield return new WaitForSeconds(TimeFreeze);
+
+        NPCPlayerMove.NPCCanMove = true;
+        Destroy(gameObject);
     }
 }

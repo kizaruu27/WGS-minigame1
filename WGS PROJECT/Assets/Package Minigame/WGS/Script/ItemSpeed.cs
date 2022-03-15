@@ -30,18 +30,20 @@ public class ItemSpeed : MonoBehaviour
         mesh.enabled = false;
         WGS_PlayerRun PlayerMovement = collider.GetComponent<WGS_PlayerRun>();
 
-        PrevPlayerSpeed = PlayerMovement.PlayerSpeed;
-        PlayerMovement.PlayerSpeed = SpeedCharacter;
+        if (PlayerMovement.CanMove)
+        {
+            PrevPlayerSpeed = PlayerMovement.PlayerSpeed;
+            PlayerMovement.PlayerSpeed = SpeedCharacter;
+            PlayerMovement.IsItemSpeedActive = true;
 
-        PlayerMovement.IsItemSpeedActive = true;
-        Destroy(gameObject);
+            yield return new WaitForSeconds(SpeedTime);
 
+            PlayerMovement.PlayerSpeed = PrevPlayerSpeed;
+            PlayerMovement.IsItemSpeedActive = false;
+            Destroy(gameObject);
+        }
 
-        yield return new WaitForSeconds(SpeedTime);
-
-
-        PlayerMovement.PlayerSpeed = PrevPlayerSpeed;
-        PlayerMovement.IsItemSpeedActive = false;
+        yield return new WaitForSeconds(0);
     }
 
     IEnumerator UpSpeedNPC(Collider collider)
@@ -49,17 +51,21 @@ public class ItemSpeed : MonoBehaviour
         mesh.enabled = false;
         WGS_NPCRun NPCMovement = collider.GetComponent<WGS_NPCRun>();
 
-        PrevNPCSpeed = NPCMovement.PlayerSpeed;
-        NPCMovement.PlayerSpeed = SpeedCharacter;
+        if (NPCMovement.NPCCanMove)
+        {
+            PrevNPCSpeed = NPCMovement.PlayerSpeed;
+            NPCMovement.PlayerSpeed = SpeedCharacter;
 
-        NPCMovement.IsItemSpeedActive = true;
+            NPCMovement.IsItemSpeedActive = true;
 
-        Destroy(gameObject);
 
-        yield return new WaitForSeconds(SpeedTime);
+            yield return new WaitForSeconds(SpeedTime);
 
-        NPCMovement.IsItemSpeedActive = false;
-        NPCMovement.PlayerSpeed = PrevNPCSpeed;
+            NPCMovement.IsItemSpeedActive = false;
+            NPCMovement.PlayerSpeed = PrevNPCSpeed;
+            Destroy(gameObject);
+        }
+
 
     }
 

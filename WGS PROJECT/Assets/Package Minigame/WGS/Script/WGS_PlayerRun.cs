@@ -28,8 +28,6 @@ public class WGS_PlayerRun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Debug.Log(IsGrounded);
         if (IsGrounded)
         {
 
@@ -43,8 +41,6 @@ public class WGS_PlayerRun : MonoBehaviour
                     TargetAnimator.Play(AnimRun);
                 }
 
-                if (IsItemSpeedActive) TargetAnimator.Play(AnimRun);
-
             }
             else
             {
@@ -55,6 +51,10 @@ public class WGS_PlayerRun : MonoBehaviour
             if (PlayerSpeed >= 0 && !IsItemSpeedActive)
             {
                 PlayerSpeed -= 0.01f;
+            }
+            else if (PlayerSpeed >= 0 && IsItemSpeedActive)
+            {
+                TargetAnimator.Play(AnimRun);
             }
             else
             {
