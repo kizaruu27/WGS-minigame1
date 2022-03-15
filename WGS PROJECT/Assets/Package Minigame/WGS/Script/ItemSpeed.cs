@@ -34,6 +34,7 @@ public class ItemSpeed : MonoBehaviour
         PlayerMovement.PlayerSpeed = SpeedCharacter;
 
         PlayerMovement.IsItemSpeedActive = true;
+        Destroy(gameObject);
 
 
         yield return new WaitForSeconds(SpeedTime);
@@ -52,6 +53,8 @@ public class ItemSpeed : MonoBehaviour
         NPCMovement.PlayerSpeed = SpeedCharacter;
 
         NPCMovement.IsItemSpeedActive = true;
+
+        Destroy(gameObject);
 
         yield return new WaitForSeconds(SpeedTime);
 
