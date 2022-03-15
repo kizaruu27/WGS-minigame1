@@ -7,12 +7,6 @@ public class Obstacle : MonoBehaviour
     [SerializeField] float newPlayerSpeed;
     [SerializeField] float delayTime;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider coll)
     {
         if (coll.gameObject.tag == "Player")

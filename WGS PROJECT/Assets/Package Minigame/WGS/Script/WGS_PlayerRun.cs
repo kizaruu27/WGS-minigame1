@@ -5,26 +5,27 @@ using UnityEngine;
 public class WGS_PlayerRun : MonoBehaviour
 {
 
+    [Header("Player")]
     public GameObject Player;
     public Animator TargetAnimator;
+
+    [Header("Animation")]
     public string AnimIdle;
     public string AnimRun;
+
+    [Header("Player Speed")]
     public float PlayerSpeed;
     public float maxSpeed;
+
+    [Header("Items Validation")]
     public bool CanMove;
     public float JumpHeight = .1f;
-    public float GravityValue = -9.81f;
-
     public bool IsItemSpeedActive = false;
 
+    [Header("Player Jump")]
+    public float GravityValue = -9.81f;
     float verticalVelocity = 0;
     bool IsGrounded;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -43,9 +44,6 @@ public class WGS_PlayerRun : MonoBehaviour
                     PlayerSpeed += 1f;
                     TargetAnimator.Play(AnimRun);
                 }
-
-                if (IsItemSpeedActive) TargetAnimator.Play(AnimRun);
-
             }
             else
             {
@@ -69,7 +67,6 @@ public class WGS_PlayerRun : MonoBehaviour
 
             Player.transform.position += new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
         }
-
     }
 
 
