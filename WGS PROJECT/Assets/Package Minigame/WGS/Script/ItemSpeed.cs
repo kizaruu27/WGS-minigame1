@@ -66,6 +66,8 @@ public class ItemSpeed : MonoBehaviour
             Destroy(gameObject);
         }
 
+        yield return new WaitForSeconds(0);
+
 
     }
 
