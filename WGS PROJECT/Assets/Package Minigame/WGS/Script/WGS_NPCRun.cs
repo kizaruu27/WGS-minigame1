@@ -14,8 +14,6 @@ public class WGS_NPCRun : MonoBehaviour
     public bool NPCCanMove;
     public bool IsItemSpeedActive = false;
 
-    float feetDistance = 0.1f;
-
 
     // Start is called before the first frame update
     void Start()

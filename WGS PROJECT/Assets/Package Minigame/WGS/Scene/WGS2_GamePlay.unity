@@ -182,7 +182,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &30729323
 MeshRenderer:
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 51063111}
   - component: {fileID: 51063110}
   - component: {fileID: 51063109}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 3 (2)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 72610734}
   - component: {fileID: 72610733}
   - component: {fileID: 72610732}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 11 (1)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -567,7 +567,7 @@ GameObject:
   - component: {fileID: 90001449}
   - component: {fileID: 90001448}
   - component: {fileID: 90001447}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 5
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -966,7 +966,7 @@ GameObject:
   - component: {fileID: 99685077}
   - component: {fileID: 99685076}
   - component: {fileID: 99685075}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 12 (1)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -1034,7 +1034,7 @@ GameObject:
   - component: {fileID: 102473446}
   - component: {fileID: 102473445}
   - component: {fileID: 102473444}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 4 (3)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -1149,7 +1149,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &109872801
 MeshRenderer:
@@ -1694,7 +1694,7 @@ GameObject:
   - component: {fileID: 165487056}
   - component: {fileID: 165487055}
   - component: {fileID: 165487054}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 10 (3)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -1943,7 +1943,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &189869912
 MeshRenderer:
@@ -2006,7 +2006,7 @@ GameObject:
   - component: {fileID: 195620923}
   - component: {fileID: 195620922}
   - component: {fileID: 195620921}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 10 (2)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -2256,7 +2256,7 @@ GameObject:
   - component: {fileID: 277196419}
   - component: {fileID: 277196417}
   - component: {fileID: 277196418}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 1
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -2385,6 +2385,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1.02, z: 0}
+--- !u!114 &291065140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291065134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57e152d4af7a4987a1196e1086bf22c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TypeCharacter: NPC
+  Character: {fileID: 291065134}
+  JumpHeight: 4
 --- !u!1 &306212847
 GameObject:
   m_ObjectHideFlags: 0
@@ -2397,7 +2412,7 @@ GameObject:
   - component: {fileID: 306212851}
   - component: {fileID: 306212850}
   - component: {fileID: 306212849}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 8 (2)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -2465,7 +2480,7 @@ GameObject:
   - component: {fileID: 318100561}
   - component: {fileID: 318100560}
   - component: {fileID: 318100559}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 2
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -2611,7 +2626,7 @@ GameObject:
   - component: {fileID: 369906077}
   - component: {fileID: 369906076}
   - component: {fileID: 369906075}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 3 (1)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -2679,7 +2694,7 @@ GameObject:
   - component: {fileID: 380830339}
   - component: {fileID: 380830338}
   - component: {fileID: 380830337}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 7 (2)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -2747,7 +2762,7 @@ GameObject:
   - component: {fileID: 407284443}
   - component: {fileID: 407284442}
   - component: {fileID: 407284441}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 3 (3)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -2815,7 +2830,7 @@ GameObject:
   - component: {fileID: 418096847}
   - component: {fileID: 418096846}
   - component: {fileID: 418096845}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 4 (1)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -3293,7 +3308,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &459403722
 MeshRenderer:
@@ -3512,6 +3527,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1.02, z: 0}
+--- !u!114 &510055540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510055534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57e152d4af7a4987a1196e1086bf22c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TypeCharacter: NPC
+  Character: {fileID: 510055534}
+  JumpHeight: 4
 --- !u!1 &510512203
 GameObject:
   m_ObjectHideFlags: 0
@@ -3524,7 +3554,7 @@ GameObject:
   - component: {fileID: 510512207}
   - component: {fileID: 510512206}
   - component: {fileID: 510512205}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 11
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -3592,7 +3622,7 @@ GameObject:
   - component: {fileID: 527814795}
   - component: {fileID: 527814794}
   - component: {fileID: 527814793}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 5 (2)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -3660,7 +3690,7 @@ GameObject:
   - component: {fileID: 536082907}
   - component: {fileID: 536082906}
   - component: {fileID: 536082905}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 8 (1)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -3775,7 +3805,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &577291808
 MeshRenderer:
@@ -4124,7 +4154,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &692237998
 MeshRenderer:
@@ -4248,6 +4278,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1.02, z: 0}
+--- !u!114 &699370281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699370275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57e152d4af7a4987a1196e1086bf22c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TypeCharacter: NPC
+  Character: {fileID: 699370275}
+  JumpHeight: 4
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -4353,7 +4398,7 @@ GameObject:
   - component: {fileID: 719765604}
   - component: {fileID: 719765603}
   - component: {fileID: 719765602}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 4
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -4555,7 +4600,7 @@ GameObject:
   - component: {fileID: 790666237}
   - component: {fileID: 790666236}
   - component: {fileID: 790666235}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 7 (1)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -4654,7 +4699,6 @@ MonoBehaviour:
   maxSpeed: 10
   CanMove: 1
   IsItemSpeedActive: 0
-  JumpHeight: 6
 --- !u!136 &816288753
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4775,7 +4819,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeCharacter: Player
-  JumpHeight: 3
+  Character: {fileID: 816288751}
+  JumpHeight: 4
 --- !u!1 &828776523
 GameObject:
   m_ObjectHideFlags: 0
@@ -4910,7 +4955,7 @@ GameObject:
   - component: {fileID: 831192999}
   - component: {fileID: 831192998}
   - component: {fileID: 831192997}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 6 (3)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -5480,6 +5525,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1.02, z: 0}
+--- !u!114 &991029429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991029423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57e152d4af7a4987a1196e1086bf22c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TypeCharacter: NPC
+  Character: {fileID: 991029423}
+  JumpHeight: 4
 --- !u!1 &1020833323
 GameObject:
   m_ObjectHideFlags: 0
@@ -5492,7 +5552,7 @@ GameObject:
   - component: {fileID: 1020833327}
   - component: {fileID: 1020833326}
   - component: {fileID: 1020833325}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 12 (2)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -5560,7 +5620,7 @@ GameObject:
   - component: {fileID: 1030414301}
   - component: {fileID: 1030414300}
   - component: {fileID: 1030414299}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 12 (3)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -5628,7 +5688,7 @@ GameObject:
   - component: {fileID: 1075621136}
   - component: {fileID: 1075621135}
   - component: {fileID: 1075621134}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 10
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -5983,7 +6043,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1112647024
 MeshRenderer:
@@ -6093,7 +6153,7 @@ GameObject:
   - component: {fileID: 1169076276}
   - component: {fileID: 1169076275}
   - component: {fileID: 1169076274}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 10 (1)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -6161,7 +6221,7 @@ GameObject:
   - component: {fileID: 1172426797}
   - component: {fileID: 1172426796}
   - component: {fileID: 1172426795}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 9 (1)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -6229,7 +6289,7 @@ GameObject:
   - component: {fileID: 1187621805}
   - component: {fileID: 1187621804}
   - component: {fileID: 1187621803}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 3
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -6297,7 +6357,7 @@ GameObject:
   - component: {fileID: 1197876836}
   - component: {fileID: 1197876835}
   - component: {fileID: 1197876834}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 8 (3)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -6477,7 +6537,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1223611758
 MeshRenderer:
@@ -6587,7 +6647,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1265363883
 MeshRenderer:
@@ -6697,7 +6757,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1279528393
 MeshRenderer:
@@ -6760,7 +6820,7 @@ GameObject:
   - component: {fileID: 1307984053}
   - component: {fileID: 1307984052}
   - component: {fileID: 1307984051}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 7 (3)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -6949,7 +7009,7 @@ GameObject:
   - component: {fileID: 1353267050}
   - component: {fileID: 1353267049}
   - component: {fileID: 1353267048}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 2 (2)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -7017,7 +7077,7 @@ GameObject:
   - component: {fileID: 1358099653}
   - component: {fileID: 1358099652}
   - component: {fileID: 1358099651}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 9 (3)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -7206,7 +7266,7 @@ GameObject:
   - component: {fileID: 1401257216}
   - component: {fileID: 1401257215}
   - component: {fileID: 1401257214}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 13
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -7321,7 +7381,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1424723794
 MeshRenderer:
@@ -7518,7 +7578,7 @@ GameObject:
   - component: {fileID: 1438400556}
   - component: {fileID: 1438400555}
   - component: {fileID: 1438400554}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 1 (3)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -7586,7 +7646,7 @@ GameObject:
   - component: {fileID: 1457191458}
   - component: {fileID: 1457191457}
   - component: {fileID: 1457191456}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 9
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -7943,7 +8003,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1521283403
 MeshRenderer:
@@ -8053,7 +8113,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1535313920
 MeshRenderer:
@@ -8116,7 +8176,7 @@ GameObject:
   - component: {fileID: 1551502756}
   - component: {fileID: 1551502755}
   - component: {fileID: 1551502754}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 6
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -8184,7 +8244,7 @@ GameObject:
   - component: {fileID: 1563963487}
   - component: {fileID: 1563963486}
   - component: {fileID: 1563963485}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 12
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -8556,7 +8616,7 @@ GameObject:
   - component: {fileID: 1629564049}
   - component: {fileID: 1629564048}
   - component: {fileID: 1629564047}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 1 (2)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -8932,6 +8992,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1.02, z: 0}
+--- !u!114 &1689245204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689245198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57e152d4af7a4987a1196e1086bf22c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TypeCharacter: NPC
+  Character: {fileID: 1689245198}
+  JumpHeight: 4
 --- !u!1001 &1695502072
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9052,7 +9127,7 @@ GameObject:
   - component: {fileID: 1738549493}
   - component: {fileID: 1738549492}
   - component: {fileID: 1738549491}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 6 (1)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -9120,7 +9195,7 @@ GameObject:
   - component: {fileID: 1776805064}
   - component: {fileID: 1776805063}
   - component: {fileID: 1776805062}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 9 (2)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -9188,7 +9263,7 @@ GameObject:
   - component: {fileID: 1795686998}
   - component: {fileID: 1795686997}
   - component: {fileID: 1795686996}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 5 (3)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -9610,7 +9685,7 @@ GameObject:
   - component: {fileID: 1910804029}
   - component: {fileID: 1910804028}
   - component: {fileID: 1910804027}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 6 (2)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -9678,7 +9753,7 @@ GameObject:
   - component: {fileID: 1927244599}
   - component: {fileID: 1927244598}
   - component: {fileID: 1927244597}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 2 (3)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -9746,7 +9821,7 @@ GameObject:
   - component: {fileID: 1941852496}
   - component: {fileID: 1941852495}
   - component: {fileID: 1941852494}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 5 (1)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -9919,7 +9994,7 @@ GameObject:
   - component: {fileID: 1955642449}
   - component: {fileID: 1955642448}
   - component: {fileID: 1955642447}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 7
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -10048,6 +10123,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1.02, z: 0}
+--- !u!114 &1958678281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958678275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57e152d4af7a4987a1196e1086bf22c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TypeCharacter: NPC
+  Character: {fileID: 1958678275}
+  JumpHeight: 4
 --- !u!1 &1975518908
 GameObject:
   m_ObjectHideFlags: 0
@@ -10226,7 +10316,7 @@ GameObject:
   - component: {fileID: 2015067429}
   - component: {fileID: 2015067428}
   - component: {fileID: 2015067427}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 8
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -10294,7 +10384,7 @@ GameObject:
   - component: {fileID: 2016937678}
   - component: {fileID: 2016937677}
   - component: {fileID: 2016937676}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 11 (3)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -10423,6 +10513,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1.02, z: 0}
+--- !u!114 &2023859247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023859241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57e152d4af7a4987a1196e1086bf22c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TypeCharacter: NPC
+  Character: {fileID: 2023859241}
+  JumpHeight: 4
 --- !u!1 &2035177096
 GameObject:
   m_ObjectHideFlags: 0
@@ -10435,7 +10540,7 @@ GameObject:
   - component: {fileID: 2035177100}
   - component: {fileID: 2035177099}
   - component: {fileID: 2035177098}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 11 (2)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -10637,7 +10742,7 @@ GameObject:
   - component: {fileID: 2049292703}
   - component: {fileID: 2049292702}
   - component: {fileID: 2049292701}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 14
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -10770,7 +10875,7 @@ GameObject:
   - component: {fileID: 2132603779}
   - component: {fileID: 2132603778}
   - component: {fileID: 2132603777}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint 4 (2)
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}

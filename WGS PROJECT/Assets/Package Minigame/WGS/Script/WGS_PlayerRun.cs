@@ -23,11 +23,6 @@ public class WGS_PlayerRun : MonoBehaviour
     public bool CanMove;
     public bool IsItemSpeedActive = false;
 
-
-    // Start is called before the first frame update
-
-
-    // Update is called once per frame
     void Update()
     {
 
