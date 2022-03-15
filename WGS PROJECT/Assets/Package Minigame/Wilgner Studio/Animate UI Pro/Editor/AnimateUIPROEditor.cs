@@ -199,17 +199,19 @@ public class AnimateUIPROEditor : Editor
 
 
         this.words2.drawElementCallback = RectNewWords;
-        this.words2.drawHeaderCallback = (Rect rect) => {
+        this.words2.drawHeaderCallback = (Rect rect) =>
+        {
             EditorGUI.LabelField(rect, "Words");
         };
 
-        #if WS_AUIP
+#if WS_AUIP
         //Debug.Log("Animate UI Pro EXITS!");
-        #endif
+#endif
 
     }
 
-    public override void OnInspectorGUI() {
+    public override void OnInspectorGUI()
+    {
         //DrawDefaultInspector ();
 
         #region LOGO
@@ -225,7 +227,8 @@ public class AnimateUIPROEditor : Editor
         animateUIPRO.selectedTab = GUILayout.Toolbar(animateUIPRO.selectedTab, new string[] { "General", animateUIPRO.animationList + " Properties", "Preview" }, GUILayout.Height(30));
 
         EditorGUILayout.BeginVertical("box");
-        switch (animateUIPRO.selectedTab) {
+        switch (animateUIPRO.selectedTab)
+        {
             case 0:
                 GeralGUI();
                 break;
@@ -250,7 +253,7 @@ public class AnimateUIPROEditor : Editor
         if (EditorGUI.EndChangeCheck())
         {
             script.ApplyModifiedProperties();
-            if(animateUIPRO._canvasGroup == null)
+            if (animateUIPRO._canvasGroup == null)
                 animateUIPRO._canvasGroup = animateUIPRO.GetComponent<CanvasGroup>();
 
             if (animateUIPRO.isPreview)
@@ -272,60 +275,79 @@ public class AnimateUIPROEditor : Editor
         EditorGUILayout.PropertyField(afterAnimationIsOver);
     }
 
-    void PropertiesGUI() {
-        if (animateUIPRO.animationList == AnimationList.None) {
+    void PropertiesGUI()
+    {
+        if (animateUIPRO.animationList == AnimationList.None)
+        {
             EditorGUILayout.LabelField("Animation Settings", EditorStyles.boldLabel);
             EditorGUILayout.HelpBox("No Animation Selected", MessageType.Warning);
         }
-        else if (animateUIPRO.animationList == AnimationList.Bounce) {
+        else if (animateUIPRO.animationList == AnimationList.Bounce)
+        {
             BounceGUI();
         }
-        else if (animateUIPRO.animationList == AnimationList.Pulse) {
+        else if (animateUIPRO.animationList == AnimationList.Pulse)
+        {
             PulseGUI();
         }
-        else if (animateUIPRO.animationList == AnimationList.Flash) {
+        else if (animateUIPRO.animationList == AnimationList.Flash)
+        {
             FlashGUI();
         }
-        else if (animateUIPRO.animationList == AnimationList.ShakeX) {
+        else if (animateUIPRO.animationList == AnimationList.ShakeX)
+        {
             ShakeXGUI();
         }
-        else if (animateUIPRO.animationList == AnimationList.ShakeY) {
+        else if (animateUIPRO.animationList == AnimationList.ShakeY)
+        {
             ShakeYGUI();
         }
-        else if (animateUIPRO.animationList == AnimationList.RPGTypingEffect) {
+        else if (animateUIPRO.animationList == AnimationList.RPGTypingEffect)
+        {
             RPGTypingEffectGUI();
         }
-        else if (animateUIPRO.animationList == AnimationList.ZoomIn) {
+        else if (animateUIPRO.animationList == AnimationList.ZoomIn)
+        {
             ZoomInGUI();
         }
-        else if (animateUIPRO.animationList == AnimationList.ZoomInDown || animateUIPRO.animationList == AnimationList.ZoomInLeft || animateUIPRO.animationList == AnimationList.ZoomInLeft || animateUIPRO.animationList == AnimationList.ZoomInRight || animateUIPRO.animationList == AnimationList.ZoomInUp) {
+        else if (animateUIPRO.animationList == AnimationList.ZoomInDown || animateUIPRO.animationList == AnimationList.ZoomInLeft || animateUIPRO.animationList == AnimationList.ZoomInLeft || animateUIPRO.animationList == AnimationList.ZoomInRight || animateUIPRO.animationList == AnimationList.ZoomInUp)
+        {
             ZoomInOthersGUI();
         }
-        else if (animateUIPRO.animationList == AnimationList.ZoomOut) {
+        else if (animateUIPRO.animationList == AnimationList.ZoomOut)
+        {
             ZoomOutGUI();
         }
-        else if (animateUIPRO.animationList == AnimationList.ZoomOutDown || animateUIPRO.animationList == AnimationList.ZoomOutLeft || animateUIPRO.animationList == AnimationList.ZoomOutLeft || animateUIPRO.animationList == AnimationList.ZoomOutRight || animateUIPRO.animationList == AnimationList.ZoomOutUp) {
+        else if (animateUIPRO.animationList == AnimationList.ZoomOutDown || animateUIPRO.animationList == AnimationList.ZoomOutLeft || animateUIPRO.animationList == AnimationList.ZoomOutLeft || animateUIPRO.animationList == AnimationList.ZoomOutRight || animateUIPRO.animationList == AnimationList.ZoomOutUp)
+        {
             ZoomOuttOthersGUI();
         }
-        else if (animateUIPRO.animationList == AnimationList.SlideInDown || animateUIPRO.animationList == AnimationList.SlideInLeft || animateUIPRO.animationList == AnimationList.SlideInRight || animateUIPRO.animationList == AnimationList.SlideInUp) {
+        else if (animateUIPRO.animationList == AnimationList.SlideInDown || animateUIPRO.animationList == AnimationList.SlideInLeft || animateUIPRO.animationList == AnimationList.SlideInRight || animateUIPRO.animationList == AnimationList.SlideInUp)
+        {
             SlideGUI();
         }
-        else if (animateUIPRO.animationList == AnimationList.SlideOut) {
+        else if (animateUIPRO.animationList == AnimationList.SlideOut)
+        {
             EditorGUILayout.PropertyField(durationTSlideOut);
         }
-        else if (animateUIPRO.animationList == AnimationList.SlideOutDown || animateUIPRO.animationList == AnimationList.SlideOutLeft || animateUIPRO.animationList == AnimationList.SlideOutRight || animateUIPRO.animationList == AnimationList.SlideOutUp) {
+        else if (animateUIPRO.animationList == AnimationList.SlideOutDown || animateUIPRO.animationList == AnimationList.SlideOutLeft || animateUIPRO.animationList == AnimationList.SlideOutRight || animateUIPRO.animationList == AnimationList.SlideOutUp)
+        {
             SlideOutGUI();
         }
-        else if (animateUIPRO.animationList == AnimationList.FadeIn) {
+        else if (animateUIPRO.animationList == AnimationList.FadeIn)
+        {
             EditorGUILayout.PropertyField(durationTFadeIn);
         }
-        else if (animateUIPRO.animationList == AnimationList.FadeInDown || animateUIPRO.animationList == AnimationList.FadeInLeft || animateUIPRO.animationList == AnimationList.FadeInRight || animateUIPRO.animationList == AnimationList.FadeInUp) {
+        else if (animateUIPRO.animationList == AnimationList.FadeInDown || animateUIPRO.animationList == AnimationList.FadeInLeft || animateUIPRO.animationList == AnimationList.FadeInRight || animateUIPRO.animationList == AnimationList.FadeInUp)
+        {
             FadeInGUI();
         }
-        else if (animateUIPRO.animationList == AnimationList.FadeOut) {
+        else if (animateUIPRO.animationList == AnimationList.FadeOut)
+        {
             EditorGUILayout.PropertyField(durationTFadeOut);
         }
-        else if (animateUIPRO.animationList == AnimationList.FadeOutDown || animateUIPRO.animationList == AnimationList.FadeOutLeft || animateUIPRO.animationList == AnimationList.FadeOutRight || animateUIPRO.animationList == AnimationList.FadeOutUp) {
+        else if (animateUIPRO.animationList == AnimationList.FadeOutDown || animateUIPRO.animationList == AnimationList.FadeOutLeft || animateUIPRO.animationList == AnimationList.FadeOutRight || animateUIPRO.animationList == AnimationList.FadeOutUp)
+        {
             FadeOutGUI();
         }
         else if (animateUIPRO.animationList == AnimationList.FlipLeft || animateUIPRO.animationList == AnimationList.FlipRight) // Flip
@@ -333,7 +355,8 @@ public class AnimateUIPROEditor : Editor
             EditorGUILayout.PropertyField(durationTFlip);
             EditorGUILayout.PropertyField(leftFlip);
         }
-        else if (animateUIPRO.animationList == AnimationList.FlipInX || animateUIPRO.animationList == AnimationList.FlipInY || animateUIPRO.animationList == AnimationList.FlipOutX || animateUIPRO.animationList == AnimationList.FlipOutY) {
+        else if (animateUIPRO.animationList == AnimationList.FlipInX || animateUIPRO.animationList == AnimationList.FlipInY || animateUIPRO.animationList == AnimationList.FlipOutX || animateUIPRO.animationList == AnimationList.FlipOutY)
+        {
             EditorGUILayout.PropertyField(durationTFlip);
         }
         else if (animateUIPRO.animationList == AnimationList.RollIn || animateUIPRO.animationList == AnimationList.RollOut) // Roll In / Out
@@ -343,18 +366,23 @@ public class AnimateUIPROEditor : Editor
         }
     }
 
-    void PreviewGUI() {
+    void PreviewGUI()
+    {
         EditorGUILayout.LabelField("Preview", EditorStyles.boldLabel);
-        if (animateUIPRO.animationList != AnimationList.None) {
+        if (animateUIPRO.animationList != AnimationList.None)
+        {
             EditorGUILayout.PropertyField(isPreview);
             EditorGUILayout.Slider(previewValue, 0f, animateUIPRO.previewMaxValue);
         }
-        else if (animateUIPRO.animationList == AnimationList.RPGTypingEffect) {
-            if (GUILayout.Button("Next Word")) {
+        else if (animateUIPRO.animationList == AnimationList.RPGTypingEffect)
+        {
+            if (GUILayout.Button("Next Word"))
+            {
                 animateUIPRO.TypingNext();
             }
         }
-        if (GUILayout.Button("Set Initial Position")) {
+        if (GUILayout.Button("Set Initial Position"))
+        {
             animateUIPRO.SetInitPos();
         }
     }
