@@ -5,37 +5,31 @@ using UnityEngine;
 public class WGS_PlayerRun : MonoBehaviour
 {
 
+    [Header("Player")]
+    CapsuleCollider Collider;
+    Rigidbody rb;
     public GameObject Player;
     public Animator TargetAnimator;
+
+    [Header("Animation")]
     public string AnimIdle;
     public string AnimRun;
-    public float PlayerSpeed;
-    public bool CanMove;
-    public float JumpHeight = 3f;
-    public float GravityValue = -9.81f;
 
+    [Header("Player Speed")]
+    public float PlayerSpeed;
+    public float maxSpeed;
+
+    [Header("Items Validation")]
+    public bool CanMove;
     public bool IsItemSpeedActive = false;
 
-    CapsuleCollider Collider;
-
-    float FeetDistance;
-
-    Rigidbody rb;
-    bool IsGrounded = true;
-    bool IsJump;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        rb = Player.GetComponent<Rigidbody>();
-        Collider = GetComponent<CapsuleCollider>();
-        FeetDistance = Collider.bounds.extents.y;
-    }
+
 
     // Update is called once per frame
     void Update()
     {
-        IsJump = Input.GetKeyDown(KeyCode.Space) && IsGrounded;
 
         if (CanMove)
         {
@@ -60,14 +54,5 @@ public class WGS_PlayerRun : MonoBehaviour
 
 
         Player.transform.position += new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
-    }
-
-
-    private void FixedUpdate()
-    {
-        Vector3 fwd = transform.TransformDirection(Vector3.down);
-        IsGrounded = Physics.Raycast(transform.position, fwd, FeetDistance + .1f);
-
-        if (IsJump) rb.velocity = new Vector3(0, JumpHeight, 0);
     }
 }

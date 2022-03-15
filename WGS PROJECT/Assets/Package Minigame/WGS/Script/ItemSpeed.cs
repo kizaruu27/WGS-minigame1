@@ -33,13 +33,13 @@ public class ItemSpeed : MonoBehaviour
         if (PlayerMovement.CanMove)
         {
             PrevPlayerSpeed = PlayerMovement.PlayerSpeed;
-            PlayerMovement.PlayerSpeed = SpeedCharacter;
-            PlayerMovement.IsItemSpeedActive = true;
+            PlayerMovement.PlayerSpeed += SpeedCharacter;
+            //PlayerMovement.IsItemSpeedActive = true;
 
             yield return new WaitForSeconds(SpeedTime);
 
             PlayerMovement.PlayerSpeed = PrevPlayerSpeed;
-            PlayerMovement.IsItemSpeedActive = false;
+            //PlayerMovement.IsItemSpeedActive = false;
             Destroy(gameObject);
         }
 
