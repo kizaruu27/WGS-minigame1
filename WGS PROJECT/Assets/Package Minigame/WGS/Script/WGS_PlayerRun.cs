@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WGS_PlayerRun : MonoBehaviour
 {
+    public static WGS_PlayerRun player;
 
     [Header("Player")]
     CapsuleCollider Collider;
@@ -27,12 +28,17 @@ public class WGS_PlayerRun : MonoBehaviour
     public float jumpForce = 5f;
     bool isJumping;
 
+    private void Awake()
+    {
+        player = this;
+    }
+
     void Update()
     {
 
         if (CanMove)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0) && !IsItemSpeedActive)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && !IsItemSpeedActive && !FinishChecker.finishChecker.isFinish)
             {
                 PlayerSpeed += 1f;
                 TargetAnimator.Play(AnimRun);

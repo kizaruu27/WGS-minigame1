@@ -17,7 +17,8 @@ public class PlayerJump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        WGS_PlayerRun playerMove = GetComponent<WGS_PlayerRun>();
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && playerMove.CanMove)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;

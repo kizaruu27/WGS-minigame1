@@ -11,9 +11,9 @@ public class LapCounter : MonoBehaviour
     float timeAtLastPassCheckpoint = 0;
     int numberOfPassedCheckpoints = 0;
     int lapsCompleted = 0;
-    const int lapsToComplete = 2;
+    const int lapsToComplete = 1;
     bool isRaceCompleted = false;
-    int playerPosition = 0;
+    public int playerPosition = 0; // buat podium
 
     public event Action <LapCounter> OnPassCheckpoint;
 
