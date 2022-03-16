@@ -6,6 +6,7 @@ TagManager:
   tags:
   - NPC
   - Checkpoint
+  - Ground
   layers:
   - Default
   - TransparentFX

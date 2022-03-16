@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class LapCounter : MonoBehaviour
 {
-    public Text playerPositionTxt;
+    //public Text playerPositionTxt;
     int passedCheckPointNumber = 0;
     float timeAtLastPassCheckpoint = 0;
     int numberOfPassedCheckpoints = 0;

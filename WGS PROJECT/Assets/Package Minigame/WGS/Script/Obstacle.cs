@@ -11,11 +11,13 @@ public class Obstacle : MonoBehaviour
     {
         if (coll.gameObject.tag == "Player")
         {
+            Zetcode_CameraFollowPlayerFixed.cameraFollow.isShake = true;
             StartCoroutine(playerSlowed(coll));
         }
 
         if (coll.gameObject.tag == "NPC")
         {
+            //camera shake
             StartCoroutine(NPCSlowed(coll));
         }
     }

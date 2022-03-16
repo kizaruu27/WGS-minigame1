@@ -23,6 +23,10 @@ public class WGS_PlayerRun : MonoBehaviour
     public bool CanMove;
     public bool IsItemSpeedActive = false;
 
+    [Header("Jump")]
+    public float jumpForce = 5f;
+    bool isJumping;
+
     void Update()
     {
 
@@ -33,7 +37,6 @@ public class WGS_PlayerRun : MonoBehaviour
                 PlayerSpeed += 1f;
                 TargetAnimator.Play(AnimRun);
             }
-
         }
         else
         {
@@ -41,11 +44,25 @@ public class WGS_PlayerRun : MonoBehaviour
             TargetAnimator.Play(AnimIdle);
         }
 
-        if (PlayerSpeed >= 0 && !IsItemSpeedActive) PlayerSpeed -= 0.01f;
-        else if (PlayerSpeed >= 0 && IsItemSpeedActive) TargetAnimator.Play(AnimRun);
-        else TargetAnimator.Play(AnimIdle);
 
-        if (PlayerSpeed >= 10) PlayerSpeed = 10;
+        if (PlayerSpeed >= 0 && !IsItemSpeedActive) 
+        {
+            PlayerSpeed -= 0.01f;   
+        }
+        else if (PlayerSpeed >= 0 && IsItemSpeedActive) 
+        {
+            TargetAnimator.Play(AnimRun);
+        }
+        else 
+        {
+            TargetAnimator.Play(AnimIdle);
+        } 
+
+
+        if (PlayerSpeed >= maxSpeed)
+        {
+            PlayerSpeed = maxSpeed;
+        } 
 
 
         Player.transform.position += new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
