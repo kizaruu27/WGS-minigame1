@@ -14,7 +14,6 @@ public class WGS_NPCRun : MonoBehaviour
     public bool NPCCanMove;
     public bool IsItemSpeedActive = false;
 
-
     // Start is called before the first frame update
     void Start()
     {
