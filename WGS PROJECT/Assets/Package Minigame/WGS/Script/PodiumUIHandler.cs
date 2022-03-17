@@ -30,11 +30,12 @@ public class PodiumUIHandler : MonoBehaviour
 
             if (WinnerChecker.win.isWin)
             {
-                playerWinTxt.gameObject.SetActive(true);
+                //playerWinTxt.gameObject.SetActive(true);
                 playerPointsTxt.gameObject.SetActive(true);
 
             }
-            else
+            
+            else if (!WinnerChecker.win.isWin)
             {
                 playerPositionTxt.gameObject.SetActive(true);
                 playerPointsTxt.gameObject.SetActive(true);

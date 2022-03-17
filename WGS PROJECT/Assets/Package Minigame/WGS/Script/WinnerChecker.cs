@@ -40,6 +40,7 @@ public class WinnerChecker : MonoBehaviour
                 case 1:
                 isWin = true;
                 playerPoints = 1000;
+                playerPositionTxt.text = "Congratulation You Win!";
                 playerPointsTxt.text = "You got " + playerPoints + " points";
                 break;
 
