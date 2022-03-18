@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class WGS_PlayerRun : MonoBehaviour
@@ -28,49 +27,76 @@ public class WGS_PlayerRun : MonoBehaviour
     public float jumpForce = 5f;
     bool isJumping;
 
+    [Header("Mobile Button Run")]
+    public Button btnRun;
+
+
     private void Awake()
     {
         player = this;
+
+        btnRun.gameObject.SetActive(CheckPlatform.isAndroid || CheckPlatform.isIos);
     }
 
     void Update()
     {
-
-        if (CanMove)
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0) && !IsItemSpeedActive && !FinishChecker.finishChecker.isFinish)
+        if(CheckPlatform.isMacUnity || CheckPlatform.isWindowsUnity || CheckPlatform.isWeb){
+            if (CanMove)
             {
-                PlayerSpeed += 1f;
-                TargetAnimator.Play(AnimRun);
+                if (Input.GetKeyDown(KeyCode.Mouse0) && !IsItemSpeedActive && !FinishChecker.finishChecker.isFinish)
+                {
+                    PlayerSpeed += 1f;
+                    TargetAnimator.Play(AnimRun);
+                }
+            }
+            else
+            {
+                PlayerSpeed = 0;
+                TargetAnimator.Play(AnimIdle);
             }
         }
-        else
-        {
-            PlayerSpeed = 0;
-            TargetAnimator.Play(AnimIdle);
+
+            if (PlayerSpeed >= 0 && !IsItemSpeedActive)
+            {
+                PlayerSpeed -= 0.01f;
+            }
+            else if (PlayerSpeed >= 0 && IsItemSpeedActive)
+            {
+                TargetAnimator.Play(AnimRun);
+            }
+            else
+            {
+                TargetAnimator.Play(AnimIdle);
+            }
+
+
+            if (PlayerSpeed >= maxSpeed)
+            {
+                PlayerSpeed = maxSpeed;
+            }
+
+
+            Player.transform.position += new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
+        
+    }
+
+    public void MobileBtnRun(){
+
+        if (CheckPlatform.isIos || CheckPlatform.isAndroid){
+            if (CanMove)
+            {
+                if ( !IsItemSpeedActive && !FinishChecker.finishChecker.isFinish)
+                {
+                    PlayerSpeed += 1f;
+                    TargetAnimator.Play(AnimRun);
+                }
+            }
+            else
+            {
+                PlayerSpeed = 0;
+                TargetAnimator.Play(AnimIdle);
+            }
         }
-
-
-        if (PlayerSpeed >= 0 && !IsItemSpeedActive)
-        {
-            PlayerSpeed -= 0.01f;
-        }
-        else if (PlayerSpeed >= 0 && IsItemSpeedActive)
-        {
-            TargetAnimator.Play(AnimRun);
-        }
-        else
-        {
-            TargetAnimator.Play(AnimIdle);
-        }
-
-
-        if (PlayerSpeed >= maxSpeed)
-        {
-            PlayerSpeed = maxSpeed;
-        }
-
-
-        Player.transform.position += new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
+        
     }
 }
