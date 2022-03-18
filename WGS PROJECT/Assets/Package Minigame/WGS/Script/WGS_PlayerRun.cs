@@ -80,9 +80,13 @@ public class WGS_PlayerRun : MonoBehaviour
         
     }
 
-    public void MobileBtnRun(){
+    private void OnEnable() {
+        if(CheckPlatform.isIos || CheckPlatform.isAndroid)
+        btnRun.onClick.AddListener(MobileBtnRun);
+    }
 
-        if (CheckPlatform.isIos || CheckPlatform.isAndroid){
+    public void MobileBtnRun(){
+        
             if (CanMove)
             {
                 if ( !IsItemSpeedActive && !FinishChecker.finishChecker.isFinish)
@@ -96,7 +100,6 @@ public class WGS_PlayerRun : MonoBehaviour
                 PlayerSpeed = 0;
                 TargetAnimator.Play(AnimIdle);
             }
-        }
         
     }
 }
