@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Package Minigame/WGS/Scene/WGS1_GameMenu.unity
+    guid: de414a35a1fe419468ff744ff2fb1552
+  - enabled: 1
+    path: Assets/Package Minigame/WGS/Scene/WGS2_ConnectToServer.unity
+    guid: 40fd91bdbd336a145bedf8fc1b54e3e3
+  - enabled: 1
+    path: Assets/Package Minigame/WGS/Scene/WGS3_Lobby.unity
+    guid: 9482ced35119d684ea8b537534620e82
+  - enabled: 1
+    path: Assets/Package Minigame/WGS/Scene/WGS4_GamePlay.unity
+    guid: ff14c92b5cf461848bd01ea620480634
+  - enabled: 1
+    path: Assets/Package Minigame/WGS/Scene/WGS5_GamePlayMultiplayer.unity
+    guid: 858c87f012dfcc74ebadfe0e1a8df96f
   m_configObjects: {}
