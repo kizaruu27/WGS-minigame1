@@ -26,13 +26,13 @@ public class WGS_NPCRun : MonoBehaviour
         if (NPCCanMove && !IsItemSpeedActive)
         {
             PlayerSpeed += 0.01f;
-            TargetAnimator.Play(AnimRun);
+            TargetAnimator.SetBool("isRunning", true);
         }
-        else if (IsItemSpeedActive) TargetAnimator.Play(AnimRun);
+        else if (IsItemSpeedActive) TargetAnimator.SetBool("isRunning", true);
         else
         {
             PlayerSpeed = 0;
-            TargetAnimator.Play(AnimIdle);
+            TargetAnimator.SetBool("isRunning", false);
         }
 
         if (PlayerSpeed >= MaxPlayerSpeed && !IsItemSpeedActive)

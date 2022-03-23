@@ -6,7 +6,6 @@ public class WGS_PlayerRun : MonoBehaviour
     public static WGS_PlayerRun player;
 
     [Header("Player")]
-    CapsuleCollider Collider;
     Rigidbody rb;
     public GameObject Player;
     public Animator TargetAnimator;
@@ -46,13 +45,13 @@ public class WGS_PlayerRun : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Mouse0) && !IsItemSpeedActive && !FinishChecker.finishChecker.isFinish)
                 {
                     PlayerSpeed += 1f;
-                    TargetAnimator.Play(AnimRun);
+                    TargetAnimator.SetBool("isRunning", true);
                 }
             }
             else
             {
                 PlayerSpeed = 0;
-                TargetAnimator.Play(AnimIdle);
+                TargetAnimator.SetBool("isRunning", false);
             }
         }
 
@@ -62,11 +61,11 @@ public class WGS_PlayerRun : MonoBehaviour
             }
             else if (PlayerSpeed >= 0 && IsItemSpeedActive)
             {
-                TargetAnimator.Play(AnimRun);
+                TargetAnimator.SetBool("isRunning", true);
             }
             else
             {
-                TargetAnimator.Play(AnimIdle);
+                TargetAnimator.SetBool("isRunning", false);
             }
 
 
@@ -92,13 +91,13 @@ public class WGS_PlayerRun : MonoBehaviour
                 if ( !IsItemSpeedActive && !FinishChecker.finishChecker.isFinish)
                 {
                     PlayerSpeed += 1f;
-                    TargetAnimator.Play(AnimRun);
+                    TargetAnimator.SetBool("isRunning", true);
                 }
             }
             else
             {
                 PlayerSpeed = 0;
-                TargetAnimator.Play(AnimIdle);
+                TargetAnimator.SetBool("isRunning", false);
             }
         
     }
