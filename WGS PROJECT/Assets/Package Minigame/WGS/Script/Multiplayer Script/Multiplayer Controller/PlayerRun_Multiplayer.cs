@@ -18,12 +18,17 @@ public class PlayerRun_Multiplayer : MonoBehaviour
     public float PlayerSpeed;
     public float maxSpeed;
 
+    //player jump
+    bool isGrounded;
+    public float jumpForce;
+
     PhotonView view;
 
     // Start is called before the first frame update
     void Start()
     {
         view = GetComponent<PhotonView>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -52,6 +57,25 @@ public class PlayerRun_Multiplayer : MonoBehaviour
             }
 
             Player.transform.position += new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
+        }
+
+        Jump();
+    }
+
+    void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collider)
+    {
+        if (collider.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
         }
     }
 }
