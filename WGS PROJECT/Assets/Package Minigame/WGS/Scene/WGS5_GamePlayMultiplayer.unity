@@ -4021,7 +4021,6 @@ GameObject:
   - component: {fileID: 483983738}
   - component: {fileID: 483983737}
   - component: {fileID: 483983741}
-  - component: {fileID: 483983742}
   m_Layer: 0
   m_Name: Finish Line
   m_TagString: FinishLine
@@ -4118,29 +4117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FinishValidation: {fileID: 11400000, guid: 4c6ee29eeed21f4418fc5832a018005f, type: 2}
-  finishUI: {fileID: 0}
---- !u!114 &483983742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 483983736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 4
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
+  finishUI: {fileID: 487575938}
 --- !u!1 &487575938
 GameObject:
   m_ObjectHideFlags: 0
@@ -10254,7 +10231,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1784477318}
   - component: {fileID: 1784477319}
-  - component: {fileID: 1784477320}
   m_Layer: 5
   m_Name: Multiplayer_Finish UI
   m_TagString: Finish UI
@@ -10304,20 +10280,6 @@ MonoBehaviour:
   sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &1784477320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784477317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc055576ad43e1d4799ab9471f3e82d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  finishValidation: {fileID: 11400000, guid: 4c6ee29eeed21f4418fc5832a018005f, type: 2}
-  finishUI: {fileID: 487575938}
 --- !u!1 &1795686994
 GameObject:
   m_ObjectHideFlags: 0

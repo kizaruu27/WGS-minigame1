@@ -16,12 +16,11 @@ public class Multiplayer_FinishCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (view.IsMine)
-        {
+        
             if (col.gameObject.tag == "Player")
             {
-                FinishValidation.isFinish = true;
+                finishUI.SetActive(true);
             }
-        }
+        
     }
 }
