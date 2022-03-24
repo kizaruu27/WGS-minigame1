@@ -225,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 7328353440017858349}
   TargetAnimator: {fileID: 7269276455346685548}
+  canMove: 0
   AnimIdle: IDLE
   AnimRun: RUN
   PlayerSpeed: 0

@@ -1,7 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+
 
 public class PlayerRun_Multiplayer : MonoBehaviour
 {
@@ -19,27 +19,31 @@ public class PlayerRun_Multiplayer : MonoBehaviour
     public float maxSpeed;
 
     PhotonView view;
+    
+    
 
     // Start is called before the first frame update
     void Start()
     {
         view = GetComponent<PhotonView>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (view.IsMine)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                PlayerSpeed += 1f;
-                TargetAnimator.SetBool("isRunning", true);
-            }
+            StartCoroutine(Controler());
 
             if (PlayerSpeed >= 0)
             {
                 PlayerSpeed -= 0.01f;
+            }
+            else if (PlayerSpeed >= 0)
+            {
+                TargetAnimator.SetBool("isRunning", true);
             }
             else
             {
@@ -54,4 +58,19 @@ public class PlayerRun_Multiplayer : MonoBehaviour
             Player.transform.position += new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
         }
     }
+    
+
+    IEnumerator Controler(){
+
+        yield return new WaitForSeconds(4);
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                
+                PlayerSpeed += 1f;
+                TargetAnimator.SetBool("isRunning", true);
+            }
+
+    }
+
 }
