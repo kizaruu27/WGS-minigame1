@@ -230,6 +230,7 @@ MonoBehaviour:
   AnimRun: RUN
   PlayerSpeed: 0
   maxSpeed: 10
+  jumpForce: 0
 --- !u!114 &-7867369957209007532
 MonoBehaviour:
   m_ObjectHideFlags: 0
