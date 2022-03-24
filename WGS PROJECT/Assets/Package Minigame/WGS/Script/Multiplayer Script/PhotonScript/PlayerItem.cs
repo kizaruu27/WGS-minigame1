@@ -19,7 +19,15 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     public Image playerAvatar;
     public Sprite[] avatars;
 
+
     Player player;
+
+    private void Awake()
+    {
+        playerProperties["playerAvatar"] = PhotonNetwork.LocalPlayer.ActorNumber;
+        PhotonNetwork.LocalPlayer.CustomProperties = playerProperties;
+        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+    }
 
     private void Start()
     {
@@ -42,6 +50,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
     public void OnClickLeftArrow()
     {
+
         if ((int)playerProperties["playerAvatar"] == 0)
         {
             playerProperties["playerAvatar"] = avatars.Length - 1;
@@ -49,12 +58,16 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         else
         {
             playerProperties["playerAvatar"] = (int)playerProperties["playerAvatar"] - 1;
-        } 
+        }
+
+        PhotonNetwork.LocalPlayer.CustomProperties = playerProperties;
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
 
     public void OnClickRightArrow()
     {
+
+
         if ((int)playerProperties["playerAvatar"] == avatars.Length - 1)
         {
             playerProperties["playerAvatar"] = 0;
@@ -63,6 +76,8 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         {
             playerProperties["playerAvatar"] = (int)playerProperties["playerAvatar"] + 1;
         }
+
+        PhotonNetwork.LocalPlayer.CustomProperties = playerProperties;
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
 
@@ -76,10 +91,12 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
     void UpdatePlayerItem(Player player)
     {
+
         if (player.CustomProperties.ContainsKey("playerAvatar"))
         {
             playerAvatar.sprite = avatars[(int)player.CustomProperties["playerAvatar"]];
             playerProperties["playerAvatar"] = (int)player.CustomProperties["playerAvatar"];
+
         }
         else
         {
