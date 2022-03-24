@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: bffc5ff589930a74d9afec3ae0d11525
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Quadrangle
+  fontNames:
+  - Quadrangle
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a627da1ee5cbe8b49a9f876b60b6a102, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
