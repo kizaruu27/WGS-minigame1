@@ -38,11 +38,9 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-<<<<<<< HEAD
+
   m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
-=======
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
->>>>>>> Dev-Taufiq
+
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11150,11 +11148,10 @@ RectTransform:
   - {fileID: 1639447038}
   - {fileID: 914239353}
   - {fileID: 996109966}
-<<<<<<< HEAD
+
   - {fileID: 1784477318}
-=======
-  - {fileID: 682388104}
->>>>>>> Dev-Taufiq
+
+
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
