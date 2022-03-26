@@ -5,6 +5,8 @@ public class CheckPlatform : MonoBehaviour
     public static RuntimePlatform app = Application.platform;
 
     //Platform
+    public static bool isWindows { get => app == RuntimePlatform.WindowsPlayer; }
+    public static bool isMac { get => app == RuntimePlatform.OSXPlayer; }
     public static bool isWeb { get => app == RuntimePlatform.WebGLPlayer; }
     public static bool isAndroid { get => app == RuntimePlatform.Android; }
     public static bool isIos { get => app == RuntimePlatform.IPhonePlayer; }

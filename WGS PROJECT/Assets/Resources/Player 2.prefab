@@ -273,6 +273,7 @@ MonoBehaviour:
   PlayerSpeed: 0
   maxSpeed: 10
   jumpForce: 5
+  isControlBtnActive: 0
 --- !u!114 &8071808953194447501
 MonoBehaviour:
   m_ObjectHideFlags: 0

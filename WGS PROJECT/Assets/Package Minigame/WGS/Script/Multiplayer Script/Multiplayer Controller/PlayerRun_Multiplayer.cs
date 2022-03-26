@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+
 using Photon.Pun;
 
 
@@ -23,16 +25,30 @@ public class PlayerRun_Multiplayer : MonoBehaviour
     public float jumpForce;
 
     PhotonView view;
-    
-    
 
-    // Start is called before the first frame update
+    [Header("Mobile")]
+    [SerializeField] private bool isControlBtnActive = false;
+    float screenWidth;
+    Button btnJump;
+    Button btnRun;
+
+    private void Awake()
+    {
+        btnJump = GameObject.Find("BtnJump").GetComponent<Button>();
+        btnRun = GameObject.Find("BtnRun").GetComponent<Button>();
+    }
+
     void Start()
     {
         view = GetComponent<PhotonView>();
         rb = GetComponent<Rigidbody>();
+
+        screenWidth = Screen.width;
+
+        btnJump.gameObject.SetActive((CheckPlatform.isAndroid || CheckPlatform.isIos) && isControlBtnActive);
+        btnRun.gameObject.SetActive((CheckPlatform.isAndroid || CheckPlatform.isIos) && isControlBtnActive);
     }
-    // Update is called once per frame
+
     void Update()
     {
 
@@ -60,13 +76,82 @@ public class PlayerRun_Multiplayer : MonoBehaviour
 
             Player.transform.position += new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
         }
-
-        Jump();
     }
 
-    void Jump()
+    private void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (CheckPlatform.isIos || CheckPlatform.isAndroid && isControlBtnActive)
+        {
+            btnJump.onClick.AddListener(Jumping);
+            btnRun.onClick.AddListener(() => Running());
+        }
+    }
+
+    //device
+    void Desktop()
+    {
+        if (
+            CheckPlatform.isMacUnity ||
+            CheckPlatform.isWindowsUnity ||
+            CheckPlatform.isWeb ||
+            CheckPlatform.isMac ||
+            CheckPlatform.isWindows
+        )
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                Running();
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Jumping();
+            }
+        }
+    }
+
+    void Mobile()
+    {
+        if (
+            CheckPlatform.isAndroid ||
+            CheckPlatform.isIos ||
+            CheckPlatform.isMobile
+        )
+        {
+            if (!isControlBtnActive)
+            {
+                int i = 0;
+
+                while (i < Input.touchCount)
+                {
+                    if (Input.GetTouch(i).position.x > screenWidth / 2)
+                    {
+                        Running(.1f);
+                    }
+
+                    if (Input.GetTouch(i).position.x < screenWidth / 2)
+                    {
+                        Jumping();
+                    }
+
+                    ++i;
+                }
+            }
+        }
+    }
+
+
+    //Control
+    void Running(float runSpeed = 1f)
+    {
+        PlayerSpeed += runSpeed;
+        TargetAnimator.SetBool("isRunning", true);
+    }
+
+    void Jumping()
+    {
+        if (isGrounded && view.IsMine)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
@@ -80,19 +165,15 @@ public class PlayerRun_Multiplayer : MonoBehaviour
             isGrounded = true;
         }
     }
-    
 
-    IEnumerator Controler(){
 
+    //player controller
+    IEnumerator Controler()
+    {
         yield return new WaitForSeconds(4);
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                
-                PlayerSpeed += 1f;
-                TargetAnimator.SetBool("isRunning", true);
-            }
-
+        Desktop();
+        Mobile();
     }
 
 }
