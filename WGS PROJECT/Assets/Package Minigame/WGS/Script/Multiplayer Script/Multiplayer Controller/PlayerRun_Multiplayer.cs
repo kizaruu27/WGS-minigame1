@@ -84,7 +84,7 @@ public class PlayerRun_Multiplayer : MonoBehaviour
 
     IEnumerator Controler(){
 
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
             {
