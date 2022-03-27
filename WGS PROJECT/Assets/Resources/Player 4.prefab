@@ -230,6 +230,8 @@ MonoBehaviour:
   AnimRun: RUN
   PlayerSpeed: 0
   maxSpeed: 10
+  CanMove: 1
+  IsItemSpeedActive: 0
   jumpForce: 5
   isControlBtnActive: 0
 --- !u!114 &-1419912059473185831

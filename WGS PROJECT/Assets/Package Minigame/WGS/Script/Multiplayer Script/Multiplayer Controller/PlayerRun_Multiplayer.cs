@@ -19,6 +19,8 @@ public class PlayerRun_Multiplayer : MonoBehaviour
     [Header("Player Speed")]
     public float PlayerSpeed;
     public float maxSpeed;
+    public bool CanMove;
+    public bool IsItemSpeedActive = false;
 
     //player jump
     bool isGrounded;
@@ -40,27 +42,27 @@ public class PlayerRun_Multiplayer : MonoBehaviour
 
     void Start()
     {
+
+        btnJump.gameObject.SetActive((CheckPlatform.isAndroid || CheckPlatform.isIos) && isControlBtnActive);
+        btnRun.gameObject.SetActive((CheckPlatform.isAndroid || CheckPlatform.isIos) && isControlBtnActive);
+
         view = GetComponent<PhotonView>();
         rb = GetComponent<Rigidbody>();
 
         screenWidth = Screen.width;
-
-        btnJump.gameObject.SetActive((CheckPlatform.isAndroid || CheckPlatform.isIos) && isControlBtnActive);
-        btnRun.gameObject.SetActive((CheckPlatform.isAndroid || CheckPlatform.isIos) && isControlBtnActive);
     }
 
     void Update()
     {
-
         if (view.IsMine)
         {
             StartCoroutine(Controler());
 
-            if (PlayerSpeed >= 0)
+            if (PlayerSpeed >= 0 && !IsItemSpeedActive)
             {
                 PlayerSpeed -= 0.01f;
             }
-            else if (PlayerSpeed >= 0)
+            else if (PlayerSpeed >= 0 && IsItemSpeedActive)
             {
                 TargetAnimator.SetBool("isRunning", true);
             }
@@ -121,13 +123,17 @@ public class PlayerRun_Multiplayer : MonoBehaviour
         {
             if (!isControlBtnActive)
             {
+
                 int i = 0;
 
                 while (i < Input.touchCount)
                 {
                     if (Input.GetTouch(i).position.x > screenWidth / 2)
                     {
-                        Running(.1f);
+                        if (CanMove && !IsItemSpeedActive)
+                        {
+                            Running(.07f);
+                        }
                     }
 
                     if (Input.GetTouch(i).position.x < screenWidth / 2)
@@ -137,6 +143,7 @@ public class PlayerRun_Multiplayer : MonoBehaviour
 
                     ++i;
                 }
+
             }
         }
     }
@@ -145,13 +152,24 @@ public class PlayerRun_Multiplayer : MonoBehaviour
     //Control
     void Running(float runSpeed = 1f)
     {
-        PlayerSpeed += runSpeed;
-        TargetAnimator.SetBool("isRunning", true);
+        if (CanMove)
+        {
+            if (!IsItemSpeedActive)
+            {
+                PlayerSpeed += runSpeed;
+                TargetAnimator.SetBool("isRunning", true);
+            }
+        }
+        else
+        {
+            PlayerSpeed = 0;
+            TargetAnimator.SetBool("isRunning", false);
+        }
     }
 
     void Jumping()
     {
-        if (isGrounded && view.IsMine)
+        if (isGrounded && view.IsMine && CanMove)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;

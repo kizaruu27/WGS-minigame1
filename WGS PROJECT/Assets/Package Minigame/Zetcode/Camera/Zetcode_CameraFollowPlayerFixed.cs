@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-using Photon.Pun;
+
 
 public class Zetcode_CameraFollowPlayerFixed : MonoBehaviour
 {
@@ -9,9 +9,6 @@ public class Zetcode_CameraFollowPlayerFixed : MonoBehaviour
     private Vector3 offset;
     private Vector3 newtrans;
     public bool isShake;
-
-    PhotonView view;
-
 
     private void Awake()
     {
@@ -38,7 +35,7 @@ public class Zetcode_CameraFollowPlayerFixed : MonoBehaviour
         newtrans.z = TargetPlayer.transform.position.z + offset.z;
         transform.position = newtrans;
 
-        if (isShake && view.IsMine)
+        if (isShake)
         {
             StartCoroutine(ShakeCamera());
         }
