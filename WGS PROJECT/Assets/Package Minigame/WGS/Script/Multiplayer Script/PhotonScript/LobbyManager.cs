@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
-using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
@@ -18,7 +19,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public Transform contentObject;
 
     public float timeBetweenUpdates = 1.5f;
-    float nextUpdateTime;
+    float nextUpdateTime = 0;
 
     public List<PlayerItem> playerItemsList = new List<PlayerItem>();
     public PlayerItem playerItemPrefab;
@@ -27,25 +28,37 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public GameObject playButton;
 
 
+    [Header("Modal")]
+    public TextMeshProUGUI modalTitle;
+    public TextMeshProUGUI modalMessage;
+    public Button closeModal;
+    public GameObject modalPanel;
+
     private void Start()
     {
         PhotonNetwork.JoinLobby();
+        modalPanel.SetActive(false);
+
     }
 
     public void OnClickCreate()
     {
         if (roomInputField.text.Length >= 1)
         {
-            PhotonNetwork.CreateRoom(roomInputField.text, new RoomOptions() { MaxPlayers = 4, BroadcastPropsChangeToAll = true });
+            if (PhotonNetwork.IsConnected)
+            {
+                PhotonNetwork.CreateRoom(roomInputField.text, new RoomOptions() { MaxPlayers = 4, BroadcastPropsChangeToAll = true });
+            }
+            else
+            {
+                Debug.Log("Not Connected");
+            }
         }
     }
 
-    public override void OnJoinedRoom()
+    public void OnCloseModal()
     {
-        lobbyPanel.SetActive(false);
-        roomPanel.SetActive(true);
-        roomName.text = PhotonNetwork.CurrentRoom.Name;
-        UpdatePlayerList();
+        modalPanel.SetActive(false);
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
@@ -56,6 +69,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             nextUpdateTime = Time.time + timeBetweenUpdates;
         }
     }
+
 
     void UpdateRoomList(List<RoomInfo> list)
     {
@@ -69,13 +83,39 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         {
             RoomItem newRoom = Instantiate(roomItemPrefab, contentObject);
             newRoom.SetRoomName(room.Name);
-            roomItemList.Add(newRoom);
+
+            if (room.IsOpen)
+            {
+                roomItemList.Add(newRoom);
+
+            }
         }
     }
 
     public void JoinRoom(string roomName)
     {
+
         PhotonNetwork.JoinRoom(roomName);
+
+    }
+
+    public override void OnJoinedRoom()
+    {
+
+        lobbyPanel.SetActive(false);
+        roomPanel.SetActive(true);
+        roomName.text = PhotonNetwork.CurrentRoom.Name;
+        UpdatePlayerList();
+
+    }
+
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        Debug.Log(message);
+
+        modalPanel.SetActive(true);
+        modalTitle.text = "Failed To Join Room";
+        modalMessage.text = message;
     }
 
     public void OnClickLeaveRoom()
@@ -133,7 +173,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 2)
+        if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 1)
         {
             playButton.SetActive(true);
         }
@@ -141,10 +181,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         {
             playButton.SetActive(false);
         }
+
+
     }
 
     public void OnClickPlayButton(string targetScene)
     {
         PhotonNetwork.LoadLevel(targetScene);
     }
+
 }
