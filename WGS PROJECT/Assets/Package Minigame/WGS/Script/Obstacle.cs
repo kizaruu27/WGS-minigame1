@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour
@@ -12,6 +11,7 @@ public class Obstacle : MonoBehaviour
         if (coll.gameObject.tag == "Player")
         {
             Zetcode_CameraFollowPlayerFixed.cameraFollow.isShake = true;
+
             StartCoroutine(playerSlowed(coll));
         }
 
@@ -24,7 +24,7 @@ public class Obstacle : MonoBehaviour
 
     IEnumerator playerSlowed(Collider coll)
     {
-        WGS_PlayerRun playerMove = coll.GetComponent<WGS_PlayerRun>();
+        PlayerRun_Multiplayer playerMove = coll.GetComponent<PlayerRun_Multiplayer>();
         playerMove.maxSpeed = newPlayerSpeed;
 
         yield return new WaitForSeconds(delayTime);

@@ -28,21 +28,23 @@ public class ItemSpeed : MonoBehaviour
     IEnumerator UpSpeedPlayer(Collider collider)
     {
         mesh.enabled = false;
-        WGS_PlayerRun PlayerMovement = collider.GetComponent<WGS_PlayerRun>();
+        PlayerRun_Multiplayer PlayerMovement = collider.GetComponent<PlayerRun_Multiplayer>();
 
         if (PlayerMovement.CanMove)
         {
             PrevPlayerSpeed = PlayerMovement.PlayerSpeed;
             PlayerMovement.PlayerSpeed += SpeedCharacter;
-            //PlayerMovement.IsItemSpeedActive = true;
+            PlayerMovement.IsItemSpeedActive = true;
 
             yield return new WaitForSeconds(SpeedTime);
 
             PlayerMovement.PlayerSpeed = PrevPlayerSpeed;
-            //PlayerMovement.IsItemSpeedActive = false;
+            PlayerMovement.IsItemSpeedActive = false;
             Destroy(gameObject);
         }
 
+        PlayerMovement.IsItemSpeedActive = false;
+        PlayerMovement.PlayerSpeed = 0;
         yield return new WaitForSeconds(0);
     }
 
@@ -65,6 +67,8 @@ public class ItemSpeed : MonoBehaviour
             NPCMovement.PlayerSpeed = PrevNPCSpeed;
             Destroy(gameObject);
         }
+
+        NPCMovement.IsItemSpeedActive = false;
 
         yield return new WaitForSeconds(0);
 

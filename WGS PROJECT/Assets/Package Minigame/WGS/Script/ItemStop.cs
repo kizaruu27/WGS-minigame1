@@ -44,13 +44,15 @@ public class ItemStop : MonoBehaviour
     }
     IEnumerator FreezeCanMove(Collider collider)
     {
-        WGS_PlayerRun PlayerMove = collider.GetComponent<WGS_PlayerRun>();
+        PlayerRun_Multiplayer PlayerMove = collider.GetComponent<PlayerRun_Multiplayer>();
         PlayerMove.CanMove = false;
         PlayerMove.IsItemSpeedActive = false;
+        PlayerMove.PlayerSpeed = 0;
 
         yield return new WaitForSeconds(TimeFreeze);
 
         PlayerMove.CanMove = true;
+
         Destroy(gameObject);
     }
     IEnumerator FreezeNPCCanMove(Collider collider)
