@@ -15,25 +15,25 @@ public class MultiplayerPositionHandler : MonoBehaviour
 
         foreach (MultiplayerLapCounter lapCounters in lapCounters)
         {
-            // lapCounters.OnPassCheckpoint += OnPassCheckpoint;
+            lapCounters.OnPassCheckpoint += OnPassCheckpoint;
         }
 
         LeaderboardList = FindObjectOfType<LeaderboardList>();
     }
 
-    // void Start()
-    // {
-    //     LeaderboardList.UpdateList(lapCounters);
-    // }
+    void Start()
+    {
+        LeaderboardList.UpdateList(lapCounters);
+    }
 
-    // void OnPassCheckpoint(MultiplayerLapCounter lapCounter)
-    // {
-    //     lapCounters = lapCounters.OrderByDescending(s => s.GetNumberOfCheckpointsPassed()).ThenBy(s => s.GetTimeAtLastCheckpoint()).ToList();
+    void OnPassCheckpoint(MultiplayerLapCounter lapCounter)
+    {
+        lapCounters = lapCounters.OrderByDescending(s => s.GetNumberOfCheckpointsPassed()).ThenBy(s => s.GetTimeAtLastCheckpoint()).ToList();
 
-    //     int playerPosition = lapCounters.IndexOf(lapCounter) + 1;
+        int playerPosition = lapCounters.IndexOf(lapCounter) + 1;
 
-    //     lapCounter.setPlayerPosition(playerPosition);
+        lapCounter.setPlayerPosition(playerPosition);
 
-    //     LeaderboardList.UpdateList(lapCounters);
-    // }
+        LeaderboardList.UpdateList(lapCounters);
+    }
 }

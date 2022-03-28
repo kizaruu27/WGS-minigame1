@@ -290,6 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPosition: 0
+  PlayerName: 
 --- !u!114 &8071808953194447501
 MonoBehaviour:
   m_ObjectHideFlags: 0

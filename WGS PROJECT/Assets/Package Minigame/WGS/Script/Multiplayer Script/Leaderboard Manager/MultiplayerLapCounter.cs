@@ -14,23 +14,11 @@ public class MultiplayerLapCounter : MonoBehaviour
     const int lapsToComplete = 1;
     bool isRaceCompleted = false;
     public int playerPosition = 0; // buat podium
-    public string PlayerName; // nama player dari photon
-
-    PhotonView view;
+    public string PlayerName;
     
     public event Action <MultiplayerLapCounter> OnPassCheckpoint;
 
-    private void Start() {
-        view = GetComponent<PhotonView>();
-
-        if(view.IsMine){
-            foreach(Player player in PhotonNetwork.PlayerList){
-                PlayerName = player.NickName;
-            }
-                
-            print("di MultiplayerLapCounter: "+ PlayerName);
-        }
-    }
+    private void Start() => PlayerName = gameObject.name;
 
     public void setPlayerPosition(int position)
     {
@@ -52,7 +40,8 @@ public class MultiplayerLapCounter : MonoBehaviour
     {
         if (coll.CompareTag("Checkpoint"))
         {
-            print ("ngelewatin check point ke: "+ passedCheckPointNumber);
+            // Debug.Log("masuk ke lapcounter: "+ PlayerPrefs.GetString("PLAYERNICKNAME"));
+            // Debug.Log("masuk ke lapcounter: "+ PlayerName);
 
             if (isRaceCompleted)
             {
