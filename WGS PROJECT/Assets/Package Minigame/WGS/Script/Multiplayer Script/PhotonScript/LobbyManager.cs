@@ -147,4 +147,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LoadLevel(targetScene);
     }
+
+    public void OnClickDisconnect()
+    {
+        PhotonNetwork.Disconnect();
+    }
 }
