@@ -188,7 +188,7 @@ public class PlayerRun_Multiplayer : MonoBehaviour
     //player controller
     IEnumerator Controler()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
 
         Desktop();
         Mobile();
