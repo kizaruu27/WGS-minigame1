@@ -103,4 +103,5 @@ public class PlayerItem : MonoBehaviourPunCallbacks
             playerProperties["playerAvatar"] = 0;
         }
     }
+
 }

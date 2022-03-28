@@ -30,6 +30,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         PhotonNetwork.JoinLobby();
+
+        
     }
 
     public void OnClickCreate()
@@ -152,4 +154,5 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.Disconnect();
     }
+
 }
