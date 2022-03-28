@@ -1,9 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Photon.Realtime;
+using Photon.Pun;
 
-public class LapCounter : MonoBehaviour
+public class MultiplayerLapCounter : MonoBehaviour
 {
-    //public Text playerPositionTxt;
     int passedCheckPointNumber = 0;
     float timeAtLastPassCheckpoint = 0;
     int numberOfPassedCheckpoints = 0;
@@ -11,8 +14,23 @@ public class LapCounter : MonoBehaviour
     const int lapsToComplete = 1;
     bool isRaceCompleted = false;
     public int playerPosition = 0; // buat podium
+    public string PlayerName; // nama player dari photon
 
-    public event Action <LapCounter> OnPassCheckpoint;
+    PhotonView view;
+    
+    public event Action <MultiplayerLapCounter> OnPassCheckpoint;
+
+    private void Start() {
+        view = GetComponent<PhotonView>();
+
+        if(view.IsMine){
+            foreach(Player player in PhotonNetwork.PlayerList){
+                PlayerName = player.NickName;
+            }
+                
+            print("di MultiplayerLapCounter: "+ PlayerName);
+        }
+    }
 
     public void setPlayerPosition(int position)
     {
@@ -29,20 +47,13 @@ public class LapCounter : MonoBehaviour
         return timeAtLastPassCheckpoint;
     }
 
-    // IEnumerator ShowPosition(float delayUntilHidePosition)
-    // {
-    //     playerPositionTxt.text = playerPosition.ToString();
-    //     playerPositionTxt.gameObject.SetActive(true);
-
-    //     yield return new WaitForSeconds(delayUntilHidePosition);
-
-    //     playerPositionTxt.gameObject.SetActive(false);
-    // }
 
     private void OnTriggerEnter(Collider coll)
     {
         if (coll.CompareTag("Checkpoint"))
         {
+            print ("ngelewatin check point ke: "+ passedCheckPointNumber);
+
             if (isRaceCompleted)
             {
                 return;
@@ -68,15 +79,6 @@ public class LapCounter : MonoBehaviour
                 }
 
                 OnPassCheckpoint?.Invoke(this);
-
-                // if (isRaceCompleted)
-                // {
-                //     StartCoroutine(ShowPosition(100));
-                // }
-                // else
-                // {
-                //     StartCoroutine(ShowPosition(1.5f));
-                // }
             }
         }
     }
