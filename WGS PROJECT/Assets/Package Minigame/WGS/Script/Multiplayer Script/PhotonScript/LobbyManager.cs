@@ -36,6 +36,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         PhotonNetwork.JoinLobby();
+        modalPanel.SetActive(false);
+
     }
 
     public void OnClickCreate()
@@ -54,6 +56,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             }
         }
     }
+
+    public override void OnCreateRoomFailed(short returnCode, string message)
+    {
+        Modal("Failed To Create Room", message);
+    }
+
 
     public void OnCloseModal()
     {
@@ -77,10 +85,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
-        modalPanel.SetActive(true);
-        modalTitle.text = "Failed To Join Room";
-        modalMessage.text = message;
-
         Modal("Failed To Join Room", message);
     }
 
@@ -171,8 +175,19 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         UpdatePlayerList();
     }
 
+    public void OnClickModalDisconnect()
+    {
+        if (Application.internetReachability == NetworkReachability.NotReachable || !PhotonNetwork.IsConnected)
+            OnClickDisconnect();
+    }
+
     private void Update()
     {
+        if (Application.internetReachability == NetworkReachability.NotReachable || !PhotonNetwork.IsConnected)
+        {
+            Modal("Connection Error", " Check internet connection!");
+        }
+
         if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 1)
         {
             playButton.SetActive(true);
