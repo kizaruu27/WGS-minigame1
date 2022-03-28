@@ -36,12 +36,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         PhotonNetwork.JoinLobby();
-<<<<<<< HEAD
-
-        
-=======
-        modalPanel.SetActive(false);
->>>>>>> a8befbd559618c91826e322500168978d0e738ba
     }
 
     public void OnClickCreate()
