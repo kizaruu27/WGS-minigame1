@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 7328353440017858359}
   - component: {fileID: 8766071857908721336}
   - component: {fileID: -1268560564226505198}
+  - component: {fileID: 7186316007919071873}
   - component: {fileID: -7867369957209007532}
   m_Layer: 0
   m_Name: Player 3
@@ -234,6 +235,20 @@ MonoBehaviour:
   IsItemSpeedActive: 0
   jumpForce: 5
   isControlBtnActive: 0
+--- !u!114 &7186316007919071873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7328353440017858349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa0d019f96e3d8438aa057e3e549510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPosition: 0
+  PlayerName: 
 --- !u!114 &-7867369957209007532
 MonoBehaviour:
   m_ObjectHideFlags: 0
