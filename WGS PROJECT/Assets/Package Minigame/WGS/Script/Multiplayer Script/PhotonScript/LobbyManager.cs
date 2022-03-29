@@ -86,6 +86,15 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         Modal("Failed To Join Room", message);
+
+        if (message.ToLower() == "game does not exist")
+        {
+            foreach (RoomItem item in roomItemList)
+            {
+                Destroy(item.gameObject);
+            }
+            roomItemList.Clear();
+        }
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
@@ -101,7 +110,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         foreach (RoomItem item in roomItemList)
         {
-            Destroy(item.gameObject);
+            if (item.gameObject.name != null)
+                Destroy(item.gameObject);
         }
         roomItemList.Clear();
 
@@ -109,11 +119,15 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         {
             RoomItem newRoom = Instantiate(roomItemPrefab, contentObject);
             newRoom.SetRoomName(room.Name);
+            newRoom.roomInfo = room;
 
-            if (room.IsOpen)
+            if (!room.IsOpen || room.RemovedFromList)
             {
-                roomItemList.Add(newRoom);
+                roomItemList.Remove(newRoom);
             }
+
+            roomItemList.Add(newRoom);
+
         }
     }
 
