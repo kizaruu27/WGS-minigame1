@@ -43,9 +43,4 @@ public class WGS_NPCRun : MonoBehaviour
         Player.transform.position += new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
     }
 
-
-
-
-
-
 }
