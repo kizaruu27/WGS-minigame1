@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +10,8 @@ public class PlayerJump : MonoBehaviour
     public bool isGrounded;
     public bool isJumping;
     WGS_PlayerRun playerMove;
+
+    public Animator PlayerAnim;
 
     private void Awake()
     {
@@ -32,6 +33,7 @@ public class PlayerJump : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded && playerMove.CanMove)
             {
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                PlayerAnim.SetTrigger("Jump");
                 isGrounded = false;
             }
         }
