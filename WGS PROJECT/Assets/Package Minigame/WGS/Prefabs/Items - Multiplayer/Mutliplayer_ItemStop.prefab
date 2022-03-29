@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7930775266224442969}
   - component: {fileID: -6557404035433278308}
   m_Layer: 0
-  m_Name: ItemStop
+  m_Name: Mutliplayer_ItemStop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

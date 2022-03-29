@@ -167,7 +167,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         foreach (KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players)
         {
-            PlayerItem newPlayerItem = Instantiate(playerItemPrefab, playerItemParent);
+            PlayerItem newPlayerItem = Instantiate(playerItemPrefab, playerItemParent);  // call the player item
             newPlayerItem.SetPlayerInfo(player.Value);
 
             if (player.Value == PhotonNetwork.LocalPlayer)
@@ -202,7 +202,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             Modal("Connection Error", " Check internet connection!");
         }
 
-        if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 1)
+        if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 1) // ngecek jumlah player
         {
             playButton.SetActive(true);
         }
