@@ -1,24 +1,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class LeaderboardList : MonoBehaviour
 {
     public GameObject leaderboardItemPrefab;
+    [SerializeField] Transform container;
 
-    LeaderboardItem[] setLeaderboardItemInfo;
+    [SerializeField] LeaderboardItem[] setLeaderboardItemInfo;
 
-    void Awake()
+
+    // *test
+    [SerializeField] MultiplayerLapCounter[] lapCounterArray;
+
+    void Start()
     {
-        VerticalLayoutGroup leaderboardLayoutGroup = GetComponentInChildren<VerticalLayoutGroup>();
 
-        MultiplayerLapCounter[] lapCounterArray = FindObjectsOfType<MultiplayerLapCounter>();
+        lapCounterArray = GameObject.FindObjectsOfType<MultiplayerLapCounter>();
 
         setLeaderboardItemInfo = new LeaderboardItem[lapCounterArray.Length];
 
+        Debug.Log("jumlah orang: "+ lapCounterArray.Length);
+        
+
         for (int i = 0; i < lapCounterArray.Length; i++)
         {
-            GameObject leaderboardInfoGameObject = (Instantiate(leaderboardItemPrefab, leaderboardLayoutGroup.transform));
+
+            LeaderboardItem leaderboardInfoGameObject = Instantiate(leaderboardItemPrefab, container).GetComponent<LeaderboardItem>();
 
             setLeaderboardItemInfo[i] = leaderboardInfoGameObject.GetComponent<LeaderboardItem>();
 
@@ -26,12 +35,13 @@ public class LeaderboardList : MonoBehaviour
         }
     }
 
+
     public void UpdateList(List<MultiplayerLapCounter> lapCounters)
     {
         for (int i = 0; i < lapCounters.Count; i++)
         {
             setLeaderboardItemInfo[i].SetPlayerName(lapCounters[i].PlayerName);
-            Debug.Log("masuk ke fungsi setName: "+ lapCounters[i].PlayerName);
+            
         }
     }
 

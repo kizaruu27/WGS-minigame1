@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using Photon.Realtime;
-using Photon.Pun;
 
 public class MultiplayerLapCounter : MonoBehaviour
 {
@@ -41,7 +39,7 @@ public class MultiplayerLapCounter : MonoBehaviour
         if (coll.CompareTag("Checkpoint"))
         {
             // Debug.Log("masuk ke lapcounter: "+ PlayerPrefs.GetString("PLAYERNICKNAME"));
-            // Debug.Log("masuk ke lapcounter: "+ PlayerName);
+            
 
             if (isRaceCompleted)
             {
@@ -52,6 +50,7 @@ public class MultiplayerLapCounter : MonoBehaviour
 
             if (passedCheckPointNumber + 1 == checkpoint.checkPointNumber)
             {
+                Debug.Log("player: "+ PlayerName+ " ngelewatin checkpoin ke: "+ passedCheckPointNumber);
                 passedCheckPointNumber = checkpoint.checkPointNumber;
                 numberOfPassedCheckpoints++;
                 timeAtLastPassCheckpoint = Time.time;

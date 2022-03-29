@@ -6,9 +6,8 @@ public class PlayerSpawner : MonoBehaviour
     public GameObject[] playerPrefabs;
     public Transform[] spawnPoints;
 
-    private void Start()
+    private void Awake()
     {
-
         PhotonNetwork.CurrentRoom.IsOpen = false;
 
         Transform spawnPoint = spawnPoints[PhotonNetwork.LocalPlayer.ActorNumber];
