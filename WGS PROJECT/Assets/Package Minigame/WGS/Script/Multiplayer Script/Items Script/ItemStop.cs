@@ -7,6 +7,7 @@ public class ItemStop : MonoBehaviour
     public float TimeFreeze;
     string PlayerTag = "Player";
     string PlayerEnemy = "NPC";
+    string MultiplayerNPC = "Multiplayer_NPC";
 
     MeshRenderer mesh;
     SphereCollider sphereCollider;
@@ -41,6 +42,14 @@ public class ItemStop : MonoBehaviour
             StartCoroutine(FreezeNPCCanMove(collider));
         }
 
+        if (collider.gameObject.tag == MultiplayerNPC)
+        {
+            // print ("bisa bro");
+            mesh.enabled = false;
+            sphereCollider.enabled = false;
+            StartCoroutine(Multiplayer_FreezeNPCCanMove(collider));
+        }
+
     }
     IEnumerator FreezeCanMove(Collider collider)
     {
@@ -64,6 +73,17 @@ public class ItemStop : MonoBehaviour
         yield return new WaitForSeconds(TimeFreeze);
 
         NPCPlayerMove.NPCCanMove = true;
+        Destroy(gameObject);
+    }
+    IEnumerator Multiplayer_FreezeNPCCanMove(Collider collider)
+    {
+        Multiplayer_NPCRun Multipayer_NPCPlayerMove = collider.GetComponent<Multiplayer_NPCRun>();
+        Multipayer_NPCPlayerMove.NPCCanMove = false;
+        Multipayer_NPCPlayerMove.IsItemSpeedActive = false;
+
+        yield return new WaitForSeconds(TimeFreeze);
+
+        Multipayer_NPCPlayerMove.NPCCanMove = true;
         Destroy(gameObject);
     }
 }

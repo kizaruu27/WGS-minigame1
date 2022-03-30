@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using Photon.Realtime;
-using Photon.Pun;
 
 public class MultiplayerLapCounter : MonoBehaviour
 {
+    public static MultiplayerLapCounter instance;
     int passedCheckPointNumber = 0;
     float timeAtLastPassCheckpoint = 0;
     int numberOfPassedCheckpoints = 0;
@@ -14,11 +13,18 @@ public class MultiplayerLapCounter : MonoBehaviour
     const int lapsToComplete = 1;
     bool isRaceCompleted = false;
     public int playerPosition = 0; // buat podium
+
     public string PlayerName;
     
     public event Action <MultiplayerLapCounter> OnPassCheckpoint;
 
-    private void Start() => PlayerName = gameObject.name;
+    private void Awake() {
+        gameObject.name = PlayerName;
+
+        instance = this;
+    }
+
+    public void SetGameObjectName(string newName) => gameObject.name = newName;
 
     public void setPlayerPosition(int position)
     {
@@ -41,7 +47,7 @@ public class MultiplayerLapCounter : MonoBehaviour
         if (coll.CompareTag("Checkpoint"))
         {
             // Debug.Log("masuk ke lapcounter: "+ PlayerPrefs.GetString("PLAYERNICKNAME"));
-            // Debug.Log("masuk ke lapcounter: "+ PlayerName);
+            
 
             if (isRaceCompleted)
             {
@@ -52,6 +58,8 @@ public class MultiplayerLapCounter : MonoBehaviour
 
             if (passedCheckPointNumber + 1 == checkpoint.checkPointNumber)
             {
+                Debug.Log("player: "+ gameObject.name + " ngelewatin checkpoin ke: "+ passedCheckPointNumber);
+
                 passedCheckPointNumber = checkpoint.checkPointNumber;
                 numberOfPassedCheckpoints++;
                 timeAtLastPassCheckpoint = Time.time;

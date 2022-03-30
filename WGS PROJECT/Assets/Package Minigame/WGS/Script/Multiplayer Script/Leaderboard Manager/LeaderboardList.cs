@@ -1,37 +1,58 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class LeaderboardList : MonoBehaviour
 {
+    public static LeaderboardList instace;
     public GameObject leaderboardItemPrefab;
+    [SerializeField] Transform container;
 
-    LeaderboardItem[] setLeaderboardItemInfo;
+    [SerializeField] LeaderboardItem[] setLeaderboardItemInfo; // gak kedetect
+    // *test
+    [SerializeField] MultiplayerLapCounter[] lapCounterArray; // gak kedetect
 
-    void Awake()
-    {
-        VerticalLayoutGroup leaderboardLayoutGroup = GetComponentInChildren<VerticalLayoutGroup>();
+    private void Awake() => instace = this;
+    
+    private void Start() {
 
-        MultiplayerLapCounter[] lapCounterArray = FindObjectsOfType<MultiplayerLapCounter>();
+        // int totalPlayer = PhotonNetwork.CurrentRoom.PlayerCount;
+        
+        // Debug.Log($"total player: {totalPlayer}");
 
-        setLeaderboardItemInfo = new LeaderboardItem[lapCounterArray.Length];
+        // for (int i = 0; i < totalPlayer; i++)
+        // {
 
-        for (int i = 0; i < lapCounterArray.Length; i++)
+        //     LeaderboardItem leaderboardInfoGameObject = Instantiate(leaderboardItemPrefab, container).GetComponent<LeaderboardItem>();
+
+        //     leaderboardInfoGameObject.SetPositionText($"{i + 1}.");
+
+            // setLeaderboardItemInfo[i] = leaderboardInfoGameObject.GetComponent<LeaderboardItem>();
+
+            // setLeaderboardItemInfo[i].SetPositionText($"{i + 1}.");
+        // }
+
+        foreach (Player p in PhotonNetwork.PlayerList)
         {
-            GameObject leaderboardInfoGameObject = (Instantiate(leaderboardItemPrefab, leaderboardLayoutGroup.transform));
-
-            setLeaderboardItemInfo[i] = leaderboardInfoGameObject.GetComponent<LeaderboardItem>();
-
-            setLeaderboardItemInfo[i].SetPositionText($"{i + 1}.");
+            addPlayerName(p);
         }
     }
+
+    public void addPlayerName(Player p){
+        LeaderboardItem leaderboardInfoGameObject = Instantiate(leaderboardItemPrefab, container).GetComponent<LeaderboardItem>();
+
+        leaderboardInfoGameObject.SetPlayerName(p.NickName);
+    }
+
 
     public void UpdateList(List<MultiplayerLapCounter> lapCounters)
     {
         for (int i = 0; i < lapCounters.Count; i++)
         {
-            setLeaderboardItemInfo[i].SetPlayerName(lapCounters[i].PlayerName);
-            Debug.Log("masuk ke fungsi setName: "+ lapCounters[i].PlayerName);
+            // setLeaderboardItemInfo[i].SetPlayerName(lapCounters[i].gameObject.name);
+            
         }
     }
 

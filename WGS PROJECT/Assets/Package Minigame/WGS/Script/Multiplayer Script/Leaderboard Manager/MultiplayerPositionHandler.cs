@@ -8,9 +8,10 @@ public class MultiplayerPositionHandler : MonoBehaviour
 
     public List<MultiplayerLapCounter> lapCounters = new List<MultiplayerLapCounter>();
 
-    void Awake()
+    void Start()
     {
-        MultiplayerLapCounter[] lapCounterArray = FindObjectsOfType<MultiplayerLapCounter>();
+
+        MultiplayerLapCounter[] lapCounterArray = GameObject.FindObjectsOfType<MultiplayerLapCounter>();
         lapCounters = lapCounterArray.ToList<MultiplayerLapCounter>();
 
         foreach (MultiplayerLapCounter lapCounters in lapCounters)
@@ -19,12 +20,9 @@ public class MultiplayerPositionHandler : MonoBehaviour
         }
 
         LeaderboardList = FindObjectOfType<LeaderboardList>();
-    }
-
-    void Start()
-    {
         LeaderboardList.UpdateList(lapCounters);
     }
+
 
     void OnPassCheckpoint(MultiplayerLapCounter lapCounter)
     {
