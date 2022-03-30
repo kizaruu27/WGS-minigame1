@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -6144390122933717857}
   - component: {fileID: 7930775266224442969}
   m_Layer: 0
-  m_Name: ItemSpeed
+  m_Name: Multiplayer_ItemSpeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
