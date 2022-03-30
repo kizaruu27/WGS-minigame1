@@ -15,11 +15,12 @@ public class LeaderboardList : MonoBehaviour
     [SerializeField] MultiplayerLapCounter[] lapCounterArray; // gak kedetect
 
     private void Awake() => instace = this;
-    
-    private void Start() {
+
+    private void Start()
+    {
 
         // int totalPlayer = PhotonNetwork.CurrentRoom.PlayerCount;
-        
+
         // Debug.Log($"total player: {totalPlayer}");
 
         // for (int i = 0; i < totalPlayer; i++)
@@ -29,9 +30,9 @@ public class LeaderboardList : MonoBehaviour
 
         //     leaderboardInfoGameObject.SetPositionText($"{i + 1}.");
 
-            // setLeaderboardItemInfo[i] = leaderboardInfoGameObject.GetComponent<LeaderboardItem>();
+        // setLeaderboardItemInfo[i] = leaderboardInfoGameObject.GetComponent<LeaderboardItem>();
 
-            // setLeaderboardItemInfo[i].SetPositionText($"{i + 1}.");
+        // setLeaderboardItemInfo[i].SetPositionText($"{i + 1}.");
         // }
 
         foreach (Player p in PhotonNetwork.PlayerList)
@@ -40,10 +41,18 @@ public class LeaderboardList : MonoBehaviour
         }
     }
 
-    public void addPlayerName(Player p){
+    public void addPlayerName(Player p)
+    {
         LeaderboardItem leaderboardInfoGameObject = Instantiate(leaderboardItemPrefab, container).GetComponent<LeaderboardItem>();
 
         leaderboardInfoGameObject.SetPlayerName(p.NickName);
+    }
+
+    public void addNPCName(GameObject p, int i)
+    {
+        LeaderboardItem leaderboardInfoGameObject = Instantiate(leaderboardItemPrefab, container).GetComponent<LeaderboardItem>();
+
+        leaderboardInfoGameObject.SetPlayerName(p.name + $" {i}");
     }
 
 
@@ -52,7 +61,7 @@ public class LeaderboardList : MonoBehaviour
         for (int i = 0; i < lapCounters.Count; i++)
         {
             // setLeaderboardItemInfo[i].SetPlayerName(lapCounters[i].gameObject.name);
-            
+
         }
     }
 
