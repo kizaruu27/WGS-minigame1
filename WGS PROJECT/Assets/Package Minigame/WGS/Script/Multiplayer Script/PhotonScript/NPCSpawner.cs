@@ -12,7 +12,7 @@ public class NPCSpawner : MonoBehaviour
         int playerMax = PhotonNetwork.CurrentRoom.MaxPlayers;
         int playerNow = PhotonNetwork.CurrentRoom.PlayerCount;
 
-        if (playerNow <= playerMax)
+        if (playerNow < playerMax)
         {
             for (int i = 0; i < playerMax; i++)
             {
