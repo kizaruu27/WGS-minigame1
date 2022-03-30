@@ -9,6 +9,7 @@ public class ItemSpeed : MonoBehaviour
 
     string PlayerTag = "Player";
     string NPCTag = "NPC";
+    string MultiplayerNPC = "Multiplayer_NPC";
 
     float PrevPlayerSpeed;
     float PrevNPCSpeed;
@@ -23,6 +24,7 @@ public class ItemSpeed : MonoBehaviour
     {
         if (other.gameObject.tag == PlayerTag) StartCoroutine(UpSpeedPlayer(other));
         if (other.gameObject.tag == NPCTag) StartCoroutine(UpSpeedNPC(other));
+        if (other.gameObject.tag == MultiplayerNPC) StartCoroutine(UpSpeedNPC_Multiplayer(other));
     }
 
     IEnumerator UpSpeedPlayer(Collider collider)
@@ -52,6 +54,31 @@ public class ItemSpeed : MonoBehaviour
     {
         mesh.enabled = false;
         WGS_NPCRun NPCMovement = collider.GetComponent<WGS_NPCRun>();
+
+        if (NPCMovement.NPCCanMove)
+        {
+            PrevNPCSpeed = NPCMovement.PlayerSpeed;
+            NPCMovement.PlayerSpeed = SpeedCharacter;
+
+            NPCMovement.IsItemSpeedActive = true;
+
+
+            yield return new WaitForSeconds(SpeedTime);
+
+            NPCMovement.IsItemSpeedActive = false;
+            NPCMovement.PlayerSpeed = PrevNPCSpeed;
+            Destroy(gameObject);
+        }
+
+        NPCMovement.IsItemSpeedActive = false;
+
+        yield return new WaitForSeconds(0);
+    }
+
+    IEnumerator UpSpeedNPC_Multiplayer(Collider collider)
+    {
+        mesh.enabled = false;
+        Multiplayer_NPCRun NPCMovement = collider.GetComponent<Multiplayer_NPCRun>();
 
         if (NPCMovement.NPCCanMove)
         {

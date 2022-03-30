@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - FinishLine
   - Finish UI
+  - Multiplayer_NPC
   layers:
   - Default
   - TransparentFX

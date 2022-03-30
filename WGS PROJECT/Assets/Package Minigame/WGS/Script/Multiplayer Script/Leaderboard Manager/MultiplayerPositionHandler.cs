@@ -8,8 +8,6 @@ public class MultiplayerPositionHandler : MonoBehaviour
 
     public List<MultiplayerLapCounter> lapCounters = new List<MultiplayerLapCounter>();
 
-
-
     void Start()
     {
 

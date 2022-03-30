@@ -20,6 +20,13 @@ public class Obstacle : MonoBehaviour
             //camera shake
             StartCoroutine(NPCSlowed(coll));
         }
+
+        if (coll.gameObject.tag == "Multiplayer_NPC")
+        {
+            //camera shake
+            StartCoroutine(Multiplayer_NPCSlowed(coll));
+        }
+        
     }
 
     IEnumerator playerSlowed(Collider coll)
@@ -40,5 +47,15 @@ public class Obstacle : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
 
         NPCMove.MaxPlayerSpeed = 10;
+    }
+
+    IEnumerator Multiplayer_NPCSlowed(Collider coll)
+    {
+        Multiplayer_NPCRun Multiplayer_NPCMove = coll.GetComponent<Multiplayer_NPCRun>();
+        Multiplayer_NPCMove.MaxPlayerSpeed = newPlayerSpeed;
+
+        yield return new WaitForSeconds(delayTime);
+
+        Multiplayer_NPCMove.MaxPlayerSpeed = 10;
     }
 }
