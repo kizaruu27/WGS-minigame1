@@ -18,8 +18,11 @@ public class PlayerSpawner : MonoBehaviour
         GameObject playerToSpawn = playerPrefabs[(int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"]];
         GameObject currentPlayer = PhotonNetwork.Instantiate(playerToSpawn.name, spawnPoint.position, Quaternion.identity);
         // Debug.Log(PlayerPrefs.GetString("PLAYERNICKNAME")); 
-        // currentPlayer.name = PhotonNetwork.NickName;
+        
 
-        MultiplayerLapCounter.instance.SetGameObjectName(PhotonNetwork.NickName);
+        int setID = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+        string setName = PhotonNetwork.LocalPlayer.NickName;
+        currentPlayer.name = setName + " " + setID.ToString();
+        PlayerInfo.instance.SetPlayerInfo(setID);
     }
 }

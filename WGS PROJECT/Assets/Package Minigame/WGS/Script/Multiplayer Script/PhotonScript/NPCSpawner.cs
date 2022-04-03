@@ -20,8 +20,7 @@ public class NPCSpawner : MonoBehaviour
                 {
                     Transform spwanPointNPc = spawnPoints[i];
                     Instantiate(playerNPCPrefabs, spwanPointNPc.position, Quaternion.identity);
-                    MultiplayerLapCounter.instance.SetGameObjectName(playerNPCPrefabs.name + " " + i.ToString());
-                    LeaderboardList.instace.addNPCName(playerNPCPrefabs, i);
+                    PlayerInfo.instance.SetPlayerInfo(i, playerNPCPrefabs.name + " " + i.ToString());
                 }
             }
         }
