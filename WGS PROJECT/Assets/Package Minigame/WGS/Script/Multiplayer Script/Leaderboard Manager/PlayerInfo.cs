@@ -23,14 +23,18 @@ public class PlayerInfo : MonoBehaviour
 
     PhotonView view;
 
-    private void Awake() => instance = this;
+    private void Awake()
+    {
+        instance = this;
+        view = GetComponent<PhotonView>();
+
+    }
     public void SetPlayerInfo(int newID, string newName)
     {
         playerID = newID;
         playerName = newName;
-        gameObject.name = newName;
+        gameObject.name = newName; // ini masih belum rubah
     } //problem nya disini
-
 
     public void SetPlayerInfo(int newID)
     {
@@ -38,11 +42,6 @@ public class PlayerInfo : MonoBehaviour
     }
 
     private void Start()
-    {
-        view = GetComponent<PhotonView>();
-    }
-
-    private void Update()
     {
         view.RPC("UpdatePlayerName", RpcTarget.AllBuffered, playerID, gameObject.name);
     }
@@ -61,13 +60,10 @@ public class PlayerInfo : MonoBehaviour
 
             if (passedCheckPointNumber + 1 == checkpoint.checkPointNumber)
             {
-
-
                 passedCheckPointNumber = checkpoint.checkPointNumber;
                 numberOfPassedCheckpoints++;
                 timeAtLastPassCheckpoint = Time.time;
 
-                Debug.Log(gameObject.name);
                 view.RPC("UpdatePlayerScore", RpcTarget.AllBuffered, gameObject.name, playerScore);
 
                 // Debug.Log("player: "+ playerName + " ngelewatin check poin number: "+ numberOfPassedCheckpoints);
