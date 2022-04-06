@@ -42,7 +42,6 @@ public class PlayerRun_Multiplayer : MonoBehaviour
 
     void Start()
     {
-
         btnJump.gameObject.SetActive((CheckPlatform.isAndroid || CheckPlatform.isIos) && isControlBtnActive);
         btnRun.gameObject.SetActive((CheckPlatform.isAndroid || CheckPlatform.isIos) && isControlBtnActive);
 

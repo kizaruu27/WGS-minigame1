@@ -7,7 +7,6 @@ using Photon.Realtime;
 
 public class PlayerSpawner : MonoBehaviour
 {
-    public GameObject playerNPCPrefabs;
     public GameObject[] playerPrefabs;
     public Transform[] spawnPoints;
     public Text[] Texts;
@@ -27,18 +26,11 @@ public class PlayerSpawner : MonoBehaviour
         Transform spawnPoint = spawnPoints[PhotonNetwork.LocalPlayer.ActorNumber - 1];
         GameObject playerToSpawn = playerPrefabs[(int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"]];
         GameObject currentPlayer = PhotonNetwork.Instantiate(playerToSpawn.name, spawnPoint.position, Quaternion.identity);
-        
+        // Debug.Log(PlayerPrefs.GetString("PLAYERNICKNAME")); 
 
-        // currentPlayer.name = setName;
-        // PlayerInfo.instance.SetPlayerInfo(setID);
-    }
-
-    private void Start() {
         int setID = PhotonNetwork.LocalPlayer.ActorNumber;
         string setName = PhotonNetwork.LocalPlayer.NickName;
-
-        PlayerInfo[] players = FindObjectsOfType<PlayerInfo>();
-
-        // players[setID].name = PhotonNetwork.PlayerList[0].NickName;
+        currentPlayer.name = setName + " " + setID.ToString();
+        PlayerInfo.instance.SetPlayerInfo(setID, setName);
     }
 }
