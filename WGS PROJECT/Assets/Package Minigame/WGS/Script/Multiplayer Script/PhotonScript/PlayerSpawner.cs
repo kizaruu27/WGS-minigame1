@@ -6,7 +6,6 @@ using Photon.Realtime;
 
 public class PlayerSpawner : MonoBehaviour
 {
-    public GameObject playerNPCPrefabs;
     public GameObject[] playerPrefabs;
     public Transform[] spawnPoints;
 
