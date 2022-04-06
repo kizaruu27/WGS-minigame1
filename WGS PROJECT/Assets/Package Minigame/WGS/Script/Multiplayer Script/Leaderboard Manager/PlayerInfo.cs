@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Photon.Pun;
 
 public class PlayerInfo : MonoBehaviour
 {
     [Header("Player Information")]
     public static PlayerInfo instance;
     public int playerID;
+    public string playerName;
     public int playerScore = 100;
 
     [Header("Check point system")]
@@ -17,26 +19,39 @@ public class PlayerInfo : MonoBehaviour
     float timeAtLastPassCheckpoint = 0;
     int lapsCompleted = 0;
     const int lapsToComplete = 1;
-    public event Action <PlayerInfo> OnPassCheckpoint;
+    public event Action<PlayerInfo> OnPassCheckpoint;
+
+    PhotonView view;
 
     private void Awake() => instance = this;
-    public void SetPlayerInfo(int newID, string newName){
+    public void SetPlayerInfo(int newID, string newName)
+    {
         playerID = newID;
+        playerName = newName;
         gameObject.name = newName;
-    }
-    public void SetPlayerInfo(int newID){
+    } //problem nya disini
+
+
+    public void SetPlayerInfo(int newID)
+    {
         playerID = newID;
     }
 
-    private void Start() {
-        LeaderboardManager.instance.UpdatePlayerName(playerID, gameObject.name);
+    private void Start()
+    {
+        view = GetComponent<PhotonView>();
+    }
+
+    private void Update()
+    {
+        view.RPC("UpdatePlayerName", RpcTarget.AllBuffered, playerID, gameObject.name);
     }
 
     private void OnTriggerEnter(Collider coll)
     {
         if (coll.CompareTag("Checkpoint"))
         {
-            
+
             if (isRaceCompleted)
             {
                 return;
@@ -46,14 +61,16 @@ public class PlayerInfo : MonoBehaviour
 
             if (passedCheckPointNumber + 1 == checkpoint.checkPointNumber)
             {
-                
+
 
                 passedCheckPointNumber = checkpoint.checkPointNumber;
                 numberOfPassedCheckpoints++;
                 timeAtLastPassCheckpoint = Time.time;
-                LeaderboardManager.instance.UpdatePlayerScore(gameObject.name, playerScore);
 
-                // Debug.Log("player: "+ gameObject.name + " ngelewatin check poin number: "+ numberOfPassedCheckpoints);
+                Debug.Log(gameObject.name);
+                view.RPC("UpdatePlayerScore", RpcTarget.AllBuffered, gameObject.name, playerScore);
+
+                // Debug.Log("player: "+ playerName + " ngelewatin check poin number: "+ numberOfPassedCheckpoints);
 
                 if (checkpoint.isFinishLine)
                 {
@@ -70,4 +87,15 @@ public class PlayerInfo : MonoBehaviour
             }
         }
     }
+
+    [PunRPC]
+    void UpdatePlayerScore(string name, int score)
+    {
+        LeaderboardManager.instance.UpdatePlayerScore(name, score); //disini rpc nya
+
+    }
+
+    [PunRPC]
+    void UpdatePlayerName(int id, string name) => LeaderboardManager.instance.UpdatePlayerName(id, name);
+
 }

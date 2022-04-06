@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class LeaderboardManager : MonoBehaviour
 {
@@ -61,6 +63,7 @@ public class LeaderboardManager : MonoBehaviour
     {
         for (int i = 0; i < LeaderboardItem.Count; i++)
         {
+            // Debug.Log("PlayerName : " + LeaderboardItem[i].PlayerName == aPlayerName);
             if (LeaderboardItem[i].PlayerName == aPlayerName)
             {
                 LeaderboardItem[i].PlayerScore += aScore;
@@ -71,7 +74,7 @@ public class LeaderboardManager : MonoBehaviour
     public void UpdateLeaderboard()
     {
         LeaderboardItem.Sort(SortDesc);
-        for(int i=0; i< LeaderboardText.Count; i++)
+        for (int i = 0; i < LeaderboardText.Count; i++)
         {
             LeaderboardText[i].text = LeaderboardItem[i].PlayerName;
         }
@@ -85,6 +88,7 @@ public class LeaderboardManager : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        // this.PhotonView.RPC("UpdateLeaderboard", RpcTarget.All);
         UpdateLeaderboard();
     }
 

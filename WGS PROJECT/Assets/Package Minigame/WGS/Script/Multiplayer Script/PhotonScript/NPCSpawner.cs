@@ -19,7 +19,7 @@ public class NPCSpawner : MonoBehaviour
                 if (i >= playerNow)
                 {
                     Transform spwanPointNPc = spawnPoints[i];
-                    Instantiate(playerNPCPrefabs, spwanPointNPc.position, Quaternion.identity);
+                    PhotonNetwork.InstantiateRoomObject(playerNPCPrefabs.name, spwanPointNPc.position, Quaternion.identity);
                     PlayerInfo.instance.SetPlayerInfo(i, playerNPCPrefabs.name + " " + i.ToString());
                 }
             }
