@@ -9,6 +9,7 @@ public class NPCSpawner : MonoBehaviour
 
     private void Awake()
     {
+        
         int playerMax = PhotonNetwork.CurrentRoom.MaxPlayers;
         int playerNow = PhotonNetwork.CurrentRoom.PlayerCount;
 
@@ -19,8 +20,8 @@ public class NPCSpawner : MonoBehaviour
                 if (i >= playerNow)
                 {
                     Transform spwanPointNPc = spawnPoints[i];
-                    Instantiate(playerNPCPrefabs, spwanPointNPc.position, Quaternion.identity);
-                    PlayerInfo.instance.SetPlayerInfo(i, playerNPCPrefabs.name + " " + i.ToString());
+                    GameObject CurrentNPC = Instantiate(playerNPCPrefabs, spwanPointNPc.position, Quaternion.identity);
+                    CurrentNPC.name = playerNPCPrefabs.name + " " + i.ToString();
                 }
             }
         }

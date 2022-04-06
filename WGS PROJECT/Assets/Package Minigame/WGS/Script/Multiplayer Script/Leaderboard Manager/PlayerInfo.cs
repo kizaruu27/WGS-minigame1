@@ -8,6 +8,8 @@ public class PlayerInfo : MonoBehaviour
     [Header("Player Information")]
     public static PlayerInfo instance;
     public int playerID;
+    public string playerName;
+
     public int playerScore = 100;
 
     [Header("Check point system")]
@@ -19,18 +21,21 @@ public class PlayerInfo : MonoBehaviour
     const int lapsToComplete = 1;
     public event Action <PlayerInfo> OnPassCheckpoint;
 
-    private void Awake() => instance = this;
+    private void Awake() { 
+        instance = this;
+        gameObject.name = playerName;
+    }
+
+    private void Start() => LeaderboardManager.instance.UpdatePlayerName(playerID, gameObject.name);
+
     public void SetPlayerInfo(int newID, string newName){
         playerID = newID;
         gameObject.name = newName;
     }
     public void SetPlayerInfo(int newID){
-        playerID = newID;
+        playerID = newID - 1;
     }
 
-    private void Start() {
-        LeaderboardManager.instance.UpdatePlayerName(playerID, gameObject.name);
-    }
 
     private void OnTriggerEnter(Collider coll)
     {
