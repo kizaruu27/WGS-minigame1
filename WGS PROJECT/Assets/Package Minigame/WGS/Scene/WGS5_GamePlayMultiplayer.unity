@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7308,7 +7308,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c4e2de8c1f24645a716fd31892ba3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNPCPrefabs: {fileID: 4746000968864255601, guid: 92bce83abb80fd541ba2d32c417e4830, type: 3}
   playerPrefabs:
   - {fileID: 7328353440017858349, guid: fe8a2f63713b3d443a732b94ebf3da11, type: 3}
   - {fileID: 7328353440017858349, guid: fb3825fde70b59b46ab955fc1b7787d2, type: 3}
@@ -7319,11 +7318,6 @@ MonoBehaviour:
   - {fileID: 354807877}
   - {fileID: 1169894553}
   - {fileID: 1961658468}
-  Texts:
-  - {fileID: 910054868}
-  - {fileID: 572931952}
-  - {fileID: 676711658}
-  - {fileID: 2017638183}
 --- !u!4 &1272121150
 Transform:
   m_ObjectHideFlags: 0
@@ -9007,7 +9001,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1602125852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9026,6 +9020,8 @@ MonoBehaviour:
   - {fileID: 354807877}
   - {fileID: 1169894553}
   - {fileID: 1961658468}
+  playerMax: 0
+  playerNow: 0
 --- !u!4 &1602125853
 Transform:
   m_ObjectHideFlags: 0
@@ -9941,7 +9937,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838194193}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63ba9bc228d43b648840646529199b05, type: 3}
   m_Name: 

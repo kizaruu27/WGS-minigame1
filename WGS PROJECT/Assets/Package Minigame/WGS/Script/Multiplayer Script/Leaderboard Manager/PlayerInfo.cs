@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Photon.Pun;
@@ -27,23 +25,20 @@ public class PlayerInfo : MonoBehaviour
     {
         instance = this;
         view = GetComponent<PhotonView>();
-
+        
+        playerName = view.Owner.NickName; // nama player 
+        playerID = view.Owner.ActorNumber-1; // ID player 
     }
     public void SetPlayerInfo(int newID, string newName)
     {
         playerID = newID;
         playerName = newName;
-        gameObject.name = newName; // ini masih belum rubah
+        // gameObject.name = newName; // ini masih belum rubah
     } //problem nya disini
-
-    public void SetPlayerInfo(int newID)
-    {
-        playerID = newID;
-    }
 
     private void Start()
     {
-        view.RPC("UpdatePlayerName", RpcTarget.AllBuffered, playerID, gameObject.name);
+        view.RPC("UpdatePlayerName", RpcTarget.AllBuffered, playerID, playerName);
     }
 
     private void OnTriggerEnter(Collider coll)
@@ -64,7 +59,7 @@ public class PlayerInfo : MonoBehaviour
                 numberOfPassedCheckpoints++;
                 timeAtLastPassCheckpoint = Time.time;
 
-                view.RPC("UpdatePlayerScore", RpcTarget.AllBuffered, gameObject.name, playerScore);
+                view.RPC("UpdatePlayerScore", RpcTarget.AllBuffered, playerName, playerScore);
 
                 // Debug.Log("player: "+ playerName + " ngelewatin check poin number: "+ numberOfPassedCheckpoints);
 
@@ -88,10 +83,8 @@ public class PlayerInfo : MonoBehaviour
     void UpdatePlayerScore(string name, int score)
     {
         LeaderboardManager.instance.UpdatePlayerScore(name, score); //disini rpc nya
-
     }
 
     [PunRPC]
     void UpdatePlayerName(int id, string name) => LeaderboardManager.instance.UpdatePlayerName(id, name);
-
 }
