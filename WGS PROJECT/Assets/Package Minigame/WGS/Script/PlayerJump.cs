@@ -15,7 +15,7 @@ public class PlayerJump : MonoBehaviour
 
     private void Awake()
     {
-        btnJump.gameObject.SetActive(CheckPlatform.isAndroid || CheckPlatform.isIos);
+        btnJump.gameObject.SetActive(CheckPlatform.Mine.isAndroid || CheckPlatform.Mine.isIos);
     }
 
     void Start()
@@ -28,7 +28,7 @@ public class PlayerJump : MonoBehaviour
         playerMove = GetComponent<WGS_PlayerRun>();
 
         //hapus platform unity kalau ingin production build
-        if (CheckPlatform.isMacUnity || CheckPlatform.isWindowsUnity || CheckPlatform.isWeb)
+        if (CheckPlatform.Mine.isMacUnity || CheckPlatform.Mine.isWindowsUnity || CheckPlatform.Mine.isWeb)
         {
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded && playerMove.CanMove)
             {
@@ -42,7 +42,7 @@ public class PlayerJump : MonoBehaviour
 
     private void OnEnable()
     {
-        if (CheckPlatform.isIos || CheckPlatform.isAndroid)
+        if (CheckPlatform.Mine.isIos || CheckPlatform.Mine.isAndroid)
             btnJump.onClick.AddListener(ButtonClick);
     }
 

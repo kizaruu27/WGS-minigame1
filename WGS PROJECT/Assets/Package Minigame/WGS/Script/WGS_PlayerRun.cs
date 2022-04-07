@@ -34,12 +34,13 @@ public class WGS_PlayerRun : MonoBehaviour
     {
         player = this;
 
-        btnRun.gameObject.SetActive(CheckPlatform.isAndroid || CheckPlatform.isIos);
+        btnRun.gameObject.SetActive(CheckPlatform.Mine.isAndroid || CheckPlatform.Mine.isIos);
     }
 
     void Update()
     {
-        if(CheckPlatform.isMacUnity || CheckPlatform.isWindowsUnity || CheckPlatform.isWeb){
+        if (CheckPlatform.Mine.isMacUnity || CheckPlatform.Mine.isWindowsUnity || CheckPlatform.Mine.isWeb)
+        {
             if (CanMove)
             {
                 if (Input.GetKeyDown(KeyCode.Mouse0) && !IsItemSpeedActive && !FinishChecker.finishChecker.isFinish)
@@ -55,50 +56,52 @@ public class WGS_PlayerRun : MonoBehaviour
             }
         }
 
-            if (PlayerSpeed >= 0 && !IsItemSpeedActive)
+        if (PlayerSpeed >= 0 && !IsItemSpeedActive)
+        {
+            PlayerSpeed -= 0.01f;
+        }
+        else if (PlayerSpeed >= 0 && IsItemSpeedActive)
+        {
+            TargetAnimator.SetBool("isRunning", true);
+        }
+        else
+        {
+            TargetAnimator.SetBool("isRunning", false);
+        }
+
+
+        if (PlayerSpeed >= maxSpeed)
+        {
+            PlayerSpeed = maxSpeed;
+        }
+
+
+        Player.transform.position += new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
+
+    }
+
+    private void OnEnable()
+    {
+        if (CheckPlatform.Mine.isIos || CheckPlatform.Mine.isAndroid)
+            btnRun.onClick.AddListener(MobileBtnRun);
+    }
+
+    public void MobileBtnRun()
+    {
+
+        if (CanMove)
+        {
+            if (!IsItemSpeedActive && !FinishChecker.finishChecker.isFinish)
             {
-                PlayerSpeed -= 0.01f;
-            }
-            else if (PlayerSpeed >= 0 && IsItemSpeedActive)
-            {
+                PlayerSpeed += 1f;
                 TargetAnimator.SetBool("isRunning", true);
             }
-            else
-            {
-                TargetAnimator.SetBool("isRunning", false);
-            }
+        }
+        else
+        {
+            PlayerSpeed = 0;
+            TargetAnimator.SetBool("isRunning", false);
+        }
 
-
-            if (PlayerSpeed >= maxSpeed)
-            {
-                PlayerSpeed = maxSpeed;
-            }
-
-
-            Player.transform.position += new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
-        
-    }
-
-    private void OnEnable() {
-        if(CheckPlatform.isIos || CheckPlatform.isAndroid)
-        btnRun.onClick.AddListener(MobileBtnRun);
-    }
-
-    public void MobileBtnRun(){
-        
-            if (CanMove)
-            {
-                if ( !IsItemSpeedActive && !FinishChecker.finishChecker.isFinish)
-                {
-                    PlayerSpeed += 1f;
-                    TargetAnimator.SetBool("isRunning", true);
-                }
-            }
-            else
-            {
-                PlayerSpeed = 0;
-                TargetAnimator.SetBool("isRunning", false);
-            }
-        
     }
 }
