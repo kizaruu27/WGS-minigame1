@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 0
+  playerName: 
   playerScore: 100
 --- !u!54 &7328353440017858359
 Rigidbody:
@@ -247,7 +248,7 @@ MonoBehaviour:
   maxSpeed: 10
   CanMove: 1
   IsItemSpeedActive: 0
-  jumpForce: 5
+  jumpForce: 8
   isControlBtnActive: 0
 --- !u!114 &-1419912059473185831
 MonoBehaviour:
