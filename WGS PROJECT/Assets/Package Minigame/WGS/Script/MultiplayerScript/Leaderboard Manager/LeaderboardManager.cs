@@ -8,6 +8,7 @@ using Photon.Realtime;
 public class LeaderboardManager : MonoBehaviour
 {
     public static LeaderboardManager instance;
+    PhotonView PV;
 
     [System.Serializable]
     public class CLeaderboardItem
@@ -16,7 +17,11 @@ public class LeaderboardManager : MonoBehaviour
         public float PlayerScore;
     }
 
-    private void Awake() => instance = this;
+    private void Awake()
+    {
+        instance = this;
+        PV = GetComponent<PhotonView>();
+    }
 
     static int SortAsc(CLeaderboardItem p1, CLeaderboardItem p2)
     {
@@ -53,7 +58,7 @@ public class LeaderboardManager : MonoBehaviour
         }
     }
 
-    //buat update playername pertama kali sesuai dengan index
+    //! buat update playername pertama kali sesuai dengan index
     public void UpdatePlayerName(int aPlayerIndex, string aPlayerName)
     {
         if (aPlayerIndex < LeaderboardItem.Count)
@@ -62,7 +67,7 @@ public class LeaderboardManager : MonoBehaviour
         }
     }
 
-    //buat update playerscore setiap kali terjadi penambahan score
+    //! buat update playerscore setiap kali terjadi penambahan score
     public void UpdatePlayerScore(string aPlayerName, float aScore)
     {
         for (int i = 0; i < LeaderboardItem.Count; i++)
@@ -71,6 +76,7 @@ public class LeaderboardManager : MonoBehaviour
             {
 
                 LeaderboardItem[i].PlayerScore += aScore;
+                // PV.RPC("OrderPlayerScore", RpcTarget.AllBufferedViaServer, i, aScore);
             }
         }
     }
@@ -96,6 +102,7 @@ public class LeaderboardManager : MonoBehaviour
 
     public void UpdateLeaderboard()
     {
+        // PV.RPC("SortPosisition", RpcTarget.AllBuffered);
         LeaderboardItem.Sort(SortDesc);
         for (int i = 0; i < LeaderboardText.Count; i++)
         {
@@ -108,6 +115,8 @@ public class LeaderboardManager : MonoBehaviour
         ItemFocusToPlayer();
         UpdateLeaderboard();
     }
+
+
 
     public void TestUpdatePlayer1()
     {

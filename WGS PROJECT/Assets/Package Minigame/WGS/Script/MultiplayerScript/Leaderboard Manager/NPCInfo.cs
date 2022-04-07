@@ -4,11 +4,11 @@ using Photon.Pun;
 
 public class NPCInfo : MonoBehaviour
 {
-    [Header("Player Information")]
+    [Header("NPC Information")]
     public static NPCInfo instance;
     public int NPCID;
     public string NPCName;
-    public int NPCScore = 100;
+    public int NPCScore;
 
     [Header("Check point system")]
     bool isRaceCompleted = false;
@@ -26,17 +26,9 @@ public class NPCInfo : MonoBehaviour
         instance = this;
         view = GetComponent<PhotonView>();
     }
-    public void SetPlayerInfo(int newID, string newName)
-    {
-        NPCID = newID;
-        NPCName = newName;
-        gameObject.name = newName; // ini masih belum rubah
-    } //problem nya disini
+    public void SetPlayerInfo(int newID, string newName) => view.RPC("SetNameNPC", RpcTarget.AllBuffered, newID, newName);
 
-    private void Start()
-    {
-        view.RPC("UpdateNPCName", RpcTarget.AllBuffered, NPCID, NPCName);
-    }
+    private void Start() => view.RPC("UpdateNPCName", RpcTarget.AllBuffered, NPCID, NPCName);
 
     private void OnTriggerEnter(Collider coll)
     {
@@ -56,18 +48,11 @@ public class NPCInfo : MonoBehaviour
                 numberOfPassedCheckpoints++;
                 timeAtLastPassCheckpoint = Time.time;
 
-                view.RPC("UpdateNPCScore", RpcTarget.AllBuffered, NPCScore, NPCName);
+                // view.RPC("UpdateNPCScore", RpcTarget.AllBuffered, NPCScore, NPCName);
+                LeaderboardManager.instance.UpdatePlayerScore(NPCName, NPCScore);
 
-                if (checkpoint.isFinishLine)
-                {
-                    passedCheckPointNumber = 0;
-                    lapsCompleted++;
-
-                    if (lapsCompleted >= lapsToComplete) // nanti gw edit
-                    {
-                        isRaceCompleted = true;
-                    }
-                }
+                Debug.Log(NPCName);
+                // Debug.Log("player: "+ playerName + " ngelewatin check poin number: "+ numberOfPassedCheckpoints);
 
                 OnPassCheckpoint?.Invoke(this);
             }
@@ -82,4 +67,11 @@ public class NPCInfo : MonoBehaviour
 
     [PunRPC]
     void UpdateNPCName(int id, string name) => LeaderboardManager.instance.UpdatePlayerName(id, name);
+
+    [PunRPC]
+    void SetNameNPC(int newID, string newName)
+    {
+        NPCID = newID;
+        NPCName = newName;
+    }
 }

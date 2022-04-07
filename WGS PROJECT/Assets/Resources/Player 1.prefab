@@ -188,7 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerID: 0
   playerName: 
-  playerScore: 100
+  playerScore: 1
 --- !u!54 &7328353440017858359
 Rigidbody:
   m_ObjectHideFlags: 0
