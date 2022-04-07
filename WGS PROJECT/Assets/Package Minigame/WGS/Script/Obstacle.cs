@@ -26,7 +26,7 @@ public class Obstacle : MonoBehaviour
             //camera shake
             StartCoroutine(Multiplayer_NPCSlowed(coll));
         }
-        
+
     }
 
     IEnumerator playerSlowed(Collider coll)

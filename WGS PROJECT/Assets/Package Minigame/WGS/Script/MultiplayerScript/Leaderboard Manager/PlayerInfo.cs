@@ -56,7 +56,6 @@ public class PlayerInfo : MonoBehaviour
 
                 Debug.Log(playerName);
 
-                // Debug.Log("player: "+ playerName + " ngelewatin check poin number: "+ numberOfPassedCheckpoints);
 
                 if (checkpoint.isFinishLine)
                 {

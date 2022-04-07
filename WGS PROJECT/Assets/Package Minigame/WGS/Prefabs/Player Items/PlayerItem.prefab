@@ -335,9 +335,9 @@ MonoBehaviour:
   rightArrowButton: {fileID: 999143115974930383}
   playerAvatar: {fileID: 999143115478984229}
   avatars:
-  - {fileID: 21300000, guid: 2c7e97cb4c1080545b3b2999b16a29ee, type: 3}
-  - {fileID: 21300000, guid: b5414d3ef8d7d494c86372f00745d5bf, type: 3}
-  - {fileID: 21300000, guid: f95eaebca0e16d74e83700aa17a88a04, type: 3}
+  - {fileID: 21300000, guid: e9a7c6cd7e8586140966ac180fc28106, type: 3}
+  - {fileID: 21300000, guid: bfcdeef4429513747b56887ca6bb3866, type: 3}
+  - {fileID: 21300000, guid: 5a0b837250b02cd4195f1a8ff38786f9, type: 3}
   - {fileID: 21300000, guid: e63f064241b36df4091dde018fad35c5, type: 3}
 --- !u!114 &6007928161097938956
 MonoBehaviour:

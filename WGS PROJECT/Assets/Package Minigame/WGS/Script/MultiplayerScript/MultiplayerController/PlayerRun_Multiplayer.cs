@@ -92,11 +92,11 @@ public class PlayerRun_Multiplayer : MonoBehaviour
     void Desktop()
     {
         if (
-            CheckPlatform.isMacUnity ||
-            CheckPlatform.isWindowsUnity ||
-            CheckPlatform.isWeb ||
-            CheckPlatform.isMac ||
-            CheckPlatform.isWindows
+             CheckPlatform.isMacUnity ||
+             CheckPlatform.isWindowsUnity ||
+             CheckPlatform.isWeb ||
+             CheckPlatform.isMac ||
+             CheckPlatform.isWindows
         )
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -115,9 +115,9 @@ public class PlayerRun_Multiplayer : MonoBehaviour
     void Mobile()
     {
         if (
-            CheckPlatform.isAndroid ||
-            CheckPlatform.isIos ||
-            CheckPlatform.isMobile
+             CheckPlatform.isAndroid ||
+             CheckPlatform.isIos ||
+             CheckPlatform.isMobile
         )
         {
             if (!isControlBtnActive)
