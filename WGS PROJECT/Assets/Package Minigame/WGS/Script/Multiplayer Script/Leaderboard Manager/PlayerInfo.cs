@@ -8,7 +8,7 @@ public class PlayerInfo : MonoBehaviour
     public static PlayerInfo instance;
     public int playerID;
     public string playerName;
-    public int playerScore = 100;
+    public int playerScore;
 
     [Header("Check point system")]
     bool isRaceCompleted = false;
@@ -25,21 +25,12 @@ public class PlayerInfo : MonoBehaviour
     {
         instance = this;
         view = GetComponent<PhotonView>();
-        
-        playerName = view.Owner.NickName; // nama player 
-        playerID = view.Owner.ActorNumber-1; // ID player 
-    }
-    public void SetPlayerInfo(int newID, string newName)
-    {
-        playerID = newID;
-        playerName = newName;
-        // gameObject.name = newName; // ini masih belum rubah
-    } //problem nya disini
 
-    private void Start()
-    {
-        view.RPC("UpdatePlayerName", RpcTarget.AllBuffered, playerID, playerName);
+        playerName = view.Owner.NickName; // nama player 
+        playerID = view.Owner.ActorNumber - 1; // ID player 
     }
+
+    private void Start() => view.RPC("UpdatePlayerName", RpcTarget.AllBuffered, playerID, playerName);
 
     private void OnTriggerEnter(Collider coll)
     {
@@ -60,6 +51,8 @@ public class PlayerInfo : MonoBehaviour
                 timeAtLastPassCheckpoint = Time.time;
 
                 view.RPC("UpdatePlayerScore", RpcTarget.AllBuffered, playerName, playerScore);
+
+                Debug.Log(playerName);
 
                 // Debug.Log("player: "+ playerName + " ngelewatin check poin number: "+ numberOfPassedCheckpoints);
 
