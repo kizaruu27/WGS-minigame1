@@ -42,8 +42,8 @@ public class PlayerRun_Multiplayer : MonoBehaviour
 
     void Start()
     {
-        btnJump.gameObject.SetActive((CheckPlatform.Mine.isAndroid || CheckPlatform.Mine.isIos) && isControlBtnActive);
-        btnRun.gameObject.SetActive((CheckPlatform.Mine.isAndroid || CheckPlatform.Mine.isIos) && isControlBtnActive);
+        btnJump.gameObject.SetActive((CheckPlatform.isAndroid || CheckPlatform.isIos) && isControlBtnActive);
+        btnRun.gameObject.SetActive((CheckPlatform.isAndroid || CheckPlatform.isIos) && isControlBtnActive);
 
         view = GetComponent<PhotonView>();
         rb = GetComponent<Rigidbody>();
@@ -81,7 +81,7 @@ public class PlayerRun_Multiplayer : MonoBehaviour
 
     private void OnEnable()
     {
-        if (CheckPlatform.Mine.isIos || CheckPlatform.Mine.isAndroid && isControlBtnActive)
+        if (CheckPlatform.isIos || CheckPlatform.isAndroid && isControlBtnActive)
         {
             btnJump.onClick.AddListener(Jumping);
             btnRun.onClick.AddListener(() => Running());
@@ -92,11 +92,11 @@ public class PlayerRun_Multiplayer : MonoBehaviour
     void Desktop()
     {
         if (
-             CheckPlatform.Mine.isMacUnity ||
-             CheckPlatform.Mine.isWindowsUnity ||
-             CheckPlatform.Mine.isWeb ||
-             CheckPlatform.Mine.isMac ||
-             CheckPlatform.Mine.isWindows
+             CheckPlatform.isMacUnity ||
+             CheckPlatform.isWindowsUnity ||
+             CheckPlatform.isWeb ||
+             CheckPlatform.isMac ||
+             CheckPlatform.isWindows
         )
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -115,9 +115,9 @@ public class PlayerRun_Multiplayer : MonoBehaviour
     void Mobile()
     {
         if (
-             CheckPlatform.Mine.isAndroid ||
-             CheckPlatform.Mine.isIos ||
-             CheckPlatform.Mine.isMobile
+             CheckPlatform.isAndroid ||
+             CheckPlatform.isIos ||
+             CheckPlatform.isMobile
         )
         {
             if (!isControlBtnActive)

@@ -34,12 +34,12 @@ public class WGS_PlayerRun : MonoBehaviour
     {
         player = this;
 
-        btnRun.gameObject.SetActive(CheckPlatform.Mine.isAndroid || CheckPlatform.Mine.isIos);
+        btnRun.gameObject.SetActive(CheckPlatform.isAndroid || CheckPlatform.isIos);
     }
 
     void Update()
     {
-        if (CheckPlatform.Mine.isMacUnity || CheckPlatform.Mine.isWindowsUnity || CheckPlatform.Mine.isWeb)
+        if (CheckPlatform.isMacUnity || CheckPlatform.isWindowsUnity || CheckPlatform.isWeb)
         {
             if (CanMove)
             {
@@ -82,7 +82,7 @@ public class WGS_PlayerRun : MonoBehaviour
 
     private void OnEnable()
     {
-        if (CheckPlatform.Mine.isIos || CheckPlatform.Mine.isAndroid)
+        if (CheckPlatform.isIos || CheckPlatform.isAndroid)
             btnRun.onClick.AddListener(MobileBtnRun);
     }
 
