@@ -9970,6 +9970,11 @@ MonoBehaviour:
   - {fileID: 572931952}
   - {fileID: 676711658}
   - {fileID: 2017638183}
+  LeaderboardListButton:
+  - {fileID: 629345909}
+  - {fileID: 360590001}
+  - {fileID: 2089696789}
+  - {fileID: 528858864}
   LeaderboardItem:
   - PlayerName: 
     PlayerScore: 0

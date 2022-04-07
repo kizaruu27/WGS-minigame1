@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
@@ -29,6 +30,9 @@ public class LeaderboardManager : MonoBehaviour
 
     [Header("Leaderboard Item")]
     public List<Text> LeaderboardText;
+
+    [Header("Leaderboard Button")]
+    public List<Button> LeaderboardListButton;
 
     [Header("Leaderboard Item")]
     public List<CLeaderboardItem> LeaderboardItem;
@@ -63,14 +67,33 @@ public class LeaderboardManager : MonoBehaviour
     {
         for (int i = 0; i < LeaderboardItem.Count; i++)
         {
-            // Debug.Log("PlayerName : " + LeaderboardItem[i].PlayerName == aPlayerName);
             if (LeaderboardItem[i].PlayerName == aPlayerName)
             {
+
                 LeaderboardItem[i].PlayerScore += aScore;
             }
         }
     }
-    //buat UI player leaderboard
+
+    void ItemFocusToPlayer()
+    {
+        List<Button> listButton = LeaderboardListButton.Select(val =>
+        {
+            val.GetComponent<Image>().color = Color.white;
+            val.GetComponentInChildren<Text>().color = new Color32(50, 50, 50, 255);
+
+            return val;
+
+        }).ToList();
+
+        int playerIndex = LeaderboardItem.FindIndex(val => val.PlayerName == PhotonNetwork.LocalPlayer.NickName);
+
+        Button playerItem = listButton[playerIndex];
+        playerItem.GetComponent<Image>().color = Color.red;
+        playerItem.GetComponentInChildren<Text>().color = new Color32(255, 255, 255, 255);
+    }
+
+
     public void UpdateLeaderboard()
     {
         LeaderboardItem.Sort(SortDesc);
@@ -80,15 +103,9 @@ public class LeaderboardManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
     void LateUpdate()
     {
-        // this.PhotonView.RPC("UpdateLeaderboard", RpcTarget.All);
+        ItemFocusToPlayer();
         UpdateLeaderboard();
     }
 

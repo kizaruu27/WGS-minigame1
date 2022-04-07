@@ -58,10 +58,6 @@ public class NPCInfo : MonoBehaviour
 
                 view.RPC("UpdateNPCScore", RpcTarget.AllBuffered, NPCScore, NPCName);
 
-                Debug.Log(NPCName + " Lewat " + numberOfPassedCheckpoints);
-
-                // Debug.Log("player: "+ playerName + " ngelewatin check poin number: "+ numberOfPassedCheckpoints);
-
                 if (checkpoint.isFinishLine)
                 {
                     passedCheckPointNumber = 0;
