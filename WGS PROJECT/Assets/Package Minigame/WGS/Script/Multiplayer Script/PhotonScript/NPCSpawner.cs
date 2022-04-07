@@ -5,15 +5,16 @@ public class NPCSpawner : MonoBehaviour
 {
     public GameObject playerNPCPrefabs;
     public Transform[] spawnPoints;
-    [SerializeField] public int playerMax;
-    [SerializeField] public int playerNow;
+    [SerializeField] int playerMax;
+    [SerializeField] int playerNow;
+    PhotonView PV;
 
     private void Awake()
     {
-
         playerMax = PhotonNetwork.CurrentRoom.MaxPlayers;
         playerNow = PhotonNetwork.CurrentRoom.PlayerCount;
-        
+        PV = GetComponent<PhotonView>();
+
         if (playerNow < playerMax)
         {
             for (int i = 0; i < playerMax; i++)
@@ -22,9 +23,15 @@ public class NPCSpawner : MonoBehaviour
                 {
                     Transform spwanPointNPc = spawnPoints[i];
                     PhotonNetwork.InstantiateRoomObject(playerNPCPrefabs.name, spwanPointNPc.position, Quaternion.identity);
-                    PlayerInfo.instance.SetPlayerInfo(i, playerNPCPrefabs.name + " " + i.ToString());
+                    // NPCInfo.instance.SetPlayerInfo(i, playerNPCPrefabs.name + " " + i.ToString());
+                    PV.RPC("SetNPCName", RpcTarget.AllBuffered, i);
                 }
             }
         }
+    }
+
+    [PunRPC]
+    void SetNPCName(int i){
+        NPCInfo.instance.SetPlayerInfo(i, playerNPCPrefabs.name + " " + i.ToString());
     }
 }

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4746000968864255595}
   - component: {fileID: 4746000968864255604}
   - component: {fileID: -5087649658339847199}
+  - component: {fileID: 7129927293417094492}
   - component: {fileID: -3543055532776082106}
-  - component: {fileID: -7248818478619970684}
   - component: {fileID: 3428184273071822798}
   m_Layer: 0
   m_Name: Player NPC
@@ -87,6 +87,21 @@ MonoBehaviour:
   PlayerSpeed: 0
   NPCCanMove: 1
   IsItemSpeedActive: 0
+--- !u!114 &7129927293417094492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4746000968864255601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d8fb6917ac2b734682c8754600a2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NPCID: 0
+  NPCName: 
+  NPCScore: 100
 --- !u!114 &-3543055532776082106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,21 +116,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Character: {fileID: 4746000968864255601}
   JumpHeight: 3
---- !u!114 &-7248818478619970684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4746000968864255601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62452aa366379e941ac1d76afcf158ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerID: 0
-  playerName: 
-  playerScore: 100
 --- !u!114 &3428184273071822798
 MonoBehaviour:
   m_ObjectHideFlags: 0

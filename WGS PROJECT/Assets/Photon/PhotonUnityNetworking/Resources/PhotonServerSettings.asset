@@ -43,6 +43,10 @@ MonoBehaviour:
   - UpdatePlayerName
   - SetPlayerInfo
   - InstantiateNPC
+  - SpawnNPC
+  - SetNPCName
+  - UpdateNPCName
+  - UpdateNPCScore
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
