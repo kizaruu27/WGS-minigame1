@@ -2,13 +2,13 @@ using UnityEngine;
 using System;
 using Photon.Pun;
 
-public class PlayerInfo : MonoBehaviour
+public class NPCInfo : MonoBehaviour
 {
     [Header("Player Information")]
-    public static PlayerInfo instance;
-    public int playerID;
-    public string playerName;
-    public int playerScore = 100;
+    public static NPCInfo instance;
+    public int NPCID;
+    public string NPCName;
+    public int NPCScore = 100;
 
     [Header("Check point system")]
     bool isRaceCompleted = false;
@@ -17,7 +17,7 @@ public class PlayerInfo : MonoBehaviour
     float timeAtLastPassCheckpoint = 0;
     int lapsCompleted = 0;
     const int lapsToComplete = 1;
-    public event Action<PlayerInfo> OnPassCheckpoint;
+    public event Action<NPCInfo> OnPassCheckpoint;
 
     PhotonView view;
 
@@ -25,20 +25,17 @@ public class PlayerInfo : MonoBehaviour
     {
         instance = this;
         view = GetComponent<PhotonView>();
-        
-        playerName = view.Owner.NickName; // nama player 
-        playerID = view.Owner.ActorNumber-1; // ID player 
     }
     public void SetPlayerInfo(int newID, string newName)
     {
-        playerID = newID;
-        playerName = newName;
-        // gameObject.name = newName; // ini masih belum rubah
+        NPCID = newID;
+        NPCName = newName;
+        gameObject.name = newName; // ini masih belum rubah
     } //problem nya disini
 
     private void Start()
     {
-        view.RPC("UpdatePlayerName", RpcTarget.AllBuffered, playerID, playerName);
+        view.RPC("UpdateNPCName", RpcTarget.AllBuffered, NPCID, NPCName);
     }
 
     private void OnTriggerEnter(Collider coll)
@@ -59,7 +56,9 @@ public class PlayerInfo : MonoBehaviour
                 numberOfPassedCheckpoints++;
                 timeAtLastPassCheckpoint = Time.time;
 
-                view.RPC("UpdatePlayerScore", RpcTarget.AllBuffered, playerName, playerScore);
+                view.RPC("UpdateNPCScore", RpcTarget.AllBuffered, NPCScore, NPCName);
+
+                Debug.Log(NPCName + " Lewat " + numberOfPassedCheckpoints);
 
                 // Debug.Log("player: "+ playerName + " ngelewatin check poin number: "+ numberOfPassedCheckpoints);
 
@@ -80,11 +79,11 @@ public class PlayerInfo : MonoBehaviour
     }
 
     [PunRPC]
-    void UpdatePlayerScore(string name, int score)
+    void UpdateNPCScore(int score, string name)
     {
-        LeaderboardManager.instance.UpdatePlayerScore(name, score); //disini rpc nya
+        LeaderboardManager.instance.UpdatePlayerScore(name, score);
     }
 
     [PunRPC]
-    void UpdatePlayerName(int id, string name) => LeaderboardManager.instance.UpdatePlayerName(id, name);
+    void UpdateNPCName(int id, string name) => LeaderboardManager.instance.UpdatePlayerName(id, name);
 }
