@@ -4,7 +4,7 @@ using Photon.Pun;
 
 public class NPCInfo : MonoBehaviour
 {
-    [Header("Player Information")]
+    [Header("NPC Information")]
     public static NPCInfo instance;
     public int NPCID;
     public string NPCName;
@@ -48,20 +48,11 @@ public class NPCInfo : MonoBehaviour
                 numberOfPassedCheckpoints++;
                 timeAtLastPassCheckpoint = Time.time;
 
-                view.RPC("UpdateNPCScore", RpcTarget.AllBuffered, NPCScore, NPCName);
+                // view.RPC("UpdateNPCScore", RpcTarget.AllBuffered, NPCScore, NPCName);
+                LeaderboardManager.instance.UpdatePlayerScore(NPCName, NPCScore);
 
                 Debug.Log(NPCName);
                 // Debug.Log("player: "+ playerName + " ngelewatin check poin number: "+ numberOfPassedCheckpoints);
-                if (checkpoint.isFinishLine)
-                {
-                    passedCheckPointNumber = 0;
-                    lapsCompleted++;
-
-                    if (lapsCompleted >= lapsToComplete) // nanti gw edit
-                    {
-                        isRaceCompleted = true;
-                    }
-                }
 
                 OnPassCheckpoint?.Invoke(this);
             }

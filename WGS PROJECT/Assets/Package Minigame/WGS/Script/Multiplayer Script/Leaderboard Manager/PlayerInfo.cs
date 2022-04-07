@@ -50,7 +50,9 @@ public class PlayerInfo : MonoBehaviour
                 numberOfPassedCheckpoints++;
                 timeAtLastPassCheckpoint = Time.time;
 
-                view.RPC("UpdatePlayerScore", RpcTarget.AllBuffered, playerName, playerScore);
+                // view.RPC("UpdatePlayerScore", RpcTarget.AllBuffered, playerName, playerScore);
+                LeaderboardManager.instance.UpdatePlayerScore(playerName, playerScore);
+                
 
                 Debug.Log(playerName);
 
