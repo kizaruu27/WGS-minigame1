@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
@@ -16,10 +17,11 @@ public class LeaderboardManager : MonoBehaviour
         public float PlayerScore;
     }
 
-    private void Awake() {
+    private void Awake()
+    {
         instance = this;
         PV = GetComponent<PhotonView>();
-    } 
+    }
 
     static int SortAsc(CLeaderboardItem p1, CLeaderboardItem p2)
     {
@@ -33,6 +35,9 @@ public class LeaderboardManager : MonoBehaviour
 
     [Header("Leaderboard Item")]
     public List<Text> LeaderboardText;
+
+    [Header("Leaderboard Button")]
+    public List<Button> LeaderboardListButton;
 
     [Header("Leaderboard Item")]
     public List<CLeaderboardItem> LeaderboardItem;
@@ -67,16 +72,34 @@ public class LeaderboardManager : MonoBehaviour
     {
         for (int i = 0; i < LeaderboardItem.Count; i++)
         {
-            // Debug.Log("PlayerName : " + LeaderboardItem[i].PlayerName == aPlayerName);
             if (LeaderboardItem[i].PlayerName == aPlayerName)
             {
+
                 LeaderboardItem[i].PlayerScore += aScore;
                 // PV.RPC("OrderPlayerScore", RpcTarget.AllBufferedViaServer, i, aScore);
             }
         }
     }
 
-    // buat UI player leaderboard
+    void ItemFocusToPlayer()
+    {
+        List<Button> listButton = LeaderboardListButton.Select(val =>
+        {
+            val.GetComponent<Image>().color = Color.white;
+            val.GetComponentInChildren<Text>().color = new Color32(50, 50, 50, 255);
+
+            return val;
+
+        }).ToList();
+
+        int playerIndex = LeaderboardItem.FindIndex(val => val.PlayerName == PhotonNetwork.LocalPlayer.NickName);
+
+        Button playerItem = listButton[playerIndex];
+        playerItem.GetComponent<Image>().color = Color.red;
+        playerItem.GetComponentInChildren<Text>().color = new Color32(255, 255, 255, 255);
+    }
+
+
     public void UpdateLeaderboard()
     {
         // PV.RPC("SortPosisition", RpcTarget.AllBuffered);
@@ -87,11 +110,17 @@ public class LeaderboardManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    public void GetLeaderboardData()
+    {
+        GameObject ds = GameObject.FindGameObjectWithTag("Finish UI");
+        ds.GetComponent<MultiplayerFinishManager>().SetLeaderboardData(LeaderboardItem);
+    }
+
     void LateUpdate()
     {
-        // this.PhotonView.RPC("UpdateLeaderboard", RpcTarget.All);
+        ItemFocusToPlayer();
         UpdateLeaderboard();
+        GetLeaderboardData();
     }
 
 

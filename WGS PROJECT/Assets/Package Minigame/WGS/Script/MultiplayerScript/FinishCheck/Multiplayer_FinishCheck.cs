@@ -14,13 +14,13 @@ public class Multiplayer_FinishCheck : MonoBehaviour
         view = GetComponent<PhotonView>();
     }
 
-    private void OnTriggerEnter(Collider col)
-    {
-        
-            if (col.gameObject.tag == "Player")
-            {
-                finishUI.SetActive(true);
-            }
-        
-    }
+    // private void OnTriggerEnter(Collider col)
+    // {
+
+    //         if (col.gameObject.tag == "Player")
+    //         {
+    //             finishUI.SetActive(true);
+    //         }
+
+    // }
 }
