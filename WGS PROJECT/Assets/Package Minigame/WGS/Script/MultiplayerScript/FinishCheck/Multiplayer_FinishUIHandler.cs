@@ -15,14 +15,14 @@ public class Multiplayer_FinishUIHandler : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (view.IsMine)
-        {
-            if (finishValidation.isFinish)
-            {
-                finishUI.SetActive(true);
-            }
-        }
-    }
+    // void Update()
+    // {
+    //     if (view.IsMine)
+    //     {
+    //         if (finishValidation.isFinish)
+    //         {
+    //             finishUI.SetActive(true);
+    //         }
+    //     }
+    // }
 }

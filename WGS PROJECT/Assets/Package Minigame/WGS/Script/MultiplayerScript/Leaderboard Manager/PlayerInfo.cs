@@ -52,15 +52,16 @@ public class PlayerInfo : MonoBehaviour
 
                 // view.RPC("UpdatePlayerScore", RpcTarget.AllBuffered, playerName, playerScore);
                 LeaderboardManager.instance.UpdatePlayerScore(playerName, playerScore);
-                
-
-                Debug.Log(playerName);
 
 
                 if (checkpoint.isFinishLine)
                 {
                     passedCheckPointNumber = 0;
                     lapsCompleted++;
+
+
+                    GameObject ds = GameObject.FindGameObjectWithTag("Finish UI");
+                    ds.GetComponent<MultiplayerFinishManager>().Finish();
 
                     if (lapsCompleted >= lapsToComplete) // nanti gw edit
                     {

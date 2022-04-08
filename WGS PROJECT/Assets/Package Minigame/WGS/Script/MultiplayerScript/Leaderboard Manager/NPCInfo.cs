@@ -51,7 +51,6 @@ public class NPCInfo : MonoBehaviour
                 // view.RPC("UpdateNPCScore", RpcTarget.AllBuffered, NPCScore, NPCName);
                 LeaderboardManager.instance.UpdatePlayerScore(NPCName, NPCScore);
 
-                Debug.Log(NPCName);
                 // Debug.Log("player: "+ playerName + " ngelewatin check poin number: "+ numberOfPassedCheckpoints);
 
                 OnPassCheckpoint?.Invoke(this);

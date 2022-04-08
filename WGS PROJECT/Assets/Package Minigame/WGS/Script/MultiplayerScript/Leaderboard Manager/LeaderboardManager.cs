@@ -110,10 +110,17 @@ public class LeaderboardManager : MonoBehaviour
         }
     }
 
+    public void GetLeaderboardData()
+    {
+        GameObject ds = GameObject.FindGameObjectWithTag("Finish UI");
+        ds.GetComponent<MultiplayerFinishManager>().SetLeaderboardData(LeaderboardItem);
+    }
+
     void LateUpdate()
     {
         ItemFocusToPlayer();
         UpdateLeaderboard();
+        GetLeaderboardData();
     }
 
 
