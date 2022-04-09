@@ -19,12 +19,16 @@ public class NPCInfo : MonoBehaviour
     const int lapsToComplete = 1;
     public event Action<NPCInfo> OnPassCheckpoint;
 
+
+
+
     PhotonView view;
 
     private void Awake()
     {
         instance = this;
         view = GetComponent<PhotonView>();
+
     }
     public void SetPlayerInfo(int newID, string newName) => view.RPC("SetNameNPC", RpcTarget.AllBuffered, newID, newName);
 
@@ -48,8 +52,10 @@ public class NPCInfo : MonoBehaviour
                 numberOfPassedCheckpoints++;
                 timeAtLastPassCheckpoint = Time.time;
 
-                // view.RPC("UpdateNPCScore", RpcTarget.AllBuffered, NPCScore, NPCName);
-                LeaderboardManager.instance.UpdatePlayerScore(NPCName, NPCScore);
+                // Debug.Log(NPCName + " : " + NPCScore);
+
+                view.RPC("UpdateNPCScore", RpcTarget.AllBuffered, NPCScore, NPCName);
+                // LeaderboardManager.instance.UpdatePlayerScore(NPCName, NPCScore);
 
                 // Debug.Log("player: "+ playerName + " ngelewatin check poin number: "+ numberOfPassedCheckpoints);
 
@@ -70,6 +76,8 @@ public class NPCInfo : MonoBehaviour
     [PunRPC]
     void SetNameNPC(int newID, string newName)
     {
+
+        // Debug.Log(newName);
         NPCID = newID;
         NPCName = newName;
     }

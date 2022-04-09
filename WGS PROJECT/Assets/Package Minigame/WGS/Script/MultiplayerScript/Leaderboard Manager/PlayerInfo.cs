@@ -50,8 +50,12 @@ public class PlayerInfo : MonoBehaviour
                 numberOfPassedCheckpoints++;
                 timeAtLastPassCheckpoint = Time.time;
 
-                // view.RPC("UpdatePlayerScore", RpcTarget.AllBuffered, playerName, playerScore);
-                LeaderboardManager.instance.UpdatePlayerScore(playerName, playerScore);
+                // Debug.Log(playerName + " :" + playerScore);
+
+
+                view.RPC("UpdatePlayerScore", RpcTarget.AllBuffered, playerName, playerScore);
+
+                // LeaderboardManager.instance.UpdatePlayerScore(playerName, playerScore);
 
 
                 if (checkpoint.isFinishLine)
@@ -61,7 +65,7 @@ public class PlayerInfo : MonoBehaviour
 
 
                     GameObject ds = GameObject.FindGameObjectWithTag("Finish UI");
-                    ds.GetComponent<MultiplayerFinishManager>().Finish();
+                    ds.GetComponent<MultiplayerFinishManager>().Finish(checkpoint.isFinishLine);
 
                     if (lapsCompleted >= lapsToComplete) // nanti gw edit
                     {

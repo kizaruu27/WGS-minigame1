@@ -17,7 +17,7 @@ public class Multiplayer_NPCRun : MonoBehaviour
     private void Awake() => NPCCanMove = false;
     void Update()
     {
-        
+
         if (NPCCanMove && !IsItemSpeedActive)
         {
             PlayerSpeed += 0.01f;
@@ -39,7 +39,8 @@ public class Multiplayer_NPCRun : MonoBehaviour
         StartCoroutine(FreezeOnStart());
     }
 
-    IEnumerator FreezeOnStart(){
+    IEnumerator FreezeOnStart()
+    {
 
         yield return new WaitForSeconds(3);
         NPCCanMove = true;
