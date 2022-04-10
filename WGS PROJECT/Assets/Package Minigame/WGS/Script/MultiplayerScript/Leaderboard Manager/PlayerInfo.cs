@@ -53,7 +53,10 @@ public class PlayerInfo : MonoBehaviour
                 numberOfPassedCheckpoints++;
                 timeAtLastPassCheckpoint = Time.time;
 
-                view.RPC("UpdatePlayerScore", RpcTarget.AllBuffered, playerName, playerScore);
+                view.RPC(
+                    "UpdatePlayerScore", RpcTarget.AllBuffered, //RPC Arguments
+                    playerName, playerScore //Method Arguments
+                    );
 
                 if (checkpoint.isFinishLine)
                 {
@@ -61,9 +64,10 @@ public class PlayerInfo : MonoBehaviour
                     lapsCompleted++;
 
 
-                    view.RPC("UpdatePodiumList", RpcTarget.AllBuffered, checkpoint.isFinishLine, playerID, timer, playerName);
-
-                    StartCoroutine(WaitToRemoveStandingsList());
+                    view.RPC(
+                        "UpdatePodiumList", RpcTarget.AllBuffered, //RPC Arguments
+                        checkpoint.isFinishLine, playerID, timer, playerName //Method Arguments
+                        );
 
                     if (lapsCompleted >= lapsToComplete) // nanti gw edit
                     {
@@ -98,19 +102,12 @@ public class PlayerInfo : MonoBehaviour
     [PunRPC]
     void UpdatePlayerName(int id, string name) => LeaderboardManager.instance.UpdatePlayerName(id, name);
 
+
+
     IEnumerator WaitToStart()
     {
         yield return new WaitForSeconds(3);
 
         timer += Time.deltaTime;
-    }
-
-
-    IEnumerator WaitToRemoveStandingsList()
-    {
-        yield return new WaitForSeconds(3);
-
-        GameObject finishUI = GameObject.FindGameObjectWithTag("PodiumContent");
-        finishUI.GetComponent<MultiplayerFinishUI>().RemovePlayerListCache();
     }
 }

@@ -10,8 +10,6 @@ public class RowUI : MonoBehaviour
     public TextMeshProUGUI Name;
     public TextMeshProUGUI Score;
 
-
-
     public void SetColorItem(bool IsMine = false)
     {
         if (IsMine)
