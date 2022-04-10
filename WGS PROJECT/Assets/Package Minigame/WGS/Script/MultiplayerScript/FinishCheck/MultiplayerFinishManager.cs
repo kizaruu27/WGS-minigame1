@@ -16,15 +16,6 @@ public class MultiplayerFinishManager : MonoBehaviour
     [Header("List Player")]
     List<PlayerFinishModel> playerFinishList = new List<PlayerFinishModel>();
 
-    PhotonView view;
-
-
-    private void Start()
-    {
-        view = GetComponent<PhotonView>();
-    }
-
-
     public void InitializePlayer(int id, string name, float time)
     {
         PlayerFinishModel playerFinish = new PlayerFinishModel();
@@ -57,13 +48,5 @@ public class MultiplayerFinishManager : MonoBehaviour
         {
             InitializePlayer(id, name, time);
         }
-    }
-
-    public void OnClickBackToMenu()
-    {
-        PhotonNetwork.Disconnect();
-        PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
-        PhotonNetwork.LeaveRoom();
-        PhotonNetwork.LoadLevel(2);
     }
 }
