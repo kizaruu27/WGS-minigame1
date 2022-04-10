@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 6757852886836724305}
   m_Layer: 5
   m_Name: PodiumPlayerRank
-  m_TagString: Untagged
+  m_TagString: PodiumItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

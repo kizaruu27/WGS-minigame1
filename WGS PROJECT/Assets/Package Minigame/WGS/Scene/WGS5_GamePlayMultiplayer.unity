@@ -8146,7 +8146,7 @@ GameObject:
   - component: {fileID: 1313524202}
   m_Layer: 5
   m_Name: Content
-  m_TagString: Untagged
+  m_TagString: PodiumContent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8208,7 +8208,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   finishManager: {fileID: 1784477320}
   row: {fileID: 6757852886836724305, guid: faf14472518bf4a688523d0881f9816e, type: 3}
-  leaderboardManager: {fileID: 1838194193}
 --- !u!1 &1352504641
 GameObject:
   m_ObjectHideFlags: 0
@@ -8946,7 +8945,7 @@ GameObject:
   - component: {fileID: 1471968458}
   m_Layer: 5
   m_Name: Podium
-  m_TagString: Untagged
+  m_TagString: Podium
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10671,6 +10670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finishUI: {fileID: 1471968456}
+  LeaderboardUI: {fileID: 1838194193}
 --- !u!1 &1794902949
 GameObject:
   m_ObjectHideFlags: 0
@@ -10754,7 +10754,7 @@ GameObject:
   - component: {fileID: 1838194198}
   m_Layer: 5
   m_Name: Leaderboard
-  m_TagString: Untagged
+  m_TagString: Leaderboard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

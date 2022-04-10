@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using Photon.Pun;
+using System.Collections;
 
 public class NPCInfo : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class NPCInfo : MonoBehaviour
     const int lapsToComplete = 1;
     public event Action<NPCInfo> OnPassCheckpoint;
 
+    float timer = 0f;
+
 
 
 
@@ -33,6 +36,11 @@ public class NPCInfo : MonoBehaviour
     public void SetPlayerInfo(int newID, string newName) => view.RPC("SetNameNPC", RpcTarget.AllBuffered, newID, newName);
 
     private void Start() => view.RPC("UpdateNPCName", RpcTarget.AllBuffered, NPCID, NPCName);
+
+    private void Update()
+    {
+        StartCoroutine(WaitToStart());
+    }
 
     private void OnTriggerEnter(Collider coll)
     {
@@ -52,16 +60,23 @@ public class NPCInfo : MonoBehaviour
                 numberOfPassedCheckpoints++;
                 timeAtLastPassCheckpoint = Time.time;
 
-                // Debug.Log(NPCName + " : " + NPCScore);
-
                 view.RPC("UpdateNPCScore", RpcTarget.AllBuffered, NPCScore, NPCName);
-                // LeaderboardManager.instance.UpdatePlayerScore(NPCName, NPCScore);
 
-                // Debug.Log("player: "+ playerName + " ngelewatin check poin number: "+ numberOfPassedCheckpoints);
+                if (checkpoint.isFinishLine)
+                {
+                    view.RPC("UpdatePodiumList", RpcTarget.AllBuffered, NPCID, timer, NPCName);
+                }
 
                 OnPassCheckpoint?.Invoke(this);
             }
         }
+    }
+
+    [PunRPC]
+    void UpdatePodiumList(int id, float timer, string playerName)
+    {
+        GameObject ds = GameObject.FindGameObjectWithTag("Finish UI");
+        ds.GetComponent<MultiplayerFinishManager>().Finish(id, timer, playerName);
     }
 
     [PunRPC]
@@ -76,9 +91,14 @@ public class NPCInfo : MonoBehaviour
     [PunRPC]
     void SetNameNPC(int newID, string newName)
     {
-
-        // Debug.Log(newName);
         NPCID = newID;
         NPCName = newName;
+    }
+
+    IEnumerator WaitToStart()
+    {
+        yield return new WaitForSeconds(3);
+
+        timer += Time.deltaTime;
     }
 }

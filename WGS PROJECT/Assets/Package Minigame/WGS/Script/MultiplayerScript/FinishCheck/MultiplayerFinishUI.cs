@@ -3,32 +3,76 @@
 using UnityEngine;
 using Photon.Pun;
 using System.Linq;
+using System.Collections.Generic;
 
 public class MultiplayerFinishUI : MonoBehaviour
 {
     public MultiplayerFinishManager finishManager;
     public RowUI row;
-    public GameObject leaderboardManager;
-
     int score = 1000;
 
+    IEnumerable<PlayerFinishModel> PlayerFinish;
+
+    List<RowUI> cachePlayerList = new List<RowUI>();
 
     private void Start()
     {
-        var PlayerFinish = finishManager.GetLeaderboardData();
+
+    }
+
+    private void Update()
+    {
+        RemovePlayerListCache();
+        ShowPlayerList();
+        WaitingPlayerToFinish();
+
+        if (cachePlayerList.Count == (int)PhotonNetwork.CurrentRoom.MaxPlayers) return;
+    }
+
+    public void ShowPlayerList()
+    {
+        PlayerFinish = finishManager.GetLeaderboardData();
 
         foreach (var item in PlayerFinish.Select((value, index) => new { index, value }))
         {
             RowUI rowData = Instantiate(row, transform).GetComponent<RowUI>();
 
-            rowData.SetColorItem(item.value.PlayerName == PhotonNetwork.LocalPlayer.NickName);
+            rowData.SetColorItem(item.value.name == PhotonNetwork.LocalPlayer.NickName);
 
             rowData.Rank.text = GenerateRankText(item.index);
-            rowData.Name.text = item.value.PlayerName;
+            rowData.Name.text = item.value.name;
             rowData.Score.text = $"{score - (item.index * 100)}";
+
+            cachePlayerList.Add(rowData);
+        }
+    }
+
+    public void WaitingPlayerToFinish()
+    {
+        if (PhotonNetwork.CurrentRoom.MaxPlayers > cachePlayerList.Count)
+        {
+            for (int i = 0; i < (int)PhotonNetwork.CurrentRoom.MaxPlayers - cachePlayerList.Count; i++)
+            {
+                RowUI rowData = Instantiate(row, transform).GetComponent<RowUI>();
+
+                rowData.Rank.text = "";
+                rowData.Name.text = "Waiting Other Player";
+                rowData.Score.text = "";
+
+                cachePlayerList.Add(rowData);
+            }
         }
 
-        leaderboardManager.SetActive(false);
+    }
+
+    public void RemovePlayerListCache()
+    {
+        foreach (var item in cachePlayerList)
+        {
+            Destroy(item.gameObject);
+        }
+
+        cachePlayerList.Clear();
     }
 
     string GenerateRankText(int rank)

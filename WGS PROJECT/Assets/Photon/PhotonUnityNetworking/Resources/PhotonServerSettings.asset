@@ -50,6 +50,7 @@ MonoBehaviour:
   - SetNameNPC
   - OrderPlayerScore
   - SortPosisition
+  - UpdatePodiumList
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
