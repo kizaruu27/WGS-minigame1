@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 using Photon.Pun;
 
 public class PlayerInfo : MonoBehaviour
@@ -18,6 +19,8 @@ public class PlayerInfo : MonoBehaviour
     int lapsCompleted = 0;
     const int lapsToComplete = 1;
     public event Action<PlayerInfo> OnPassCheckpoint;
+
+    float timer = 0f;
 
     PhotonView view;
 
@@ -50,13 +53,7 @@ public class PlayerInfo : MonoBehaviour
                 numberOfPassedCheckpoints++;
                 timeAtLastPassCheckpoint = Time.time;
 
-                // Debug.Log(playerName + " :" + playerScore);
-
-
                 view.RPC("UpdatePlayerScore", RpcTarget.AllBuffered, playerName, playerScore);
-
-                // LeaderboardManager.instance.UpdatePlayerScore(playerName, playerScore);
-
 
                 if (checkpoint.isFinishLine)
                 {
@@ -64,8 +61,9 @@ public class PlayerInfo : MonoBehaviour
                     lapsCompleted++;
 
 
-                    GameObject ds = GameObject.FindGameObjectWithTag("Finish UI");
-                    ds.GetComponent<MultiplayerFinishManager>().Finish(checkpoint.isFinishLine);
+                    view.RPC("UpdatePodiumList", RpcTarget.AllBuffered, checkpoint.isFinishLine, playerID, timer, playerName);
+
+                    StartCoroutine(WaitToRemoveStandingsList());
 
                     if (lapsCompleted >= lapsToComplete) // nanti gw edit
                     {
@@ -78,6 +76,19 @@ public class PlayerInfo : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        StartCoroutine(WaitToStart());
+    }
+
+
+    [PunRPC]
+    void UpdatePodiumList(bool isFinish, int id, float timer, string playerName)
+    {
+        GameObject finishUI = GameObject.FindGameObjectWithTag("Finish UI");
+        finishUI.GetComponent<MultiplayerFinishManager>().Finish(isFinish, id, timer, playerName);
+    }
+
     [PunRPC]
     void UpdatePlayerScore(string name, int score)
     {
@@ -86,4 +97,20 @@ public class PlayerInfo : MonoBehaviour
 
     [PunRPC]
     void UpdatePlayerName(int id, string name) => LeaderboardManager.instance.UpdatePlayerName(id, name);
+
+    IEnumerator WaitToStart()
+    {
+        yield return new WaitForSeconds(3);
+
+        timer += Time.deltaTime;
+    }
+
+
+    IEnumerator WaitToRemoveStandingsList()
+    {
+        yield return new WaitForSeconds(3);
+
+        GameObject finishUI = GameObject.FindGameObjectWithTag("PodiumContent");
+        finishUI.GetComponent<MultiplayerFinishUI>().RemovePlayerListCache();
+    }
 }
