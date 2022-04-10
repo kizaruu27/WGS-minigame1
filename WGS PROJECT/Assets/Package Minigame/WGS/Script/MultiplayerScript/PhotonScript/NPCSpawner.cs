@@ -3,7 +3,7 @@ using Photon.Pun;
 
 public class NPCSpawner : MonoBehaviour
 {
-    public GameObject playerNPCPrefabs;
+    public GameObject[] playerNPCPrefabs;
     public Transform[] spawnPoints;
     [SerializeField] int playerMax;
     [SerializeField] int playerNow;
@@ -20,8 +20,8 @@ public class NPCSpawner : MonoBehaviour
                 if (i >= playerNow)
                 {
                     Transform spwanPointNPc = spawnPoints[i];
-                    PhotonNetwork.InstantiateRoomObject(playerNPCPrefabs.name, spwanPointNPc.position, Quaternion.identity);
-                    NPCInfo.instance.SetPlayerInfo(i, playerNPCPrefabs.name + " " + i.ToString());
+                    PhotonNetwork.InstantiateRoomObject(playerNPCPrefabs[Random.Range(0, playerNPCPrefabs.Length)].name, spwanPointNPc.position, Quaternion.identity);
+                    NPCInfo.instance.SetPlayerInfo(i, playerNPCPrefabs[Random.Range(0, playerNPCPrefabs.Length)].name + " " + i.ToString());
                 }
             }
         }
