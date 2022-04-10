@@ -7,18 +7,19 @@ using System.Collections.Generic;
 
 public class MultiplayerFinishUI : MonoBehaviour
 {
+    [Header("Components")]
     public MultiplayerFinishManager finishManager;
     public RowUI row;
+
+
+    [Header("Player Score")]
     int score = 1000;
 
-    IEnumerable<PlayerFinishModel> PlayerFinish;
 
+    [Header("Player List")]
+    IEnumerable<PlayerFinishModel> PlayerFinish;
     List<RowUI> cachePlayerList = new List<RowUI>();
 
-    private void Start()
-    {
-
-    }
 
     private void Update()
     {
@@ -40,7 +41,7 @@ public class MultiplayerFinishUI : MonoBehaviour
             rowData.SetColorItem(item.value.name == PhotonNetwork.LocalPlayer.NickName);
 
             rowData.Rank.text = GenerateRankText(item.index);
-            rowData.Name.text = item.value.name;
+            rowData.Name.text = item.value.name.Length <= 20 ? item.value.name : item.value.name.Substring(0, 20) + "...";
             rowData.Score.text = $"{score - (item.index * 100)}";
 
             cachePlayerList.Add(rowData);
@@ -67,10 +68,7 @@ public class MultiplayerFinishUI : MonoBehaviour
 
     public void RemovePlayerListCache()
     {
-        foreach (var item in cachePlayerList)
-        {
-            Destroy(item.gameObject);
-        }
+        foreach (var item in cachePlayerList) Destroy(item.gameObject);
 
         cachePlayerList.Clear();
     }

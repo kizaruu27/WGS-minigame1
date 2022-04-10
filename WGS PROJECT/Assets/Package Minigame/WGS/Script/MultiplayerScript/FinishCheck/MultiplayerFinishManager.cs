@@ -13,7 +13,7 @@ public class MultiplayerFinishManager : MonoBehaviour
     [SerializeField] GameObject finishUI;
     [SerializeField] GameObject LeaderboardUI;
 
-    [Header("List Player")]
+    [Header("Player List")]
     List<PlayerFinishModel> playerFinishList = new List<PlayerFinishModel>();
 
     public void InitializePlayer(int id, string name, float time)
