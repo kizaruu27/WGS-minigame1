@@ -9,7 +9,7 @@ public class NPCInfo : MonoBehaviour
     public static NPCInfo instance;
     public int NPCID;
     public string NPCName;
-    public int NPCScore;
+    [SerializeField] int NPCScore;
 
     [Header("Check point system")]
     bool isRaceCompleted = false;
@@ -59,6 +59,7 @@ public class NPCInfo : MonoBehaviour
                 passedCheckPointNumber = checkpoint.checkPointNumber;
                 numberOfPassedCheckpoints++;
                 timeAtLastPassCheckpoint = Time.time;
+                NPCScore++;
 
                 view.RPC("UpdateNPCScore", RpcTarget.AllBuffered, NPCScore, NPCName);
 

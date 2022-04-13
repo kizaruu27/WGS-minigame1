@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCID: 0
   NPCName: 
-  NPCScore: 1
+  NPCScore: 0
 --- !u!114 &-3543055532776082106
 MonoBehaviour:
   m_ObjectHideFlags: 0

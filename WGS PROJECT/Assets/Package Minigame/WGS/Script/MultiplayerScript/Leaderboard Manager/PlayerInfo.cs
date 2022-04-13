@@ -9,7 +9,7 @@ public class PlayerInfo : MonoBehaviour
     public static PlayerInfo instance;
     public int playerID;
     public string playerName;
-    public int playerScore;
+    [SerializeField] int playerScore;
 
     [Header("Check point system")]
     bool isRaceCompleted = false;
@@ -52,6 +52,7 @@ public class PlayerInfo : MonoBehaviour
                 passedCheckPointNumber = checkpoint.checkPointNumber;
                 numberOfPassedCheckpoints++;
                 timeAtLastPassCheckpoint = Time.time;
+                playerScore++;
 
                 view.RPC(
                     "UpdatePlayerScore", RpcTarget.AllBuffered, //RPC Arguments
