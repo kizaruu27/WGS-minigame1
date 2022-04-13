@@ -22,9 +22,6 @@ public class NPCInfo : MonoBehaviour
 
     float timer = 0f;
 
-
-
-
     PhotonView view;
 
     private void Awake()
