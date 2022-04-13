@@ -36,8 +36,24 @@ public class PlayerRun_Multiplayer : MonoBehaviour
 
     private void Awake()
     {
-        btnJump = GameObject.Find("BtnJump").GetComponent<Button>();
-        btnRun = GameObject.Find("BtnRun").GetComponent<Button>();
+        btnJump = FindInActiveObjectByName("BtnJump")?.GetComponent<Button>();
+        btnRun = FindInActiveObjectByName("BtnRun")?.GetComponent<Button>();
+    }
+
+    GameObject FindInActiveObjectByName(string name)
+    {
+        Button[] objs = Resources.FindObjectsOfTypeAll<Button>() as Button[];
+        for (int i = 0; i < objs.Length; i++)
+        {
+            if (objs[i].hideFlags == HideFlags.None)
+            {
+                if (objs[i].name == name)
+                {
+                    return objs[i].gameObject;
+                }
+            }
+        }
+        return null;
     }
 
     void Start()
