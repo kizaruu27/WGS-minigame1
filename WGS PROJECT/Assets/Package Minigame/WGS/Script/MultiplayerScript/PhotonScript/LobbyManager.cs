@@ -202,14 +202,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             Modal("Connection Error", " Check internet connection!");
         }
 
-        if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 1) // ngecek jumlah player
-        {
-            playButton.SetActive(true);
-        }
-        else
-        {
-            playButton.SetActive(false);
-        }
+        playButton.SetActive(PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 1);
     }
 
     public void OnClickPlayButton(string targetScene)
