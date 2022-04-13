@@ -42,7 +42,7 @@ public class MultiplayerFinishUI : MonoBehaviour
 
             rowData.Rank.text = GenerateRankText(item.index);
             rowData.Name.text = item.value.name.Length <= 20 ? item.value.name : item.value.name.Substring(0, 20) + "...";
-            rowData.Score.text = $"{score - (item.index * 100)}";
+            rowData.Score.text = GenerateTimeText(item.value.time);
 
             cachePlayerList.Add(rowData);
         }
@@ -84,6 +84,21 @@ public class MultiplayerFinishUI : MonoBehaviour
             3 => "3rd",
             _ => $"{indexPosition}th"
         };
+    }
+
+    string GenerateTimeText(float time)
+    {
+        int totalSecondsInMinute = 60;
+
+        float minuteInFloat = time / totalSecondsInMinute;
+        int minute = minuteInFloat >= 1 ? (int)minuteInFloat : 0;
+
+        int seconds = minute != 0 ? (int)time - (minute * totalSecondsInMinute) : (int)time;
+
+        string minuteTxt = minute >= 1 ? $"{minute} Menit " : "";
+        string secondsTxt = seconds != 0 ? $"{seconds} Detik " : "";
+
+        return minuteTxt + secondsTxt;
     }
 
 
