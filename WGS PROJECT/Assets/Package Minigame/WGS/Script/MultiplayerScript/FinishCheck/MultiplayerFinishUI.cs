@@ -38,7 +38,8 @@ public class MultiplayerFinishUI : MonoBehaviour
         {
             RowUI rowData = Instantiate(row, transform).GetComponent<RowUI>();
 
-            rowData.SetColorItem(item.value.name == PhotonNetwork.LocalPlayer.NickName);
+            //! there will be the same name, use custom properties by id
+            rowData.SetColorItem(item.value.id == (int)PhotonNetwork.LocalPlayer.CustomProperties["MyPlayerID"]);
 
             rowData.Rank.text = GenerateRankText(item.index);
             rowData.Name.text = item.value.name.Length <= 20 ? item.value.name : item.value.name.Substring(0, 20) + "...";
