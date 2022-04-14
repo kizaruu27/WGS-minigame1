@@ -36,12 +36,18 @@ public class Multiplayer_NPCRun : MonoBehaviour
         }
 
         Player.transform.position += new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
-        StartCoroutine(FreezeOnStart());
+
+        StartCoroutine(
+            CheckAllPlayerConnected.instance.WaitAllPlayerReady(
+                () => StartCoroutine(
+                    FreezeOnStart()
+                )
+            )
+        );
     }
 
     IEnumerator FreezeOnStart()
     {
-
         yield return new WaitForSeconds(3);
         NPCCanMove = true;
     }

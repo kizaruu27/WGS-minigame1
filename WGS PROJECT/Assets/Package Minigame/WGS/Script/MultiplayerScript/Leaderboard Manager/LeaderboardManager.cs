@@ -15,6 +15,8 @@ public class LeaderboardManager : MonoBehaviour
     {
         public string PlayerName;
         public float PlayerScore;
+
+        public int PlayerID;
     }
 
     private void Awake()
@@ -64,6 +66,7 @@ public class LeaderboardManager : MonoBehaviour
         if (aPlayerIndex < LeaderboardItem.Count)
         {
             LeaderboardItem[aPlayerIndex].PlayerName = aPlayerName;
+            LeaderboardItem[aPlayerIndex].PlayerID = aPlayerIndex;
         }
     }
 
@@ -90,7 +93,7 @@ public class LeaderboardManager : MonoBehaviour
 
         }).ToList();
 
-        int playerIndex = LeaderboardItem.FindIndex(val => val.PlayerName == PhotonNetwork.LocalPlayer.NickName);
+        int playerIndex = LeaderboardItem.FindIndex(val => val.PlayerID == PhotonNetwork.LocalPlayer.ActorNumber - 1);
 
         Button playerItem = listButton[playerIndex];
         playerItem.GetComponent<Image>().color = Color.red;
@@ -100,7 +103,6 @@ public class LeaderboardManager : MonoBehaviour
 
     public void UpdateLeaderboard()
     {
-        // PV.RPC("SortPosisition", RpcTarget.AllBuffered);
         LeaderboardItem.Sort(SortDesc);
         for (int i = 0; i < LeaderboardText.Count; i++)
         {
@@ -112,27 +114,5 @@ public class LeaderboardManager : MonoBehaviour
     {
         ItemFocusToPlayer();
         UpdateLeaderboard();
-    }
-
-
-
-    public void TestUpdatePlayer1()
-    {
-        UpdatePlayerScore("Player 1", 100);
-    }
-
-    public void TestUpdatePlayer2()
-    {
-        UpdatePlayerScore("Player 2", 100);
-    }
-
-    public void TestUpdatePlayer3()
-    {
-        UpdatePlayerScore("Player 3", 100);
-    }
-
-    public void TestVisibleButton8()
-    {
-        SetButtonVisible(7, false);
     }
 }

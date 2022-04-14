@@ -71,7 +71,13 @@ public class PlayerRun_Multiplayer : MonoBehaviour
     {
         if (view.IsMine)
         {
-            StartCoroutine(Controler());
+            StartCoroutine(
+                CheckAllPlayerConnected.instance.WaitAllPlayerReady(
+                    () => StartCoroutine(
+                        Controler()
+                    )
+                )
+            );
 
             if (PlayerSpeed >= 0 && !IsItemSpeedActive)
             {
@@ -93,6 +99,8 @@ public class PlayerRun_Multiplayer : MonoBehaviour
 
             Player.transform.position += new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
         }
+
+
     }
 
     private void OnEnable()

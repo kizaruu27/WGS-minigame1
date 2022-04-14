@@ -21,10 +21,6 @@ public class NPCInfo : MonoBehaviour
     public event Action<NPCInfo> OnPassCheckpoint;
 
     float timer = 0f;
-
-
-
-
     PhotonView view;
 
     private void Awake()
@@ -39,7 +35,7 @@ public class NPCInfo : MonoBehaviour
 
     private void Update()
     {
-        StartCoroutine(WaitToStart());
+        StartCoroutine(CheckAllPlayerConnected.instance.WaitAllPlayerReady(() => StartCoroutine(WaitToStart())));
     }
 
     private void OnTriggerEnter(Collider coll)

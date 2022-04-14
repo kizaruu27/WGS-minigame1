@@ -78,12 +78,17 @@ public class PlayerInfo : MonoBehaviour
 
                 OnPassCheckpoint?.Invoke(this);
             }
+
+
         }
+
+
     }
+
 
     private void Update()
     {
-        StartCoroutine(WaitToStart());
+        StartCoroutine(CheckAllPlayerConnected.instance.WaitAllPlayerReady(() => StartCoroutine(WaitToStart())));
     }
 
 
