@@ -51,6 +51,7 @@ MonoBehaviour:
   - OrderPlayerScore
   - SortPosisition
   - UpdatePodiumList
+  - SetCountdown
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

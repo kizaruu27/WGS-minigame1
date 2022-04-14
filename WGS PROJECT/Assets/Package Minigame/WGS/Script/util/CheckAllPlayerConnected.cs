@@ -8,11 +8,6 @@ public class CheckAllPlayerConnected : MonoBehaviour
 {
 
     public static CheckAllPlayerConnected instance;
-
-    [SerializeField] GameObject CountdownUI;
-    [SerializeField] GameObject WaitingUI;
-
-
     private void Awake() => instance = this;
 
     public IEnumerator WaitAllPlayerReady(Func<Coroutine> OtherMethod)
@@ -23,4 +18,6 @@ public class CheckAllPlayerConnected : MonoBehaviour
 
         OtherMethod();
     }
+
+
 }
