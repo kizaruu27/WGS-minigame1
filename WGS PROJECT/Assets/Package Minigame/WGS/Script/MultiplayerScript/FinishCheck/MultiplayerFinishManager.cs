@@ -31,14 +31,13 @@ public class MultiplayerFinishManager : MonoBehaviour
     // PLAYER
     public void Finish(bool isPlayerCrossFinish, int id, float time, string name)
     {
-        //! instead of local player nickname change into custom properties id
-        if ((int)PhotonNetwork.LocalPlayer.CustomProperties["MyPlayerID"] == id)
+        if (PhotonNetwork.LocalPlayer.NickName == name)
         {
             LeaderboardUI.SetActive(!isPlayerCrossFinish);
             finishUI.SetActive(isPlayerCrossFinish);
         }
 
-        if (!playerFinishList.Any(item => item.id == id)) InitializePlayer(id, name, time);
+        InitializePlayer(id, name, time);
     }
 
     // NPC

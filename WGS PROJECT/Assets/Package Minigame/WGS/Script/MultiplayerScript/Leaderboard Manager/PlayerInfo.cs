@@ -10,8 +10,6 @@ public class PlayerInfo : MonoBehaviour
     public int playerID;
     public string playerName;
     [SerializeField] int playerScore;
-    ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
-
 
     [Header("Check point system")]
     bool isRaceCompleted = false;
@@ -33,9 +31,6 @@ public class PlayerInfo : MonoBehaviour
 
         playerName = view.Owner.NickName; // nama player 
         playerID = view.Owner.ActorNumber - 1; // ID player 
-
-        playerProperties["MyPlayerID"] = playerID;
-        PhotonNetwork.LocalPlayer.CustomProperties = playerProperties;
     }
 
     private void Start() => view.RPC("UpdatePlayerName", RpcTarget.AllBuffered, playerID, playerName);
