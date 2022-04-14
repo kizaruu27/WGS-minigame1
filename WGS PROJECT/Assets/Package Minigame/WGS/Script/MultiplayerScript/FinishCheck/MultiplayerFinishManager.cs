@@ -31,7 +31,7 @@ public class MultiplayerFinishManager : MonoBehaviour
     // PLAYER
     public void Finish(bool isPlayerCrossFinish, int id, float time, string name)
     {
-        if (PhotonNetwork.LocalPlayer.NickName == name)
+        if (PhotonNetwork.LocalPlayer.ActorNumber - 1 == id)
         {
             LeaderboardUI.SetActive(!isPlayerCrossFinish);
             finishUI.SetActive(isPlayerCrossFinish);
