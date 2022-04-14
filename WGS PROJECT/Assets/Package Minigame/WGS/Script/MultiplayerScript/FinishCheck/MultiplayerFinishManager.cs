@@ -26,7 +26,7 @@ public class MultiplayerFinishManager : MonoBehaviour
         playerFinishList.Add(playerFinish);
     }
 
-    public IEnumerable<PlayerFinishModel> GetLeaderboardData() => playerFinishList.OrderBy(val => val.time);
+    public IEnumerable<PlayerFinishModel> GetLeaderboardData() => playerFinishList.OrderBy(player => player.time);
 
     // PLAYER
     public void Finish(bool isPlayerCrossFinish, int id, float time, string name)
@@ -43,10 +43,6 @@ public class MultiplayerFinishManager : MonoBehaviour
     // NPC
     public void Finish(int id, float time, string name)
     {
-        Debug.Log(name + " is duplicate " + playerFinishList.Any(item => item.id == id));
-        if (!playerFinishList.Any(item => item.id == id))
-        {
-            InitializePlayer(id, name, time);
-        }
+        if (!playerFinishList.Any(item => item.id == id)) InitializePlayer(id, name, time);
     }
 }

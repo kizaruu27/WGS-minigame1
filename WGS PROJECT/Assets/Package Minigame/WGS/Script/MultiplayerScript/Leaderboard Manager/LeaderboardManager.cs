@@ -74,9 +74,7 @@ public class LeaderboardManager : MonoBehaviour
         {
             if (LeaderboardItem[i].PlayerName == aPlayerName)
             {
-
-                LeaderboardItem[i].PlayerScore += aScore;
-                // PV.RPC("OrderPlayerScore", RpcTarget.AllBufferedViaServer, i, aScore);
+                LeaderboardItem[i].PlayerScore = aScore; // change the increment
             }
         }
     }

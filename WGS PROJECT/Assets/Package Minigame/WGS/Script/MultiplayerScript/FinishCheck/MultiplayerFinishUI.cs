@@ -104,7 +104,6 @@ public class MultiplayerFinishUI : MonoBehaviour
 
     public void OnClickBackToMenu()
     {
-        PhotonNetwork.Disconnect();
         PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.LoadLevel(2);

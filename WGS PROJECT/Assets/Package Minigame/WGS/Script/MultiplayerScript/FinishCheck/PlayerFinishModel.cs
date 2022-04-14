@@ -1,4 +1,4 @@
-public class PlayerFinishModel
+public struct PlayerFinishModel
 {
     public int id { get; set; }
     public string name { get; set; }
