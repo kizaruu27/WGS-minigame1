@@ -37,7 +37,7 @@ public class MultiplayerFinishManager : MonoBehaviour
             finishUI.SetActive(isPlayerCrossFinish);
         }
 
-        InitializePlayer(id, name, time);
+        if (!playerFinishList.Any(item => item.id == id)) InitializePlayer(id, name, time);
     }
 
     // NPC
