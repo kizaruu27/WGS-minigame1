@@ -47,7 +47,7 @@ public class Multiplayer_NPCRun : MonoBehaviour
 
     IEnumerator FreezeOnStart()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         NPCCanMove = true;
     }
 }

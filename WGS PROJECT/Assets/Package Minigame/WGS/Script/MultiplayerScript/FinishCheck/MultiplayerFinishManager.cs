@@ -16,7 +16,7 @@ public class MultiplayerFinishManager : MonoBehaviour
     [Header("Player List")]
     List<PlayerFinishModel> playerFinishList = new List<PlayerFinishModel>();
 
-    int _CountPlayerDisconnect = 0;
+    public int CountPlayerDisconnect { get; set; }
 
 
     public void InitializePlayer(int id, string name, float time)
@@ -48,11 +48,4 @@ public class MultiplayerFinishManager : MonoBehaviour
     {
         if (!playerFinishList.Any(item => item.id == id)) InitializePlayer(id, name, time);
     }
-
-    public void SetPlayerDisconnect(int playerDisconnect)
-    {
-        _CountPlayerDisconnect = playerDisconnect;
-    }
-
-    public int GetPlayerDisconnect() => _CountPlayerDisconnect;
 }

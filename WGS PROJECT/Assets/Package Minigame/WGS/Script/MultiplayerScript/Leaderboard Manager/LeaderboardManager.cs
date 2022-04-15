@@ -121,7 +121,7 @@ public class LeaderboardManager : MonoBehaviourPunCallbacks
         }
 
         MultiplayerFinishManager FinishManager = GameObject.FindObjectOfType<MultiplayerFinishManager>();
-        FinishManager.SetPlayerDisconnect(LeaderboardSlotItem);
+        FinishManager.CountPlayerDisconnect = LeaderboardSlotItem;
 
     }
 

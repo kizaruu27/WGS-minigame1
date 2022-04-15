@@ -7,7 +7,7 @@ using TMPro;
 public class CountdownUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _CountdownTXT;
-    public float InitialCountdown = 5f;
+    public float InitialCountdown = 4f;
 
     PhotonView view;
 

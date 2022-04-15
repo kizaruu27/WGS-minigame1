@@ -210,7 +210,7 @@ public class PlayerRun_Multiplayer : MonoBehaviour
 
     IEnumerator Controler()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         Desktop();
         Mobile();
     }

@@ -94,7 +94,7 @@ public class NPCInfo : MonoBehaviour
 
     IEnumerator WaitToStart()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
 
         timer += Time.deltaTime;
     }
