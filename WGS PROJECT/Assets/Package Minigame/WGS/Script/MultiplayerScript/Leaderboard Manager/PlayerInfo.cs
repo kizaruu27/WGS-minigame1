@@ -33,8 +33,11 @@ public class PlayerInfo : MonoBehaviour
         playerID = view.Owner.ActorNumber - 1; // ID player 
     }
 
-    private void Start() => view.RPC("UpdatePlayerName", RpcTarget.AllBuffered, playerID, playerName);
-
+    private void Start()
+    {
+        view.RPC("UpdatePlayerName", RpcTarget.AllBuffered, playerID, playerName);
+        view.RPC("SetPlayerName", RpcTarget.AllBuffered, playerName);
+    }
     private void OnTriggerEnter(Collider coll)
     {
         if (coll.CompareTag("Checkpoint"))
@@ -86,10 +89,13 @@ public class PlayerInfo : MonoBehaviour
     }
 
 
-    private void Update()
-    {
-        StartCoroutine(CheckAllPlayerConnected.instance.WaitAllPlayerReady(() => StartCoroutine(WaitToStart())));
-    }
+    private void Update() => StartCoroutine(
+            CheckAllPlayerConnected.instance.WaitAllPlayerReady(
+                () => StartCoroutine(
+                    WaitToStart()
+                )
+            )
+        );
 
 
     [PunRPC]
@@ -109,6 +115,8 @@ public class PlayerInfo : MonoBehaviour
     void UpdatePlayerName(int id, string name) => LeaderboardManager.instance.UpdatePlayerName(id, name);
 
 
+    [PunRPC]
+    void SetPlayerName(string name) => LeaderboardManager.instance.SetPlayerName(name);
 
     IEnumerator WaitToStart()
     {

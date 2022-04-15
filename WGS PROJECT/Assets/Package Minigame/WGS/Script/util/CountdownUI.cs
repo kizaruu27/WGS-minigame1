@@ -44,11 +44,7 @@ public class CountdownUI : MonoBehaviour
         _CountdownTXT.fontSize = InitialCountdown > 2 ? 200f : 80f;
         _CountdownTXT.text = InitialCountdown > 2 ? $"{(int)(InitialCountdown - 1)}" : "Start";
 
-        if (InitialCountdown <= 1f)
-        {
-            gameObject.SetActive(false);
-            // StopCoroutine(WaitAllPlayerReadyUI());
-        }
+        gameObject.SetActive(!(InitialCountdown <= 1f));
     }
 
     [PunRPC]

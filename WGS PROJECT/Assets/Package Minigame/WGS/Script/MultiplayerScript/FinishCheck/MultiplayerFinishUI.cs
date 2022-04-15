@@ -7,10 +7,11 @@ using System.Collections.Generic;
 
 public class MultiplayerFinishUI : MonoBehaviour
 {
+    public static MultiplayerFinishUI instance;
+
     [Header("Components")]
     public MultiplayerFinishManager finishManager;
     public RowUI row;
-
 
     [Header("Player Score")]
     int score = 1000;
@@ -20,6 +21,8 @@ public class MultiplayerFinishUI : MonoBehaviour
     IEnumerable<PlayerFinishModel> PlayerFinish;
     List<RowUI> cachePlayerList = new List<RowUI>();
 
+
+    private void Awake() => instance = this;
 
     private void Update()
     {
@@ -52,7 +55,7 @@ public class MultiplayerFinishUI : MonoBehaviour
     {
         if (PhotonNetwork.CurrentRoom.MaxPlayers > cachePlayerList.Count)
         {
-            for (int i = 0; i < (int)PhotonNetwork.CurrentRoom.MaxPlayers - cachePlayerList.Count; i++)
+            for (int i = 0; i < ((int)PhotonNetwork.CurrentRoom.MaxPlayers - finishManager.GetPlayerDisconnect()) - cachePlayerList.Count; i++)
             {
                 RowUI rowData = Instantiate(row, transform).GetComponent<RowUI>();
 
@@ -63,8 +66,8 @@ public class MultiplayerFinishUI : MonoBehaviour
                 cachePlayerList.Add(rowData);
             }
         }
-
     }
+
 
     public void RemovePlayerListCache()
     {

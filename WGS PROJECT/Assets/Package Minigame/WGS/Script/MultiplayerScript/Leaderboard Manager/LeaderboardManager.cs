@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class LeaderboardManager : MonoBehaviour
+public class LeaderboardManager : MonoBehaviourPunCallbacks
 {
     public static LeaderboardManager instance;
     PhotonView PV;
@@ -43,6 +43,7 @@ public class LeaderboardManager : MonoBehaviour
 
     [Header("Leaderboard Item")]
     public List<CLeaderboardItem> LeaderboardItem;
+    public List<string> PlayersNameCached = new List<string>();
 
     public void InitializePlayer(string aPlayerName, float aScore)
     {
@@ -68,6 +69,11 @@ public class LeaderboardManager : MonoBehaviour
             LeaderboardItem[aPlayerIndex].PlayerName = aPlayerName;
             LeaderboardItem[aPlayerIndex].PlayerID = aPlayerIndex;
         }
+    }
+
+    public void SetPlayerName(string PlayerName)
+    {
+        PlayersNameCached.Add(PlayerName);
     }
 
     //! buat update playerscore setiap kali terjadi penambahan score
@@ -103,16 +109,39 @@ public class LeaderboardManager : MonoBehaviour
 
     public void UpdateLeaderboard()
     {
+        int LeaderboardSlotItem = LeaderboardText.Count - LeaderboardItem.Count;
+
         LeaderboardItem.Sort(SortDesc);
-        for (int i = 0; i < LeaderboardText.Count; i++)
+
+        foreach (Text LText in LeaderboardText) LText.text = "Player Disconnected";
+
+        for (int i = 0; i < LeaderboardText.Count - LeaderboardSlotItem; i++)
         {
             LeaderboardText[i].text = LeaderboardItem[i].PlayerName;
         }
+
+        MultiplayerFinishManager FinishManager = GameObject.FindObjectOfType<MultiplayerFinishManager>();
+        FinishManager.SetPlayerDisconnect(LeaderboardSlotItem);
+
     }
+
+    public void RemovePlayerOnDisconnect()
+    {
+        List<string> PlayersByNetwork = PhotonNetwork.PlayerList.Select(Player => Player.NickName).ToList();
+        List<string> DisconnectedPlayers = PlayersNameCached.Except(PlayersByNetwork).ToList();
+
+        var filteredPlayers = LeaderboardItem.Where(val => !DisconnectedPlayers.Contains(val.PlayerName)).ToList();
+
+        LeaderboardItem.Clear();
+        LeaderboardItem = filteredPlayers;
+    }
+
 
     void LateUpdate()
     {
+
         ItemFocusToPlayer();
+        RemovePlayerOnDisconnect();
         UpdateLeaderboard();
     }
 }

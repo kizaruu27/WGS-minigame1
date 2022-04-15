@@ -10,13 +10,11 @@ public class CheckAllPlayerConnected : MonoBehaviour
     public static CheckAllPlayerConnected instance;
     private void Awake() => instance = this;
 
-    public IEnumerator WaitAllPlayerReady(Func<Coroutine> OtherMethod)
+    public IEnumerator WaitAllPlayerReady(Func<Coroutine> ActionMethod)
     {
-        Debug.Log("Player belum lengkap");
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Player").Length == (int)PhotonNetwork.PlayerList.Length);
-        Debug.Log("Player Sudah Lengkap");
 
-        OtherMethod();
+        ActionMethod();
     }
 
 
