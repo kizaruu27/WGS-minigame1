@@ -55,7 +55,7 @@ public class MultiplayerFinishUI : MonoBehaviour
     {
         if (PhotonNetwork.CurrentRoom.MaxPlayers > cachePlayerList.Count)
         {
-            for (int i = 0; i < ((int)PhotonNetwork.CurrentRoom.MaxPlayers - finishManager.CountPlayerDisconnect) - cachePlayerList.Count; i++)
+            for (int i = 0; i < ((int)PhotonNetwork.CurrentRoom.MaxPlayers - finishManager.TotalPlayersDisconnect) - cachePlayerList.Count; i++)
             {
                 RowUI rowData = Instantiate(row, transform).GetComponent<RowUI>();
 

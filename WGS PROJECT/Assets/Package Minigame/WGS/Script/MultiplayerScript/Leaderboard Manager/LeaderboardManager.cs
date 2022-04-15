@@ -43,7 +43,7 @@ public class LeaderboardManager : MonoBehaviourPunCallbacks
 
     [Header("Leaderboard Item")]
     public List<CLeaderboardItem> LeaderboardItem;
-    public List<string> PlayersNameCached = new List<string>();
+    public List<string> TotalCachedPlayers = new List<string>();
 
     public void InitializePlayer(string aPlayerName, float aScore)
     {
@@ -73,7 +73,7 @@ public class LeaderboardManager : MonoBehaviourPunCallbacks
 
     public void SetPlayerName(string PlayerName)
     {
-        PlayersNameCached.Add(PlayerName);
+        TotalCachedPlayers.Add(PlayerName);
     }
 
     //! buat update playerscore setiap kali terjadi penambahan score
@@ -109,31 +109,31 @@ public class LeaderboardManager : MonoBehaviourPunCallbacks
 
     public void UpdateLeaderboard()
     {
-        int LeaderboardSlotItem = LeaderboardText.Count - LeaderboardItem.Count;
+        int TotalPlayerDisconnect = LeaderboardText.Count - LeaderboardItem.Count;
 
         LeaderboardItem.Sort(SortDesc);
 
-        foreach (Text LText in LeaderboardText) LText.text = "Player Disconnected";
+        foreach (Text EmptyPlayer in LeaderboardText) EmptyPlayer.text = "Player Disconnected";
 
-        for (int i = 0; i < LeaderboardText.Count - LeaderboardSlotItem; i++)
+        for (int i = 0; i < LeaderboardText.Count - TotalPlayerDisconnect; i++)
         {
             LeaderboardText[i].text = LeaderboardItem[i].PlayerName;
         }
 
         MultiplayerFinishManager FinishManager = GameObject.FindObjectOfType<MultiplayerFinishManager>();
-        FinishManager.CountPlayerDisconnect = LeaderboardSlotItem;
+        FinishManager.TotalPlayersDisconnect = TotalPlayerDisconnect;
 
     }
 
     public void RemovePlayerOnDisconnect()
     {
-        List<string> PlayersByNetwork = PhotonNetwork.PlayerList.Select(Player => Player.NickName).ToList();
-        List<string> DisconnectedPlayers = PlayersNameCached.Except(PlayersByNetwork).ToList();
+        List<string> TotalNetworkPlayers = PhotonNetwork.PlayerList.Select(Player => Player.NickName).ToList();
+        List<string> DisconnectPlayers = TotalCachedPlayers.Except(TotalNetworkPlayers).ToList();
 
-        var filteredPlayers = LeaderboardItem.Where(val => !DisconnectedPlayers.Contains(val.PlayerName)).ToList();
+        var TotalPlayersLeft = LeaderboardItem.Where(Player => !DisconnectPlayers.Contains(Player.PlayerName)).ToList();
 
         LeaderboardItem.Clear();
-        LeaderboardItem = filteredPlayers;
+        LeaderboardItem = TotalPlayersLeft;
     }
 
 

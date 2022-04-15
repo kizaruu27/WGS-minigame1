@@ -16,7 +16,7 @@ public class MultiplayerFinishManager : MonoBehaviour
     [Header("Player List")]
     List<PlayerFinishModel> playerFinishList = new List<PlayerFinishModel>();
 
-    public int CountPlayerDisconnect { get; set; }
+    public int TotalPlayersDisconnect { get; set; }
 
 
     public void InitializePlayer(int id, string name, float time)
@@ -29,7 +29,7 @@ public class MultiplayerFinishManager : MonoBehaviour
         playerFinishList.Add(playerFinish);
     }
 
-    public IEnumerable<PlayerFinishModel> GetLeaderboardData() => playerFinishList.OrderBy(player => player.time);
+    public IEnumerable<PlayerFinishModel> GetLeaderboardData() => playerFinishList.OrderBy(player => player.time).ThenBy(player => player.name);
 
     // PLAYER
     public void Finish(bool isPlayerCrossFinish, int id, float time, string name)
