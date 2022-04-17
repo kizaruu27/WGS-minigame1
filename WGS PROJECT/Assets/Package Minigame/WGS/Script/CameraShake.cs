@@ -26,7 +26,7 @@ public class CameraShake : MonoBehaviour
 
     private void Update()
     {
-        if (Shake && view.IsMine)
+        if (view.IsMine)
         {
             if (duration > 0)
             {
@@ -35,7 +35,7 @@ public class CameraShake : MonoBehaviour
             }
             else
             {
-                Shake = false;
+                //Shake = false;
                 duration = initialDuration;
                 cam.localPosition = starPos;
             }

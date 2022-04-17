@@ -30,8 +30,7 @@ public class Singleplayer_ItemStop : MonoBehaviour
         if (collider.gameObject.tag == PlayerTag)
         {
             // print ("bisa bro");
-            mesh.enabled = false;
-            sphereCollider.enabled = false;
+           
             StartCoroutine(FreezeCanMove(collider));
         }
         if (collider.gameObject.tag == PlayerEnemy)
@@ -45,15 +44,15 @@ public class Singleplayer_ItemStop : MonoBehaviour
     }
     IEnumerator FreezeCanMove(Collider collider)
     {
+        mesh.enabled = false;
+        sphereCollider.enabled = false;
+
         WGS_PlayerRun PlayerMove = collider.GetComponent<WGS_PlayerRun>();
-        PlayerMove.CanMove = false;
-        PlayerMove.IsItemSpeedActive = false;
-        PlayerMove.PlayerSpeed = 0;
+        PlayerMove.maxSpeed = 0;
 
         yield return new WaitForSeconds(TimeFreeze);
 
-        PlayerMove.CanMove = true;
-
+        PlayerMove.maxSpeed = 10;
         Destroy(gameObject);
     }
     IEnumerator FreezeNPCCanMove(Collider collider)

@@ -36,7 +36,7 @@ public class CharacterJump : MonoBehaviour
         if (TypeCharacter == PLAYER)
         {
             WGS_PlayerRun player = GetComponent<WGS_PlayerRun>();
-            IsMove = player.CanMove;
+            //IsMove = player.CanMove;
 
             IsJump = Input.GetKeyDown(KeyCode.Space) && IsGrounded;
         }

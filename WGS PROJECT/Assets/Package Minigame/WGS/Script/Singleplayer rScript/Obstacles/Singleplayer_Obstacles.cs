@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Singleplayer_Obstacles : MonoBehaviour
 {
-    [SerializeField] float newPlayerSpeed;
-    [SerializeField] float delayTime;
+    [SerializeField] float newPlayerSpeed = 3f;
+    [SerializeField] float delayTime = 3;
 
     private void OnTriggerEnter(Collider coll)
     {
         if (coll.gameObject.tag == "Player")
         {
-            Zetcode_CameraFollowPlayerFixed.cameraFollow.isShake = true;
-
             StartCoroutine(playerSlowed(coll));
         }
 
@@ -25,12 +23,12 @@ public class Singleplayer_Obstacles : MonoBehaviour
 
     IEnumerator playerSlowed(Collider coll)
     {
-        WGS_PlayerRun playerMove = coll.GetComponent<WGS_PlayerRun>();
-        playerMove.maxSpeed = newPlayerSpeed;
+       WGS_PlayerRun playerMove = coll.GetComponent<WGS_PlayerRun>();
+       playerMove.maxSpeed = newPlayerSpeed;
 
-        yield return new WaitForSeconds(delayTime);
+       yield return new WaitForSeconds(delayTime);
 
-        playerMove.maxSpeed = 10;
+       playerMove.maxSpeed = 10;
     }
 
     IEnumerator NPCSlowed(Collider coll)

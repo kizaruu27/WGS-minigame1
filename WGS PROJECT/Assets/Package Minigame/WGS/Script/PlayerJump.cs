@@ -30,12 +30,12 @@ public class PlayerJump : MonoBehaviour
         //hapus platform unity kalau ingin production build
         if (CheckPlatform.isMacUnity || CheckPlatform.isWindowsUnity || CheckPlatform.isWeb)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded && playerMove.CanMove)
-            {
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                PlayerAnim.SetTrigger("Jump");
-                isGrounded = false;
-            }
+            //if (Input.GetKeyDown(KeyCode.Space) && isGrounded && playerMove.CanMove)
+            //{
+            //    rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            //    PlayerAnim.SetTrigger("Jump");
+            //    isGrounded = false;
+            //}
         }
 
     }
@@ -48,11 +48,11 @@ public class PlayerJump : MonoBehaviour
 
     public void ButtonClick()
     {
-        if (isGrounded && playerMove.CanMove)
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isGrounded = false;
-        }
+        //if (isGrounded && playerMove.CanMove)
+        //{
+        //    rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        //    isGrounded = false;
+        //}
     }
 
     private void OnCollisionEnter(Collision collider)
