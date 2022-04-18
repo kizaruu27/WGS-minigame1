@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WGS_PlayerRun : MonoBehaviour
 {
@@ -17,6 +18,14 @@ public class WGS_PlayerRun : MonoBehaviour
     public float jumpForce;
     bool isGrounded;
 
+    [Header("Button Control")]
+    public Button btnRun;
+    public Button btnJump;
+
+    private void Awake() {
+        btnRun.gameObject.SetActive(CheckPlatform.isAndroid || CheckPlatform.isIos);
+        btnJump.gameObject.SetActive(CheckPlatform.isAndroid || CheckPlatform.isIos);
+    }
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
