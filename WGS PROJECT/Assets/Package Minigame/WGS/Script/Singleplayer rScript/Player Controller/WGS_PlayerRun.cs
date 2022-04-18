@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WGS_PlayerRun : MonoBehaviour
 {
@@ -17,6 +18,14 @@ public class WGS_PlayerRun : MonoBehaviour
     public float jumpForce;
     bool isGrounded;
 
+    [Header("Button Control")]
+    public Button btnRun;
+    public Button btnJump;
+
+    private void Awake() {
+        btnRun.gameObject.SetActive(CheckPlatform.isAndroid || CheckPlatform.isIos);
+        btnJump.gameObject.SetActive(CheckPlatform.isAndroid || CheckPlatform.isIos);
+    }
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -24,11 +33,17 @@ public class WGS_PlayerRun : MonoBehaviour
 
     void Update()
     {
-        //player input
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            PlayerSpeed += 1;
-            TargetAnimator.SetBool("isRunning", true);
+        if(CheckPlatform.isMacUnity || CheckPlatform.isWindowsUnity || CheckPlatform.isWeb){
+            //player input
+            if (Input.GetKeyDown(KeyCode.Mouse0)){
+                Run();
+            }
+
+            //player jump
+            if (Input.GetButtonDown("Jump"))
+            {
+                Jump();
+            }               
         }
 
         //player speed handler
@@ -52,13 +67,10 @@ public class WGS_PlayerRun : MonoBehaviour
         }
 
         Player.transform.position += new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
-
-        //player jump
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            Jump();
-        }
-
+    }
+        private void OnEnable() {
+        btnRun.onClick.AddListener(Run);
+        btnJump.onClick.AddListener(Jump);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -70,8 +82,13 @@ public class WGS_PlayerRun : MonoBehaviour
         }
     }
 
+    void Run(){
+        PlayerSpeed += 1;
+        TargetAnimator.SetBool("isRunning", true);
+    }
     void Jump()
     {
+        if (isGrounded)
         rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
         isGrounded = false;
         TargetAnimator.SetTrigger("Jump");
