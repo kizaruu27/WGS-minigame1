@@ -18,13 +18,17 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
     public Image playerAvatar;
     public Sprite[] avatars;
+    public int chooseAvatar;
 
 
     Player player;
 
     private void Awake()
     {
-        playerProperties["playerAvatar"] = PhotonNetwork.LocalPlayer.ActorNumber;
+        chooseAvatar = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+        PlayerPrefs.SetInt("playerAvatar", chooseAvatar);
+
+        playerProperties["playerAvatar"] = PhotonNetwork.LocalPlayer.ActorNumber - 1;
         PhotonNetwork.LocalPlayer.CustomProperties = playerProperties;
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
@@ -50,15 +54,13 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
     public void OnClickLeftArrow()
     {
+        chooseAvatar = chooseAvatar == 0 ? avatars.Length - 1 : chooseAvatar - 1;
 
-        if ((int)playerProperties["playerAvatar"] == 0)
-        {
-            playerProperties["playerAvatar"] = avatars.Length - 1;
-        }
-        else
-        {
-            playerProperties["playerAvatar"] = (int)playerProperties["playerAvatar"] - 1;
-        }
+        playerProperties["playerAvatar"] =
+            (int)playerProperties["playerAvatar"] == 0 ?
+                avatars.Length - 1 : (int)playerProperties["playerAvatar"] - 1;
+
+        PlayerPrefs.SetInt("playerAvatar", chooseAvatar);
 
         PhotonNetwork.LocalPlayer.CustomProperties = playerProperties;
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
@@ -66,16 +68,13 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
     public void OnClickRightArrow()
     {
+        chooseAvatar = chooseAvatar == avatars.Length - 1 ? 0 : chooseAvatar + 1;
 
+        playerProperties["playerAvatar"] =
+            (int)playerProperties["playerAvatar"] == avatars.Length - 1 ?
+                0 : (int)playerProperties["playerAvatar"] + 1;
 
-        if ((int)playerProperties["playerAvatar"] == avatars.Length - 1)
-        {
-            playerProperties["playerAvatar"] = 0;
-        }
-        else
-        {
-            playerProperties["playerAvatar"] = (int)playerProperties["playerAvatar"] + 1;
-        }
+        PlayerPrefs.SetInt("playerAvatar", chooseAvatar);
 
         PhotonNetwork.LocalPlayer.CustomProperties = playerProperties;
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
