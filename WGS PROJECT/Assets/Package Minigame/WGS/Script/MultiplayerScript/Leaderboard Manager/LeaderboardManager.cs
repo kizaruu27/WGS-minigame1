@@ -44,6 +44,9 @@ public class LeaderboardManager : MonoBehaviourPunCallbacks
     [Header("Leaderboard Item")]
     public List<CLeaderboardItem> LeaderboardItem;
     public List<string> TotalCachedPlayers = new List<string>();
+    
+    [Header("Player Count")]
+    [SerializeField] int playerDisconnected = 0;
 
     public void InitializePlayer(string aPlayerName, float aScore)
     {
@@ -102,8 +105,16 @@ public class LeaderboardManager : MonoBehaviourPunCallbacks
         int playerIndex = LeaderboardItem.FindIndex(val => val.PlayerID == PhotonNetwork.LocalPlayer.ActorNumber - 1);
 
         Button playerItem = listButton[playerIndex];
-        playerItem.GetComponent<Image>().color = Color.red;
+        playerItem.GetComponent<Image>().color = Color.green;
         playerItem.GetComponentInChildren<Text>().color = new Color32(255, 255, 255, 255);
+
+        if (playerDisconnected > 0){
+            for(int i = 1; i <= playerDisconnected; i++){
+                Button highlight = listButton[LeaderboardListButton.Count - i];
+                highlight.GetComponent<Image>().color = Color.red;
+                highlight.GetComponentInChildren<Text>().color = new Color32(255, 255, 255, 255);
+            }
+        }
     }
 
 
@@ -134,6 +145,14 @@ public class LeaderboardManager : MonoBehaviourPunCallbacks
 
         LeaderboardItem.Clear();
         LeaderboardItem = TotalPlayersLeft;
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        base.OnPlayerLeftRoom(otherPlayer);
+        playerDisconnected++;
+
+        // Debug.Log($"ID Player disc: {otherPlayer.ActorNumber}");
     }
 
 
