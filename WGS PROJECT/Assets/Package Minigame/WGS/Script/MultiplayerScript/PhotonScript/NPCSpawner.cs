@@ -17,10 +17,14 @@ public class NPCSpawner : MonoBehaviour
     public List<int> playerAvatarIndex = new List<int>();
     bool isNPCAlreadySpawned;
 
+    PhotonView view;
+
     private void Awake()
     {
         playerMax = PhotonNetwork.CurrentRoom.MaxPlayers;
         playerNow = PhotonNetwork.CurrentRoom.PlayerCount;
+
+        view = GetComponent<PhotonView>();
     }
 
 
@@ -55,7 +59,7 @@ public class NPCSpawner : MonoBehaviour
         {
             List<int> filteredAvatar = NPCIndex.Except(playerAvatarIndex).ToList();
 
-            if (PhotonNetwork.IsMasterClient)
+            if (PhotonNetwork.IsMasterClient && !isNPCAlreadySpawned)
             {
                 for (int i = 0; i < playerMax; i++)
                 {
@@ -69,10 +73,18 @@ public class NPCSpawner : MonoBehaviour
                     }
 
                     isNPCAlreadySpawned = i == playerMax - 1;
+
+                    view.RPC("SyncNPCStatus", RpcTarget.OthersBuffered, isNPCAlreadySpawned);
                 }
             }
 
 
         }
+    }
+
+    [PunRPC]
+    void SyncNPCStatus(bool alreadySpawned)
+    {
+        isNPCAlreadySpawned = alreadySpawned;
     }
 }
