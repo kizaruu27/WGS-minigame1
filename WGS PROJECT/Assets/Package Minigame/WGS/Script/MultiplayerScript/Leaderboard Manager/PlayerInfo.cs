@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using Photon.Pun;
+using TMPro;
 
 public class PlayerInfo : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerInfo : MonoBehaviour
     public static PlayerInfo instance;
     public int playerID;
     public string playerName;
+    public TMP_Text characterName; 
     [SerializeField] int playerScore;
 
     [Header("Check point system")]
@@ -33,6 +35,8 @@ public class PlayerInfo : MonoBehaviour
         playerID = view.Owner.ActorNumber - 1; // ID player 
 
         view.RPC("SetAvatarIndex", RpcTarget.AllBuffered, PlayerPrefs.GetInt("playerAvatar"));
+
+        characterName.text = playerName;
     }
 
     private void Start()

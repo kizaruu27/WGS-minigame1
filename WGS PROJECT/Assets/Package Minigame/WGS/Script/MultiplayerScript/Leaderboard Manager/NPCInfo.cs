@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using Photon.Pun;
 using System.Collections;
+using TMPro;
 
 public class NPCInfo : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class NPCInfo : MonoBehaviour
     public static NPCInfo instance;
     public int NPCID;
     public string NPCName;
+    public TMP_Text characterName; 
     [SerializeField] int NPCScore;
 
     [Header("Check point system")]
@@ -27,11 +29,14 @@ public class NPCInfo : MonoBehaviour
     {
         instance = this;
         view = GetComponent<PhotonView>();
-
+        
     }
     public void SetPlayerInfo(int newID, string newName) => view.RPC("SetNameNPC", RpcTarget.AllBuffered, newID, newName);
 
-    private void Start() => view.RPC("UpdateNPCName", RpcTarget.AllBuffered, NPCID, NPCName);
+    private void Start() {
+        view.RPC("UpdateNPCName", RpcTarget.AllBuffered, NPCID, NPCName);
+        characterName.text = NPCName;
+    } 
 
     private void Update()
     {
