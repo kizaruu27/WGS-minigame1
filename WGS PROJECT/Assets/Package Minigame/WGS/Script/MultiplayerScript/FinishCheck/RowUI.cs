@@ -15,7 +15,7 @@ public class RowUI : MonoBehaviour
         if (IsMine)
         {
             Image colorItem = gameObject.GetComponent<Image>();
-            colorItem.color = Color.red;
+            colorItem.color = Color.green;
 
             TextMeshProUGUI[] colorTextItem = gameObject.GetComponentsInChildren<TextMeshProUGUI>();
 
@@ -26,4 +26,15 @@ public class RowUI : MonoBehaviour
         }
     }
 
+    public void SetHighlightPlayerDC(){
+            Image colorItem = gameObject.GetComponent<Image>();
+            colorItem.color = Color.red;
+
+            TextMeshProUGUI[] colorTextItem = gameObject.GetComponentsInChildren<TextMeshProUGUI>();
+
+            foreach (var item in colorTextItem)
+            {
+                item.color = Color.white;
+            }
+    }
 }

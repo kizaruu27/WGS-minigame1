@@ -48,4 +48,10 @@ public class MultiplayerFinishManager : MonoBehaviour
     {
         if (!playerFinishList.Any(item => item.id == id)) InitializePlayer(id, name, time);
     }
+
+    private void LateUpdate() {
+        if(TotalPlayersDisconnect > 0){
+            // Finish(playerFinishList.Count + 1, 0, "Player Disconnected");
+        }
+    }
 }

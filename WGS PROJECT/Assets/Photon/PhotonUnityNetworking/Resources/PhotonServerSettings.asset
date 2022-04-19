@@ -54,6 +54,7 @@ MonoBehaviour:
   - SetCountdown
   - SetPlayerName
   - SetAvatarIndex
+  - sentPlayerDiscCount
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

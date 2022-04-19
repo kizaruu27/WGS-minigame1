@@ -45,7 +45,7 @@ public class LeaderboardManager : MonoBehaviourPunCallbacks
     public List<CLeaderboardItem> LeaderboardItem;
     public List<string> TotalCachedPlayers = new List<string>();
     
-    [Header("Player Count")]
+    [Header("Player Disconnect info")]
     [SerializeField] int playerDisconnected = 0;
 
     public void InitializePlayer(string aPlayerName, float aScore)
@@ -131,9 +131,11 @@ public class LeaderboardManager : MonoBehaviourPunCallbacks
             LeaderboardText[i].text = LeaderboardItem[i].PlayerName;
         }
 
-        MultiplayerFinishManager FinishManager = GameObject.FindObjectOfType<MultiplayerFinishManager>();
-        FinishManager.TotalPlayersDisconnect = TotalPlayerDisconnect;
+        // MultiplayerFinishManager FinishManager = GameObject.FindObjectOfType<MultiplayerFinishManager>();
+        // FinishManager.TotalPlayersDisconnect = TotalPlayerDisconnect;
 
+        
+        PV.RPC("sentPlayerDiscCount", RpcTarget.AllBuffered, playerDisconnected);
     }
 
     public void RemovePlayerOnDisconnect()
@@ -152,6 +154,7 @@ public class LeaderboardManager : MonoBehaviourPunCallbacks
         base.OnPlayerLeftRoom(otherPlayer);
         playerDisconnected++;
 
+
         // Debug.Log($"ID Player disc: {otherPlayer.ActorNumber}");
     }
 
@@ -162,5 +165,11 @@ public class LeaderboardManager : MonoBehaviourPunCallbacks
         ItemFocusToPlayer();
         RemovePlayerOnDisconnect();
         UpdateLeaderboard();
+    }
+
+    [PunRPC]
+    void sentPlayerDiscCount(int total){
+        MultiplayerFinishManager FinishManager = GameObject.FindObjectOfType<MultiplayerFinishManager>();
+        FinishManager.TotalPlayersDisconnect = total;
     }
 }
