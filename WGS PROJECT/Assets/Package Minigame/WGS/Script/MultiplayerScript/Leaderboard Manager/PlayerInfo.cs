@@ -31,6 +31,8 @@ public class PlayerInfo : MonoBehaviour
 
         playerName = view.Owner.NickName; // nama player 
         playerID = view.Owner.ActorNumber - 1; // ID player 
+
+        view.RPC("SetAvatarIndex", RpcTarget.AllBuffered, PlayerPrefs.GetInt("playerAvatar"));
     }
 
     private void Start()
@@ -118,6 +120,16 @@ public class PlayerInfo : MonoBehaviour
     [PunRPC]
     void SetPlayerName(string name) => LeaderboardManager.instance.SetPlayerName(name);
 
+
+    [PunRPC]
+    void SetAvatarIndex(int index)
+    {
+
+        GameObject manager = GameObject.Find("NPCSpawner");
+        NPCSpawner run = manager.GetComponent<NPCSpawner>();
+        run.SetPlayerIndex(index);
+    }
+
     IEnumerator WaitToStart()
     {
         yield return new WaitForSeconds(4);
@@ -125,3 +137,4 @@ public class PlayerInfo : MonoBehaviour
         timer += Time.deltaTime;
     }
 }
+

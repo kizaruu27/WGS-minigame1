@@ -8443,7 +8443,7 @@ GameObject:
   - component: {fileID: 1419899900}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9932,6 +9932,7 @@ MonoBehaviour:
   - {fileID: 1961658468}
   playerMax: 0
   playerNow: 0
+  playerAvatarIndex: 
 --- !u!4 &1602125853
 Transform:
   m_ObjectHideFlags: 0

@@ -14,15 +14,6 @@ public class PlayerSpawner : MonoBehaviour
         Transform spawnPoint = spawnPoints[PhotonNetwork.LocalPlayer.ActorNumber - 1];
         GameObject playerToSpawn = playerPrefabs[PlayerPrefs.GetInt("playerAvatar")];
         GameObject currentPlayer = PhotonNetwork.Instantiate(playerToSpawn.name, spawnPoint.position, Quaternion.identity);
-
-        PhotonView view = currentPlayer.GetComponent<PhotonView>();
-    }
-
-
-    [PunRPC]
-    void SetAvatarIndex(int index)
-    {
-
     }
 
 }
