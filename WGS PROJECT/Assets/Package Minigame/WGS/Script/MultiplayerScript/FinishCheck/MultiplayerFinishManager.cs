@@ -36,8 +36,14 @@ public class MultiplayerFinishManager : MonoBehaviour
     {
         if (PhotonNetwork.LocalPlayer.ActorNumber - 1 == id)
         {
-            LeaderboardUI.SetActive(!isPlayerCrossFinish);
+            // LeaderboardUI.SetActive(!isPlayerCrossFinish);
             finishUI.SetActive(isPlayerCrossFinish);
+
+            for(int i = 0; i < LeaderboardUI.transform.childCount; i++){
+                // Debug.Log($"child number: {i}");
+                GameObject child = LeaderboardUI.transform.GetChild(i).gameObject;
+                child.gameObject.SetActive(!isPlayerCrossFinish);
+            }
         }
 
         if (!playerFinishList.Any(item => item.id == id)) InitializePlayer(id, name, time);
