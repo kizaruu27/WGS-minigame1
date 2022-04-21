@@ -16,14 +16,15 @@ namespace ExitGames.Client.Photon
     using System;
     using System.Collections;
     using UnityEngine;
+    using UnityEngine.Scripting;
     using SupportClassPun = ExitGames.Client.Photon.SupportClass;
 
 
-    #if !(UNITY_WEBGL || NETFX_CORE)
+#if !(UNITY_WEBGL || NETFX_CORE)
     using System.Net;
     using System.Net.Sockets;
     using System.Threading;
-    #endif
+#endif
 
     /// <summary>
     /// Yield Instruction to Wait for real seconds. Very important to keep connection working if Time.TimeScale is altered, we still want accurate network events
@@ -47,12 +48,15 @@ namespace ExitGames.Client.Photon
     /// <summary>
     /// Internal class to encapsulate the network i/o functionality for the realtime libary.
     /// </summary>
+
+    [Preserve]
     public class SocketWebTcp : IPhotonSocket, IDisposable
     {
         private WebSocket sock;
 
         private readonly object syncer = new object();
 
+        [Preserve]
         public SocketWebTcp(PeerBase npeer) : base(npeer)
         {
             this.ServerAddress = npeer.ServerAddress;
@@ -107,21 +111,21 @@ namespace ExitGames.Client.Photon
             this.websocketConnectionObject.hideFlags = HideFlags.HideInHierarchy;
             UnityEngine.Object.DontDestroyOnLoad(this.websocketConnectionObject);
 
-            #if UNITY_WEBGL || NETFX_CORE
+#if UNITY_WEBGL || NETFX_CORE
             this.sock = new WebSocket(new Uri(this.ConnectAddress), this.SerializationProtocol);
             this.sock.Connect();
 
             mb.StartCoroutine(this.ReceiveLoop());
-            #else
+#else
 
             mb.StartCoroutine(this.DetectIpVersionAndConnect(mb));
 
-            #endif
+#endif
             return true;
         }
 
 
-        #if !(UNITY_WEBGL || NETFX_CORE)
+#if !(UNITY_WEBGL || NETFX_CORE)
         private bool ipVersionDetectDone;
         private IEnumerator DetectIpVersionAndConnect(MonoBehaviour mb)
         {
@@ -191,7 +195,7 @@ namespace ExitGames.Client.Photon
 
             this.ipVersionDetectDone = true;
         }
-        #endif
+#endif
 
 
         public override bool Disconnect()
