@@ -12,8 +12,12 @@ public class Multiplayer_NPCRun : MonoBehaviour
     public float PlayerSpeed;
     public bool NPCCanMove;
     public bool IsItemSpeedActive = false;
+    private bool NPCAlreadyStart;
 
-    private void Awake() => NPCCanMove = false;
+    private void Awake() {
+        NPCCanMove = false;
+        NPCAlreadyStart = false;
+    }
     void Update()
     {
 
@@ -36,6 +40,7 @@ public class Multiplayer_NPCRun : MonoBehaviour
 
         Player.transform.position += new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
 
+        if (NPCAlreadyStart == false)
         StartCoroutine(
             CheckAllPlayerConnected.instance.WaitAllPlayerReady(
                 () => StartCoroutine(
@@ -44,10 +49,10 @@ public class Multiplayer_NPCRun : MonoBehaviour
             )
         );
     }
-
     IEnumerator FreezeOnStart()
     {
         yield return new WaitForSeconds(4);
         NPCCanMove = true;
+        NPCAlreadyStart = true;
     }
 }
