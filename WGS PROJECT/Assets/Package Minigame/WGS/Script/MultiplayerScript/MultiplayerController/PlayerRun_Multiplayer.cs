@@ -65,7 +65,7 @@ public class PlayerRun_Multiplayer : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         screenWidth = Screen.width;
-        
+
     }
 
     void Update()
@@ -197,15 +197,14 @@ public class PlayerRun_Multiplayer : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
+            TargetAnimator.SetTrigger("Jump");
         }
     }
 
     private void OnCollisionEnter(Collision collider)
     {
-        if (collider.gameObject.tag == "Ground")
-        {
-            isGrounded = true;
-        }
+        isGrounded = collider.gameObject.tag == "Ground";
+        TargetAnimator.SetBool("isGrounded", isGrounded);
     }
 
 
