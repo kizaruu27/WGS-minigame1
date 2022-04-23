@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using Photon.Pun;
 
@@ -17,6 +16,8 @@ public class CameraShake : MonoBehaviour
     PhotonView view;
 
 
+    private void Awake() => view = GetComponent<PhotonView>();
+
     private void Start()
     {
         cam = Camera.main.transform;
@@ -26,6 +27,7 @@ public class CameraShake : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(view.IsMine);
         if (view.IsMine)
         {
             if (duration > 0)
