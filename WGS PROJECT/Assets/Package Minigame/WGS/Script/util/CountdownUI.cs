@@ -19,7 +19,6 @@ public class CountdownUI : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_CountdownTXT.text);
         StartCoroutine(WaitAllPlayerReadyUI());
 
     }
