@@ -1,16 +1,30 @@
 using System.Collections;
 using UnityEngine;
+using Photon.Pun;
 
 public class Obstacle : MonoBehaviour
 {
     [SerializeField] float newPlayerSpeed;
     [SerializeField] float delayTime;
 
+
+    CheckGameType type;
+    PhotonView view;
+
+
+    private void Awake()
+    {
+        GameObject gameManager = GameObject.Find("GameManager");
+        type = gameManager.GetComponent<CheckGameType>();
+    }
+
     private void OnTriggerEnter(Collider coll)
     {
         if (coll.gameObject.tag == "Player")
         {
-            Zetcode_CameraFollowPlayerFixed.cameraFollow.isShake = true;
+            view = coll.gameObject.GetComponent<PhotonView>();
+
+            Zetcode_CameraFollowPlayerFixed.cameraFollow.isShake = (type.IsMultiplayer && view.IsMine) || type.IsSingleplayer;
 
             StartCoroutine(playerSlowed(coll));
         }
