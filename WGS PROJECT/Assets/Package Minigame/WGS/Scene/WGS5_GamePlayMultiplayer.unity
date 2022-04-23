@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 38
 --- !u!65 &29143697
 BoxCollider:
@@ -384,6 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 43
 --- !u!65 &55772452
 BoxCollider:
@@ -482,6 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 27
 --- !u!65 &88588701
 BoxCollider:
@@ -550,6 +553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 5
 --- !u!65 &90001448
 BoxCollider:
@@ -1097,6 +1101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 16
 --- !u!65 &127327093
 BoxCollider:
@@ -1371,6 +1376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 22
 --- !u!65 &245809816
 BoxCollider:
@@ -1439,6 +1445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 20
 --- !u!65 &259353847
 BoxCollider:
@@ -1520,6 +1527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 1
 --- !u!33 &277196419
 MeshFilter:
@@ -1843,6 +1851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 23
 --- !u!65 &306296128
 BoxCollider:
@@ -1911,6 +1920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 2
 --- !u!65 &318100560
 BoxCollider:
@@ -2152,6 +2162,7 @@ Transform:
   - {fileID: 767236997}
   - {fileID: 1460137563}
   - {fileID: 1030414298}
+  - {fileID: 487079622}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2201,6 +2212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 17
 --- !u!65 &354689439
 BoxCollider:
@@ -2299,6 +2311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 28
 --- !u!65 &357453516
 BoxCollider:
@@ -2488,6 +2501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 33
 --- !u!65 &387685027
 BoxCollider:
@@ -3339,6 +3353,75 @@ Transform:
   m_Father: {fileID: 1993861381}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &487079621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 487079622}
+  - component: {fileID: 487079625}
+  - component: {fileID: 487079624}
+  - component: {fileID: 487079623}
+  m_Layer: 2
+  m_Name: Stop After Finish
+  m_TagString: Checkpoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &487079622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487079621}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.13, y: 2.8, z: 216.7}
+  m_LocalScale: {x: 10.467, y: 72.53351, z: 1}
+  m_Children: []
+  m_Father: {fileID: 351735411}
+  m_RootOrder: 52
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &487079623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487079621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFinishLine: 0
+  stopAfterFinish: 1
+  checkPointNumber: 53
+--- !u!65 &487079624
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487079621}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &487079625
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487079621}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &510512203
 GameObject:
   m_ObjectHideFlags: 0
@@ -3385,6 +3468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 11
 --- !u!65 &510512206
 BoxCollider:
@@ -3650,6 +3734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 47
 --- !u!65 &560117471
 BoxCollider:
@@ -3718,6 +3803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 29
 --- !u!65 &560509977
 BoxCollider:
@@ -3786,6 +3872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 31
 --- !u!65 &566054335
 BoxCollider:
@@ -4217,6 +4304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 48
 --- !u!65 &593623703
 BoxCollider:
@@ -4285,6 +4373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 41
 --- !u!65 &597822747
 BoxCollider:
@@ -5023,6 +5112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 4
 --- !u!65 &719765603
 BoxCollider:
@@ -5091,6 +5181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 24
 --- !u!65 &735238299
 BoxCollider:
@@ -5508,6 +5599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 50
 --- !u!65 &767236999
 BoxCollider:
@@ -5576,6 +5668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 19
 --- !u!65 &771683093
 BoxCollider:
@@ -5778,6 +5871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 49
 --- !u!65 &800830116
 BoxCollider:
@@ -5921,6 +6015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 44
 --- !u!65 &871572106
 BoxCollider:
@@ -5989,6 +6084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 25
 --- !u!65 &892674755
 BoxCollider:
@@ -6141,6 +6237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 26
 --- !u!65 &932851823
 BoxCollider:
@@ -6644,6 +6741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 1
+  stopAfterFinish: 0
   checkPointNumber: 52
 --- !u!65 &1030414300
 BoxCollider:
@@ -6725,6 +6823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 15
 --- !u!65 &1039437366
 BoxCollider:
@@ -6793,6 +6892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 10
 --- !u!65 &1075621135
 BoxCollider:
@@ -6861,6 +6961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 30
 --- !u!65 &1086840335
 BoxCollider:
@@ -7129,6 +7230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 42
 --- !u!65 &1109517689
 BoxCollider:
@@ -7307,6 +7409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 18
 --- !u!65 &1139429019
 BoxCollider:
@@ -7600,6 +7703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 46
 --- !u!65 &1176817675
 BoxCollider:
@@ -7668,6 +7772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 3
 --- !u!65 &1187621804
 BoxCollider:
@@ -8328,6 +8433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 45
 --- !u!65 &1352504644
 BoxCollider:
@@ -8396,6 +8502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 13
 --- !u!65 &1401257215
 BoxCollider:
@@ -8885,6 +8992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 9
 --- !u!65 &1457191457
 BoxCollider:
@@ -8953,6 +9061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 51
 --- !u!65 &1460137565
 BoxCollider:
@@ -9394,6 +9503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 32
 --- !u!65 &1541703755
 BoxCollider:
@@ -9462,6 +9572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 6
 --- !u!65 &1551502755
 BoxCollider:
@@ -9530,6 +9641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 12
 --- !u!65 &1563963486
 BoxCollider:
@@ -10002,6 +10114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 35
 --- !u!65 &1630925758
 BoxCollider:
@@ -10070,6 +10183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 34
 --- !u!65 &1647352532
 BoxCollider:
@@ -10506,6 +10620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 40
 --- !u!65 &1722725860
 BoxCollider:
@@ -10625,6 +10740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 21
 --- !u!65 &1794902952
 BoxCollider:
@@ -11077,6 +11193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 7
 --- !u!65 &1955642448
 BoxCollider:
@@ -11207,6 +11324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 39
 --- !u!65 &1994260855
 BoxCollider:
@@ -11678,6 +11796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 8
 --- !u!65 &2015067428
 BoxCollider:
@@ -11825,6 +11944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 14
 --- !u!65 &2049292702
 BoxCollider:
@@ -11893,6 +12013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 37
 --- !u!65 &2051356752
 BoxCollider:
@@ -12165,6 +12286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
+  stopAfterFinish: 0
   checkPointNumber: 36
 --- !u!65 &2090967290
 BoxCollider:

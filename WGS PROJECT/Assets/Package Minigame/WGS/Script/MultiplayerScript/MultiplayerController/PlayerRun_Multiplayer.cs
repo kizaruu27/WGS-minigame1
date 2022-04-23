@@ -19,7 +19,7 @@ public class PlayerRun_Multiplayer : MonoBehaviour
     [Header("Player Speed")]
     public float PlayerSpeed;
     public float maxSpeed;
-    public bool CanMove;
+    public bool CanMove = true;
     public bool IsItemSpeedActive = false;
 
     //player jump
@@ -65,6 +65,7 @@ public class PlayerRun_Multiplayer : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         screenWidth = Screen.width;
+        
     }
 
     void Update()

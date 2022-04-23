@@ -55,6 +55,7 @@ public class PlayerInfo : MonoBehaviour
             }
 
             Checkpoint checkpoint = coll.GetComponent<Checkpoint>();
+            PlayerRun_Multiplayer myPlayer = this.gameObject.GetComponent<PlayerRun_Multiplayer>();
 
             if (passedCheckPointNumber + 1 == checkpoint.checkPointNumber)
             {
@@ -79,19 +80,15 @@ public class PlayerInfo : MonoBehaviour
                         checkpoint.isFinishLine, playerID, timer, playerName //Method Arguments
                         );
 
-                    if (lapsCompleted >= lapsToComplete) // nanti gw edit
-                    {
-                        isRaceCompleted = true;
-                    }
+                    myPlayer.maxSpeed = 2;
                 }
 
                 OnPassCheckpoint?.Invoke(this);
             }
 
+            if(checkpoint.stopAfterFinish == true) myPlayer.CanMove = false;
 
         }
-
-
     }
 
 

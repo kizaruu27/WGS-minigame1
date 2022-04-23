@@ -18,7 +18,6 @@ public class NPCInfo : MonoBehaviour
     int passedCheckPointNumber = 0;
     int numberOfPassedCheckpoints = 0;
     float timeAtLastPassCheckpoint = 0;
-    int lapsCompleted = 0;
     const int lapsToComplete = 1;
     public event Action<NPCInfo> OnPassCheckpoint;
 
@@ -54,6 +53,7 @@ public class NPCInfo : MonoBehaviour
             }
 
             Checkpoint checkpoint = coll.GetComponent<Checkpoint>();
+            Multiplayer_NPCRun myNpc = GetComponent<Multiplayer_NPCRun>();
 
             if (passedCheckPointNumber + 1 == checkpoint.checkPointNumber)
             {
@@ -67,10 +67,13 @@ public class NPCInfo : MonoBehaviour
                 if (checkpoint.isFinishLine)
                 {
                     view.RPC("UpdatePodiumList", RpcTarget.AllBuffered, NPCID, timer, NPCName);
+                    myNpc.MaxPlayerSpeed = 2;
                 }
 
                 OnPassCheckpoint?.Invoke(this);
             }
+
+            if(checkpoint.stopAfterFinish == true) myNpc.NPCCanMove = false;
         }
     }
 
