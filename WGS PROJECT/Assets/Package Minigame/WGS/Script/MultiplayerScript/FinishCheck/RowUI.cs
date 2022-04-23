@@ -21,20 +21,21 @@ public class RowUI : MonoBehaviour
 
             foreach (var item in colorTextItem)
             {
-                item.color = Color.white;
+                item.color = Color.black;
             }
         }
     }
 
-    public void SetHighlightPlayerDC(){
-            Image colorItem = gameObject.GetComponent<Image>();
-            colorItem.color = Color.red;
+    public void SetHighlightPlayerDC()
+    {
+        Image colorItem = gameObject.GetComponent<Image>();
+        colorItem.color = Color.red;
 
-            TextMeshProUGUI[] colorTextItem = gameObject.GetComponentsInChildren<TextMeshProUGUI>();
+        TextMeshProUGUI[] colorTextItem = gameObject.GetComponentsInChildren<TextMeshProUGUI>();
 
-            foreach (var item in colorTextItem)
-            {
-                item.color = Color.white;
-            }
+        foreach (var item in colorTextItem)
+        {
+            item.color = Color.white;
+        }
     }
 }
