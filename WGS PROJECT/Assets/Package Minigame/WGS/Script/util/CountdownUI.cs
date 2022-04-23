@@ -19,7 +19,9 @@ public class CountdownUI : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(_CountdownTXT.text);
         StartCoroutine(WaitAllPlayerReadyUI());
+
     }
 
     public IEnumerator WaitAllPlayerReadyUI()
@@ -38,7 +40,6 @@ public class CountdownUI : MonoBehaviour
         if (PhotonNetwork.IsMasterClient)
         {
             view.RPC("SetCountdown", RpcTarget.Others, InitialCountdown);
-
         }
 
         _CountdownTXT.fontSize = InitialCountdown > 2 ? 200f : 80f;

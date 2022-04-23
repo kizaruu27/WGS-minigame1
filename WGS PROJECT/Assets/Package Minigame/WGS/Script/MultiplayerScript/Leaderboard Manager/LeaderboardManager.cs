@@ -44,7 +44,7 @@ public class LeaderboardManager : MonoBehaviourPunCallbacks
     [Header("Leaderboard Item")]
     public List<CLeaderboardItem> LeaderboardItem;
     public List<string> TotalCachedPlayers = new List<string>();
-    
+
     [Header("Player Disconnect info")]
     [SerializeField] int playerDisconnected = 0;
 
@@ -106,10 +106,12 @@ public class LeaderboardManager : MonoBehaviourPunCallbacks
 
         Button playerItem = listButton[playerIndex];
         playerItem.GetComponent<Image>().color = Color.green;
-        playerItem.GetComponentInChildren<Text>().color = new Color32(255, 255, 255, 255);
+        playerItem.GetComponentInChildren<Text>().color = Color.black;
 
-        if (playerDisconnected > 0){
-            for(int i = 1; i <= playerDisconnected; i++){
+        if (playerDisconnected > 0)
+        {
+            for (int i = 1; i <= playerDisconnected; i++)
+            {
                 Button highlight = listButton[LeaderboardListButton.Count - i];
                 highlight.GetComponent<Image>().color = Color.red;
                 highlight.GetComponentInChildren<Text>().color = new Color32(255, 255, 255, 255);
@@ -131,10 +133,6 @@ public class LeaderboardManager : MonoBehaviourPunCallbacks
             LeaderboardText[i].text = LeaderboardItem[i].PlayerName;
         }
 
-        // MultiplayerFinishManager FinishManager = GameObject.FindObjectOfType<MultiplayerFinishManager>();
-        // FinishManager.TotalPlayersDisconnect = TotalPlayerDisconnect;
-
-        
         PV.RPC("sentPlayerDiscCount", RpcTarget.AllBuffered, playerDisconnected);
     }
 
@@ -168,7 +166,8 @@ public class LeaderboardManager : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    void sentPlayerDiscCount(int total){
+    void sentPlayerDiscCount(int total)
+    {
         MultiplayerFinishManager FinishManager = GameObject.FindObjectOfType<MultiplayerFinishManager>();
         FinishManager.TotalPlayersDisconnect = total;
     }

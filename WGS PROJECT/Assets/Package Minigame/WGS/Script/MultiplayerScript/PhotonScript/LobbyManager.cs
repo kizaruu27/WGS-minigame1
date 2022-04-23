@@ -7,23 +7,25 @@ using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
-    public TMP_InputField roomInputField;
+    [Header("Canvas")]
+    [SerializeField] Canvas canvas;
+
+    [Header("Lobby")]
     public GameObject lobbyPanel;
+
+    [Header("Room")]
+    public TMP_InputField roomInputField;
     public GameObject roomPanel;
     public TextMeshProUGUI roomName;
 
     public RoomItem roomItemPrefab;
     List<RoomItem> roomItemList = new List<RoomItem>();
-    public Transform contentObject;
 
-    public float timeBetweenUpdates = 1.5f;
-    float nextUpdateTime;
-
+    [Header("Player")]
     public List<PlayerItem> playerItemsList = new List<PlayerItem>();
     public PlayerItem playerItemPrefab;
     public Transform playerItemParent;
 
-    public GameObject playButton;
 
 
     [Header("Modal")]
@@ -31,6 +33,18 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public TextMeshProUGUI modalMessage;
     public Button closeModal;
     public GameObject modalPanel;
+
+
+    [Header("Loading")]
+    [SerializeField] GameObject loadingPanel;
+
+
+    [Header("Utilities")]
+    public GameObject playButton;
+    public Transform contentObject;
+    public float timeBetweenUpdates = 1.5f;
+    float nextUpdateTime;
+
 
 
     private void Start()
@@ -42,6 +56,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public void OnClickCreate()
     {
+        loadingPanel.SetActive(true);
         if (roomInputField.text.Length >= 1)
         {
 
@@ -77,6 +92,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        loadingPanel.SetActive(false);
         lobbyPanel.SetActive(false);
         roomPanel.SetActive(true);
         roomName.text = PhotonNetwork.CurrentRoom.Name;
@@ -133,6 +149,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public void JoinRoom(string roomName)
     {
+        loadingPanel.SetActive(true);
         PhotonNetwork.JoinRoom(roomName);
     }
 
