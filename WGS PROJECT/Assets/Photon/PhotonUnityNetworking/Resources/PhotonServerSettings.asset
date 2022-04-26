@@ -56,6 +56,7 @@ MonoBehaviour:
   - SetAvatarIndex
   - sentPlayerDiscCount
   - SyncNPCStatus
+  - SendCount
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

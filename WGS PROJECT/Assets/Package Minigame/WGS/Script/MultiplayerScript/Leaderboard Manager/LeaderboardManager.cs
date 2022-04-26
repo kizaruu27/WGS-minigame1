@@ -48,6 +48,20 @@ public class LeaderboardManager : MonoBehaviourPunCallbacks
     [Header("Player Disconnect info")]
     [SerializeField] int playerDisconnected = 0;
 
+    [Header("Animation Podium")]
+    public List<GameObject> UIPositionObj;
+
+    public void ShowPlayerRank(int playerFinish) 
+    {
+        // Debug.Log(UIPositionObj[1].activeInHierarchy == false);
+        for (int i = 0; i < playerFinish; i++){
+            if(UIPositionObj[i].activeInHierarchy == false){
+                UIPositionObj[i].SetActive(true);
+                UIPositionObj[i].GetComponent<Animation>().Play("showRank");
+            }
+        }
+    }
+
     public void InitializePlayer(string aPlayerName, float aScore)
     {
         CLeaderboardItem temp = new CLeaderboardItem();
@@ -163,7 +177,10 @@ public class LeaderboardManager : MonoBehaviourPunCallbacks
         ItemFocusToPlayer();
         RemovePlayerOnDisconnect();
         UpdateLeaderboard();
+
+
     }
+
 
     [PunRPC]
     void sentPlayerDiscCount(int total)

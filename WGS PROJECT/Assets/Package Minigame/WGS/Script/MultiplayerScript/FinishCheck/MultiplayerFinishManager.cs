@@ -16,8 +16,13 @@ public class MultiplayerFinishManager : MonoBehaviour
     [Header("Player List")]
     List<PlayerFinishModel> playerFinishList = new List<PlayerFinishModel>();
 
-    public int TotalPlayersDisconnect { get; set; }
+    PhotonView pv;
 
+    private void Awake() =>  pv = GetComponent<PhotonView>();
+    private void Update() {
+        pv.RPC("SendCount", RpcTarget.AllBuffered, playerFinishList.Count);
+    }
+    public int TotalPlayersDisconnect { get; set; }
 
     public void InitializePlayer(int id, string name, float time)
     {
@@ -54,4 +59,8 @@ public class MultiplayerFinishManager : MonoBehaviour
     {
         if (!playerFinishList.Any(item => item.id == id)) InitializePlayer(id, name, time);
     }
+
+    // send total player finish to leaderboard manager
+    [PunRPC]
+    void SendCount(int total) => LeaderboardManager.instance.ShowPlayerRank(total);
 }
