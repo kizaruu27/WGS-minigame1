@@ -12,6 +12,15 @@ public class ItemStop : MonoBehaviour
     MeshRenderer mesh;
     SphereCollider sphereCollider;
 
+    ItemCountdown itemCountdown;
+    GameObject itemCountdownGO;
+
+
+    private void Awake()
+    {
+        itemCountdown = Resources.FindObjectsOfTypeAll<ItemCountdown>()[0];
+        itemCountdownGO = itemCountdown.gameObject;
+    }
 
     private void Start()
     {
@@ -58,9 +67,22 @@ public class ItemStop : MonoBehaviour
         PlayerMove.IsItemSpeedActive = false;
         PlayerMove.PlayerSpeed = 0;
 
+        itemCountdownGO.SetActive(true);
+        itemCountdown.isItemSpeed = false;
+        itemCountdown.enabled = true;
+        itemCountdown.time = TimeFreeze;
+
+
+
         yield return new WaitForSeconds(TimeFreeze);
 
+        itemCountdownGO.SetActive(false);
+        itemCountdown.time = 0f;
+
+
         PlayerMove.CanMove = true;
+        itemCountdownGO.SetActive(false);
+
 
         Destroy(gameObject);
     }

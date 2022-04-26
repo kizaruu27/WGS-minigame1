@@ -13,15 +13,28 @@ public class ItemSpeed : MonoBehaviour
 
     float PrevPlayerSpeed;
     float PrevNPCSpeed;
-
-
     MeshRenderer mesh;
+
+
+    ItemCountdown itemCountdown;
+    GameObject itemCountdownGO;
+
+
+    private void Awake()
+    {
+        // itemCountdownGO = GameObject.Find("CountdownItem");
+        // itemCountdown = itemCountdownGO.GetComponent<ItemCountdown>();
+        itemCountdown = Resources.FindObjectsOfTypeAll<ItemCountdown>()[0];
+        itemCountdownGO = itemCountdown.gameObject;
+
+    }
 
 
     void Start() => mesh = GetComponent<MeshRenderer>();
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("test");
         if (other.gameObject.tag == PlayerTag) StartCoroutine(UpSpeedPlayer(other));
         if (other.gameObject.tag == NPCTag) StartCoroutine(UpSpeedNPC(other));
         if (other.gameObject.tag == MultiplayerNPC) StartCoroutine(UpSpeedNPC_Multiplayer(other));
@@ -32,16 +45,28 @@ public class ItemSpeed : MonoBehaviour
         mesh.enabled = false;
         PlayerRun_Multiplayer PlayerMovement = collider.GetComponent<PlayerRun_Multiplayer>();
 
+        Debug.Log(itemCountdownGO);
+
         if (PlayerMovement.CanMove)
         {
+            itemCountdown.isItemSpeed = true;
             PrevPlayerSpeed = PlayerMovement.PlayerSpeed;
             PlayerMovement.PlayerSpeed += SpeedCharacter;
             PlayerMovement.IsItemSpeedActive = true;
+
+            itemCountdownGO.SetActive(true);
+            itemCountdown.isItemSpeed = true;
+            itemCountdown.enabled = true;
+            itemCountdown.time = SpeedTime;
 
             yield return new WaitForSeconds(SpeedTime);
 
             PlayerMovement.PlayerSpeed = PrevPlayerSpeed;
             PlayerMovement.IsItemSpeedActive = false;
+
+            itemCountdown.time = 0f;
+            itemCountdownGO.SetActive(false);
+
             Destroy(gameObject);
         }
 

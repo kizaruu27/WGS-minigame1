@@ -18,6 +18,7 @@ public class MultiplayerFinishUI : MonoBehaviour
 
 
     [Header("Player List")]
+
     IEnumerable<PlayerFinishModel> PlayerFinish;
     List<RowUI> cachePlayerList = new List<RowUI>();
     private void Awake() => instance = this;
@@ -67,10 +68,13 @@ public class MultiplayerFinishUI : MonoBehaviour
         }
     }
 
-    public void PlayerDiscHighlight(){
+    public void PlayerDiscHighlight()
+    {
         int PDC = finishManager.TotalPlayersDisconnect;
-        if(PDC > 0){
-            for(int i = 0; i < PDC; i++){
+        if (PDC > 0)
+        {
+            for (int i = 0; i < PDC; i++)
+            {
                 RowUI rowData = Instantiate(row, transform).GetComponent<RowUI>();
 
                 rowData.SetHighlightPlayerDC();
@@ -78,11 +82,11 @@ public class MultiplayerFinishUI : MonoBehaviour
                 rowData.Rank.text = "";
                 rowData.Name.text = "Disconnected";
                 rowData.Score.text = "";
-                
+
                 cachePlayerList.Add(rowData);
             }
         }
-        
+
     }
 
 

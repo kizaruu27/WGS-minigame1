@@ -12,17 +12,24 @@ public class Obstacle : MonoBehaviour
     PhotonView view;
 
 
+    ItemCountdown itemCountdown;
+    GameObject itemCountdownGO;
+
     private void Awake()
     {
         GameObject gameManager = GameObject.Find("GameManager");
         type = gameManager.GetComponent<CheckGameType>();
+
+
+        itemCountdown = Resources.FindObjectsOfTypeAll<ItemCountdown>()[0];
+        itemCountdownGO = itemCountdown.gameObject;
     }
 
     private void OnTriggerEnter(Collider coll)
     {
         if (coll.gameObject.tag == "Player")
         {
-            view = coll.gameObject.GetComponent<PhotonView>();
+            view = coll.gameObject?.GetComponent<PhotonView>();
 
             Zetcode_CameraFollowPlayerFixed.cameraFollow.isShake = (type.IsMultiplayer && view.IsMine) || type.IsSingleplayer;
 
@@ -48,7 +55,16 @@ public class Obstacle : MonoBehaviour
         PlayerRun_Multiplayer playerMove = coll.GetComponent<PlayerRun_Multiplayer>();
         playerMove.maxSpeed = newPlayerSpeed;
 
+
+        itemCountdownGO.SetActive(true);
+        itemCountdown.isItemSpeed = false;
+        itemCountdown.enabled = true;
+        itemCountdown.time = delayTime;
+
         yield return new WaitForSeconds(delayTime);
+
+        itemCountdownGO.SetActive(false);
+        itemCountdown.time = 0f;
 
         playerMove.maxSpeed = 10;
     }
