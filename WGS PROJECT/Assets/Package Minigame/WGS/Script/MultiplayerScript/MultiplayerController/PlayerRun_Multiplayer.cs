@@ -33,6 +33,7 @@ public class PlayerRun_Multiplayer : MonoBehaviour
     float screenWidth;
     Button btnJump;
     Button btnRun;
+    bool isGameStart;
 
     private void Awake()
     {
@@ -106,6 +107,7 @@ public class PlayerRun_Multiplayer : MonoBehaviour
 
     private void OnEnable()
     {
+        Debug.Log(CheckPlatform.isIos || CheckPlatform.isAndroid && isControlBtnActive & isGameStart);
         if (CheckPlatform.isIos || CheckPlatform.isAndroid && isControlBtnActive)
         {
             btnJump.onClick.AddListener(Jumping);
@@ -176,7 +178,7 @@ public class PlayerRun_Multiplayer : MonoBehaviour
     //Control
     void Running(float runSpeed = 1f)
     {
-        if (CanMove)
+        if (CanMove && isGameStart)
         {
             if (!IsItemSpeedActive)
             {
@@ -193,7 +195,7 @@ public class PlayerRun_Multiplayer : MonoBehaviour
 
     void Jumping()
     {
-        if (isGrounded && view.IsMine && CanMove)
+        if (isGrounded && view.IsMine && CanMove && isGameStart)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
@@ -211,6 +213,7 @@ public class PlayerRun_Multiplayer : MonoBehaviour
     IEnumerator Controler()
     {
         yield return new WaitForSeconds(4);
+        isGameStart = true;
         Desktop();
         Mobile();
     }

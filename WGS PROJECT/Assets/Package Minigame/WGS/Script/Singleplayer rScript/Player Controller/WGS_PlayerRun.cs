@@ -22,7 +22,8 @@ public class WGS_PlayerRun : MonoBehaviour
     public Button btnRun;
     public Button btnJump;
 
-    private void Awake() {
+    private void Awake()
+    {
         btnRun.gameObject.SetActive(CheckPlatform.isAndroid || CheckPlatform.isIos);
         btnJump.gameObject.SetActive(CheckPlatform.isAndroid || CheckPlatform.isIos);
     }
@@ -33,9 +34,11 @@ public class WGS_PlayerRun : MonoBehaviour
 
     void Update()
     {
-        if(CheckPlatform.isMacUnity || CheckPlatform.isWindowsUnity || CheckPlatform.isWeb){
+        if (CheckPlatform.isMacUnity || CheckPlatform.isWindowsUnity || CheckPlatform.isWeb)
+        {
             //player input
-            if (Input.GetKeyDown(KeyCode.Mouse0)){
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
                 Run();
             }
 
@@ -43,7 +46,7 @@ public class WGS_PlayerRun : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 Jump();
-            }               
+            }
         }
 
         //player speed handler
@@ -68,7 +71,8 @@ public class WGS_PlayerRun : MonoBehaviour
 
         Player.transform.position += new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
     }
-        private void OnEnable() {
+    private void OnEnable()
+    {
         btnRun.onClick.AddListener(Run);
         btnJump.onClick.AddListener(Jump);
     }
@@ -82,14 +86,15 @@ public class WGS_PlayerRun : MonoBehaviour
         }
     }
 
-    void Run(){
+    void Run()
+    {
         PlayerSpeed += 1;
         TargetAnimator.SetBool("isRunning", true);
     }
     void Jump()
     {
         if (isGrounded)
-        rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+            rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
         isGrounded = false;
         TargetAnimator.SetTrigger("Jump");
     }
