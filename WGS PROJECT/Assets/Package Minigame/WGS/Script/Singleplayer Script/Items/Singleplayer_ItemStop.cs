@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Singleplayer_ItemStop : MonoBehaviour
 {
-    // [SerializeField] public float DisableCanMove;
+    [Header("Stop Value")]
     public float TimeFreeze;
     string PlayerTag = "Player";
     string PlayerEnemy = "NPC";
 
+    [Header("Stop UI")]
+    [SerializeField] GameObject UITimer;
+    [SerializeField] TextMeshProUGUI timer;
+
     MeshRenderer mesh;
     SphereCollider sphereCollider;
 
+    bool playerStop;
 
     private void Start()
     {
@@ -22,6 +28,16 @@ public class Singleplayer_ItemStop : MonoBehaviour
     private void Update()
     {
         Destroy(gameObject, 60);
+
+        if (playerStop)
+        {
+            TimeFreeze -= Time.deltaTime;
+            timer.text = TimeFreeze.ToString();
+        }
+        else
+        {
+            UITimer.SetActive(false);
+        }
     }
 
 
@@ -30,20 +46,20 @@ public class Singleplayer_ItemStop : MonoBehaviour
         if (collider.gameObject.tag == PlayerTag)
         {
             // print ("bisa bro");
-           
             StartCoroutine(FreezeCanMove(collider));
         }
         if (collider.gameObject.tag == PlayerEnemy)
         {
             // print ("bisa bro");
-            mesh.enabled = false;
-            sphereCollider.enabled = false;
             StartCoroutine(FreezeNPCCanMove(collider));
         }
 
     }
     IEnumerator FreezeCanMove(Collider collider)
     {
+        UITimer.SetActive(true);
+        playerStop = true;
+
         mesh.enabled = false;
         sphereCollider.enabled = false;
 
@@ -57,6 +73,9 @@ public class Singleplayer_ItemStop : MonoBehaviour
     }
     IEnumerator FreezeNPCCanMove(Collider collider)
     {
+        mesh.enabled = false;
+        sphereCollider.enabled = false;
+
         WGS_NPCRun NPCPlayerMove = collider.GetComponent<WGS_NPCRun>();
         NPCPlayerMove.NPCCanMove = false;
         NPCPlayerMove.IsItemSpeedActive = false;
