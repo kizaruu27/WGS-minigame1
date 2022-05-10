@@ -12,15 +12,9 @@ public class Zetcode_LoadSceneClick : MonoBehaviour
         SceneManager.LoadScene(aScene);
     }
 
-    void Start()
+    public void ExitGame()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Application.Quit();
     }
 }
 
