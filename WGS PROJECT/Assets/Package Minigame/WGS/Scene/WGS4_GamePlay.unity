@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -828,7 +828,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 816288752}
+      - m_Target: {fileID: 816288761}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -5189,11 +5189,11 @@ GameObject:
   - component: {fileID: 816288755}
   - component: {fileID: 816288754}
   - component: {fileID: 816288753}
-  - component: {fileID: 816288752}
   - component: {fileID: 816288757}
   - component: {fileID: 816288758}
   - component: {fileID: 816288759}
   - component: {fileID: 816288760}
+  - component: {fileID: 816288761}
   m_Layer: 0
   m_Name: -----PLAYER-----
   m_TagString: Player
@@ -5201,25 +5201,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &816288752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 816288751}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 256f9d7b8b0f30740bae9aaf48f4da47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 816288751}
-  TargetAnimator: {fileID: 464478441}
-  PlayerSpeed: 0
-  maxSpeed: 10
-  jumpForce: 6
-  btnRun: {fileID: 996109967}
-  btnJump: {fileID: 914239355}
 --- !u!136 &816288753
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5356,6 +5337,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 186521bc675b500499ca0dcdf68eb94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &816288761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816288751}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 821869e1441da4ae3b10ac4059ebc3a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetAnimator: {fileID: 464478441}
+  maxSpeed: 10
+  charSpeed: 0
+  canMove: 1
+  isItemSpeedActive: 0
+  JumpForce: 6
+  IsControlBtnActive: 0
 --- !u!1 &828776523
 GameObject:
   m_ObjectHideFlags: 0
