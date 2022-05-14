@@ -17,8 +17,10 @@ namespace RunMinigames.Mechanics.Items
 
         MoveItem moveItem;
 
-        protected void Awake()
+        protected new void Awake()
         {
+            base.Awake();
+
             mesh = GetComponent<MeshRenderer>();
             sphereCollider = GetComponent<SphereCollider>();
         }

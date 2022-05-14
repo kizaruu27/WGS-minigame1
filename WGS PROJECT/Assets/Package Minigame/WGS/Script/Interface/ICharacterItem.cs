@@ -7,6 +7,8 @@ namespace RunMinigames.Interface
         public float CharSpeed { get; set; }
         public float MaxSpeed { get; set; }
 
+        public bool Active { get; set; }
+
         public void Movement();
         public void Running(float runSpeed);
         public void Jump();

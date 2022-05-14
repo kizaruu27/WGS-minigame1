@@ -1,19 +1,22 @@
 using System.Collections;
 using UnityEngine;
-
-
 namespace RunMinigames.Mechanics.Items
 {
-    public class MoveItem : MonoBehaviour
+    public abstract class MoveItem : MonoBehaviour
     {
         [Header("Item Move")]
         [SerializeField] public float SpeedItem = 1.5f;
         [SerializeField] protected bool CanMove;
 
-        Rigidbody rb;
-        bool isRight, isLeft;
+        [Header("Direction Move")]
+        [SerializeField] bool isRight;
+        [SerializeField] bool isLeft;
 
-        private void Awake() => rb = gameObject?.GetComponent<Rigidbody>();
+
+        Rigidbody rb;
+
+
+        protected void Awake() => rb = gameObject?.GetComponent<Rigidbody>();
 
         private void Start()
         {

@@ -22,6 +22,7 @@ namespace RunMinigames.Mechanics.Characters
         public float CharSpeed { get => charSpeed; set => charSpeed = value; }
         public bool CanMove { get => canMove; set => canMove = value; }
         public bool IsItemSpeedActive { get => isItemSpeedActive; set => isItemSpeedActive = value; }
+        public bool Active { get => enabled; set => enabled = value; }
 
 
         [Header("Character Jump")]
@@ -33,7 +34,6 @@ namespace RunMinigames.Mechanics.Characters
             TargetAnimator =
                 GetComponentInChildren<Animator>(true) ??
                 transform.Find("Humanoid").GetComponent<Animator>();
-            Debug.Log(TargetAnimator);
         }
 
         public virtual void Movement()
