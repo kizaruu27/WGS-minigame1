@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using RunMinigames.Interface;
 
-namespace RunMinigames.Mechanics.Interactable
+namespace RunMinigames.Mechanics.Items
 {
     public class SpeedItem : InteractableItem
     {

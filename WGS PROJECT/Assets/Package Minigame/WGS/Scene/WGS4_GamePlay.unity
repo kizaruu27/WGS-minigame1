@@ -3185,14 +3185,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 428257496}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed551048ddb1452d9ae53455bd5b729, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cbde198284c641659b0ba0bf6569c67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newPlayerSpeed: 3
-  delayTime: 3
-  UITimer: {fileID: 9158929}
-  timer: {fileID: 448673639}
-  hitObstacle: 0
+  SpeedItem: 1.5
+  CanMove: 0
+  SpeedCharacter: 3
+  LongTimeBehaviour: 3
 --- !u!65 &428257499
 BoxCollider:
   m_ObjectHideFlags: 0

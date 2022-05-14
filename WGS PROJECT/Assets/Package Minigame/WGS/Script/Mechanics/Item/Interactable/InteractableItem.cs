@@ -2,13 +2,14 @@ using UnityEngine;
 using System.Collections;
 using RunMinigames.Interface;
 
-namespace RunMinigames.Mechanics.Interactable
+namespace RunMinigames.Mechanics.Items
 {
-    public abstract class InteractableItem : MonoBehaviour
+    public abstract class InteractableItem : MoveItem
     {
+        [Header("Item Info")]
+
         [SerializeField] protected float SpeedCharacter = 3f;
         [SerializeField] protected float LongTimeBehaviour = 3f;
-        [SerializeField] float speedItemMove;
 
         protected MeshRenderer mesh;
         protected SphereCollider sphereCollider;
@@ -18,19 +19,13 @@ namespace RunMinigames.Mechanics.Interactable
 
         protected void Awake()
         {
-            if (!isObstacles)
-            {
-                moveItem = gameObject.AddComponent<MoveItem>();
-                moveItem.speed = speedItemMove;
-            }
-
             mesh = GetComponent<MeshRenderer>();
             sphereCollider = GetComponent<SphereCollider>();
         }
 
         protected void Update()
         {
-            if (!isObstacles) Destroy(gameObject, 60f);
+            if (CanMove) Destroy(gameObject, 60f);
         }
 
         protected void OnTriggerEnter(Collider other)

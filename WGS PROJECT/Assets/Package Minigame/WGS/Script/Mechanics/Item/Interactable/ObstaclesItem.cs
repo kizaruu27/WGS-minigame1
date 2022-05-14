@@ -3,7 +3,7 @@ using UnityEngine;
 using RunMinigames.Interface;
 using Photon.Pun;
 
-namespace RunMinigames.Mechanics.Interactable
+namespace RunMinigames.Mechanics.Items
 {
     public class ObstaclesItem : InteractableItem
     {

@@ -1,46 +1,60 @@
 using System.Collections;
 using UnityEngine;
 
-public class MoveItem : MonoBehaviour
+
+namespace RunMinigames.Mechanics.Items
 {
-    [SerializeField] public float speed = 1.5f;
-    Rigidbody rb;
-    [SerializeField] bool isRight, isLeft;
-
-    private void Awake() => rb = gameObject?.GetComponent<Rigidbody>();
-
-    private void Start()
+    public class MoveItem : MonoBehaviour
     {
-        isRight = true;
-        isLeft = false;
-        StartCoroutine(Move());
-    }
+        [Header("Item Move")]
+        [SerializeField] public float SpeedItem = 1.5f;
+        [SerializeField] protected bool CanMove;
 
-    private void FixedUpdate()
-    {
-        if (isRight && !isLeft)
+        Rigidbody rb;
+        bool isRight, isLeft;
+
+        private void Awake() => rb = gameObject?.GetComponent<Rigidbody>();
+
+        private void Start()
         {
-            rb.velocity = transform.right * speed;
-            isLeft = false;
+            if (CanMove)
+            {
+                isRight = true;
+                isLeft = false;
+                StartCoroutine(Move());
+            }
         }
 
-        if (isLeft && !isRight)
+        private void FixedUpdate()
         {
-            rb.velocity = transform.forward * speed;
+            if (CanMove)
+            {
+                if (isRight && !isLeft)
+                {
+                    rb.velocity = transform.right * SpeedItem;
+                    isLeft = false;
+                }
+
+                if (isLeft && !isRight)
+                {
+                    rb.velocity = transform.forward * SpeedItem;
+                    isRight = false;
+                }
+            }
+        }
+
+        IEnumerator Move()
+        {
+            yield return new WaitForSeconds(2);
+            isLeft = true;
             isRight = false;
+
+            yield return new WaitForSeconds(2);
+            isLeft = false;
+            isRight = true;
+
+            StartCoroutine(Move());
         }
     }
 
-    IEnumerator Move()
-    {
-        yield return new WaitForSeconds(2);
-        isLeft = true;
-        isRight = false;
-
-        yield return new WaitForSeconds(2);
-        isLeft = false;
-        isRight = true;
-
-        StartCoroutine(Move());
-    }
 }
