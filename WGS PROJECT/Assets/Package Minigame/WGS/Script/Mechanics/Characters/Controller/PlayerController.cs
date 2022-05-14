@@ -11,6 +11,8 @@ namespace RunMinigames.Mechanics.Characters
         private void Start()
         {
             view = GetComponent<PhotonView>();
+            Debug.Log(TargetAnimator);
+
         }
 
         public override void Jump()
@@ -19,14 +21,14 @@ namespace RunMinigames.Mechanics.Characters
             {
                 Rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
                 IsGrounded = false;
-                TargetAnimator.SetTrigger("Jump");
+                TargetAnimator?.SetTrigger("Jump");
             }
         }
 
         private void OnCollisionEnter(Collision collider)
         {
             IsGrounded = collider.gameObject.tag == "Ground";
-            TargetAnimator.SetBool("isGrounded", IsGrounded);
+            TargetAnimator?.SetBool("isGrounded", IsGrounded);
         }
     }
 }

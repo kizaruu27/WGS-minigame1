@@ -30,7 +30,9 @@ namespace RunMinigames.Mechanics.Characters
 
         private void Awake()
         {
-            TargetAnimator = gameObject.transform.Find("Humanoid").GetComponent<Animator>();
+            TargetAnimator =
+                GetComponentInChildren<Animator>(true) ??
+                transform.Find("Humanoid").GetComponent<Animator>();
             Debug.Log(TargetAnimator);
         }
 
