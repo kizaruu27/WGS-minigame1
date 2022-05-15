@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using RunMinigames.Mechanics.Checkpoint;
 
 public class LapCounter : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class LapCounter : MonoBehaviour
     bool isRaceCompleted = false;
     public int playerPosition = 0; // buat podium
 
-    public event Action <LapCounter> OnPassCheckpoint;
+    public event Action<LapCounter> OnPassCheckpoint;
 
     public void setPlayerPosition(int position)
     {
@@ -48,7 +49,7 @@ public class LapCounter : MonoBehaviour
                 return;
             }
 
-            Checkpoint checkpoint = coll.GetComponent<Checkpoint>();
+            var checkpoint = coll.GetComponent<GameCheckpoint>();
 
             if (passedCheckPointNumber + 1 == checkpoint.checkPointNumber)
             {

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
@@ -26,5 +24,11 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         SceneManager.LoadScene("WGS3_Lobby");
+    }
+
+    public override void OnConnected()
+    {
+        base.OnConnected();
+        Debug.Log("Connected");
     }
 }

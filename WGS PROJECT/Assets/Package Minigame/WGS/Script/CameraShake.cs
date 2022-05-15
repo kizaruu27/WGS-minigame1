@@ -27,7 +27,6 @@ public class CameraShake : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(view.IsMine);
         if (view.IsMine)
         {
             if (duration > 0)

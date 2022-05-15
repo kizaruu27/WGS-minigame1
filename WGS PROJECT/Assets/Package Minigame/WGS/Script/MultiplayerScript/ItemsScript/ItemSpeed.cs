@@ -45,7 +45,6 @@ public class ItemSpeed : MonoBehaviour
         mesh.enabled = false;
         PlayerRun_Multiplayer PlayerMovement = collider.GetComponent<PlayerRun_Multiplayer>();
 
-        Debug.Log(itemCountdownGO);
 
         if (PlayerMovement.CanMove)
         {

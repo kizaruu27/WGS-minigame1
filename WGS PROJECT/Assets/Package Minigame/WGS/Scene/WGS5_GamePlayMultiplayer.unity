@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -202,12 +202,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 29143694}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 38
+  checkPointNumber: 1
 --- !u!65 &29143697
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -271,12 +271,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 55772449}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 43
+  checkPointNumber: 1
 --- !u!65 &55772452
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -370,12 +370,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 88588698}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 27
+  checkPointNumber: 1
 --- !u!65 &88588701
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -439,12 +439,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 90001445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 5
+  checkPointNumber: 1
 --- !u!65 &90001448
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -956,12 +956,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 127327090}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 16
+  checkPointNumber: 1
 --- !u!65 &127327093
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1121,12 +1121,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 245809813}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 22
+  checkPointNumber: 1
 --- !u!65 &245809816
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1190,12 +1190,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 259353844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 20
+  checkPointNumber: 1
 --- !u!65 &259353847
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1272,7 +1272,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 277196415}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
@@ -1596,12 +1596,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 306296125}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 23
+  checkPointNumber: 1
 --- !u!65 &306296128
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1665,12 +1665,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 318100557}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 2
+  checkPointNumber: 1
 --- !u!65 &318100560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1847,12 +1847,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 354689436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 17
+  checkPointNumber: 1
 --- !u!65 &354689439
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1946,12 +1946,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 357453513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 28
+  checkPointNumber: 1
 --- !u!65 &357453516
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2137,12 +2137,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 387685024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 33
+  checkPointNumber: 1
 --- !u!65 &387685027
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2207,11 +2207,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 428257496}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f38a349e6d69fa46b7f97ae2e204b42, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cbde198284c641659b0ba0bf6569c67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newPlayerSpeed: 3
-  delayTime: 1
+  SpeedItem: 1.5
+  CanMove: 0
+  isRight: 0
+  isLeft: 0
+  SpeedCharacter: 3
+  LongTimeBehaviour: 3
 --- !u!65 &428257499
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3113,7 +3117,7 @@ GameObject:
   - component: {fileID: 487079624}
   - component: {fileID: 487079623}
   m_Layer: 2
-  m_Name: Stop After Finish
+  m_Name: Checkpoint 53 - Stop
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3142,12 +3146,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 487079621}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 1
-  checkPointNumber: 53
+  checkPointNumber: 1
 --- !u!65 &487079624
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3211,12 +3215,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 510512203}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 11
+  checkPointNumber: 1
 --- !u!65 &510512206
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3483,12 +3487,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 560117468}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 47
+  checkPointNumber: 1
 --- !u!65 &560117471
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3552,12 +3556,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 560509974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 29
+  checkPointNumber: 1
 --- !u!65 &560509977
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3621,12 +3625,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 566054332}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 31
+  checkPointNumber: 1
 --- !u!65 &566054335
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3943,12 +3947,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 593623700}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 48
+  checkPointNumber: 1
 --- !u!65 &593623703
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4012,12 +4016,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 597822744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 41
+  checkPointNumber: 1
 --- !u!65 &597822747
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4171,7 +4175,7 @@ PrefabInstance:
     - target: {fileID: 6299427270228352472, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: obstaclePrefabs
       value: 
-      objectReference: {fileID: 4411361229093306498, guid: ebff7220e6a955f41a70e63280f52234, type: 3}
+      objectReference: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
     - target: {fileID: 6299427270228352473, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -4708,12 +4712,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 719765600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 4
+  checkPointNumber: 1
 --- !u!65 &719765603
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4745,7 +4749,7 @@ PrefabInstance:
     - target: {fileID: 6299427270228352472, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: obstaclePrefabs
       value: 
-      objectReference: {fileID: 4411361229093306498, guid: ebff7220e6a955f41a70e63280f52234, type: 3}
+      objectReference: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
     - target: {fileID: 6299427270228352473, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4838,12 +4842,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 735238296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 24
+  checkPointNumber: 1
 --- !u!65 &735238299
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5256,12 +5260,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 767236996}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 50
+  checkPointNumber: 1
 --- !u!65 &767236999
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5325,12 +5329,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 771683090}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 19
+  checkPointNumber: 1
 --- !u!65 &771683093
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5528,12 +5532,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 800830113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 49
+  checkPointNumber: 1
 --- !u!65 &800830116
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5677,12 +5681,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 871572103}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 44
+  checkPointNumber: 1
 --- !u!65 &871572106
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5746,12 +5750,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 892674752}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 25
+  checkPointNumber: 1
 --- !u!65 &892674755
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5783,7 +5787,7 @@ PrefabInstance:
     - target: {fileID: 6299427270228352472, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: obstaclePrefabs
       value: 
-      objectReference: {fileID: 4411361229093306498, guid: ebff7220e6a955f41a70e63280f52234, type: 3}
+      objectReference: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
     - target: {fileID: 6299427270228352473, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -5960,12 +5964,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 932851820}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 26
+  checkPointNumber: 1
 --- !u!65 &932851823
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6222,10 +6226,10 @@ GameObject:
   - component: {fileID: 1030414298}
   - component: {fileID: 1030414301}
   - component: {fileID: 1030414300}
-  - component: {fileID: 1030414299}
   - component: {fileID: 1030414302}
+  - component: {fileID: 1030414299}
   m_Layer: 2
-  m_Name: FINISH LINE
+  m_Name: Checkpoint 52 - Finish Line
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6254,12 +6258,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1030414297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 1
   stopAfterFinish: 0
-  checkPointNumber: 52
+  checkPointNumber: 1
 --- !u!65 &1030414300
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6336,12 +6340,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1039437363}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 15
+  checkPointNumber: 1
 --- !u!65 &1039437366
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6373,7 +6377,7 @@ PrefabInstance:
     - target: {fileID: 6299427270228352472, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: obstaclePrefabs
       value: 
-      objectReference: {fileID: 4411361229093306498, guid: ebff7220e6a955f41a70e63280f52234, type: 3}
+      objectReference: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
     - target: {fileID: 6299427270228352473, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -6434,7 +6438,7 @@ PrefabInstance:
     - target: {fileID: 6299427270228352472, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: obstaclePrefabs
       value: 
-      objectReference: {fileID: 4411361229093306498, guid: ebff7220e6a955f41a70e63280f52234, type: 3}
+      objectReference: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
     - target: {fileID: 6299427270228352473, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -6495,7 +6499,7 @@ PrefabInstance:
     - target: {fileID: 6299427270228352472, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: obstaclePrefabs
       value: 
-      objectReference: {fileID: 4411361229093306498, guid: ebff7220e6a955f41a70e63280f52234, type: 3}
+      objectReference: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
     - target: {fileID: 6299427270228352473, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -6593,12 +6597,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1075621132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 10
+  checkPointNumber: 1
 --- !u!65 &1075621135
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6662,12 +6666,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1086840332}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 30
+  checkPointNumber: 1
 --- !u!65 &1086840335
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6931,12 +6935,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1109517686}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 42
+  checkPointNumber: 1
 --- !u!65 &1109517689
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7000,12 +7004,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1139429016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 18
+  checkPointNumber: 1
 --- !u!65 &1139429019
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7095,8 +7099,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsPrefabs:
-  - {fileID: 7930775266224442915, guid: b757d446c5e13f546aebed80d018cb7f, type: 3}
-  - {fileID: 7930775266224442915, guid: 1048af90ec7eb974db705cea7f200bf9, type: 3}
+  - {fileID: 7930775266224442915, guid: e11ad9d6002d9418d94052a77125fd2a, type: 3}
+  - {fileID: 7930775266224442915, guid: 5a288d9e0e0094589a6867a586fe7ab0, type: 3}
   spawnTimes: 2
 --- !u!4 &1144604494
 Transform:
@@ -7189,12 +7193,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1176817672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 46
+  checkPointNumber: 1
 --- !u!65 &1176817675
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7258,12 +7262,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1187621801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 3
+  checkPointNumber: 1
 --- !u!65 &1187621804
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7518,7 +7522,7 @@ PrefabInstance:
     - target: {fileID: 6299427270228352472, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: obstaclePrefabs
       value: 
-      objectReference: {fileID: 4411361229093306498, guid: ebff7220e6a955f41a70e63280f52234, type: 3}
+      objectReference: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
     - target: {fileID: 6299427270228352473, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -7924,7 +7928,7 @@ PrefabInstance:
     - target: {fileID: 6299427270228352472, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: obstaclePrefabs
       value: 
-      objectReference: {fileID: 4411361229093306498, guid: ebff7220e6a955f41a70e63280f52234, type: 3}
+      objectReference: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
     - target: {fileID: 6299427270228352473, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -8017,12 +8021,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1352504641}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 45
+  checkPointNumber: 1
 --- !u!65 &1352504644
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8086,12 +8090,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1401257212}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 13
+  checkPointNumber: 1
 --- !u!65 &1401257215
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8453,7 +8457,7 @@ PrefabInstance:
     - target: {fileID: 6299427270228352472, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: obstaclePrefabs
       value: 
-      objectReference: {fileID: 4411361229093306498, guid: ebff7220e6a955f41a70e63280f52234, type: 3}
+      objectReference: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
     - target: {fileID: 6299427270228352473, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -8680,12 +8684,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1457191454}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 9
+  checkPointNumber: 1
 --- !u!65 &1457191457
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8749,12 +8753,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1460137562}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 51
+  checkPointNumber: 1
 --- !u!65 &1460137565
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9109,12 +9113,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1541703752}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 32
+  checkPointNumber: 1
 --- !u!65 &1541703755
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9178,12 +9182,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1551502752}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 6
+  checkPointNumber: 1
 --- !u!65 &1551502755
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9247,12 +9251,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1563963483}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 12
+  checkPointNumber: 1
 --- !u!65 &1563963486
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9720,12 +9724,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1630925755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 35
+  checkPointNumber: 1
 --- !u!65 &1630925758
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9757,7 +9761,7 @@ PrefabInstance:
     - target: {fileID: 6299427270228352472, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: obstaclePrefabs
       value: 
-      objectReference: {fileID: 4411361229093306498, guid: ebff7220e6a955f41a70e63280f52234, type: 3}
+      objectReference: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
     - target: {fileID: 6299427270228352473, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -9850,12 +9854,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1647352529}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 34
+  checkPointNumber: 1
 --- !u!65 &1647352532
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10286,12 +10290,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1722725857}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 40
+  checkPointNumber: 1
 --- !u!65 &1722725860
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10429,12 +10433,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1794902949}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 21
+  checkPointNumber: 1
 --- !u!65 &1794902952
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10466,7 +10470,7 @@ PrefabInstance:
     - target: {fileID: 6299427270228352472, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: obstaclePrefabs
       value: 
-      objectReference: {fileID: 4411361229093306498, guid: ebff7220e6a955f41a70e63280f52234, type: 3}
+      objectReference: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
     - target: {fileID: 6299427270228352473, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -10954,12 +10958,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1955642445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 7
+  checkPointNumber: 1
 --- !u!65 &1955642448
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11085,12 +11089,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1994260852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 39
+  checkPointNumber: 1
 --- !u!65 &1994260855
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11557,12 +11561,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2015067425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 8
+  checkPointNumber: 1
 --- !u!65 &2015067428
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11705,12 +11709,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2049292699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 14
+  checkPointNumber: 1
 --- !u!65 &2049292702
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11774,12 +11778,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2051356749}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 37
+  checkPointNumber: 1
 --- !u!65 &2051356752
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12110,12 +12114,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2090967287}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10315cda9f5e05448bab91cdfc4c5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e271e83e1f445a7acb76083766230a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishLine: 0
   stopAfterFinish: 0
-  checkPointNumber: 36
+  checkPointNumber: 1
 --- !u!65 &2090967290
 BoxCollider:
   m_ObjectHideFlags: 0

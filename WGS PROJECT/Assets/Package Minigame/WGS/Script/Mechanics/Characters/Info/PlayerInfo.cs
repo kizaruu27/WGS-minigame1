@@ -3,6 +3,9 @@ using System;
 using System.Collections;
 using Photon.Pun;
 using TMPro;
+using RunMinigames.Mechanics.Checkpoint;
+using RunMinigames.Manager.Characters;
+
 
 namespace RunMinigames.Mechanics.Characters
 {
@@ -56,8 +59,8 @@ namespace RunMinigames.Mechanics.Characters
                     return;
                 }
 
-                Checkpoint checkpoint = coll.GetComponent<Checkpoint>();
-                PlayerRun_Multiplayer myPlayer = this.gameObject.GetComponent<PlayerRun_Multiplayer>();
+                var checkpoint = coll.GetComponent<GameCheckpoint>();
+                // var myPlayer = gameObject.GetComponent<Player>();
 
                 if (passedCheckPointNumber + 1 == checkpoint.checkPointNumber)
                 {
@@ -82,13 +85,13 @@ namespace RunMinigames.Mechanics.Characters
                             checkpoint.isFinishLine, playerID, timer, playerName //Method Arguments
                             );
 
-                        myPlayer.maxSpeed = 2;
+                        // myPlayer.maxSpeed = 2;
                     }
 
                     OnPassCheckpoint?.Invoke(this);
                 }
 
-                if (checkpoint.stopAfterFinish == true) myPlayer.CanMove = false;
+                // if (checkpoint.stopAfterFinish == true) myPlayer.CanMove = false;
 
             }
         }

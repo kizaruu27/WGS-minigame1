@@ -36,7 +36,6 @@ public class ItemCountdown : MonoBehaviour
         deltaTime += Time.deltaTime;
 
         countdown = localTimer - deltaTime;
-        Debug.Log(localTimer - deltaTime);
         CoundownTime.text = countdown > 0f ? countdown.ToString("n2") : "";
 
         if (countdown <= 0f)

@@ -55,6 +55,8 @@ public class NPCSpawner : MonoBehaviour
 
         bool allplayerSpawned = GameObject.FindGameObjectsWithTag("Player").Length == (int)PhotonNetwork.PlayerList.Length;
 
+        Debug.Log(isNPCAlreadySpawned);
+
         if (allplayerSpawned && !isNPCAlreadySpawned)
         {
             List<int> filteredAvatar = NPCIndex.Except(playerAvatarIndex).ToList();
@@ -69,7 +71,7 @@ public class NPCSpawner : MonoBehaviour
                         string NPCPrefabsName = playerNPCPrefabs[filteredAvatar[Random.Range(0, filteredAvatar.Count)]].name;
 
                         PhotonNetwork.InstantiateRoomObject(NPCPrefabsName, spwanPointNPc.position, Quaternion.identity);
-                        NPCInfo.instance.SetPlayerInfo(i, NPCPrefabsName + " - " + i.ToString());
+                        RunMinigames.Mechanics.Characters.NPCInfo.instance.SetPlayerInfo(i, NPCPrefabsName + " - " + i.ToString());
                     }
 
                     isNPCAlreadySpawned = i == playerMax - 1;

@@ -3,6 +3,8 @@ using System;
 using Photon.Pun;
 using System.Collections;
 using TMPro;
+using RunMinigames.Mechanics.Checkpoint;
+using RunMinigames.Manager.Characters;
 
 namespace RunMinigames.Mechanics.Characters
 {
@@ -55,8 +57,8 @@ namespace RunMinigames.Mechanics.Characters
                     return;
                 }
 
-                Checkpoint checkpoint = coll.GetComponent<Checkpoint>();
-                Multiplayer_NPCRun myNpc = GetComponent<Multiplayer_NPCRun>();
+                var checkpoint = coll.GetComponent<GameCheckpoint>();
+                // var myNpc = GetComponent<NPC>();
 
                 if (passedCheckPointNumber + 1 == checkpoint.checkPointNumber)
                 {
@@ -70,13 +72,13 @@ namespace RunMinigames.Mechanics.Characters
                     if (checkpoint.isFinishLine)
                     {
                         view.RPC("UpdatePodiumList", RpcTarget.AllBuffered, NPCID, timer, NPCName);
-                        myNpc.MaxPlayerSpeed = 2;
+                        // myNpc.maxSpeed = 2;
                     }
 
                     OnPassCheckpoint?.Invoke(this);
                 }
 
-                if (checkpoint.stopAfterFinish == true) myNpc.NPCCanMove = false;
+                // if (checkpoint.stopAfterFinish == true) myNpc.CanMove = false;
             }
         }
 

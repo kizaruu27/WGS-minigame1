@@ -29,7 +29,6 @@ namespace RunMinigames.Mechanics.Cam
 
         private void Update()
         {
-            Debug.Log(view.IsMine);
             if (view.IsMine)
             {
                 if (duration > 0)
