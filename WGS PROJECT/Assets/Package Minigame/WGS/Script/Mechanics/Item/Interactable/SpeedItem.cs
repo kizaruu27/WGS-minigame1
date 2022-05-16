@@ -14,6 +14,8 @@ namespace RunMinigames.Mechanics.Items
             mesh.enabled = false;
             sphereCollider.enabled = false;
 
+            Instantiate(itemEffect, transform.position, Quaternion.identity);
+
             if (character.CanMove)
             {
                 PrevPlayerSpeed = character.CharSpeed;

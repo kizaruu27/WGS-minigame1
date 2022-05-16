@@ -15,6 +15,9 @@ namespace RunMinigames.Mechanics.Items
         protected SphereCollider sphereCollider;
         protected bool isObstacles;
 
+        [Header("Item Effect")]
+        public ParticleSystem itemEffect;
+
         MoveItem moveItem;
 
         protected new void Awake()
