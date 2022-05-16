@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9158930}
   m_Layer: 5
-  m_Name: Obstacle UI
+  m_Name: Obstacle & Item UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3085,7 +3085,7 @@ GameObject:
   - component: {fileID: 428257498}
   m_Layer: 0
   m_Name: Obstacle 1 (18)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5017,6 +5017,7 @@ GameObject:
   - component: {fileID: 816288758}
   - component: {fileID: 816288759}
   - component: {fileID: 816288761}
+  - component: {fileID: 816288752}
   m_Layer: 0
   m_Name: -----PLAYER-----
   m_TagString: Player
@@ -5024,6 +5025,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &816288752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816288751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f5fcabd13f785b47a7ce3c9d577912c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiTimer: {fileID: 9158929}
+  TimeUI: {fileID: 448673639}
+  UIText: {fileID: 1009240664}
+  timer: 3
+  isHit: 0
 --- !u!136 &816288753
 CapsuleCollider:
   m_ObjectHideFlags: 0
