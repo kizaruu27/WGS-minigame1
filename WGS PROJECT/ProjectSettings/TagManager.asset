@@ -17,6 +17,8 @@ TagManager:
   - Bullet
   - GameManager
   - Obstacle
+  - Speed
+  - Stop
   layers:
   - Default
   - TransparentFX

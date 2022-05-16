@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9158930}
   m_Layer: 5
-  m_Name: Obstacle UI
+  m_Name: Obstacle & Item UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3085,7 +3085,7 @@ GameObject:
   - component: {fileID: 428257498}
   m_Layer: 0
   m_Name: Obstacle 1 (18)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3122,6 +3122,7 @@ MonoBehaviour:
   isLeft: 0
   SpeedCharacter: 3
   LongTimeBehaviour: 3
+  itemEffect: {fileID: 0}
 --- !u!65 &428257499
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5016,6 +5017,7 @@ GameObject:
   - component: {fileID: 816288758}
   - component: {fileID: 816288759}
   - component: {fileID: 816288761}
+  - component: {fileID: 816288752}
   m_Layer: 0
   m_Name: -----PLAYER-----
   m_TagString: Player
@@ -5023,6 +5025,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &816288752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816288751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f5fcabd13f785b47a7ce3c9d577912c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiTimer: {fileID: 9158929}
+  TimeUI: {fileID: 448673639}
+  UIText: {fileID: 1009240664}
+  timer: 3
+  isHit: 0
 --- !u!136 &816288753
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7214,7 +7233,7 @@ MonoBehaviour:
   itemsPrefabs:
   - {fileID: 7930775266224442915, guid: e11ad9d6002d9418d94052a77125fd2a, type: 3}
   - {fileID: 7930775266224442915, guid: 5a288d9e0e0094589a6867a586fe7ab0, type: 3}
-  spawnTimes: 2
+  spawnTimes: 1.5
 --- !u!4 &1144604494
 Transform:
   m_ObjectHideFlags: 0
@@ -7223,7 +7242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1144604492}
   m_LocalRotation: {x: 0, y: 0.9181009, z: 0, w: 0.39634678}
-  m_LocalPosition: {x: 802.06, y: 392.54, z: 32.04}
+  m_LocalPosition: {x: 802.06, y: 392.54, z: 68.64}
   m_LocalScale: {x: 0.35742173, y: 0.35742173, z: 0.35742173}
   m_Children: []
   m_Father: {fileID: 0}
