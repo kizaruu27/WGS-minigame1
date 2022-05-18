@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HttpClient : MonoBehaviour
+public class HttpClient<T> : MonoBehaviour
 {
 
 }
