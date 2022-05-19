@@ -13,6 +13,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     {
         if (usernameInput.text.Length >= 1)
         {
+            PhotonNetwork.OfflineMode = true;
             PhotonNetwork.NickName = usernameInput.text;
             buttonText.text = "Connecting...";
             PhotonNetwork.AutomaticallySyncScene = true;
@@ -23,6 +24,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
+        Debug.Log("Connected to master");
         SceneManager.LoadScene("WGS3_Lobby");
     }
 

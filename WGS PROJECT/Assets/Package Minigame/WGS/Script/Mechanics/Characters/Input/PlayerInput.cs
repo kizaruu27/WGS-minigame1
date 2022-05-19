@@ -122,7 +122,4 @@ namespace RunMinigames.Mechanics.Characters
             }
         }
     }
-
-
 }
-

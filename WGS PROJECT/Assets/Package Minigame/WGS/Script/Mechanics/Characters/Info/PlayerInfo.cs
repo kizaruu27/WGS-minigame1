@@ -5,6 +5,7 @@ using Photon.Pun;
 using TMPro;
 using RunMinigames.Mechanics.Checkpoint;
 using RunMinigames.Manager.Characters;
+using RunMinigames.Manager.Leaderboard;
 
 
 namespace RunMinigames.Mechanics.Characters
@@ -35,6 +36,11 @@ namespace RunMinigames.Mechanics.Characters
         {
             instance = this;
             view = GetComponent<PhotonView>();
+
+            Debug.Log(view);
+
+            // playerName = "tatang"; // nama player 
+            // playerID = 0; // ID player 
 
             playerName = view.Owner.NickName; // nama player 
             playerID = view.Owner.ActorNumber - 1; // ID player 
@@ -116,15 +122,19 @@ namespace RunMinigames.Mechanics.Characters
         [PunRPC]
         void UpdatePlayerScore(string name, int score)
         {
-            LeaderboardManager.instance.UpdatePlayerScore(name, score); //disini rpc nya
+            GameplayLeaderboardManager.instance.UpdatePlayerScore(name, score); //disini rpc nya
         }
 
         [PunRPC]
-        void UpdatePlayerName(int id, string name) => LeaderboardManager.instance.UpdatePlayerName(id, name);
+        void UpdatePlayerName(int id, string name)
+        {
+            Debug.Log("Update player name " + id + " name");
+            GameplayLeaderboardManager.instance.UpdatePlayerName(id, name);
+        }
 
 
         [PunRPC]
-        void SetPlayerName(string name) => LeaderboardManager.instance.SetPlayerName(name);
+        void SetPlayerName(string name) => GameplayLeaderboardManager.instance.SetPlayerName(name);
 
 
         [PunRPC]

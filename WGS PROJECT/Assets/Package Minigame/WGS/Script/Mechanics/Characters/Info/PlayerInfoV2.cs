@@ -1,6 +1,8 @@
 using UnityEngine;
 using Photon.Pun;
 using RunMinigames.Mechanics.Checkpoint;
+using RunMinigames.Manager.Leaderboard;
+
 
 
 namespace RunMinigames.Mechanics.Characters
@@ -30,6 +32,8 @@ namespace RunMinigames.Mechanics.Characters
                 view.RPC("UpdateCharacterName", RpcTarget.AllBuffered, CharaID, CharaName);
                 view.RPC("SetPlayerName", RpcTarget.AllBuffered, CharaName);
             }
+
+            GameplayLeaderboardManager.instance.UpdatePlayerName(CharaID, CharaName);
         }
 
         protected override void CheckTypeUpdatePodium(GameCheckpoint checkpoint)
@@ -44,7 +48,7 @@ namespace RunMinigames.Mechanics.Characters
             else
             {
                 GameObject finishUI = GameObject.FindGameObjectWithTag("Finish UI");
-                finishUI.GetComponent<MultiplayerFinishManager>()
+                finishUI.GetComponent<FinishLeaderboard>()
                     .Finish(checkpoint.isFinishLine, CharaID, timer, CharaName);
             }
         }

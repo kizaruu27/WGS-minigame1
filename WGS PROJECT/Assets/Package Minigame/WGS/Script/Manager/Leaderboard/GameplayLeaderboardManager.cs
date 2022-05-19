@@ -13,6 +13,8 @@ namespace RunMinigames.Manager.Leaderboard
         public static GameplayLeaderboardManager instance;
         PhotonView PV;
 
+        CheckGameType type;
+
         [System.Serializable]
         public class CLeaderboardItem
         {
@@ -26,6 +28,7 @@ namespace RunMinigames.Manager.Leaderboard
         {
             instance = this;
             PV = GetComponent<PhotonView>();
+            type = GameObject.Find("GameManager").GetComponent<CheckGameType>();
         }
 
         static int SortAsc(CLeaderboardItem p1, CLeaderboardItem p2)
@@ -121,13 +124,13 @@ namespace RunMinigames.Manager.Leaderboard
 
             }).ToList();
 
-            int playerIndex = LeaderboardItem.FindIndex(val => val.PlayerID == PhotonNetwork.LocalPlayer.ActorNumber - 1);
+            int playerIndex = LeaderboardItem.FindIndex(val => val.PlayerID == PhotonNetwork.LocalPlayer.ActorNumber - 1 || val.PlayerID == 0);
 
             Button playerItem = listButton[playerIndex];
             playerItem.GetComponent<Image>().color = Color.green;
             playerItem.GetComponentInChildren<Text>().color = Color.black;
 
-            if (playerDisconnected > 0)
+            if (playerDisconnected > 0 && type.IsMultiplayer && !PhotonNetwork.OfflineMode)
             {
                 for (int i = 1; i <= playerDisconnected; i++)
                 {
@@ -142,6 +145,8 @@ namespace RunMinigames.Manager.Leaderboard
         public void UpdateLeaderboard()
         {
             int TotalPlayerDisconnect = LeaderboardText.Count - LeaderboardItem.Count;
+            // Debug.Log(TotalPlayerDisconnect);
+
 
             LeaderboardItem.Sort(SortDesc);
 
@@ -157,14 +162,18 @@ namespace RunMinigames.Manager.Leaderboard
 
         public void RemovePlayerOnDisconnect()
         {
-            List<string> TotalNetworkPlayers = PhotonNetwork.PlayerList.Select(Player => Player.NickName).ToList();
-            List<string> DisconnectPlayers = TotalCachedPlayers.Except(TotalNetworkPlayers).ToList();
+            if (!PhotonNetwork.OfflineMode && type.IsMultiplayer)
+            {
+                List<string> TotalNetworkPlayers = PhotonNetwork.PlayerList.Select(Player => Player.NickName).ToList();
+                List<string> DisconnectPlayers = TotalCachedPlayers.Except(TotalNetworkPlayers).ToList();
 
-            var TotalPlayersLeft = LeaderboardItem.Where(Player => !DisconnectPlayers.Contains(Player.PlayerName)).ToList();
+                var TotalPlayersLeft = LeaderboardItem.Where(Player => !DisconnectPlayers.Contains(Player.PlayerName)).ToList();
 
-            LeaderboardItem.Clear();
-            LeaderboardItem = TotalPlayersLeft;
+                LeaderboardItem.Clear();
+                LeaderboardItem = TotalPlayersLeft;
+            }
         }
+
 
         public override void OnPlayerLeftRoom(Player otherPlayer)
         {
@@ -178,19 +187,16 @@ namespace RunMinigames.Manager.Leaderboard
 
         void LateUpdate()
         {
-
             ItemFocusToPlayer();
-            RemovePlayerOnDisconnect();
             UpdateLeaderboard();
-
-
+            RemovePlayerOnDisconnect();
         }
 
 
         [PunRPC]
         void sentPlayerDiscCount(int total)
         {
-            MultiplayerFinishManager FinishManager = GameObject.FindObjectOfType<MultiplayerFinishManager>();
+            FinishLeaderboard FinishManager = GameObject.FindObjectOfType<FinishLeaderboard>();
             FinishManager.TotalPlayersDisconnect = total;
         }
     }

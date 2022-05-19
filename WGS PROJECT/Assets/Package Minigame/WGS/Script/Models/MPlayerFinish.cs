@@ -1,7 +1,10 @@
 
-public struct MPlayerFinish
+namespace RunMinigames.Models
 {
-    public int id { get; set; }
-    public string name { get; set; }
-    public float time { get; set; }
+    public struct MPlayerFinish
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public float time { get; set; }
+    }
 }

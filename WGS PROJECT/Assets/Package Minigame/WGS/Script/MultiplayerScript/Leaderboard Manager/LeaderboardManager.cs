@@ -51,11 +51,13 @@ public class LeaderboardManager : MonoBehaviourPunCallbacks
     [Header("Animation Podium")]
     public List<GameObject> UIPositionObj;
 
-    public void ShowPlayerRank(int playerFinish) 
+    public void ShowPlayerRank(int playerFinish)
     {
         // Debug.Log(UIPositionObj[1].activeInHierarchy == false);
-        for (int i = 0; i < playerFinish; i++){
-            if(UIPositionObj[i].activeInHierarchy == false){
+        for (int i = 0; i < playerFinish; i++)
+        {
+            if (UIPositionObj[i].activeInHierarchy == false)
+            {
                 UIPositionObj[i].SetActive(true);
                 UIPositionObj[i].GetComponent<Animation>().Play("showRank");
             }
@@ -81,6 +83,7 @@ public class LeaderboardManager : MonoBehaviourPunCallbacks
     //! buat update playername pertama kali sesuai dengan index
     public void UpdatePlayerName(int aPlayerIndex, string aPlayerName)
     {
+        Debug.Log("UpdatePlayerName: " + aPlayerName);
         if (aPlayerIndex < LeaderboardItem.Count)
         {
             LeaderboardItem[aPlayerIndex].PlayerName = aPlayerName;

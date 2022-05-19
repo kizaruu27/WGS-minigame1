@@ -34,7 +34,6 @@ public class ItemSpeed : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("test");
         if (other.gameObject.tag == PlayerTag) StartCoroutine(UpSpeedPlayer(other));
         if (other.gameObject.tag == NPCTag) StartCoroutine(UpSpeedNPC(other));
         if (other.gameObject.tag == MultiplayerNPC) StartCoroutine(UpSpeedNPC_Multiplayer(other));

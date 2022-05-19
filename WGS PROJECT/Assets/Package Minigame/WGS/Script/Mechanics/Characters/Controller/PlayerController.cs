@@ -11,8 +11,6 @@ namespace RunMinigames.Mechanics.Characters
         private void Start()
         {
             view = GetComponent<PhotonView>();
-            Debug.Log(TargetAnimator);
-
         }
 
         public override void Jump()

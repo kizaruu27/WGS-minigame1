@@ -4,6 +4,7 @@ using Photon.Pun;
 using RunMinigames.Interface;
 using RunMinigames.Manager.Characters;
 using RunMinigames.Mechanics.Checkpoint;
+using RunMinigames.Manager.Leaderboard;
 using TMPro;
 
 namespace RunMinigames.Mechanics.Characters
@@ -29,7 +30,7 @@ namespace RunMinigames.Mechanics.Characters
         protected PhotonView view;
         protected CheckGameType type;
 
-        MultiplayerFinishManager FinishUI;
+        FinishLeaderboard FinishUI;
 
         protected void Awake()
         {
@@ -63,7 +64,7 @@ namespace RunMinigames.Mechanics.Characters
                     {
                         FinishUI = GameObject
                             .FindGameObjectWithTag("Finish UI")
-                            .GetComponent<MultiplayerFinishManager>();
+                            .GetComponent<FinishLeaderboard>();
 
                         if (myCharacter is Player)
                         {
@@ -97,16 +98,16 @@ namespace RunMinigames.Mechanics.Characters
 
         [PunRPC]
         protected void UpdatePodiumList(int id, float timer, string playerName) =>
-            FinishUI.GetComponent<MultiplayerFinishManager>().Finish(id, timer, playerName);
+            FinishUI.GetComponent<FinishLeaderboard>().Finish(id, timer, playerName);
 
         [PunRPC]
         protected void UpdateCharacterScore(string name, int score)
         {
-            LeaderboardManager.instance.UpdatePlayerScore(name, score); //disini rpc nya
+            GameplayLeaderboardManager.instance.UpdatePlayerScore(name, score); //disini rpc nya
         }
 
         [PunRPC]
-        protected void UpdateCharacterName(int id, string name) => LeaderboardManager.instance.UpdatePlayerName(id, name);
+        protected void UpdateCharacterName(int id, string name) => GameplayLeaderboardManager.instance.UpdatePlayerName(id, name);
 
         protected virtual void CheckTypeUpdateScore()
         {
@@ -119,7 +120,7 @@ namespace RunMinigames.Mechanics.Characters
             }
             else
             {
-                // LeaderboardManager.instance.UpdatePlayerScore(CharaName, CharaScore);
+                GameplayLeaderboardManager.instance.UpdatePlayerScore(CharaName, CharaScore);
             }
         }
 

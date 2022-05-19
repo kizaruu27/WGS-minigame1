@@ -51,14 +51,14 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.JoinLobby();
         modalPanel.SetActive(false);
-
+        PhotonNetwork.OfflineMode = false;
     }
 
     public void OnClickCreate()
     {
-        loadingPanel.SetActive(true);
         if (roomInputField.text.Length >= 1)
         {
+            loadingPanel.SetActive(true);
 
             if (PhotonNetwork.IsConnected)
             {
@@ -86,6 +86,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public void Modal(string title, string message)
     {
         modalPanel.SetActive(true);
+        loadingPanel.SetActive(false);
         modalTitle.text = title;
         modalMessage.text = message;
     }

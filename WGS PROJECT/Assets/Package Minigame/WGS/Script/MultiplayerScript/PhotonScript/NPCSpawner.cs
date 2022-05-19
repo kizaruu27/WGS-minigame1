@@ -2,6 +2,7 @@ using UnityEngine;
 using Photon.Pun;
 using System.Collections.Generic;
 using System.Collections;
+using RunMinigames.Mechanics.Characters;
 
 using System.Linq;
 
@@ -71,7 +72,7 @@ public class NPCSpawner : MonoBehaviour
                         string NPCPrefabsName = playerNPCPrefabs[filteredAvatar[Random.Range(0, filteredAvatar.Count)]].name;
 
                         PhotonNetwork.InstantiateRoomObject(NPCPrefabsName, spwanPointNPc.position, Quaternion.identity);
-                        RunMinigames.Mechanics.Characters.NPCInfo.instance.SetPlayerInfo(i, NPCPrefabsName + " - " + i.ToString());
+                        NPCInfoV2.info.SetNPCInfo(i, NPCPrefabsName + " - " + i.ToString());
                     }
 
                     isNPCAlreadySpawned = i == playerMax - 1;

@@ -7,7 +7,6 @@ namespace RunMinigames.Mechanics.Cam
     {
         public Transform Player;
         public Vector3 offset;
-
         public float smoothFactor = 0.5f;
 
         void Start()

@@ -2,67 +2,74 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using RunMinigames.Manager.Leaderboard;
+
 
 using Photon.Pun;
 
-public class FinishLeaderboard : MonoBehaviour
+
+namespace RunMinigames.Manager.Leaderboard
 {
-    public static FinishLeaderboard instance;
-
-    [Header("Canvas UI")]
-    [SerializeField] GameObject finishUI;
-    [SerializeField] GameObject LeaderboardUI;
-
-    [Header("Player List")]
-    List<PlayerFinishModel> playerFinishList = new List<PlayerFinishModel>();
-
-    PhotonView pv;
-
-    private void Awake() => pv = GetComponent<PhotonView>();
-    private void Update()
+    public class FinishLeaderboard : MonoBehaviour
     {
-        pv.RPC("SendCount", RpcTarget.AllBuffered, playerFinishList.Count);
-    }
-    public int TotalPlayersDisconnect { get; set; }
+        public static FinishLeaderboard instance;
 
-    public void InitializePlayer(int id, string name, float time)
-    {
-        PlayerFinishModel playerFinish = new PlayerFinishModel();
-        playerFinish.name = name;
-        playerFinish.time = time;
-        playerFinish.id = id;
+        [Header("Canvas UI")]
+        [SerializeField] GameObject finishUI;
+        [SerializeField] GameObject LeaderboardUI;
 
-        playerFinishList.Add(playerFinish);
-    }
+        [Header("Player List")]
+        List<PlayerFinishModel> playerFinishList = new List<PlayerFinishModel>();
 
-    public IEnumerable<PlayerFinishModel> GetLeaderboardData() => playerFinishList.OrderBy(player => player.time).ThenBy(player => player.name);
+        PhotonView pv;
 
-    // PLAYER
-    public void Finish(bool isPlayerCrossFinish, int id, float time, string name)
-    {
-        if (PhotonNetwork.LocalPlayer.ActorNumber - 1 == id)
+        private void Awake() => pv = GetComponent<PhotonView>();
+        private void Update()
         {
-            // LeaderboardUI.SetActive(!isPlayerCrossFinish);
-            finishUI.SetActive(isPlayerCrossFinish);
+            pv.RPC("SendCount", RpcTarget.AllBuffered, playerFinishList.Count);
+        }
+        public int TotalPlayersDisconnect { get; set; }
 
-            for (int i = 0; i < LeaderboardUI.transform.childCount; i++)
-            {
-                // Debug.Log($"child number: {i}");
-                GameObject child = LeaderboardUI.transform.GetChild(i).gameObject;
-                child.gameObject.SetActive(!isPlayerCrossFinish);
-            }
+        public void InitializePlayer(int id, string name, float time)
+        {
+            PlayerFinishModel playerFinish = new PlayerFinishModel();
+            playerFinish.name = name;
+            playerFinish.time = time;
+            playerFinish.id = id;
+
+            playerFinishList.Add(playerFinish);
         }
 
-        if (!playerFinishList.Any(item => item.id == id)) InitializePlayer(id, name, time);
+        public IEnumerable<PlayerFinishModel> GetLeaderboardData() => playerFinishList.OrderBy(player => player.time).ThenBy(player => player.name);
+
+        // PLAYER
+        public void Finish(bool isPlayerCrossFinish, int id, float time, string name)
+        {
+            if (PhotonNetwork.LocalPlayer.ActorNumber - 1 == id)
+            {
+                // LeaderboardUI.SetActive(!isPlayerCrossFinish);
+                finishUI.SetActive(isPlayerCrossFinish);
+
+                for (int i = 0; i < LeaderboardUI.transform.childCount; i++)
+                {
+                    // Debug.Log($"child number: {i}");
+                    GameObject child = LeaderboardUI.transform.GetChild(i).gameObject;
+                    child.gameObject.SetActive(!isPlayerCrossFinish);
+                }
+            }
+
+            if (!playerFinishList.Any(item => item.id == id)) InitializePlayer(id, name, time);
+        }
+
+        // NPC
+        public void Finish(int id, float time, string name)
+        {
+            if (!playerFinishList.Any(item => item.id == id)) InitializePlayer(id, name, time);
+        }
+
+        // send total player finish to leaderboard manager
+        [PunRPC]
+        void SendCount(int total) => GameplayLeaderboardManager.instance.ShowPlayerRank(total);
     }
 
-    // NPC
-    public void Finish(int id, float time, string name)
-    {
-        if (!playerFinishList.Any(item => item.id == id)) InitializePlayer(id, name, time);
-    }
-
-    // send total player finish to leaderboard manager
-    [PunRPC]
-    void SendCount(int total) => LeaderboardManager.instance.ShowPlayerRank(total);
 }

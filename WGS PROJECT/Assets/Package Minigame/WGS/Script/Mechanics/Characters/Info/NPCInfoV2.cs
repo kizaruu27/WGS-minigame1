@@ -1,14 +1,20 @@
 using UnityEngine;
 using Photon.Pun;
 using RunMinigames.Mechanics.Checkpoint;
-
-
+using RunMinigames.Manager.Leaderboard;
 
 namespace RunMinigames.Mechanics.Characters
 {
 
     public class NPCInfoV2 : CharactersInfo
     {
+        public static NPCInfoV2 info;
+
+        private new void Awake()
+        {
+            base.Awake();
+            info = this;
+        }
 
         private void Start()
         {
@@ -18,15 +24,15 @@ namespace RunMinigames.Mechanics.Characters
             }
             else
             {
-                var rand = Random.Range(0, 100);
-                CharaID = rand;
+                // var rand = Random.Range(0, 100);
+                // CharaID = rand;
                 CharaName = gameObject.name;
+                GameplayLeaderboardManager.instance.UpdatePlayerName(CharaID, CharaName);
             }
 
             // CharaViewName.text = CharaName;
         }
 
-        private new void Awake() => base.Awake();
 
         protected override void CheckTypeUpdatePodium(GameCheckpoint checkpoint)
         {
@@ -40,7 +46,7 @@ namespace RunMinigames.Mechanics.Characters
             else
             {
                 GameObject finishUI = GameObject.FindGameObjectWithTag("Finish UI");
-                finishUI.GetComponent<MultiplayerFinishManager>()
+                finishUI.GetComponent<FinishLeaderboard>()
                     .Finish(CharaID, timer, CharaName);
             }
         }

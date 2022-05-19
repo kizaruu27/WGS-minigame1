@@ -5,6 +5,8 @@ using System.Collections;
 using TMPro;
 using RunMinigames.Mechanics.Checkpoint;
 using RunMinigames.Manager.Characters;
+using RunMinigames.Manager.Leaderboard;
+
 
 namespace RunMinigames.Mechanics.Characters
 {
@@ -32,7 +34,6 @@ namespace RunMinigames.Mechanics.Characters
         {
             instance = this;
             view = GetComponent<PhotonView>();
-
         }
         public void SetPlayerInfo(int newID, string newName) => view.RPC("SetNameNPC", RpcTarget.AllBuffered, newID, newName);
 
@@ -92,11 +93,11 @@ namespace RunMinigames.Mechanics.Characters
         [PunRPC]
         void UpdateNPCScore(int score, string name)
         {
-            LeaderboardManager.instance.UpdatePlayerScore(name, score);
+            GameplayLeaderboardManager.instance.UpdatePlayerScore(name, score);
         }
 
         [PunRPC]
-        void UpdateNPCName(int id, string name) => LeaderboardManager.instance.UpdatePlayerName(id, name);
+        void UpdateNPCName(int id, string name) => GameplayLeaderboardManager.instance.UpdatePlayerName(id, name);
 
         [PunRPC]
         void SetNameNPC(int newID, string newName)

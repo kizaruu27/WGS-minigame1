@@ -1,6 +1,7 @@
 using UnityEngine;
 using RunMinigames.Interface;
 using System.Linq;
+using Photon.Pun;
 
 namespace RunMinigames.Manager.Game
 {
@@ -10,7 +11,10 @@ namespace RunMinigames.Manager.Game
 
         public bool IsMultiplayer;
 
-        private void Awake() => instance = this;
+        private void Awake()
+        {
+            instance = this;
+        }
 
         public void SetActiveCharacter()
         {
