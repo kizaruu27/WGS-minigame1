@@ -5,6 +5,7 @@ using Photon.Pun;
 using System.Linq;
 using System.Collections.Generic;
 using RunMinigames.Manager.Leaderboard;
+using RunMinigames.Models;
 
 public class Finish : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class Finish : MonoBehaviour
 
     [Header("Components")]
     public FinishLeaderboard finishManager;
-    public RowUI row;
+    public StandingsItem row;
 
     [Header("Player Score")]
     int score = 1000;
@@ -20,8 +21,8 @@ public class Finish : MonoBehaviour
 
     [Header("Player List")]
 
-    IEnumerable<PlayerFinishModel> PlayerFinish;
-    List<RowUI> cachePlayerList = new List<RowUI>();
+    IEnumerable<MPlayerFinish> PlayerFinish;
+    List<StandingsItem> cachePlayerList = new List<StandingsItem>();
     private void Awake() => instance = this;
 
     private void Update()
@@ -40,9 +41,9 @@ public class Finish : MonoBehaviour
 
         foreach (var item in PlayerFinish.Select((value, index) => new { index, value }))
         {
-            RowUI rowData = Instantiate(row, transform).GetComponent<RowUI>();
+            StandingsItem rowData = Instantiate(row, transform).GetComponent<StandingsItem>();
 
-            rowData.SetColorItem(item.value.id == PhotonNetwork.LocalPlayer.ActorNumber - 1);
+            rowData.SetColorItem(item.value.id == PhotonNetwork.LocalPlayer.ActorNumber - 1 || item.value.id == 0);
 
             rowData.Rank.text = GenerateRankText(item.index);
             rowData.Name.text = item.value.name.Length <= 20 ? item.value.name : item.value.name.Substring(0, 20) + "...";
@@ -58,7 +59,7 @@ public class Finish : MonoBehaviour
         {
             for (int i = 0; i < ((int)PhotonNetwork.CurrentRoom.MaxPlayers - finishManager.TotalPlayersDisconnect) - cachePlayerList.Count; i++)
             {
-                RowUI rowData = Instantiate(row, transform).GetComponent<RowUI>();
+                StandingsItem rowData = Instantiate(row, transform).GetComponent<StandingsItem>();
 
                 rowData.Rank.text = "";
                 rowData.Name.text = "Waiting Other Player";
@@ -76,7 +77,7 @@ public class Finish : MonoBehaviour
         {
             for (int i = 0; i < PDC; i++)
             {
-                RowUI rowData = Instantiate(row, transform).GetComponent<RowUI>();
+                StandingsItem rowData = Instantiate(row, transform).GetComponent<StandingsItem>();
 
                 rowData.SetHighlightPlayerDC();
 

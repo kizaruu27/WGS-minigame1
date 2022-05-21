@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 namespace RunMinigames.Mechanics.Cam
 {
     public class CameraController : MonoBehaviour
@@ -16,8 +15,7 @@ namespace RunMinigames.Mechanics.Cam
 
         void LateUpdate()
         {
-            Vector3 newPosition = Player.position + offset;
-            transform.position = Vector3.Slerp(transform.position, newPosition, smoothFactor);
+            transform.position = Player.position;
         }
     }
 }

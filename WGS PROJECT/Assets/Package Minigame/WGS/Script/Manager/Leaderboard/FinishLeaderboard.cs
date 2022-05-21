@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using RunMinigames.Manager.Leaderboard;
-
-
+using RunMinigames.Models;
 using Photon.Pun;
 
 
@@ -19,7 +18,7 @@ namespace RunMinigames.Manager.Leaderboard
         [SerializeField] GameObject LeaderboardUI;
 
         [Header("Player List")]
-        List<PlayerFinishModel> playerFinishList = new List<PlayerFinishModel>();
+        List<MPlayerFinish> playerFinishList = new List<MPlayerFinish>();
 
         PhotonView pv;
 
@@ -32,7 +31,7 @@ namespace RunMinigames.Manager.Leaderboard
 
         public void InitializePlayer(int id, string name, float time)
         {
-            PlayerFinishModel playerFinish = new PlayerFinishModel();
+            MPlayerFinish playerFinish = new MPlayerFinish();
             playerFinish.name = name;
             playerFinish.time = time;
             playerFinish.id = id;
@@ -40,11 +39,13 @@ namespace RunMinigames.Manager.Leaderboard
             playerFinishList.Add(playerFinish);
         }
 
-        public IEnumerable<PlayerFinishModel> GetLeaderboardData() => playerFinishList.OrderBy(player => player.time).ThenBy(player => player.name);
+        public IEnumerable<MPlayerFinish> GetLeaderboardData() => playerFinishList.OrderBy(player => player.time).ThenBy(player => player.name);
 
         // PLAYER
         public void Finish(bool isPlayerCrossFinish, int id, float time, string name)
         {
+            finishUI.SetActive(isPlayerCrossFinish);
+
             if (PhotonNetwork.LocalPlayer.ActorNumber - 1 == id)
             {
                 // LeaderboardUI.SetActive(!isPlayerCrossFinish);

@@ -54,7 +54,7 @@ namespace RunMinigames.Mechanics.Characters
         }
 
         [PunRPC]
-        void SetPlayerName(string name) => LeaderboardManager.instance.SetPlayerName(name);
+        void SetPlayerName(string name) => GameplayLeaderboardManager.instance.SetPlayerName(name);
 
 
         [PunRPC]

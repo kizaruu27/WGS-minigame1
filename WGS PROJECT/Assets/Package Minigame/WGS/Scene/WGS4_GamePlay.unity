@@ -17518,7 +17518,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8908581893368337823}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultiplayerFinishUI, Assembly-CSharp
         m_MethodName: OnClickBackToMenu
         m_Mode: 1
@@ -17609,20 +17609,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &8908581893368337823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9101078062716334833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2254aecd3c3fa477a97e4324e86957f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  finishManager: {fileID: 317129765926684179}
-  row: {fileID: 6757852886836724305, guid: faf14472518bf4a688523d0881f9816e, type: 3}
 --- !u!114 &8921935395061202359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17655,7 +17641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3875387926372392521}
   - component: {fileID: 2869836972359601096}
-  - component: {fileID: 8908581893368337823}
+  - component: {fileID: 9101078062716334834}
   m_Layer: 5
   m_Name: Content
   m_TagString: PodiumContent
@@ -17663,6 +17649,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9101078062716334834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9101078062716334833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba22546f757e4a2dbcced374c55e265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finishManager: {fileID: 8483794656197347180}
+  row: {fileID: 4202034541102848308, guid: faf14472518bf4a688523d0881f9816e, type: 3}
 --- !u!114 &9128329272929099699
 MonoBehaviour:
   m_ObjectHideFlags: 0

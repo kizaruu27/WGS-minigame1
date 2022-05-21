@@ -13,7 +13,6 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     {
         if (usernameInput.text.Length >= 1)
         {
-            PhotonNetwork.OfflineMode = true;
             PhotonNetwork.NickName = usernameInput.text;
             buttonText.text = "Connecting...";
             PhotonNetwork.AutomaticallySyncScene = true;

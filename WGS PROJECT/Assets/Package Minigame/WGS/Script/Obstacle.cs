@@ -31,8 +31,6 @@ public class Obstacle : MonoBehaviour
         {
             view = coll.gameObject?.GetComponent<PhotonView>();
 
-            Zetcode_CameraFollowPlayerFixed.cameraFollow.isShake = (type.IsMultiplayer && view.IsMine) || type.IsSingleplayer;
-
             StartCoroutine(playerSlowed(coll));
         }
 
