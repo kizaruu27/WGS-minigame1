@@ -5,6 +5,7 @@ using Photon.Pun;
 using System.Linq;
 using System.Collections.Generic;
 using RunMinigames.Manager.Leaderboard;
+using RunMinigames.Manager.Game;
 using RunMinigames.Models;
 
 public class Finish : MonoBehaviour
@@ -23,16 +24,29 @@ public class Finish : MonoBehaviour
 
     IEnumerable<MPlayerFinish> PlayerFinish;
     List<StandingsItem> cachePlayerList = new List<StandingsItem>();
-    private void Awake() => instance = this;
+
+
+    GameManager type;
+    private void Awake()
+    {
+        instance = this;
+        type = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
 
     private void Update()
     {
         RemovePlayerListCache();
         ShowPlayerList();
-        WaitingPlayerToFinish();
-        PlayerDiscHighlight();
 
-        if (cachePlayerList.Count == (int)PhotonNetwork.CurrentRoom.MaxPlayers) return;
+        if (type.IsMultiplayer)
+        {
+            WaitingPlayerToFinish();
+            PlayerDiscHighlight();
+
+             if (cachePlayerList.Count == (int)PhotonNetwork.CurrentRoom.MaxPlayers) return;
+        }
+
+       
     }
 
     public void ShowPlayerList()
