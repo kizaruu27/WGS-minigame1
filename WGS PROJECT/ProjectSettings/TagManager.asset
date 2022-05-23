@@ -19,6 +19,7 @@ TagManager:
   - Obstacle
   - Speed
   - Stop
+  - Camera
   layers:
   - Default
   - TransparentFX

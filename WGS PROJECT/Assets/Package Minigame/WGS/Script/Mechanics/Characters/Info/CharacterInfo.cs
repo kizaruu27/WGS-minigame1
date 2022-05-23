@@ -15,7 +15,7 @@ namespace RunMinigames.Mechanics.Characters
         public static CharactersInfo instance;
         public int CharaID;
         public string CharaName;
-        // public TMP_Text CharaViewName;
+        public TMP_Text CharaViewName;
         public int CharaScore;
 
         [Header("Check point system")]

@@ -3,16 +3,20 @@ using Photon.Pun;
 using RunMinigames.Mechanics.Checkpoint;
 using RunMinigames.Manager.Leaderboard;
 
-
-
 namespace RunMinigames.Mechanics.Characters
 {
     public class PlayerInfoV2 : CharactersInfo
     {
         private new void Awake()
         {
-
             base.Awake();
+
+            if (type.IsMultiplayer && view.IsMine)
+            {
+                GameObject
+                    .FindGameObjectWithTag("Camera")
+                    .GetComponent<RunMinigames.Mechanics.Cam.CameraController>().Player = transform;
+            }
 
             CharaName = type.IsMultiplayer && !type.IsSingleplayer ? view.Owner.NickName : gameObject.name;
             CharaID = type.IsMultiplayer && !type.IsSingleplayer ? view.Owner.ActorNumber - 1 : 0;
@@ -22,7 +26,7 @@ namespace RunMinigames.Mechanics.Characters
                 view.RPC("SetAvatarIndex", RpcTarget.AllBuffered, PlayerPrefs.GetInt("playerAvatar"));
             }
 
-            // CharaViewName.text = CharaName;
+            CharaViewName.text = CharaName;
         }
 
         private void Start()
