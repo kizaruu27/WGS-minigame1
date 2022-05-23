@@ -4,8 +4,7 @@ using RunMinigames.Models;
 
 namespace RunMinigames.Services
 {
-
-    public class HttpConfig
+    public static class HttpConfig
     {
         public static string baseurl = "https://waffleverse-sol.stagingapps.net";
 
