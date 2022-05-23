@@ -35,6 +35,7 @@ public class NPCSpawner : MonoBehaviour
     }
     private void Update()
     {
+        Debug.Log(PhotonNetwork.PlayerList.Length);
         StartCoroutine(
                     CheckAllPlayerConnected.instance.WaitAllPlayerReady(
                         () => StartCoroutine(
@@ -55,8 +56,6 @@ public class NPCSpawner : MonoBehaviour
         List<int> NPCIndex = new List<int> { 0, 1, 2 };
 
         bool allplayerSpawned = GameObject.FindGameObjectsWithTag("Player").Length == (int)PhotonNetwork.PlayerList.Length;
-
-        Debug.Log(isNPCAlreadySpawned);
 
         if (allplayerSpawned && !isNPCAlreadySpawned)
         {

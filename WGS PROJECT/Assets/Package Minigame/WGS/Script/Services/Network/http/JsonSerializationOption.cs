@@ -14,12 +14,11 @@ namespace RunMinigames.Services
         {
             try
             {
-                var result = JsonConvert.DeserializeObject<T>(text);
-                return result;
+                return JsonConvert.DeserializeObject<T>(text);
             }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                Debug.LogError($"Could not parse response {text}. {ex.Message}");
+                Debug.LogError($"Could not parse response {text}. {error.Message}");
                 return default;
             }
         }
