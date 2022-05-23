@@ -1,4 +1,4 @@
-namespace RunMinigames.Models
+namespace RunMinigames.Models.Http.PlayerInfo
 {
     public class MPlayerInfo
     {

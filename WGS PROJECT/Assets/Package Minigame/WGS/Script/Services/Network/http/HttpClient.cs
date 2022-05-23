@@ -51,15 +51,10 @@ namespace RunMinigames.Services
                     await Task.Yield();
                 }
 
-
                 if (www.result != UnityWebRequest.Result.Success)
                     Debug.LogError($"Failed: {www.error}");
 
-
-                Debug.Log(www.downloadHandler.text);
-
-
-                var result = JsonUtility.FromJson<T>(www.downloadHandler.text);
+                var result = _serializationOption.Deserialize<T>(www.downloadHandler.text);
 
                 if (result != null) isLoading = false;
 

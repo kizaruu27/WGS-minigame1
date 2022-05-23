@@ -6,13 +6,12 @@ namespace RunMinigames.Services
 {
     public static class HttpConfig
     {
-        public static string baseurl = "https://waffleverse-sol.stagingapps.net";
+        public static readonly string baseurl = "https://waffleverse-sol.stagingapps.net";
 
-        public static Dictionary<string, string> endpoint =
+        public static readonly Dictionary<string, string> endpoint =
             new Dictionary<string, string>()
             {
                 {"user", "/api/auth/me"}
             };
-
     }
 }

@@ -1,0 +1,28 @@
+using UnityEngine;
+using RunMinigames.Models.Http.PlayerInfo;
+using RunMinigames.Services;
+
+namespace RunMinigames.Manager.Networking
+{
+    public class HttpManager : MonoBehaviour
+    {
+        //hardcode
+        readonly string token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIiLCJpYXQiOjE2NTI4NTQ4NjEsImV4cCI6MTY4NDQxMTc4N30.WgPvma6Sn6bSgMcB09gCSmTB11np8RQG0ZLkBvB-AZ4";
+
+        private async void Start()
+        {
+            var requestData = new HttpClient(
+                HttpConfig.baseurl,
+                new JsonSerializationOption(),
+                token
+            );
+
+            var result = await requestData
+                .Get<MPlayerInfo>(
+                    HttpConfig.endpoint["user"]
+                );
+
+            Debug.Log(result.data.uname);
+        }
+    }
+}

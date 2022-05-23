@@ -15,7 +15,6 @@ namespace RunMinigames.Services
             try
             {
                 var result = JsonConvert.DeserializeObject<T>(text);
-                Debug.Log($"Success: {text}");
                 return result;
             }
             catch (Exception ex)
