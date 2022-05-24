@@ -6,7 +6,7 @@ using RunMinigames.Interface;
 
 namespace RunMinigames.Services
 {
-    public class JsonSerializationOption : ISerializationOption
+    public class HttpOptions : ISerializationOption
     {
         public string ContentType => "application/json";
 

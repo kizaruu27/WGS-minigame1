@@ -2,23 +2,21 @@ using System;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
-using Newtonsoft.Json;
 using RunMinigames.Interface;
 
 namespace RunMinigames.Services
 {
     public class HttpClient
     {
-#nullable enable
 
         private readonly ISerializationOption _serializationOption;
 
         public bool isLoading { get; private set; }
 
         private string _url;
-        private string? _token;
+        private string _token;
 
-        public HttpClient(string url, ISerializationOption serializationOption, string? token)
+        public HttpClient(string url, ISerializationOption serializationOption, string token)
         {
             _url = url;
             _serializationOption = serializationOption;
@@ -31,51 +29,26 @@ namespace RunMinigames.Services
             _serializationOption = serializationOption;
         }
 
-        public async Task<T> Get<T>(string endpoint)
+        public async Task<TModel> Get<TModel>(string endpoint)
         {
-            try
-            {
-                using var www = UnityWebRequest.Get(_url + endpoint);
-                www.SetRequestHeader("Content-Type", "application/json");
+            using var www = UnityWebRequest.Get(_url + endpoint);
 
-                if (_token != null)
-                    www.SetRequestHeader("Authorization", _token);
-
-                var operation = www.SendWebRequest();
-
-                isLoading = false;
-
-                while (!operation.isDone)
-                {
-                    isLoading = true;
-                    await Task.Yield();
-                }
-
-                if (www.result != UnityWebRequest.Result.Success)
-                    Debug.LogError($"Failed: {www.error}");
-
-                var result = _serializationOption.Deserialize<T>(www.downloadHandler.text);
-
-                if (result != null) isLoading = false;
-
-                return result;
-            }
-            catch (Exception error)
-            {
-#nullable disable
-                if (error != null) isLoading = false;
-
-                Debug.LogError($"{nameof(Get)} failed: {error.Message}");
-                return default;
-            }
+            return await Request<TModel>(www);
         }
 
-        public async Task<T> Post<T>(string endpoint, WWWForm form)
+        public async Task<TModel> Post<TModel>(string endpoint, WWWForm form)
+        {
+            using var www = UnityWebRequest.Post(_url + endpoint, form);
+
+            return await Request<TModel>(www);
+        }
+
+
+        private async Task<TModel> Request<TModel>(UnityWebRequest www)
         {
             try
             {
-                using var www = UnityWebRequest.Post(_url + endpoint, form);
-                www.SetRequestHeader("Content-Type", "application/json");
+                www.SetRequestHeader("Content-Type", _serializationOption.ContentType);
 
                 if (_token != null)
                     www.SetRequestHeader("Authorization", _token);
@@ -88,8 +61,7 @@ namespace RunMinigames.Services
                 if (www.result != UnityWebRequest.Result.Success)
                     Debug.LogError($"Failed: {www.error}");
 
-                var result = JsonUtility.FromJson<T>(www.downloadHandler.text);
-
+                var result = _serializationOption.Deserialize<TModel>(www.downloadHandler.text);
                 return result;
             }
             catch (Exception error)

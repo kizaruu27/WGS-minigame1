@@ -12,14 +12,14 @@ namespace RunMinigames.Manager.Networking
         private async void Start()
         {
             var requestData = new HttpClient(
-                HttpConfig.baseurl,
-                new JsonSerializationOption(),
+                HttpConfig.BASE_URL,
+                new HttpOptions(),
                 token
             );
 
             var result = await requestData
                 .Get<MPlayerInfo>(
-                    HttpConfig.endpoint["user"]
+                    HttpConfig.ENDPOINT["user"]
                 );
 
             Debug.Log(result.data.uname);
