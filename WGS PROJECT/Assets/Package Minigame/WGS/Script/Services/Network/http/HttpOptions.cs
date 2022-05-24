@@ -4,7 +4,7 @@ using UnityEngine;
 using RunMinigames.Interface;
 
 
-namespace RunMinigames.Services
+namespace RunMinigames.Services.Http
 {
     public class HttpOptions : ISerializationOption
     {

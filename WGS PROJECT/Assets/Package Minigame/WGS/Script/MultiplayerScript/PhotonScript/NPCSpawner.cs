@@ -35,7 +35,6 @@ public class NPCSpawner : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(PhotonNetwork.PlayerList.Length);
         StartCoroutine(
                     CheckAllPlayerConnected.instance.WaitAllPlayerReady(
                         () => StartCoroutine(

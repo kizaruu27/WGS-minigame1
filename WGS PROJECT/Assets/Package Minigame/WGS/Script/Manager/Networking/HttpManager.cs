@@ -1,7 +1,7 @@
 using UnityEngine;
 using RunMinigames.Models.Http.PlayerInfo;
-using RunMinigames.Services;
-using System.Runtime.InteropServices;
+using RunMinigames.Services.Http;
+using RunMinigames.Services.Photon;
 using TMPro;
 
 namespace RunMinigames.Manager.Networking
@@ -39,7 +39,9 @@ namespace RunMinigames.Manager.Networking
                     HttpConfig.ENDPOINT["user"]
                 );
 
-            Debug.Log(result.data.uname);
+            if (result.data.uname.Length > 0)
+                GetComponent<PhotonServer>().Connect(result.data.uname);
+
         }
 
 #if UNITY_WEBGL

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace RunMinigames.Services
+namespace RunMinigames.Services.Http
 {
     public static class HttpConfig
     {

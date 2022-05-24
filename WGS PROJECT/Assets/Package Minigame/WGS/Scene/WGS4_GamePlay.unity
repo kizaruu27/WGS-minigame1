@@ -1364,6 +1364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharaID: 4
   CharaName: 
+  CharaViewName: {fileID: 0}
   CharaScore: 0
 --- !u!136 &127369048
 CapsuleCollider:
@@ -3920,6 +3921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharaID: 2
   CharaName: 
+  CharaViewName: {fileID: 0}
   CharaScore: 0
 --- !u!136 &433185147
 CapsuleCollider:
@@ -6125,6 +6127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharaID: 0
   CharaName: 
+  CharaViewName: {fileID: 0}
   CharaScore: 0
 --- !u!114 &816288761
 MonoBehaviour:
@@ -15037,6 +15040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharaID: 6
   CharaName: 
+  CharaViewName: {fileID: 0}
   CharaScore: 0
 --- !u!1 &1697376616201760
 GameObject:
@@ -15090,6 +15094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharaID: 5
   CharaName: 
+  CharaViewName: {fileID: 0}
   CharaScore: 0
 --- !u!1 &1697376786828659
 GameObject:
@@ -15143,6 +15148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharaID: 3
   CharaName: 
+  CharaViewName: {fileID: 0}
   CharaScore: 0
 --- !u!1 &1697377101659833
 GameObject:
@@ -15196,6 +15202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharaID: 1
   CharaName: 
+  CharaViewName: {fileID: 0}
   CharaScore: 0
 --- !u!4 &4475379752318847
 Transform:
