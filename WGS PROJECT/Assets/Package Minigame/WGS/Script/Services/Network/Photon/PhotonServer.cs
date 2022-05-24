@@ -26,7 +26,7 @@ namespace RunMinigames.Services.Photon
         public override void OnConnectedToMaster()
         {
             Debug.Log($"Connected to master {PhotonNetwork.NickName}");
-            SceneManager.LoadScene("WGS3_Lobby");
+            SceneManager.LoadScene("WGS1_GameMenu");
         }
 
         public override void OnConnected()

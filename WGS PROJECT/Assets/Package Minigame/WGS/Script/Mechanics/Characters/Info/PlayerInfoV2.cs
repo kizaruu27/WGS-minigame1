@@ -18,7 +18,10 @@ namespace RunMinigames.Mechanics.Characters
                     .GetComponent<RunMinigames.Mechanics.Cam.CameraController>().Player = transform;
             }
 
-            CharaName = type.IsMultiplayer && !type.IsSingleplayer ? view.Owner.NickName : gameObject.name;
+            CharaName = type.IsMultiplayer && !type.IsSingleplayer ?
+                view.Owner.NickName :
+                PhotonNetwork.NickName ?? PlayerPrefs.GetString("LocalPlayerNickname");
+
             CharaID = type.IsMultiplayer && !type.IsSingleplayer ? view.Owner.ActorNumber - 1 : 0;
 
             if (type.IsMultiplayer)

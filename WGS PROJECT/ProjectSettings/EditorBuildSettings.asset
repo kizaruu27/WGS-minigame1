@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Package Minigame/WGS/Scene/WGS6_Login.unity
+    guid: abdb98e8903ac4ceda4d6118a4b8b7c2
+  - enabled: 1
     path: Assets/Package Minigame/WGS/Scene/WGS1_GameMenu.unity
     guid: de414a35a1fe419468ff744ff2fb1552
   - enabled: 1
@@ -20,7 +23,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Package Minigame/WGS/Scene/WGS5_GamePlayMultiplayer.unity
     guid: 858c87f012dfcc74ebadfe0e1a8df96f
-  - enabled: 0
-    path: Assets/Package Minigame/WGS/Scene/WGS6_Login.unity
-    guid: abdb98e8903ac4ceda4d6118a4b8b7c2
   m_configObjects: {}
