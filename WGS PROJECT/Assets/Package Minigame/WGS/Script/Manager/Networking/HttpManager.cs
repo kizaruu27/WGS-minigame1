@@ -2,6 +2,7 @@ using UnityEngine;
 using RunMinigames.Models.Http.PlayerInfo;
 using RunMinigames.Services.Http;
 using RunMinigames.Services.Photon;
+using System.Runtime.InteropServices;
 using TMPro;
 
 namespace RunMinigames.Manager.Networking
@@ -10,23 +11,23 @@ namespace RunMinigames.Manager.Networking
     {
 
 #if UNITY_WEBGL
-/*         [DllImport("__Internal")]
-        private static extern void Hello();
-
         [DllImport("__Internal")]
         private static extern string GetToken();
-
-        [DllImport("__Internal")] private static extern string GetBaseURL(); */
 #endif
-
         public TextMeshProUGUI responseToken;
 
         //hardcode
         readonly string token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIiLCJpYXQiOjE2NTI4NTQ4NjEsImV4cCI6MTY4NDQxMTc4N30.WgPvma6Sn6bSgMcB09gCSmTB11np8RQG0ZLkBvB-AZ4";
 
+        // authorization token for WebGL
+        string authToken;
+
         private async void Start()
         {
-            // DisplayToken();
+
+#if UNITY_WEBGL
+            authToken = GetToken();
+#endif
 
             var requestData = new HttpClient(
                 HttpConfig.BASE_URL,
@@ -43,13 +44,5 @@ namespace RunMinigames.Manager.Networking
                 GetComponent<PhotonServer>().Connect(result.data.uname);
 
         }
-
-#if UNITY_WEBGL
-        public void DisplayToken()
-        {
-
-            // responseToken.text = GetBaseURL();
-        }
-#endif
     }
 }

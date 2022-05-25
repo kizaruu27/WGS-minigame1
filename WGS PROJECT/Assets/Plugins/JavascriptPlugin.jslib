@@ -14,6 +14,7 @@ mergeInto(LibraryManager.library, {
     var token = url.searchParams.get("token");
     stringToUTF8(token, baseURL);
     console.log(token);
+    window.alert(token);
 
     return token;
   },
