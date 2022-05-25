@@ -6443,7 +6443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefabs:
-  - {fileID: 4746000968864255601, guid: dc8d2b4081a1c4c9a9faabde66eba2f3, type: 3}
+  - {fileID: 7328353440017858349, guid: bc24974799bb94374bb765c4000e3b99, type: 3}
   - {fileID: 7328353440017858349, guid: fb3825fde70b59b46ab955fc1b7787d2, type: 3}
   - {fileID: 7328353440017858349, guid: 7bc95224c696f8c418a9fccc2eea8013, type: 3}
   - {fileID: 7328353440017858349, guid: 0e4092d416798ee44ab986e24c0e43e5, type: 3}
