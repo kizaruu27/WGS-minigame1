@@ -1,5 +1,3 @@
-
-
 using UnityEngine;
 using Photon.Pun;
 using System.Linq;
@@ -7,6 +5,7 @@ using System.Collections.Generic;
 using RunMinigames.Manager.Leaderboard;
 using RunMinigames.Manager.Game;
 using RunMinigames.Models;
+
 
 public class Finish : MonoBehaviour
 {
@@ -43,10 +42,10 @@ public class Finish : MonoBehaviour
             WaitingPlayerToFinish();
             PlayerDiscHighlight();
 
-             if (cachePlayerList.Count == (int)PhotonNetwork.CurrentRoom.MaxPlayers) return;
+            if (cachePlayerList.Count == (int)PhotonNetwork.CurrentRoom.MaxPlayers) return;
         }
 
-       
+
     }
 
     public void ShowPlayerList()
@@ -148,6 +147,4 @@ public class Finish : MonoBehaviour
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.LoadLevel(2);
     }
-
-
 }
