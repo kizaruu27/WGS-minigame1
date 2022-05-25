@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1518,7 +1518,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 830375424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db8b909c01a20024482e80d992b87ec7, type: 3}
+  m_Script: {fileID: 11500000, guid: 493ad07172659db46805fc38f7712d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1149783269}
@@ -1528,12 +1528,12 @@ MonoBehaviour:
   roomName: {fileID: 1248914888}
   roomItemPrefab: {fileID: 4385587222423724079, guid: 3e137b27aed5899409b14eba9b629878, type: 3}
   playerItemsList: []
-  playerItemPrefab: {fileID: 4973799111641989399, guid: 8d7fbc48c33c1344787fea7b73ed1630, type: 3}
+  playerItemPrefab: {fileID: 8627773558947153345, guid: 8d7fbc48c33c1344787fea7b73ed1630, type: 3}
   playerItemParent: {fileID: 680824036}
   modalTitle: {fileID: 591229684}
   modalMessage: {fileID: 733495707}
   closeModal: {fileID: 1564520731}
-  modalPanel: {fileID: 62792830}
+  modalPanel: {fileID: 1160193827}
   loadingPanel: {fileID: 1828261636}
   playButton: {fileID: 410430212}
   contentObject: {fileID: 23453894}

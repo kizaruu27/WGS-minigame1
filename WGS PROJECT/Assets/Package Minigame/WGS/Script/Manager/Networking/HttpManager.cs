@@ -10,13 +10,13 @@ namespace RunMinigames.Manager.Networking
     {
 
 #if UNITY_WEBGL
-        [DllImport("__Internal")]
+/*         [DllImport("__Internal")]
         private static extern void Hello();
 
         [DllImport("__Internal")]
         private static extern string GetToken();
 
-        [DllImport("__Internal")] private static extern string GetBaseURL();
+        [DllImport("__Internal")] private static extern string GetBaseURL(); */
 #endif
 
         public TextMeshProUGUI responseToken;
@@ -48,7 +48,7 @@ namespace RunMinigames.Manager.Networking
         public void DisplayToken()
         {
 
-            responseToken.text = GetBaseURL();
+            // responseToken.text = GetBaseURL();
         }
 #endif
     }
