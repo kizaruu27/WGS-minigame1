@@ -25,7 +25,7 @@ namespace RunMinigames.Manager.Networking
         private async void Start()
         {
 
-#if UNITY_WEBGL
+#if UNITY_WEBGL && !UNITY_EDITOR
             authToken = GetToken();
 #endif
 
