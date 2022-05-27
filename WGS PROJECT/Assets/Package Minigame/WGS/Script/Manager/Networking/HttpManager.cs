@@ -31,7 +31,7 @@ namespace RunMinigames.Manager.Networking
         private void Start()
         {
             deviceType = CheckPlatform.isWeb && (!CheckPlatform.isMacUnity || !CheckPlatform.isWindowsUnity);
-            authToken = deviceType ? GetToken() : localToken;
+            authToken = deviceType ? $"Bearer {GetToken()}" : localToken;
         }
 
         private void Update()
