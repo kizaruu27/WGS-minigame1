@@ -15,10 +15,6 @@ public class Finish : MonoBehaviour
     public FinishLeaderboard finishManager;
     public StandingsItem row;
 
-    [Header("Player Score")]
-    int score = 1000;
-
-
     [Header("Player List")]
 
     IEnumerable<MPlayerFinish> PlayerFinish;

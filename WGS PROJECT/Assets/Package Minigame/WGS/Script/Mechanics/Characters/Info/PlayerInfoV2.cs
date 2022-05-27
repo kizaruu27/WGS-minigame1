@@ -18,11 +18,11 @@ namespace RunMinigames.Mechanics.Characters
                     .GetComponent<RunMinigames.Mechanics.Cam.CameraController>().Player = transform;
             }
 
-            CharaName = type.IsMultiplayer && !type.IsSingleplayer ?
+            CharaName = type.IsMultiplayer ?
                 view.Owner.NickName :
                 PhotonNetwork.NickName ?? PlayerPrefs.GetString("LocalPlayerNickname");
 
-            CharaID = type.IsMultiplayer && !type.IsSingleplayer ? view.Owner.ActorNumber - 1 : 0;
+            CharaID = type.IsMultiplayer ? view.Owner.ActorNumber - 1 : 0;
 
             if (type.IsMultiplayer)
             {
@@ -34,7 +34,7 @@ namespace RunMinigames.Mechanics.Characters
 
         private void Start()
         {
-            if (type.IsMultiplayer && !type.IsSingleplayer)
+            if (type.IsMultiplayer)
             {
                 view.RPC("UpdateCharacterName", RpcTarget.AllBuffered, CharaID, CharaName);
                 view.RPC("SetPlayerName", RpcTarget.AllBuffered, CharaName);
@@ -45,7 +45,7 @@ namespace RunMinigames.Mechanics.Characters
 
         protected override void CheckTypeUpdatePodium(GameCheckpoint checkpoint)
         {
-            if (type.IsMultiplayer && !type.IsSingleplayer)
+            if (type.IsMultiplayer)
             {
                 view.RPC(
                     "UpdatePodiumList", RpcTarget.AllBuffered, //RPC Arguments

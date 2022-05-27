@@ -37,17 +37,9 @@ public class NPCSpawner : MonoBehaviour
     {
         StartCoroutine(
                     CheckAllPlayerConnected.instance.WaitAllPlayerReady(
-                        () => StartCoroutine(
-                            WaitToStart()
-                        )
+                        () => SpawnNPC()
                     )
                 );
-    }
-
-    IEnumerator WaitToStart()
-    {
-        yield return new WaitForSeconds(0);
-        SpawnNPC();
     }
 
     void SpawnNPC()

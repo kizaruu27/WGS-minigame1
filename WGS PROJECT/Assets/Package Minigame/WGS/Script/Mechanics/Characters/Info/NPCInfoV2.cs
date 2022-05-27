@@ -18,14 +18,12 @@ namespace RunMinigames.Mechanics.Characters
 
         private void Start()
         {
-            if (type.IsMultiplayer && !type.IsSingleplayer)
+            if (type.IsMultiplayer)
             {
                 view.RPC("UpdateCharacterName", RpcTarget.AllBuffered, CharaID, CharaName);
             }
             else
             {
-                // var rand = Random.Range(0, 100);
-                // CharaID = rand;
                 CharaName = gameObject.name;
                 GameplayLeaderboardManager.instance.UpdatePlayerName(CharaID, CharaName);
             }
@@ -36,7 +34,7 @@ namespace RunMinigames.Mechanics.Characters
 
         protected override void CheckTypeUpdatePodium(GameCheckpoint checkpoint)
         {
-            if (type.IsMultiplayer && !type.IsSingleplayer)
+            if (type.IsMultiplayer)
             {
                 view.RPC(
                     "UpdatePodiumList", RpcTarget.AllBuffered, //RPC Arguments
@@ -53,10 +51,8 @@ namespace RunMinigames.Mechanics.Characters
 
         public void SetNPCInfo(int newID, string newName)
         {
-            if (type.IsMultiplayer && !type.IsSingleplayer)
-            {
+            if (type.IsMultiplayer)
                 view.RPC("SetNameNPC", RpcTarget.AllBuffered, newID, newName);
-            }
         }
 
         [PunRPC]
