@@ -30,8 +30,9 @@ namespace RunMinigames.Manager.Networking
 
         private void Start()
         {
+            var urlToken = GetToken();
             deviceType = CheckPlatform.isWeb && (!CheckPlatform.isMacUnity || !CheckPlatform.isWindowsUnity);
-            authToken = deviceType ? $"Bearer {GetToken()}" : localToken;
+            authToken = deviceType ? $"Bearer {urlToken}" : localToken;
         }
 
         private void Update()
@@ -46,8 +47,6 @@ namespace RunMinigames.Manager.Networking
             {
                 if (result is null)
                 {
-
-                    Debug.Log(authToken);
                     var requestData = new HttpClient(
                         HttpConfig.BASE_URL,
                         new HttpOptions(),
