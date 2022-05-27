@@ -3,8 +3,10 @@ using RunMinigames.Models.Http;
 using RunMinigames.Models.Http.PlayerInfo;
 using RunMinigames.Services.Http;
 using RunMinigames.Services.Photon;
+using RunMinigames.View.Loading;
 using System.Runtime.InteropServices;
 using System;
+using Photon.Pun;
 using TMPro;
 
 namespace RunMinigames.Manager.Networking
@@ -20,7 +22,7 @@ namespace RunMinigames.Manager.Networking
         private bool deviceType;
         private MHttpResponse<MPlayerInfo>? result;
 
-        //hardcode token
+        //development token
         readonly string localToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIiLCJpYXQiOjE2NTI4NTQ4NjEsImV4cCI6MTY4NDQxMTc4N30.WgPvma6Sn6bSgMcB09gCSmTB11np8RQG0ZLkBvB-AZ4";
 
         // authorization token for WebGL
@@ -51,9 +53,10 @@ namespace RunMinigames.Manager.Networking
                     );
 
                     result = await requestData.Get<MPlayerInfo>(HttpConfig.ENDPOINT["user"]);
-                    Debug.Log(result);
-                }
 
+                    LoginStatus.instance.StepperMessage("Get User Data");
+                    LoginStatus.instance.isConnectingToServer = false;
+                }
 
                 if (result?.response.data.uname.Length > 0)
                 {

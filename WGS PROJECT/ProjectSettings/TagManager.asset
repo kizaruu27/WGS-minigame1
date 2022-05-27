@@ -20,6 +20,7 @@ TagManager:
   - Speed
   - Stop
   - Camera
+  - Canvas
   layers:
   - Default
   - TransparentFX

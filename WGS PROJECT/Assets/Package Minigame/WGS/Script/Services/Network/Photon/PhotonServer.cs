@@ -2,6 +2,8 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
 using RunMinigames.Manager.Networking;
+using RunMinigames.View.Loading;
+using System.Text.RegularExpressions;
 
 namespace RunMinigames.Services.Photon
 {
@@ -15,6 +17,14 @@ namespace RunMinigames.Services.Photon
 
         public void Connect(string uname)
         {
+            LoginStatus.instance.StepperMessage(
+                Regex.Replace(
+                    PhotonNetwork.NetworkClientState.ToString(), "([A-Z])", " $1", RegexOptions.Compiled
+                ).Trim()
+            );
+
+            LoginStatus.instance.isConnectingToServer = true;
+
             if (uname.Length > 0)
             {
                 PhotonNetwork.NickName = uname;
@@ -25,8 +35,6 @@ namespace RunMinigames.Services.Photon
 
         public override void OnConnectedToMaster()
         {
-            Debug.Log($"Connected to master {PhotonNetwork.NickName}");
-
             var httpManager = GetComponent<HttpManager>();
             httpManager.enabled = false;
 
@@ -36,12 +44,6 @@ namespace RunMinigames.Services.Photon
                 SceneManager.LoadScene("WGS2_GameMenu");
             }
 
-        }
-
-        public override void OnConnected()
-        {
-            base.OnConnected();
-            Debug.Log("Connected");
         }
     }
 }
