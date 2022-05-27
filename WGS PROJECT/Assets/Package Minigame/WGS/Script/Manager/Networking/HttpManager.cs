@@ -46,6 +46,8 @@ namespace RunMinigames.Manager.Networking
             {
                 if (result is null)
                 {
+
+                    Debug.Log(authToken);
                     var requestData = new HttpClient(
                         HttpConfig.BASE_URL,
                         new HttpOptions(),
