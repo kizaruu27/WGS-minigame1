@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
+using RunMinigames.Manager.Game;
 
 
 namespace RunMinigames.Manager.Leaderboard
@@ -13,7 +14,7 @@ namespace RunMinigames.Manager.Leaderboard
         public static GameplayLeaderboardManager instance;
         PhotonView PV;
 
-        CheckGameType type;
+        GameManager type;
 
         [System.Serializable]
         public class CLeaderboardItem
@@ -28,7 +29,7 @@ namespace RunMinigames.Manager.Leaderboard
         {
             instance = this;
             PV = GetComponent<PhotonView>();
-            type = GameObject.Find("GameManager").GetComponent<CheckGameType>();
+            type = GameObject.Find("GameManager").GetComponent<GameManager>();
         }
 
         static int SortAsc(CLeaderboardItem p1, CLeaderboardItem p2)

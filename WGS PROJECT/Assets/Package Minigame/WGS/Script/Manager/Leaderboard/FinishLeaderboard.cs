@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using RunMinigames.Manager.Leaderboard;
 using RunMinigames.Models;
 using Photon.Pun;
 

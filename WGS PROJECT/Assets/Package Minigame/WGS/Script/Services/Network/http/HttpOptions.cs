@@ -18,7 +18,7 @@ namespace RunMinigames.Services.Http
             }
             catch (Exception error)
             {
-                Debug.LogError($"Could not parse response {text}. {error.Message}");
+                Debug.LogError($"Gagal Parse Response {text}. {error.Message}");
                 return default;
             }
         }

@@ -1,8 +1,10 @@
 using UnityEngine;
+using RunMinigames.Models.Http;
 using RunMinigames.Models.Http.PlayerInfo;
 using RunMinigames.Services.Http;
 using RunMinigames.Services.Photon;
 using System.Runtime.InteropServices;
+using System;
 using TMPro;
 
 namespace RunMinigames.Manager.Networking
@@ -10,39 +12,62 @@ namespace RunMinigames.Manager.Networking
     public class HttpManager : MonoBehaviour
     {
 
-#if UNITY_WEBGL
+
         [DllImport("__Internal")]
         private static extern string GetToken();
-#endif
-        public TextMeshProUGUI responseToken;
 
-        //hardcode
-        readonly string token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIiLCJpYXQiOjE2NTI4NTQ4NjEsImV4cCI6MTY4NDQxMTc4N30.WgPvma6Sn6bSgMcB09gCSmTB11np8RQG0ZLkBvB-AZ4";
+        public TextMeshProUGUI responseToken;
+        private bool deviceType;
+        private MHttpResponse<MPlayerInfo>? result;
+
+        //hardcode token
+        readonly string localToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIiLCJpYXQiOjE2NTI4NTQ4NjEsImV4cCI6MTY4NDQxMTc4N30.WgPvma6Sn6bSgMcB09gCSmTB11np8RQG0ZLkBvB-AZ4";
 
         // authorization token for WebGL
         string authToken;
 
-        private async void Start()
+        private void Start()
         {
+            deviceType = CheckPlatform.isWeb && (!CheckPlatform.isMacUnity || !CheckPlatform.isWindowsUnity);
+            authToken = deviceType ? GetToken() : localToken;
+        }
 
-#if UNITY_WEBGL && !UNITY_EDITOR
-            authToken = GetToken();
-#endif
+        private void Update()
+        {
+            Login();
+        }
 
-            var requestData = new HttpClient(
-                HttpConfig.BASE_URL,
-                new HttpOptions(),
-                token
-            );
 
-            var result = await requestData
-                .Get<MPlayerInfo>(
-                    HttpConfig.ENDPOINT["user"]
-                );
+        async void Login()
+        {
+            try
+            {
+                if (result is null)
+                {
+                    var requestData = new HttpClient(
+                        HttpConfig.BASE_URL,
+                        new HttpOptions(),
+                        authToken
+                    );
 
-            if (result.data.uname.Length > 0)
-                GetComponent<PhotonServer>().Connect(result.data.uname);
+                    result = await requestData.Get<MPlayerInfo>(HttpConfig.ENDPOINT["user"]);
+                    Debug.Log(result);
+                }
 
+
+                if (result?.response.data.uname.Length > 0)
+                {
+                    PlayerPrefs.SetString("token", authToken);
+                    PlayerPrefs.SetString("LocalPlayerNickname", result?.response.data.uname);
+
+                    GetComponent<PhotonServer>().Connect(PlayerPrefs.GetString("LocalPlayerNickname"));
+                }
+
+            }
+            catch (Exception error)
+            {
+                Debug.LogError($"failed: {error.Message}");
+            }
         }
     }
 }

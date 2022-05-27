@@ -1,6 +1,7 @@
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
+using RunMinigames.Manager.Networking;
 
 namespace RunMinigames.Services.Photon
 {
@@ -19,14 +20,22 @@ namespace RunMinigames.Services.Photon
                 PhotonNetwork.NickName = uname;
                 PhotonNetwork.AutomaticallySyncScene = true;
                 PhotonNetwork.ConnectUsingSettings();
-                PlayerPrefs.SetString("LocalPlayerNickname", uname);
             }
         }
 
         public override void OnConnectedToMaster()
         {
             Debug.Log($"Connected to master {PhotonNetwork.NickName}");
-            SceneManager.LoadScene("WGS1_GameMenu");
+
+            var httpManager = GetComponent<HttpManager>();
+            httpManager.enabled = false;
+
+            if (!httpManager.enabled)
+            {
+                Destroy(httpManager.gameObject);
+                SceneManager.LoadScene("WGS2_GameMenu");
+            }
+
         }
 
         public override void OnConnected()

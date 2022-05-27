@@ -6,6 +6,7 @@ using RunMinigames.Manager.Characters;
 using RunMinigames.Mechanics.Checkpoint;
 using RunMinigames.Manager.Leaderboard;
 using TMPro;
+using RunMinigames.Manager.Game;
 
 namespace RunMinigames.Mechanics.Characters
 {
@@ -24,11 +25,10 @@ namespace RunMinigames.Mechanics.Characters
         int numberOfPassedCheckpoints = 0;
         float timeAtLastPassCheckpoint = 0;
         int lapsCompleted = 0;
-        public event Action<CharactersInfo> OnPassCheckpoint;
 
         protected float timer = 0f;
         protected PhotonView view;
-        protected CheckGameType type;
+        protected GameManager type;
 
         FinishLeaderboard FinishUI;
 
@@ -36,7 +36,7 @@ namespace RunMinigames.Mechanics.Characters
         {
             instance = this;
             view = GetComponent<PhotonView>();
-            type = GameObject.Find("GameManager").GetComponent<CheckGameType>();
+            type = GameObject.Find("GameManager").GetComponent<GameManager>();
         }
 
         protected void Update() => timer += Time.deltaTime;
@@ -50,33 +50,27 @@ namespace RunMinigames.Mechanics.Characters
                 var checkpoint = coll.GetComponent<GameCheckpoint>();
                 TryGetComponent(out ICharacterItem myCharacter);
 
+                passedCheckPointNumber = checkpoint.checkPointNumber;
+                numberOfPassedCheckpoints++;
+                timeAtLastPassCheckpoint = Time.time;
+                CharaScore++;
 
-                if (passedCheckPointNumber + 1 == checkpoint.checkPointNumber)
+                UpdateScore();
+
+                if (checkpoint.isFinishLine)
                 {
-                    passedCheckPointNumber = checkpoint.checkPointNumber;
-                    numberOfPassedCheckpoints++;
-                    timeAtLastPassCheckpoint = Time.time;
-                    CharaScore++;
+                    FinishUI = GameObject
+                        .FindGameObjectWithTag("Finish UI")
+                        .GetComponent<FinishLeaderboard>();
 
-                    UpdateScore();
-
-                    if (checkpoint.isFinishLine)
+                    if (myCharacter is Player)
                     {
-                        FinishUI = GameObject
-                            .FindGameObjectWithTag("Finish UI")
-                            .GetComponent<FinishLeaderboard>();
-
-                        if (myCharacter is Player)
-                        {
-                            passedCheckPointNumber = 0;
-                            lapsCompleted++;
-                        }
-
-                        UpdatePodium(checkpoint);
-                        myCharacter.MaxSpeed = 2;
+                        passedCheckPointNumber = 0;
+                        lapsCompleted++;
                     }
 
-                    OnPassCheckpoint?.Invoke(this);
+                    UpdatePodium(checkpoint);
+                    myCharacter.MaxSpeed = 2;
                 }
 
                 if (checkpoint.stopAfterFinish) myCharacter.CanMove = false;
@@ -111,7 +105,7 @@ namespace RunMinigames.Mechanics.Characters
 
         protected virtual void CheckTypeUpdateScore()
         {
-            if (type.IsMultiplayer && !type.IsSingleplayer)
+            if (type.IsMultiplayer)
             {
                 view.RPC(
                     "UpdateCharacterScore", RpcTarget.AllBuffered, //RPC Arguments

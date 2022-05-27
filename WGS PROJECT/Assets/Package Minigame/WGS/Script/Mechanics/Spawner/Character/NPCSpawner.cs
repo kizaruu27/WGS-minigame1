@@ -1,14 +1,13 @@
 using UnityEngine;
 using Photon.Pun;
 using System.Collections.Generic;
-using System.Collections;
 using RunMinigames.Mechanics.Characters;
+using RunMinigames.Manager.Game;
 
 using System.Linq;
 
 public class NPCSpawner : MonoBehaviour
 {
-
     public static NPCSpawner instance;
     public GameObject[] playerNPCPrefabs;
     public Transform[] spawnPoints;
@@ -28,19 +27,8 @@ public class NPCSpawner : MonoBehaviour
         view = GetComponent<PhotonView>();
     }
 
-
-    public void SetPlayerIndex(int index)
-    {
-        playerAvatarIndex.Add(index);
-    }
-    private void Update()
-    {
-        StartCoroutine(
-                    CheckAllPlayerConnected.instance.WaitAllPlayerReady(
-                        () => SpawnNPC()
-                    )
-                );
-    }
+    public void SetPlayerIndex(int index) => playerAvatarIndex.Add(index);
+    private void Update() => StartCoroutine(GameManager.instance.WaitAllPlayerReady(SpawnNPC));
 
     void SpawnNPC()
     {
@@ -70,8 +58,6 @@ public class NPCSpawner : MonoBehaviour
                     view.RPC("SyncNPCStatus", RpcTarget.OthersBuffered, isNPCAlreadySpawned);
                 }
             }
-
-
         }
     }
 

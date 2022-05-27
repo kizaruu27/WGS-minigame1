@@ -2,12 +2,13 @@ using System.Collections;
 using UnityEngine;
 using RunMinigames.Interface;
 using Photon.Pun;
+using RunMinigames.Manager.Game;
 
 namespace RunMinigames.Mechanics.Items
 {
     public class ObstaclesItem : InteractableItem
     {
-        CheckGameType type;
+        GameManager type;
         PhotonView view;
 
         private new void Awake()
@@ -15,7 +16,7 @@ namespace RunMinigames.Mechanics.Items
             isObstacles = true;
 
             GameObject gameManager = GameObject.Find("GameManager");
-            type = gameManager.GetComponent<CheckGameType>();
+            type = gameManager.GetComponent<GameManager>();
         }
 
         public override IEnumerator OnCollideBehaviour(ICharacterItem character)
