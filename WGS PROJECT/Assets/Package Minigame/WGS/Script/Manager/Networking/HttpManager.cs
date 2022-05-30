@@ -1,29 +1,22 @@
 using UnityEngine;
-using RunMinigames.Models.Http;
 using RunMinigames.Models.Http.PlayerInfo;
 using RunMinigames.Services.Http;
 using RunMinigames.Services.Photon;
 using RunMinigames.View.Loading;
-using System.Runtime.InteropServices;
 using System;
-using Photon.Pun;
-using TMPro;
 
 namespace RunMinigames.Manager.Networking
 {
     public class HttpManager : MonoBehaviour
     {
 
-
 #if UNITY_WEBGL && !UNITY_EDITOR
-
         [DllImport("__Internal")]
         private static extern string GetToken();
-
 #endif
 
         private bool deviceType;
-        private MHttpResponse<MPlayerInfo>? result;
+        private MPlayerInfo result;
 
         //development token
         readonly string localToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIiLCJpYXQiOjE2NTI4NTQ4NjEsImV4cCI6MTY4NDQxMTc4N30.WgPvma6Sn6bSgMcB09gCSmTB11np8RQG0ZLkBvB-AZ4";
@@ -68,12 +61,12 @@ namespace RunMinigames.Manager.Networking
                     LoginStatus.instance.isConnectingToServer = false;
                 }
 
-                Debug.Log(result?.response.data.uname);
+                Debug.Log(result?.data.uname);
 
-                if (result?.response.data.uname.Length > 0)
+                if (result?.data.uname.Length > 0)
                 {
                     PlayerPrefs.SetString("token", authToken);
-                    PlayerPrefs.SetString("LocalPlayerNickname", result?.response.data.uname);
+                    PlayerPrefs.SetString("LocalPlayerNickname", result?.data.uname);
 
                     GetComponent<PhotonServer>().Connect(PlayerPrefs.GetString("LocalPlayerNickname"));
                 }
