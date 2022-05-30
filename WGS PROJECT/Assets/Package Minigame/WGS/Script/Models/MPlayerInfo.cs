@@ -1,10 +1,16 @@
+using Newtonsoft.Json;
+
 namespace RunMinigames.Models.Http.PlayerInfo
 {
+    // [Preserve(AllMembers = true)]
     public class MPlayerInfo
     {
+        [JsonConstructor]
+        public MPlayerInfo() { }
         public Data data { get; set; }
     }
 
+    // [Preserve(AllMembers = true)]
     public class Data
     {
         public string id { get; set; }
@@ -14,5 +20,8 @@ namespace RunMinigames.Models.Http.PlayerInfo
         public int utype { get; set; }
         public string sol_address { get; set; }
         public object google_id { get; set; }
+
+        [JsonConstructor]
+        public Data() { }
     }
 }

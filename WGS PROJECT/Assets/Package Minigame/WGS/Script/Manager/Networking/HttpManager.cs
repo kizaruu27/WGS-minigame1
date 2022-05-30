@@ -15,10 +15,13 @@ namespace RunMinigames.Manager.Networking
     {
 
 
+#if UNITY_WEBGL && !UNITY_EDITOR
+
         [DllImport("__Internal")]
         private static extern string GetToken();
 
-        public TextMeshProUGUI responseToken;
+#endif
+
         private bool deviceType;
         private MHttpResponse<MPlayerInfo>? result;
 
@@ -27,12 +30,17 @@ namespace RunMinigames.Manager.Networking
 
         // authorization token for WebGL
         string authToken;
+        string urlToken;
 
         private void Start()
         {
-            var urlToken = GetToken();
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+            urlToken = "Bearer " + GetToken();
+#endif
+
             deviceType = CheckPlatform.isWeb && (!CheckPlatform.isMacUnity || !CheckPlatform.isWindowsUnity);
-            authToken = deviceType ? $"Bearer {urlToken}" : localToken;
+            authToken = deviceType ? urlToken : localToken;
         }
 
         private void Update()
@@ -47,6 +55,7 @@ namespace RunMinigames.Manager.Networking
             {
                 if (result is null)
                 {
+                    Debug.Log("dari login : " + authToken);
                     var requestData = new HttpClient(
                         HttpConfig.BASE_URL,
                         new HttpOptions(),
@@ -58,6 +67,8 @@ namespace RunMinigames.Manager.Networking
                     LoginStatus.instance.StepperMessage("Get User Data");
                     LoginStatus.instance.isConnectingToServer = false;
                 }
+
+                Debug.Log(result?.response.data.uname);
 
                 if (result?.response.data.uname.Length > 0)
                 {

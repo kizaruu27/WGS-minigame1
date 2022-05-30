@@ -10,6 +10,9 @@ namespace RunMinigames.Services.Http
     {
         public string ContentType => "application/json";
 
+        [JsonConstructor]
+        public HttpOptions() { }
+
         public T Deserialize<T>(string text)
         {
             try
