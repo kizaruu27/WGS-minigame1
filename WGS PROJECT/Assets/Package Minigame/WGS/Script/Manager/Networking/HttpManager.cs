@@ -55,9 +55,12 @@ namespace RunMinigames.Manager.Networking
                         authToken
                     );
 
-                    result = await requestData.Get<MPlayerInfo>(HttpConfig.ENDPOINT["user"]);
+                    result = await requestData.Get<MPlayerInfo>(
+                        HttpConfig.ENDPOINT["user"],
+                        (isSuccess, isLoading, downloadProgress) =>
+                            LoginStatus.instance.StepperMessage(downloadProgress < 100 ? "Getting user data..." : "")
+                    );
 
-                    LoginStatus.instance.StepperMessage("Get User Data");
                     LoginStatus.instance.isConnectingToServer = false;
                 }
 
