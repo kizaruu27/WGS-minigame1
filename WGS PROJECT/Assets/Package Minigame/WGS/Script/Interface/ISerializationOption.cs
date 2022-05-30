@@ -1,3 +1,4 @@
+using SimpleJSON;
 
 namespace RunMinigames.Interface
 {
@@ -5,5 +6,7 @@ namespace RunMinigames.Interface
     {
         string ContentType { get; }
         T Deserialize<T>(string text);
+
+        JSONNode Deserialize(string text);
     }
 }

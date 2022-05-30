@@ -4,6 +4,8 @@ using RunMinigames.Services.Http;
 using RunMinigames.Services.Photon;
 using RunMinigames.View.Loading;
 using System;
+using System.Runtime.InteropServices;
+
 
 namespace RunMinigames.Manager.Networking
 {
@@ -48,7 +50,7 @@ namespace RunMinigames.Manager.Networking
             {
                 if (result is null)
                 {
-                    Debug.Log("dari login : " + authToken);
+                    Debug.Log("from login : " + authToken);
                     var requestData = new HttpClient(
                         HttpConfig.BASE_URL,
                         new HttpOptions(),
@@ -57,14 +59,16 @@ namespace RunMinigames.Manager.Networking
 
                     result = await requestData.Get<MPlayerInfo>(
                         HttpConfig.ENDPOINT["user"],
-                        (isSuccess, isLoading, downloadProgress) =>
-                            LoginStatus.instance.StepperMessage(downloadProgress < 100 ? "Getting user data..." : "")
+                        (isDone, downloadProgress) =>
+                            LoginStatus.instance.StepperMessage(downloadProgress < 100 && !isDone ? "Getting user data..." : "process user data...")
                     );
+
+                    Debug.Log("http result : " + result?.data.uname);
+
 
                     LoginStatus.instance.isConnectingToServer = false;
                 }
 
-                Debug.Log(result?.data.uname);
 
                 if (result?.data.uname.Length > 0)
                 {

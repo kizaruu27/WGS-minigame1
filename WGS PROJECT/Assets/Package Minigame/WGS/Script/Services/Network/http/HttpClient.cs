@@ -4,6 +4,8 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Networking;
 using RunMinigames.Interface;
+using SimpleJSON;
+using Newtonsoft.Json;
 
 namespace RunMinigames.Services.Http
 {
@@ -19,19 +21,54 @@ namespace RunMinigames.Services.Http
             _token = token;
         }
 
-        public async Task<TModel> Get<TModel>(string endpoint, [Optional] Action<bool, bool, float> status) =>
+        public async Task<TModel> Get<TModel>(string endpoint, [Optional] Action<bool, float> status) =>
             await Request<TModel>(
                 UnityWebRequest.Get(_url + endpoint),
-                status: (isSuccess, isLoading, downloadProgress) => status(isSuccess, isLoading, downloadProgress)
+                status: (isDone, downloadProgress) => status(isDone, downloadProgress)
             );
 
-        public async Task<TModel> Post<TModel>(string endpoint, WWWForm form, [Optional] Action<bool, bool, float> status) =>
+        public async Task<TModel> Post<TModel>(string endpoint, WWWForm form, [Optional] Action<bool, float> status) =>
             await Request<TModel>(
                 UnityWebRequest.Post(_url + endpoint, form),
-                status: (isSuccess, isLoading, downloadProgress) => status(isSuccess, isLoading, downloadProgress)
+                status: (isDone, downloadProgress) => status(isDone, downloadProgress)
             );
 
-        private async Task<TModel> Request<TModel>(UnityWebRequest www, [Optional] Action<bool, bool, float> status)
+        public async Task<JSONNode> Get(string endpoint, [Optional] Action<bool, float> status) =>
+            await Request(
+                UnityWebRequest.Get(_url + endpoint),
+                status: (isDone, downloadProgress) => status(isDone, downloadProgress)
+            );
+
+        public async Task<JSONNode> Post(string endpoint, WWWForm form, [Optional] Action<bool, float> status) =>
+            await Request(
+                UnityWebRequest.Post(_url + endpoint, form),
+                status: (isDone, downloadProgress) => status(isDone, downloadProgress)
+            );
+
+        private async Task<TModel> Request<TModel>(UnityWebRequest req, [Optional] Action<bool, float> status)
+        {
+            req.SetRequestHeader("Content-Type", _serializationOption.ContentType);
+
+            if (_token != null) req.SetRequestHeader("Authorization", _token);
+
+            var operation = req.SendWebRequest();
+
+            while (!operation.isDone)
+            {
+                await Task.Yield();
+                status(operation.isDone, req.downloadProgress);
+            }
+
+            if (req.result != UnityWebRequest.Result.Success) Debug.LogError($"Failed: {req.error}");
+
+            var res = JsonConvert.DeserializeObject<TModel>(req.downloadHandler.text);
+
+            Debug.Log("response : " + res);
+
+            return res;
+        }
+
+        private async Task<JSONNode> Request(UnityWebRequest www, [Optional] Action<bool, float> status)
         {
             www.SetRequestHeader("Content-Type", _serializationOption.ContentType);
 
@@ -44,15 +81,14 @@ namespace RunMinigames.Services.Http
                 await Task.Yield();
 
                 status(
-                    www.result == UnityWebRequest.Result.Success,
-                    !operation.isDone,
+                    operation.isDone,
                     www.downloadProgress
                 );
             }
 
             if (www.result != UnityWebRequest.Result.Success) Debug.LogError($"Failed: {www.error}");
 
-            return _serializationOption.Deserialize<TModel>(www.downloadHandler.text);
+            return _serializationOption.Deserialize<JSONNode>(www.downloadHandler.text)["data"];
         }
 
     }
