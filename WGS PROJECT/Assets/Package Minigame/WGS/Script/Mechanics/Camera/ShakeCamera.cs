@@ -10,16 +10,18 @@ namespace RunMinigames.Mechanics.Cam
         public float shakeMagnitude = 0.05f, shakeTime = 0.5f;
         public Camera mainCamera;
 
-        [SerializeField] Transform cameraRig;
-        [SerializeField] Transform player;
+        // [SerializeField] Transform cameraRig;
+        // [SerializeField] Transform player;
 
         void Update()
         {
+
             if (Input.GetMouseButtonDown(1))
             {
                 Shake();
             }
             cameraInitialPos = mainCamera.transform.position;
+
         }
 
         public void Shake()
@@ -27,7 +29,7 @@ namespace RunMinigames.Mechanics.Cam
             cameraInitialPos = mainCamera.transform.position;
             InvokeRepeating("StartCameraShaking", 0, 0.005f);
             Invoke("StopCameraShaking", shakeTime);
-            cameraRig.position = player.position;
+            // cameraRig.position = player.position;
         }
 
         void StartCameraShaking()

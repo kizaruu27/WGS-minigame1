@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7475,6 +7475,10 @@ PrefabInstance:
       value: -----ISOMETRIC CAMERA-----
       objectReference: {fileID: 0}
     - target: {fileID: 6416809523753564327, guid: fa82f8083386b4805bf4734bc05ba7b2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6416809523753564327, guid: fa82f8083386b4805bf4734bc05ba7b2, type: 3}
       propertyPath: m_TagString
       value: Camera
       objectReference: {fileID: 0}
@@ -7482,6 +7486,38 @@ PrefabInstance:
     - {fileID: 6416809523789323424, guid: fa82f8083386b4805bf4734bc05ba7b2, type: 3}
     - {fileID: 6416809523789323427, guid: fa82f8083386b4805bf4734bc05ba7b2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fa82f8083386b4805bf4734bc05ba7b2, type: 3}
+--- !u!1 &1645351074 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6416809523753564327, guid: fa82f8083386b4805bf4734bc05ba7b2, type: 3}
+  m_PrefabInstance: {fileID: 1645351073}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1645351075 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6416809523789323429, guid: fa82f8083386b4805bf4734bc05ba7b2, type: 3}
+  m_PrefabInstance: {fileID: 1645351073}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1645351076 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6416809523753564324, guid: fa82f8083386b4805bf4734bc05ba7b2, type: 3}
+  m_PrefabInstance: {fileID: 1645351073}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1645351077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645351074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b44d46045628a64eb0e3db37aa983ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeMagnitude: 0.05
+  shakeTime: 0.5
+  mainCamera: {fileID: 1645351075}
+  cameraRig: {fileID: 1645351076}
+  player: {fileID: 0}
 --- !u!1 &1647352529
 GameObject:
   m_ObjectHideFlags: 0

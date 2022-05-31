@@ -8,6 +8,9 @@ namespace RunMinigames.Mechanics.Cam
     {
         [SerializeField] ShakeCamera shakeCamera;
 
+        private void Awake() => shakeCamera = GameObject.FindObjectOfType<ShakeCamera>();
+
+
         private void OnTriggerEnter(Collider col)
         {
             if (col.tag == "Obstacle" || col.tag == "Stop")
