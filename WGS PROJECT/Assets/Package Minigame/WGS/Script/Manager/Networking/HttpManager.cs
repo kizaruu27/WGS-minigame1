@@ -21,7 +21,7 @@ namespace RunMinigames.Manager.Networking
         private MPlayerInfo result;
 
         //development token
-        readonly string localToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIiLCJpYXQiOjE2NTI4NTQ4NjEsImV4cCI6MTY4NDQxMTc4N30.WgPvma6Sn6bSgMcB09gCSmTB11np8RQG0ZLkBvB-AZ4";
+        readonly string localToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQiLCJpYXQiOjE2NTM0NjE0MzAsImV4cCI6MTY4NTAxODM1Nn0.8dZQM-e5hrfEZTHGESWjANskD8Tmn3oCYAgrmoBUccM";
 
         // authorization token for WebGL
         string authToken;
