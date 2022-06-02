@@ -13,13 +13,20 @@ namespace RunMinigames.Mechanics.Cam
         [SerializeField] Transform cameraRig;
         [SerializeField] Transform player;
 
+        private void Awake()
+        {
+            player = GameObject.FindObjectOfType<CameraController>().Player;
+        }
+
         void Update()
         {
+
             if (Input.GetMouseButtonDown(1))
             {
                 Shake();
             }
             cameraInitialPos = mainCamera.transform.position;
+
         }
 
         public void Shake()

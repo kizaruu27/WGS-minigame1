@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1498,6 +1498,11 @@ Transform:
   m_Father: {fileID: 181859613}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 133.3, z: 0}
+--- !u!20 &229779085 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6416809523789323429, guid: fa82f8083386b4805bf4734bc05ba7b2, type: 3}
+  m_PrefabInstance: {fileID: 6416809523669332438}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &249482036
 GameObject:
   m_ObjectHideFlags: 0
@@ -4968,6 +4973,10 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6531941319609045698, guid: bc24974799bb94374bb765c4000e3b99, type: 3}
+      propertyPath: shakeCamera
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7328353440017858349, guid: bc24974799bb94374bb765c4000e3b99, type: 3}
       propertyPath: m_Name
       value: Player 1
@@ -5020,6 +5029,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7495710576821706274, guid: bc24974799bb94374bb765c4000e3b99, type: 3}
+      propertyPath: shakeCamera
+      value: 
+      objectReference: {fileID: 6416809523669332440}
     m_RemovedComponents:
     - {fileID: 7328353439887917492, guid: bc24974799bb94374bb765c4000e3b99, type: 3}
     - {fileID: 7328353440263497142, guid: bc24974799bb94374bb765c4000e3b99, type: 3}
@@ -8663,6 +8676,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1676759572}
   m_CullTransparentMesh: 1
+--- !u!4 &1683909096 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6416809523753564324, guid: fa82f8083386b4805bf4734bc05ba7b2, type: 3}
+  m_PrefabInstance: {fileID: 6416809523669332438}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1702035962
 GameObject:
   m_ObjectHideFlags: 0
@@ -13299,6 +13317,28 @@ PrefabInstance:
     - {fileID: 6416809523789323427, guid: fa82f8083386b4805bf4734bc05ba7b2, type: 3}
     - {fileID: 6416809523789323424, guid: fa82f8083386b4805bf4734bc05ba7b2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fa82f8083386b4805bf4734bc05ba7b2, type: 3}
+--- !u!1 &6416809523669332439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6416809523753564327, guid: fa82f8083386b4805bf4734bc05ba7b2, type: 3}
+  m_PrefabInstance: {fileID: 6416809523669332438}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6416809523669332440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6416809523669332439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b44d46045628a64eb0e3db37aa983ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeMagnitude: 0.05
+  shakeTime: 0.5
+  mainCamera: {fileID: 229779085}
+  cameraRig: {fileID: 1683909096}
+  player: {fileID: 960426758}
 --- !u!114 &6484018283867762785
 MonoBehaviour:
   m_ObjectHideFlags: 0
