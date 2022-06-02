@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 using RunMinigames.Interface;
 using SimpleJSON;
 using Newtonsoft.Json;
+using RunMinigames.Models.Http.PlayerInfo;
 
 namespace RunMinigames.Services.Http
 {
@@ -60,10 +61,11 @@ namespace RunMinigames.Services.Http
             }
 
             if (req.result != UnityWebRequest.Result.Success) Debug.LogError($"Failed: {req.error}");
+            var resDebug = JsonConvert.DeserializeObject<MPlayerInfo>(req.downloadHandler.text);
 
             var res = JsonConvert.DeserializeObject<TModel>(req.downloadHandler.text);
 
-            Debug.Log("response : " + res);
+            Debug.Log("response : " + resDebug.data.uname);
 
             return res;
         }

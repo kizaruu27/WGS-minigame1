@@ -26,6 +26,7 @@ namespace RunMinigames.Manager.Networking
         // authorization token for WebGL
         string authToken;
         string urlToken;
+        HttpClientV2 client;
 
         private void Start()
         {
@@ -36,11 +37,41 @@ namespace RunMinigames.Manager.Networking
 
             deviceType = CheckPlatform.isWeb && (!CheckPlatform.isMacUnity || !CheckPlatform.isWindowsUnity);
             authToken = deviceType ? urlToken : localToken;
+
+
+            client = new HttpClientV2(
+                        HttpConfig.BASE_URL,
+                        new HttpOptions(),
+                        authToken
+                    );
+
+            Debug.Log(client);
+
         }
 
         private void Update()
         {
-            Login();
+            // Login();
+            Debug.Log(client);
+
+
+            if (client != null)
+            {
+                StartCoroutine(client.Get(
+                    HttpConfig.ENDPOINT["user"],
+                    (result) => Debug.Log(result["data"])
+                ));
+            }
+
+        }
+
+
+        void LoginV2()
+        {
+            if (result is null)
+            {
+
+            }
         }
 
 
