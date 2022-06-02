@@ -2,6 +2,7 @@ using UnityEngine;
 using Photon.Pun;
 using RunMinigames.Mechanics.Checkpoint;
 using RunMinigames.Manager.Leaderboard;
+using SimpleJSON;
 
 namespace RunMinigames.Mechanics.Characters
 {
@@ -20,7 +21,7 @@ namespace RunMinigames.Mechanics.Characters
 
             CharaName = type.IsMultiplayer ?
                 view.Owner.NickName :
-                PhotonNetwork.NickName ?? PlayerPrefs.GetString("LocalPlayerNickname");
+                PhotonNetwork.NickName ?? JSON.Parse(PlayerPrefs.GetString("LocalPlayerData"))["uname"];
 
             CharaID = type.IsMultiplayer ? view.Owner.ActorNumber - 1 : 0;
 

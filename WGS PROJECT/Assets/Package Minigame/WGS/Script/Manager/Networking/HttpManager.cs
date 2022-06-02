@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using RunMinigames.Models.Http.PlayerInfo;
 using RunMinigames.Services.Http;
 using RunMinigames.Services.Photon;
 using RunMinigames.View.Loading;
 using System;
 using System.Runtime.InteropServices;
+using SimpleJSON;
 
 
 namespace RunMinigames.Manager.Networking
@@ -28,7 +30,11 @@ namespace RunMinigames.Manager.Networking
         string urlToken;
         HttpClientV2 client;
 
-        private void Start()
+        bool isStopRequest;
+        JSONNode data;
+        Scene currScene;
+
+        private void Awake()
         {
 
 #if UNITY_WEBGL && !UNITY_EDITOR
@@ -38,82 +44,37 @@ namespace RunMinigames.Manager.Networking
             deviceType = CheckPlatform.isWeb && (!CheckPlatform.isMacUnity || !CheckPlatform.isWindowsUnity);
             authToken = deviceType ? urlToken : localToken;
 
+            currScene = SceneManager.GetActiveScene();
 
             client = new HttpClientV2(
                         HttpConfig.BASE_URL,
                         new HttpOptions(),
                         authToken
                     );
-
-            Debug.Log(client);
-
         }
 
         private void Update()
         {
-            // Login();
-            Debug.Log(client);
-
-
-            if (client != null)
-            {
-                StartCoroutine(client.Get(
-                    HttpConfig.ENDPOINT["user"],
-                    (result) => Debug.Log(result["data"])
-                ));
-            }
-
+            if (currScene.name == "WGS1_Login" && !isStopRequest) GetUserData();
         }
 
 
-        void LoginV2()
+        void GetUserData()
         {
-            if (result is null)
+            LoginStatus.instance.StepperMessage("Getting user data...");
+            StartCoroutine(client.Get(HttpConfig.ENDPOINT["user"], (res) =>
             {
+                isStopRequest = res != null;
+                LoginStatus.instance.StepperMessage("process user data...");
 
-            }
-        }
-
-
-        async void Login()
-        {
-            try
-            {
-                if (result is null)
-                {
-                    Debug.Log("from login : " + authToken);
-                    var requestData = new HttpClient(
-                        HttpConfig.BASE_URL,
-                        new HttpOptions(),
-                        authToken
-                    );
-
-                    result = await requestData.Get<MPlayerInfo>(
-                        HttpConfig.ENDPOINT["user"],
-                        (isDone, downloadProgress) =>
-                            LoginStatus.instance.StepperMessage(downloadProgress < 100 && !isDone ? "Getting user data..." : "process user data...")
-                    );
-
-                    Debug.Log("http result : " + result?.data.uname);
-
-
-                    LoginStatus.instance.isConnectingToServer = false;
-                }
-
-
-                if (result?.data.uname.Length > 0)
+                if (isStopRequest)
                 {
                     PlayerPrefs.SetString("token", authToken);
-                    PlayerPrefs.SetString("LocalPlayerNickname", result?.data.uname);
+                    PlayerPrefs.SetString("LocalPlayerData", res["data"].ToString());
 
-                    GetComponent<PhotonServer>().Connect(PlayerPrefs.GetString("LocalPlayerNickname"));
+                    GetComponent<PhotonServer>().Connect(JSON.Parse(PlayerPrefs.GetString("LocalPlayerData"))["uname"]);
                 }
-
-            }
-            catch (Exception error)
-            {
-                Debug.LogError($"failed: {error.Message}");
-            }
+            }));
         }
     }
 }

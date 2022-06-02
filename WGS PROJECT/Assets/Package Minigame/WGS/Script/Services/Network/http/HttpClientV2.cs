@@ -10,7 +10,6 @@ namespace RunMinigames.Services.Http
 {
     public class HttpClientV2
     {
-
         private ISerializationOption _serializationOption;
         private string _url, _token;
 
@@ -27,26 +26,9 @@ namespace RunMinigames.Services.Http
             req.SetRequestHeader("Content-Type", _serializationOption.ContentType);
             if (_token != null) req.SetRequestHeader("Authorization", _token);
 
-            var operation = req.SendWebRequest();
-
-            // while (!req.isDone)
-            //     reqProgress(req.downloadProgress * 100);
-
             yield return req.SendWebRequest();
 
-            switch (req.result)
-            {
-                case UnityWebRequest.Result.ConnectionError:
-                case UnityWebRequest.Result.DataProcessingError:
-                    Debug.LogError(" Error: " + req.error);
-                    break;
-                case UnityWebRequest.Result.ProtocolError:
-                    Debug.LogError(" HTTP Error: " + req.error);
-                    break;
-                case UnityWebRequest.Result.Success:
-                    res?.Invoke(JSON.Parse(req.downloadHandler.text));
-                    break;
-            }
+            CheckRequest(req, res);
         }
 
         public IEnumerator Post(string endpoint, WWWForm form, Action<JSONNode> res, [Optional] Action<float> reqProgress)
@@ -54,11 +36,6 @@ namespace RunMinigames.Services.Http
             using var req = UnityWebRequest.Post(_url + endpoint, form);
             req.SetRequestHeader("Content-Type", _serializationOption.ContentType);
             if (_token != null) req.SetRequestHeader("Authorization", _token);
-
-            var operation = req.SendWebRequest();
-
-            while (!req.isDone)
-                reqProgress(req.downloadProgress * 100);
 
             yield return req.SendWebRequest();
 
