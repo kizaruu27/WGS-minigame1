@@ -10,18 +10,21 @@ public class SpawnItems : MonoBehaviour
 
     [SerializeField] Transform spawnPoint;
 
+    [SerializeField] Transform itemsGroup;
     [SerializeField] bool isRandom;
 
     private void Start()
     {
         if (isRandom)
         {
-            spawnPoint.position = new Vector3 (Random.Range(minX, maxX), spawnPoint.position.y, spawnPoint.position.z);
-            Instantiate(itemsPrefabs[Random.Range(0, itemsPrefabs.Length)], transform.position, Quaternion.identity);
+            spawnPoint.position = new Vector3(Random.Range(minX, maxX), spawnPoint.position.y, spawnPoint.position.z);
+            var insItems = Instantiate(itemsPrefabs[Random.Range(0, itemsPrefabs.Length)], transform.position, Quaternion.identity);
+            insItems.transform.SetParent(itemsGroup);
         }
         else
         {
-            Instantiate(itemsPrefabs[Random.Range(0, itemsPrefabs.Length)], transform.position, Quaternion.identity);
+            var insItems = Instantiate(itemsPrefabs[Random.Range(0, itemsPrefabs.Length)], transform.position, Quaternion.identity);
+            insItems.transform.SetParent(itemsGroup);
         }
     }
 }
