@@ -16,6 +16,7 @@ namespace RunMinigames.Mechanics.Cam
         private void Awake()
         {
             player = GameObject.FindObjectOfType<CameraController>().Player;
+            cameraInitialPos = mainCamera.transform.localPosition;
         }
 
         void Update()
@@ -25,13 +26,10 @@ namespace RunMinigames.Mechanics.Cam
             {
                 Shake();
             }
-            cameraInitialPos = mainCamera.transform.position;
-
         }
 
         public void Shake()
         {
-            cameraInitialPos = mainCamera.transform.position;
             InvokeRepeating("StartCameraShaking", 0, 0.005f);
             Invoke("StopCameraShaking", shakeTime);
             cameraRig.position = player.position;
@@ -41,17 +39,17 @@ namespace RunMinigames.Mechanics.Cam
         {
             float cameraShakingOffsetX = Random.value * shakeMagnitude * 2 - shakeMagnitude;
             float cameraShakingOffsetY = Random.value * shakeMagnitude * 2 - shakeMagnitude;
-            Vector3 cameraIntermadiatePos = mainCamera.transform.position;
+            Vector3 cameraIntermadiatePos = mainCamera.transform.localPosition;
             cameraIntermadiatePos.x += cameraShakingOffsetX;
             cameraIntermadiatePos.y += cameraShakingOffsetY;
-            mainCamera.transform.position = cameraIntermadiatePos;
+            mainCamera.transform.localPosition = cameraIntermadiatePos;
 
         }
 
         void StopCameraShaking()
         {
             CancelInvoke("StartCameraShaking");
-            mainCamera.transform.position = cameraInitialPos;
+            mainCamera.transform.localPosition = cameraInitialPos;
 
         }
 

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RunMinigames.Manager.Characters;
+using Photon.Pun;
 
 namespace RunMinigames.Mechanics.Cam
 {
@@ -8,12 +10,21 @@ namespace RunMinigames.Mechanics.Cam
     {
         [SerializeField] ShakeCamera shakeCamera;
 
-        private void Awake() => shakeCamera = GameObject.FindObjectOfType<ShakeCamera>();
+        List<string> item = new List<string> { "Obstacle", "Stop" };
+        PhotonView view;
+
+
+        private void Awake()
+        {
+            shakeCamera = GameObject.FindObjectOfType<ShakeCamera>();
+            view = GetComponent<PhotonView>();
+        }
 
 
         private void OnTriggerEnter(Collider col)
         {
-            if (col.tag == "Obstacle" || col.tag == "Stop")
+
+            if (item.Contains(col.tag) && view.IsMine)
             {
                 shakeCamera.Shake();
             }
