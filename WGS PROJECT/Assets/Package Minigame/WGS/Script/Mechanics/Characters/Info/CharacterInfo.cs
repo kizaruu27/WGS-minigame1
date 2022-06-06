@@ -25,6 +25,7 @@ namespace RunMinigames.Mechanics.Characters
         int numberOfPassedCheckpoints = 0;
         float timeAtLastPassCheckpoint = 0;
         int lapsCompleted = 0;
+        public bool isPlayerFinish;
 
         protected float timer = 0f;
         protected PhotonView view;
@@ -59,6 +60,8 @@ namespace RunMinigames.Mechanics.Characters
 
                 if (checkpoint.isFinishLine)
                 {
+                    isPlayerFinish = checkpoint.isFinishLine;
+
                     FinishUI = GameObject
                         .FindGameObjectWithTag("Finish UI")
                         .GetComponent<FinishLeaderboard>();

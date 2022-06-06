@@ -190,8 +190,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsPrefabs:
-  - {fileID: 7930775266224442915, guid: e11ad9d6002d9418d94052a77125fd2a, type: 3}
-  - {fileID: 7930775266224442915, guid: 5a288d9e0e0094589a6867a586fe7ab0, type: 3}
+  - {fileID: 7930775266224442915, guid: c9c628f41a0f041d29e691b217dcfb46, type: 3}
+  - {fileID: 7930775266224442915, guid: 817e4ccf0693d486aa763b3ef2ba3953, type: 3}
   maxX: 802.42
   minX: 794.41
   spawnPoint: {fileID: 36902239}
@@ -241,8 +241,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsPrefabs:
-  - {fileID: 7930775266224442915, guid: e11ad9d6002d9418d94052a77125fd2a, type: 3}
-  - {fileID: 7930775266224442915, guid: 5a288d9e0e0094589a6867a586fe7ab0, type: 3}
+  - {fileID: 7930775266224442915, guid: c9c628f41a0f041d29e691b217dcfb46, type: 3}
+  - {fileID: 7930775266224442915, guid: 817e4ccf0693d486aa763b3ef2ba3953, type: 3}
   maxX: 802.42
   minX: 794.41
   spawnPoint: {fileID: 36972485}
@@ -1099,6 +1099,7 @@ MonoBehaviour:
   CharaName: 
   CharaViewName: {fileID: 0}
   CharaScore: 0
+  isPlayerFinish: 0
 --- !u!136 &127369048
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1401,7 +1402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xMin: 795.03
   xMax: 802.25
-  obstaclePrefabs: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
+  obstaclePrefabs: {fileID: 4411361229093306498, guid: 18513c680280440e0b69571212c6521d, type: 3}
   obstaclesGroup: {fileID: 990053222}
   spawnPoint: {fileID: 190338511}
 --- !u!1 &195620919
@@ -1513,8 +1514,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsPrefabs:
-  - {fileID: 7930775266224442915, guid: e11ad9d6002d9418d94052a77125fd2a, type: 3}
-  - {fileID: 7930775266224442915, guid: 5a288d9e0e0094589a6867a586fe7ab0, type: 3}
+  - {fileID: 7930775266224442915, guid: c9c628f41a0f041d29e691b217dcfb46, type: 3}
+  - {fileID: 7930775266224442915, guid: 817e4ccf0693d486aa763b3ef2ba3953, type: 3}
   maxX: 802.42
   minX: 794.41
   spawnPoint: {fileID: 223325233}
@@ -1815,6 +1816,10 @@ PrefabInstance:
       propertyPath: obstaclesGroup
       value: 
       objectReference: {fileID: 990053222}
+    - target: {fileID: 6299427270228352472, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
+      propertyPath: obstaclePrefabs
+      value: 
+      objectReference: {fileID: 4411361229093306498, guid: 18513c680280440e0b69571212c6521d, type: 3}
     - target: {fileID: 6299427270228352473, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -2036,6 +2041,10 @@ PrefabInstance:
       propertyPath: obstaclesGroup
       value: 
       objectReference: {fileID: 990053222}
+    - target: {fileID: 6299427270228352472, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
+      propertyPath: obstaclePrefabs
+      value: 
+      objectReference: {fileID: 4411361229093306498, guid: 18513c680280440e0b69571212c6521d, type: 3}
     - target: {fileID: 6299427270228352473, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -2247,6 +2256,10 @@ PrefabInstance:
       propertyPath: obstaclesGroup
       value: 
       objectReference: {fileID: 990053222}
+    - target: {fileID: 6299427270228352472, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
+      propertyPath: obstaclePrefabs
+      value: 
+      objectReference: {fileID: 4411361229093306498, guid: 18513c680280440e0b69571212c6521d, type: 3}
     - target: {fileID: 6299427270228352473, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -2528,6 +2541,10 @@ PrefabInstance:
       propertyPath: obstaclesGroup
       value: 
       objectReference: {fileID: 990053222}
+    - target: {fileID: 6299427270228352472, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
+      propertyPath: obstaclePrefabs
+      value: 
+      objectReference: {fileID: 4411361229093306498, guid: 18513c680280440e0b69571212c6521d, type: 3}
     - target: {fileID: 6299427270228352473, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -3067,6 +3084,7 @@ MonoBehaviour:
   CharaName: 
   CharaViewName: {fileID: 0}
   CharaScore: 0
+  isPlayerFinish: 0
 --- !u!136 &433185147
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3607,7 +3625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xMin: 795.03
   xMax: 802.25
-  obstaclePrefabs: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
+  obstaclePrefabs: {fileID: 4411361229093306498, guid: 18513c680280440e0b69571212c6521d, type: 3}
   obstaclesGroup: {fileID: 990053222}
   spawnPoint: {fileID: 523990452}
 --- !u!1 &524051241
@@ -3788,8 +3806,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsPrefabs:
-  - {fileID: 7930775266224442915, guid: e11ad9d6002d9418d94052a77125fd2a, type: 3}
-  - {fileID: 7930775266224442915, guid: 5a288d9e0e0094589a6867a586fe7ab0, type: 3}
+  - {fileID: 7930775266224442915, guid: c9c628f41a0f041d29e691b217dcfb46, type: 3}
+  - {fileID: 7930775266224442915, guid: 817e4ccf0693d486aa763b3ef2ba3953, type: 3}
   maxX: 802.42
   minX: 794.41
   spawnPoint: {fileID: 532248261}
@@ -3908,8 +3926,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsPrefabs:
-  - {fileID: 7930775266224442915, guid: e11ad9d6002d9418d94052a77125fd2a, type: 3}
-  - {fileID: 7930775266224442915, guid: 5a288d9e0e0094589a6867a586fe7ab0, type: 3}
+  - {fileID: 7930775266224442915, guid: c9c628f41a0f041d29e691b217dcfb46, type: 3}
+  - {fileID: 7930775266224442915, guid: 817e4ccf0693d486aa763b3ef2ba3953, type: 3}
   maxX: 802.42
   minX: 794.41
   spawnPoint: {fileID: 567609576}
@@ -4187,7 +4205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xMin: 795.03
   xMax: 802.25
-  obstaclePrefabs: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
+  obstaclePrefabs: {fileID: 4411361229093306498, guid: 18513c680280440e0b69571212c6521d, type: 3}
   obstaclesGroup: {fileID: 990053222}
   spawnPoint: {fileID: 671056674}
 --- !u!1 &697874623
@@ -4235,7 +4253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xMin: 795.03
   xMax: 802.25
-  obstaclePrefabs: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
+  obstaclePrefabs: {fileID: 4411361229093306498, guid: 18513c680280440e0b69571212c6521d, type: 3}
   obstaclesGroup: {fileID: 990053222}
   spawnPoint: {fileID: 697874624}
 --- !u!54 &699370279
@@ -4460,8 +4478,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsPrefabs:
-  - {fileID: 7930775266224442915, guid: e11ad9d6002d9418d94052a77125fd2a, type: 3}
-  - {fileID: 7930775266224442915, guid: 5a288d9e0e0094589a6867a586fe7ab0, type: 3}
+  - {fileID: 7930775266224442915, guid: c9c628f41a0f041d29e691b217dcfb46, type: 3}
+  - {fileID: 7930775266224442915, guid: 817e4ccf0693d486aa763b3ef2ba3953, type: 3}
   maxX: 802.42
   minX: 794.41
   spawnPoint: {fileID: 735622555}
@@ -4500,6 +4518,10 @@ PrefabInstance:
       propertyPath: obstaclesGroup
       value: 
       objectReference: {fileID: 990053222}
+    - target: {fileID: 6299427270228352472, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
+      propertyPath: obstaclePrefabs
+      value: 
+      objectReference: {fileID: 4411361229093306498, guid: 18513c680280440e0b69571212c6521d, type: 3}
     - target: {fileID: 6299427270228352473, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -4584,8 +4606,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsPrefabs:
-  - {fileID: 7930775266224442915, guid: e11ad9d6002d9418d94052a77125fd2a, type: 3}
-  - {fileID: 7930775266224442915, guid: 5a288d9e0e0094589a6867a586fe7ab0, type: 3}
+  - {fileID: 7930775266224442915, guid: c9c628f41a0f041d29e691b217dcfb46, type: 3}
+  - {fileID: 7930775266224442915, guid: 817e4ccf0693d486aa763b3ef2ba3953, type: 3}
   maxX: 802.42
   minX: 794.41
   spawnPoint: {fileID: 766590490}
@@ -4773,8 +4795,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsPrefabs:
-  - {fileID: 7930775266224442915, guid: e11ad9d6002d9418d94052a77125fd2a, type: 3}
-  - {fileID: 7930775266224442915, guid: 5a288d9e0e0094589a6867a586fe7ab0, type: 3}
+  - {fileID: 7930775266224442915, guid: c9c628f41a0f041d29e691b217dcfb46, type: 3}
+  - {fileID: 7930775266224442915, guid: 817e4ccf0693d486aa763b3ef2ba3953, type: 3}
   maxX: 802.42
   minX: 794.41
   spawnPoint: {fileID: 902646801}
@@ -5258,8 +5280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsPrefabs:
-  - {fileID: 7930775266224442915, guid: e11ad9d6002d9418d94052a77125fd2a, type: 3}
-  - {fileID: 7930775266224442915, guid: 5a288d9e0e0094589a6867a586fe7ab0, type: 3}
+  - {fileID: 7930775266224442915, guid: c9c628f41a0f041d29e691b217dcfb46, type: 3}
+  - {fileID: 7930775266224442915, guid: 817e4ccf0693d486aa763b3ef2ba3953, type: 3}
   maxX: 802.42
   minX: 794.41
   spawnPoint: {fileID: 974708002}
@@ -5506,7 +5528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xMin: 795.03
   xMax: 802.25
-  obstaclePrefabs: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
+  obstaclePrefabs: {fileID: 4411361229093306498, guid: 18513c680280440e0b69571212c6521d, type: 3}
   obstaclesGroup: {fileID: 990053222}
   spawnPoint: {fileID: 1004957146}
 --- !u!1 &1009240662
@@ -6241,6 +6263,10 @@ PrefabInstance:
       propertyPath: obstaclesGroup
       value: 
       objectReference: {fileID: 990053222}
+    - target: {fileID: 6299427270228352472, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
+      propertyPath: obstaclePrefabs
+      value: 
+      objectReference: {fileID: 4411361229093306498, guid: 18513c680280440e0b69571212c6521d, type: 3}
     - target: {fileID: 6299427270228352473, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -6325,8 +6351,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsPrefabs:
-  - {fileID: 7930775266224442915, guid: e11ad9d6002d9418d94052a77125fd2a, type: 3}
-  - {fileID: 7930775266224442915, guid: 5a288d9e0e0094589a6867a586fe7ab0, type: 3}
+  - {fileID: 7930775266224442915, guid: c9c628f41a0f041d29e691b217dcfb46, type: 3}
+  - {fileID: 7930775266224442915, guid: 817e4ccf0693d486aa763b3ef2ba3953, type: 3}
   maxX: 802.42
   minX: 794.41
   spawnPoint: {fileID: 1144604494}
@@ -7042,7 +7068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xMin: 795.03
   xMax: 802.25
-  obstaclePrefabs: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
+  obstaclePrefabs: {fileID: 4411361229093306498, guid: 18513c680280440e0b69571212c6521d, type: 3}
   obstaclesGroup: {fileID: 990053222}
   spawnPoint: {fileID: 1338258201}
 --- !u!1 &1353267046
@@ -7654,8 +7680,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsPrefabs:
-  - {fileID: 7930775266224442915, guid: e11ad9d6002d9418d94052a77125fd2a, type: 3}
-  - {fileID: 7930775266224442915, guid: 5a288d9e0e0094589a6867a586fe7ab0, type: 3}
+  - {fileID: 7930775266224442915, guid: c9c628f41a0f041d29e691b217dcfb46, type: 3}
+  - {fileID: 7930775266224442915, guid: 817e4ccf0693d486aa763b3ef2ba3953, type: 3}
   maxX: 802.42
   minX: 794.41
   spawnPoint: {fileID: 1485941237}
@@ -7772,8 +7798,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsPrefabs:
-  - {fileID: 7930775266224442915, guid: e11ad9d6002d9418d94052a77125fd2a, type: 3}
-  - {fileID: 7930775266224442915, guid: 5a288d9e0e0094589a6867a586fe7ab0, type: 3}
+  - {fileID: 7930775266224442915, guid: c9c628f41a0f041d29e691b217dcfb46, type: 3}
+  - {fileID: 7930775266224442915, guid: 817e4ccf0693d486aa763b3ef2ba3953, type: 3}
   maxX: 802.42
   minX: 794.41
   spawnPoint: {fileID: 1529524094}
@@ -8292,8 +8318,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsPrefabs:
-  - {fileID: 7930775266224442915, guid: e11ad9d6002d9418d94052a77125fd2a, type: 3}
-  - {fileID: 7930775266224442915, guid: 5a288d9e0e0094589a6867a586fe7ab0, type: 3}
+  - {fileID: 7930775266224442915, guid: c9c628f41a0f041d29e691b217dcfb46, type: 3}
+  - {fileID: 7930775266224442915, guid: 817e4ccf0693d486aa763b3ef2ba3953, type: 3}
   maxX: 802.42
   minX: 794.41
   spawnPoint: {fileID: 1620298687}
@@ -8545,8 +8571,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsPrefabs:
-  - {fileID: 7930775266224442915, guid: e11ad9d6002d9418d94052a77125fd2a, type: 3}
-  - {fileID: 7930775266224442915, guid: 5a288d9e0e0094589a6867a586fe7ab0, type: 3}
+  - {fileID: 7930775266224442915, guid: c9c628f41a0f041d29e691b217dcfb46, type: 3}
+  - {fileID: 7930775266224442915, guid: 817e4ccf0693d486aa763b3ef2ba3953, type: 3}
   maxX: 802.42
   minX: 794.41
   spawnPoint: {fileID: 1634200555}
@@ -8858,7 +8884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xMin: 795.03
   xMax: 802.25
-  obstaclePrefabs: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
+  obstaclePrefabs: {fileID: 4411361229093306498, guid: 18513c680280440e0b69571212c6521d, type: 3}
   obstaclesGroup: {fileID: 990053222}
   spawnPoint: {fileID: 1702035963}
 --- !u!1 &1705305240
@@ -8965,6 +8991,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsMultiplayer: 0
+  Prefabs:
+  - {fileID: 7930775266224442915, guid: e11ad9d6002d9418d94052a77125fd2a, type: 3}
+  - {fileID: 7930775266224442915, guid: 5a288d9e0e0094589a6867a586fe7ab0, type: 3}
+  - {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
 --- !u!1 &1738549489
 GameObject:
   m_ObjectHideFlags: 0
@@ -9198,8 +9228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsPrefabs:
-  - {fileID: 7930775266224442915, guid: e11ad9d6002d9418d94052a77125fd2a, type: 3}
-  - {fileID: 7930775266224442915, guid: 5a288d9e0e0094589a6867a586fe7ab0, type: 3}
+  - {fileID: 7930775266224442915, guid: c9c628f41a0f041d29e691b217dcfb46, type: 3}
+  - {fileID: 7930775266224442915, guid: 817e4ccf0693d486aa763b3ef2ba3953, type: 3}
   maxX: 802.42
   minX: 794.41
   spawnPoint: {fileID: 1771042028}
@@ -9402,7 +9432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xMin: 795.03
   xMax: 802.25
-  obstaclePrefabs: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
+  obstaclePrefabs: {fileID: 4411361229093306498, guid: 18513c680280440e0b69571212c6521d, type: 3}
   obstaclesGroup: {fileID: 990053222}
   spawnPoint: {fileID: 1842503661}
 --- !u!4 &1865754433 stripped
@@ -9455,7 +9485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xMin: 795.03
   xMax: 802.25
-  obstaclePrefabs: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
+  obstaclePrefabs: {fileID: 4411361229093306498, guid: 18513c680280440e0b69571212c6521d, type: 3}
   obstaclesGroup: {fileID: 990053222}
   spawnPoint: {fileID: 1871814561}
 --- !u!1 &1894731073
@@ -9503,7 +9533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xMin: 795.03
   xMax: 802.25
-  obstaclePrefabs: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
+  obstaclePrefabs: {fileID: 4411361229093306498, guid: 18513c680280440e0b69571212c6521d, type: 3}
   obstaclesGroup: {fileID: 990053222}
   spawnPoint: {fileID: 1894731074}
 --- !u!1001 &1900881191
@@ -10347,7 +10377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xMin: 795.03
   xMax: 802.25
-  obstaclePrefabs: {fileID: 4411361229093306498, guid: f3f216a704fe8214f90c870837421120, type: 3}
+  obstaclePrefabs: {fileID: 4411361229093306498, guid: 18513c680280440e0b69571212c6521d, type: 3}
   obstaclesGroup: {fileID: 990053222}
   spawnPoint: {fileID: 1961460110}
 --- !u!1 &1973249437
@@ -11018,6 +11048,7 @@ MonoBehaviour:
   CharaName: 
   CharaViewName: {fileID: 0}
   CharaScore: 0
+  isPlayerFinish: 0
 --- !u!1 &1697376616201760
 GameObject:
   m_ObjectHideFlags: 0
@@ -11072,6 +11103,7 @@ MonoBehaviour:
   CharaName: 
   CharaViewName: {fileID: 0}
   CharaScore: 0
+  isPlayerFinish: 0
 --- !u!1 &1697376786828659
 GameObject:
   m_ObjectHideFlags: 0
@@ -11126,6 +11158,7 @@ MonoBehaviour:
   CharaName: 
   CharaViewName: {fileID: 0}
   CharaScore: 0
+  isPlayerFinish: 0
 --- !u!1 &1697377101659833
 GameObject:
   m_ObjectHideFlags: 0
@@ -11180,6 +11213,7 @@ MonoBehaviour:
   CharaName: 
   CharaViewName: {fileID: 0}
   CharaScore: 0
+  isPlayerFinish: 0
 --- !u!4 &4475379752318847
 Transform:
   m_ObjectHideFlags: 0
@@ -13335,6 +13369,10 @@ PrefabInstance:
       propertyPath: obstaclesGroup
       value: 
       objectReference: {fileID: 990053222}
+    - target: {fileID: 6299427270228352472, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
+      propertyPath: obstaclePrefabs
+      value: 
+      objectReference: {fileID: 4411361229093306498, guid: 18513c680280440e0b69571212c6521d, type: 3}
     - target: {fileID: 6299427270228352473, guid: 60cf748588fa4d84b8e07e89a9128526, type: 3}
       propertyPath: m_RootOrder
       value: 1

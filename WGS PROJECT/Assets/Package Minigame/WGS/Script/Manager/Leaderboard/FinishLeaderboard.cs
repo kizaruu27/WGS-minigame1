@@ -43,21 +43,27 @@ namespace RunMinigames.Manager.Leaderboard
         // PLAYER
         public void Finish(bool isPlayerCrossFinish, int id, float time, string name)
         {
-            finishUI.SetActive(isPlayerCrossFinish);
-            LeaderboardUI.SetActive(!isPlayerCrossFinish);
-
-
-            if (PhotonNetwork.LocalPlayer.ActorNumber - 1 == id)
+            Debug.Log("Is Player Finish " + pv.IsMine);
+            if (pv.IsMine)
             {
-                for (int i = 0; i < LeaderboardUI.transform.childCount; i++)
-                {
-                    // Debug.Log($"child number: {i}");
-                    GameObject child = LeaderboardUI.transform.GetChild(i).gameObject;
-                    child.gameObject.SetActive(!isPlayerCrossFinish);
-                }
-            }
 
-            if (!playerFinishList.Any(item => item.id == id)) InitializePlayer(id, name, time);
+                finishUI.SetActive(isPlayerCrossFinish);
+                LeaderboardUI.SetActive(!isPlayerCrossFinish);
+
+
+                if (PhotonNetwork.LocalPlayer.ActorNumber - 1 == id)
+                {
+                    for (int i = 0; i < LeaderboardUI.transform.childCount; i++)
+                    {
+                        // Debug.Log($"child number: {i}");
+                        GameObject child = LeaderboardUI.transform.GetChild(i).gameObject;
+                        child.gameObject.SetActive(!isPlayerCrossFinish);
+                    }
+                }
+
+                if (!playerFinishList.Any(item => item.id == id)) InitializePlayer(id, name, time);
+
+            }
         }
 
         // NPC

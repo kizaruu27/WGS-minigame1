@@ -1,6 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+using Photon.Pun;
+using RunMinigames.Manager.Game;
+using RunMinigames.Models;
+
+
 
 public class SpawnItems : MonoBehaviour
 {
@@ -15,15 +19,29 @@ public class SpawnItems : MonoBehaviour
 
     private void Start()
     {
+
+        var go = itemsPrefabs[Random.Range(0, itemsPrefabs.Length)];
+
         if (isRandom)
         {
             spawnPoint.position = new Vector3(Random.Range(minX, maxX), spawnPoint.position.y, spawnPoint.position.z);
-            var insItems = Instantiate(itemsPrefabs[Random.Range(0, itemsPrefabs.Length)], transform.position, Quaternion.identity);
+
+            MPrefabs prefabs = new MPrefabs(go, go.name, spawnPoint.position, Quaternion.identity);
+
+            var insItems = (GameManager.instance.IsMultiplayer) ?
+                PhotonNetwork.Instantiate(prefabs.name, prefabs.position, prefabs.quartenion) :
+                Instantiate(prefabs.gameobject, prefabs.position, prefabs.quartenion);
+
             insItems.transform.SetParent(itemsGroup);
         }
         else
         {
-            var insItems = Instantiate(itemsPrefabs[Random.Range(0, itemsPrefabs.Length)], transform.position, Quaternion.identity);
+            MPrefabs prefabs = new MPrefabs(go, go.name, transform.position, Quaternion.identity);
+
+            var insItems = (GameManager.instance.IsMultiplayer) ?
+                PhotonNetwork.Instantiate(prefabs.name, prefabs.position, prefabs.quartenion) :
+                Instantiate(prefabs.gameobject, prefabs.position, prefabs.quartenion);
+
             insItems.transform.SetParent(itemsGroup);
         }
     }

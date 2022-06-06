@@ -22,8 +22,9 @@ namespace RunMinigames.Manager.Networking
         private bool deviceType;
         private MPlayerInfo result;
 
-        //development token
-        readonly string localToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQiLCJpYXQiOjE2NTM0NjE0MzAsImV4cCI6MTY4NTAxODM1Nn0.8dZQM-e5hrfEZTHGESWjANskD8Tmn3oCYAgrmoBUccM";
+        readonly string EditorToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIiLCJpYXQiOjE2NTI4NTQ4NjEsImV4cCI6MTY4NDQxMTc4N30.WgPvma6Sn6bSgMcB09gCSmTB11np8RQG0ZLkBvB-AZ4";
+        readonly string BuildToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQiLCJpYXQiOjE2NTM2MjE0NzIsImV4cCI6MTY4NTE3ODM5OH0.PsKoprNpr3sudUxukyYA58d1Hx6amSWWIOj4YERBMGQ";
+        string localToken;
 
         // authorization token for WebGL
         string authToken;
@@ -37,25 +38,32 @@ namespace RunMinigames.Manager.Networking
         private void Awake()
         {
 
-#if UNITY_WEBGL && !UNITY_EDITOR
-            urlToken = "Bearer " + GetToken();
-#endif
-
-            deviceType = CheckPlatform.isWeb && (!CheckPlatform.isMacUnity || !CheckPlatform.isWindowsUnity);
-            authToken = deviceType ? urlToken : localToken;
-
-            currScene = SceneManager.GetActiveScene();
+            GetToken();
 
             client = new HttpClientV2(
                         HttpConfig.BASE_URL,
                         new HttpOptions(),
                         authToken
                     );
+
+            currScene = SceneManager.GetActiveScene();
         }
 
         private void Update()
         {
             if (currScene.name == "WGS1_Login" && !isStopRequest) GetUserData();
+        }
+
+
+        void GetToken()
+        {
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+            urlToken = "Bearer " + GetToken();
+#endif
+            localToken = (CheckPlatform.isMacUnity || CheckPlatform.isWindowsUnity) ? EditorToken : BuildToken;
+            deviceType = CheckPlatform.isWeb && (!CheckPlatform.isMacUnity || !CheckPlatform.isWindowsUnity);
+            authToken = deviceType ? urlToken : localToken;
         }
 
 
@@ -72,7 +80,7 @@ namespace RunMinigames.Manager.Networking
                     PlayerPrefs.SetString("token", authToken);
                     PlayerPrefs.SetString("LocalPlayerData", res["data"].ToString());
 
-                    GetComponent<PhotonServer>().Connect(JSON.Parse(PlayerPrefs.GetString("LocalPlayerData"))["uname"]);
+                    GetComponent<PhotonServer>().Connect(JSON.Parse(PlayerPrefs.GetString("LocalPlayerData"))["full_name"]);
                 }
             }));
         }

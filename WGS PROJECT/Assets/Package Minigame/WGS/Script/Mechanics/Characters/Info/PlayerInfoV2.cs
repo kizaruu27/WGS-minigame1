@@ -50,14 +50,14 @@ namespace RunMinigames.Mechanics.Characters
             {
                 view.RPC(
                     "UpdatePodiumList", RpcTarget.AllBuffered, //RPC Arguments
-                    checkpoint.isFinishLine, CharaID, timer, CharaName //Method Arguments
+                    isPlayerFinish, CharaID, timer, CharaName //Method Arguments
                     );
             }
             else
             {
                 GameObject finishUI = GameObject.FindGameObjectWithTag("Finish UI");
                 finishUI.GetComponent<FinishLeaderboard>()
-                    .Finish(checkpoint.isFinishLine, CharaID, timer, CharaName);
+                    .Finish(isPlayerFinish, CharaID, timer, CharaName);
             }
         }
 
