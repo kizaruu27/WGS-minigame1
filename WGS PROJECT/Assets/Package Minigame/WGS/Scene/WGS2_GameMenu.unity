@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 1046728468}
   - component: {fileID: 1046728467}
   m_Layer: 5
-  m_Name: WGSMinigame
+  m_Name: Waffleverse Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -853,7 +853,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 314.97937}
+  m_AnchoredPosition: {x: 0, y: 272}
   m_SizeDelta: {x: 1366, y: 48.0411}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1046728467
@@ -876,7 +876,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WGS MINIGAME
+  m_text: Waffleverse
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1712,7 +1712,7 @@ GameObject:
   - component: {fileID: 1612916255}
   - component: {fileID: 1612916254}
   m_Layer: 5
-  m_Name: WGSTitle
+  m_Name: Minigames Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1734,7 +1734,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 253}
+  m_AnchoredPosition: {x: 0, y: 210.02061}
   m_SizeDelta: {x: 1366, y: 48.0411}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1612916254
@@ -1757,7 +1757,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RUN
+  m_text: Waffle Runner
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
