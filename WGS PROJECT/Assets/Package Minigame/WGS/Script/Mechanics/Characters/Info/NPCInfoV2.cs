@@ -20,7 +20,7 @@ namespace RunMinigames.Mechanics.Characters
         {
             if (type.IsMultiplayer)
             {
-                view.RPC("UpdateCharacterName", RpcTarget.AllBuffered, CharaID, CharaName);
+                view.RPC(nameof(UpdateCharacterName), RpcTarget.AllBuffered, CharaID, CharaName);
             }
             else
             {
@@ -37,7 +37,7 @@ namespace RunMinigames.Mechanics.Characters
             if (type.IsMultiplayer)
             {
                 view.RPC(
-                    "UpdatePodiumList", RpcTarget.AllBuffered, //RPC Arguments
+                    nameof(UpdatePodiumList), RpcTarget.AllBuffered, //RPC Arguments
                      CharaID, timer, CharaName //Method Arguments
                     );
             }
@@ -52,7 +52,7 @@ namespace RunMinigames.Mechanics.Characters
         public void SetNPCInfo(int newID, string newName)
         {
             if (type.IsMultiplayer)
-                view.RPC("SetNameNPC", RpcTarget.AllBuffered, newID, newName);
+                view.RPC(nameof(SetNameNPC), RpcTarget.AllBuffered, newID, newName);
         }
 
         [PunRPC]

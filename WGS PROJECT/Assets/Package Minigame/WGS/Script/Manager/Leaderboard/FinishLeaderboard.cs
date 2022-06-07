@@ -24,7 +24,7 @@ namespace RunMinigames.Manager.Leaderboard
         private void Awake() => pv = GetComponent<PhotonView>();
         private void Update()
         {
-            pv.RPC("SendCount", RpcTarget.AllBuffered, playerFinishList.Count);
+            pv.RPC(nameof(SendCount), RpcTarget.AllBuffered, playerFinishList.Count);
         }
         public int TotalPlayersDisconnect { get; set; }
 

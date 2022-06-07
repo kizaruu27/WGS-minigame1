@@ -17,7 +17,7 @@ namespace RunMinigames.Mechanics.Characters
         public int CharaID;
         public string CharaName;
         public TMP_Text CharaViewName;
-        public int CharaScore;
+        public float CharaScore;
 
         [Header("Check point system")]
         bool isRaceCompleted = false;
@@ -54,7 +54,7 @@ namespace RunMinigames.Mechanics.Characters
                 passedCheckPointNumber = checkpoint.checkPointNumber;
                 numberOfPassedCheckpoints++;
                 timeAtLastPassCheckpoint = Time.time;
-                CharaScore++;
+                CharaScore = checkpoint.checkPointNumber;
 
                 UpdateScore();
 
@@ -98,7 +98,7 @@ namespace RunMinigames.Mechanics.Characters
             FinishUI.GetComponent<FinishLeaderboard>().Finish(id, timer, playerName);
 
         [PunRPC]
-        protected void UpdateCharacterScore(string name, int score)
+        protected void UpdateCharacterScore(string name, float score)
         {
             GameplayLeaderboardManager.instance.UpdatePlayerScore(name, score); //disini rpc nya
         }
@@ -111,7 +111,7 @@ namespace RunMinigames.Mechanics.Characters
             if (type.IsMultiplayer)
             {
                 view.RPC(
-                    "UpdateCharacterScore", RpcTarget.AllBuffered, //RPC Arguments
+                    nameof(UpdateCharacterScore), RpcTarget.AllBuffered, //RPC Arguments
                     CharaName, CharaScore //Method Arguments
                     );
             }

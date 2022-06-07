@@ -27,7 +27,7 @@ namespace RunMinigames.Mechanics.Characters
 
             if (type.IsMultiplayer)
             {
-                view.RPC("SetAvatarIndex", RpcTarget.AllBuffered, PlayerPrefs.GetInt("playerAvatar"));
+                view.RPC(nameof(SetAvatarIndex), RpcTarget.AllBuffered, PlayerPrefs.GetInt("playerAvatar"));
             }
 
             CharaViewName.text = CharaName;
@@ -37,8 +37,8 @@ namespace RunMinigames.Mechanics.Characters
         {
             if (type.IsMultiplayer)
             {
-                view.RPC("UpdateCharacterName", RpcTarget.AllBuffered, CharaID, CharaName);
-                view.RPC("SetPlayerName", RpcTarget.AllBuffered, CharaName);
+                view.RPC(nameof(UpdateCharacterName), RpcTarget.AllBuffered, CharaID, CharaName);
+                view.RPC(nameof(SetPlayerName), RpcTarget.AllBuffered, CharaName);
             }
 
             GameplayLeaderboardManager.instance.UpdatePlayerName(CharaID, CharaName);
@@ -49,7 +49,7 @@ namespace RunMinigames.Mechanics.Characters
             if (type.IsMultiplayer)
             {
                 view.RPC(
-                    "UpdatePodiumList", RpcTarget.AllBuffered, //RPC Arguments
+                    nameof(UpdatePodiumList), RpcTarget.AllBuffered, //RPC Arguments
                     isPlayerFinish, CharaID, timer, CharaName //Method Arguments
                     );
             }

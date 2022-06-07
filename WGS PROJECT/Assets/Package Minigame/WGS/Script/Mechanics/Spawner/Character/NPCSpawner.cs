@@ -55,7 +55,7 @@ public class NPCSpawner : MonoBehaviour
 
                     isNPCAlreadySpawned = i == playerMax - 1;
 
-                    view.RPC("SyncNPCStatus", RpcTarget.OthersBuffered, isNPCAlreadySpawned);
+                    view.RPC(nameof(SyncNPCStatus), RpcTarget.OthersBuffered, isNPCAlreadySpawned);
                 }
             }
         }

@@ -38,7 +38,7 @@ public class CountdownUI : MonoBehaviour
 
         if (PhotonNetwork.IsMasterClient)
         {
-            view.RPC("SetCountdown", RpcTarget.Others, InitialCountdown);
+            view.RPC(nameof(SetCountdown), RpcTarget.Others, InitialCountdown);
         }
 
         _CountdownTXT.fontSize = InitialCountdown > 2 ? 200f : 80f;

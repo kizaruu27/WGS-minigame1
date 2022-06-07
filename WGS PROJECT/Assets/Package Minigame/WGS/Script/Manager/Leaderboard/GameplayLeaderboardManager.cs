@@ -158,7 +158,7 @@ namespace RunMinigames.Manager.Leaderboard
                 LeaderboardText[i].text = LeaderboardItem[i].PlayerName;
             }
 
-            PV.RPC("sentPlayerDiscCount", RpcTarget.AllBuffered, playerDisconnected);
+            PV.RPC(nameof(sentPlayerDiscCount), RpcTarget.AllBuffered, playerDisconnected);
         }
 
         public void RemovePlayerOnDisconnect()
