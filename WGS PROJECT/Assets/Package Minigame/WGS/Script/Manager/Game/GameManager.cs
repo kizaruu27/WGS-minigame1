@@ -21,7 +21,6 @@ namespace RunMinigames.Manager.Game
         private void Awake()
         {
             instance = this;
-            // PreparePrefabsPool();
 
         }
 

@@ -55,7 +55,6 @@ namespace RunMinigames.Manager.Lobby
         {
             PhotonNetwork.JoinLobby();
             modalPanel.SetActive(false);
-            PhotonNetwork.OfflineMode = false;
         }
 
         public void OnClickCreate()

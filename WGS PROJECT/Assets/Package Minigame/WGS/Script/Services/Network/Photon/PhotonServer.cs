@@ -41,6 +41,7 @@ namespace RunMinigames.Services.Photon
             if (!httpManager.enabled)
             {
                 Destroy(httpManager.gameObject);
+                PhotonNetwork.JoinLobby();
                 SceneManager.LoadScene("WGS2_GameMenu");
             }
 
