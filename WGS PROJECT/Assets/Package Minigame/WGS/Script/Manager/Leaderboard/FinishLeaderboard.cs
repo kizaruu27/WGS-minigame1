@@ -30,6 +30,7 @@ namespace RunMinigames.Manager.Leaderboard
 
         public void InitializePlayer(int id, string name, float time)
         {
+            Debug.Log(name);
             MPlayerFinish playerFinish = new MPlayerFinish();
             playerFinish.name = name;
             playerFinish.time = time;

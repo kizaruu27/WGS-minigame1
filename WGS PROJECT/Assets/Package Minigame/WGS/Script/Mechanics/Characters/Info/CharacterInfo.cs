@@ -38,6 +38,10 @@ namespace RunMinigames.Mechanics.Characters
             instance = this;
             view = GetComponent<PhotonView>();
             type = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+            FinishUI = GameObject
+                .FindGameObjectWithTag("Finish UI")
+                .GetComponent<FinishLeaderboard>();
         }
 
         protected void Update() => timer += Time.deltaTime;
@@ -61,9 +65,6 @@ namespace RunMinigames.Mechanics.Characters
                 if (checkpoint.isFinishLine)
                 {
                     isPlayerFinish = checkpoint.isFinishLine;
-                    FinishUI = GameObject
-                        .FindGameObjectWithTag("Finish UI")
-                        .GetComponent<FinishLeaderboard>();
 
                     if (myCharacter is Player)
                     {
@@ -94,7 +95,7 @@ namespace RunMinigames.Mechanics.Characters
 
         [PunRPC]
         protected void UpdatePodiumList(int id, float timer, string playerName) =>
-            FinishUI.GetComponent<FinishLeaderboard>().Finish(id, timer, playerName);
+            FinishUI.Finish(id, timer, playerName);
 
         [PunRPC]
         protected void UpdateCharacterScore(string name, float score)
