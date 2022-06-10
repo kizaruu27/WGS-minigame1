@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RunMinigames.Manager.Characters;
+using RunMinigames.Mechanics.Characters;
 using Photon.Pun;
 
 namespace RunMinigames.Mechanics.Cam
@@ -23,6 +24,7 @@ namespace RunMinigames.Mechanics.Cam
 
         private void OnTriggerEnter(Collider col)
         {
+
 
             if (item.Contains(col.tag) && view.IsMine)
             {

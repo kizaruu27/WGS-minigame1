@@ -43,8 +43,10 @@ namespace RunMinigames.Manager.Leaderboard
         // PLAYER
         public void Finish(bool isPlayerCrossFinish, int id, float time, string name)
         {
-            Debug.Log("Is Player Finish " + pv.IsMine);
-            if (pv.IsMine)
+
+            Debug.Log(name);
+
+            if (PhotonNetwork.LocalPlayer.NickName == name)
             {
 
                 finishUI.SetActive(isPlayerCrossFinish);

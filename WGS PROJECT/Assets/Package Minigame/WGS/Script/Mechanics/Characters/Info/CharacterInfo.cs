@@ -61,7 +61,6 @@ namespace RunMinigames.Mechanics.Characters
                 if (checkpoint.isFinishLine)
                 {
                     isPlayerFinish = checkpoint.isFinishLine;
-
                     FinishUI = GameObject
                         .FindGameObjectWithTag("Finish UI")
                         .GetComponent<FinishLeaderboard>();

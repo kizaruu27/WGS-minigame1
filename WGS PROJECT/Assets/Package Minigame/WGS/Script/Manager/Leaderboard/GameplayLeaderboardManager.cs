@@ -127,8 +127,6 @@ namespace RunMinigames.Manager.Leaderboard
 
             int playerIndex = LeaderboardItem.FindIndex(val => type.IsMultiplayer ? val.PlayerID == PhotonNetwork.LocalPlayer.ActorNumber - 1 : val.PlayerID == 0);
 
-            Debug.LogError("leaderboard " + playerIndex + " : " + LeaderboardItem[playerIndex].PlayerName);
-
             Button playerItem = listButton[playerIndex];
             playerItem.GetComponent<Image>().color = Color.green;
             playerItem.GetComponentInChildren<Text>().color = Color.black;
