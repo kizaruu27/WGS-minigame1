@@ -5,14 +5,6 @@ namespace RunMinigames.Mechanics.Characters
 {
     public class PlayerController : CharactersController
     {
-
-        protected PhotonView view;
-
-        private void Start()
-        {
-            view = GetComponent<PhotonView>();
-        }
-
         public override void Jump()
         {
             if (IsGrounded && canMove)

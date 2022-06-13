@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using Photon.Pun;
 using UnityEngine.UI;
 using RunMinigames.Mechanics.Characters;
 
@@ -13,6 +13,8 @@ namespace RunMinigames.Mechanics.Characters
         float screenWidth;
         Button btnJump;
         Button btnRun;
+        public PhotonView view;
+
 
         private void Awake()
         {
@@ -48,15 +50,20 @@ namespace RunMinigames.Mechanics.Characters
 
         private void Update()
         {
-            Desktop();
-            Mobile();
+
+            if (view.IsMine)
+            {
+                Desktop();
+                Mobile();
+            }
+
             Movement();
         }
 
         private void OnEnable()
         {
             //Button Control
-            if (CheckPlatform.isIos || CheckPlatform.isAndroid && IsControlBtnActive)
+            if (CheckPlatform.isIos || CheckPlatform.isAndroid && IsControlBtnActive && view.IsMine)
             {
                 btnJump.onClick.AddListener(Jump);
                 btnRun.onClick.AddListener(() => Running());
