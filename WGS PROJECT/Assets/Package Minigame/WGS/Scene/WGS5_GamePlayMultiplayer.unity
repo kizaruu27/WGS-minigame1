@@ -6052,10 +6052,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefabs:
-  - {fileID: 7328353440017858349, guid: bc24974799bb94374bb765c4000e3b99, type: 3}
-  - {fileID: 7328353440017858349, guid: fb3825fde70b59b46ab955fc1b7787d2, type: 3}
-  - {fileID: 7328353440017858349, guid: 7bc95224c696f8c418a9fccc2eea8013, type: 3}
-  - {fileID: 7328353440017858349, guid: 0e4092d416798ee44ab986e24c0e43e5, type: 3}
+  - {fileID: 7328353440017858349, guid: fe8a2f63713b3d443a732b94ebf3da11, type: 3}
+  - {fileID: 7328353440017858349, guid: 7ebd67aebac6d4f31aba8d83cbe5e88c, type: 3}
+  - {fileID: 7328353440017858349, guid: c8d097413f4424098996c1fa690066e3, type: 3}
+  - {fileID: 7328353440017858349, guid: 995ea0cce49944ad6bf20551e339ec83, type: 3}
   spawnPoints:
   - {fileID: 64369656}
   - {fileID: 354807877}
