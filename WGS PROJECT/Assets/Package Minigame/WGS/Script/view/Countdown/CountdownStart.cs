@@ -7,17 +7,15 @@ namespace RunMinigames.View.Countdown
 {
     public class CountdownStart : MonoBehaviour
     {
+        [Header("Item")]
         [SerializeField] TextMeshProUGUI _CountdownTXT;
         public float InitialCountdown = 4f;
+        bool isStart;
 
-        PhotonView view;
-        GameManager gameManager;
 
-        private void Awake()
-        {
-            view = GetComponent<PhotonView>();
-            gameManager = GameObject.FindGameObjectWithTag(nameof(GameManager)).GetComponent<GameManager>();
-        }
+        [Header("Component")]
+        [SerializeField] PhotonView photonView;
+        [SerializeField] GameManager gameManager;
 
         private void Update() => StartCoroutine(gameManager.WaitAllPlayerReady(StartCountdown));
 
@@ -26,9 +24,9 @@ namespace RunMinigames.View.Countdown
             InitialCountdown -= Time.deltaTime;
 
             if (PhotonNetwork.IsMasterClient)
-                view.RPC(nameof(SetCountdown), RpcTarget.Others, InitialCountdown);
+                photonView.RPC(nameof(SetCountdown), RpcTarget.Others, InitialCountdown);
 
-            var isStart = InitialCountdown <= 0f;
+            isStart = InitialCountdown <= 0f;
 
             _CountdownTXT.fontSize = InitialCountdown > 2 ? 200f : 80f;
             _CountdownTXT.text = InitialCountdown > 2 ? $"{(int)(InitialCountdown - 1)}" : "Start";
@@ -37,6 +35,7 @@ namespace RunMinigames.View.Countdown
 
             if (isStart)
                 gameManager.SetActiveCharacter();
+
         }
 
         [PunRPC]

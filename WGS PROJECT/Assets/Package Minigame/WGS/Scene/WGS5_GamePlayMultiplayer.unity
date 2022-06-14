@@ -4000,6 +4000,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CountdownTXT: {fileID: 751895518}
   InitialCountdown: 5
+  photonView: {fileID: 751895516}
+  gameManager: {fileID: 1419899903}
 --- !u!114 &751895516
 MonoBehaviour:
   m_ObjectHideFlags: 0
