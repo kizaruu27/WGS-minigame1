@@ -37,7 +37,6 @@ namespace RunMinigames.Manager.Networking
 
         private void Awake()
         {
-
             GetToken();
 
             client = new HttpClientV2(

@@ -28,7 +28,7 @@ namespace RunMinigames.Manager.Game
         {
             var characters = FindObjectsOfType<MonoBehaviour>().OfType<ICharacterItem>();
 
-            foreach (var character in characters) character.Active = true;
+            foreach (var character in characters) character.CanMove = true;
         }
 
         public IEnumerator WaitAllPlayerReady(Action ActionMethod)
