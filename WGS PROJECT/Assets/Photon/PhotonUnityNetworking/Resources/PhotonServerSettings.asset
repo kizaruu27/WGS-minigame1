@@ -59,6 +59,7 @@ MonoBehaviour:
   - SendCount
   - UpdateCharacterName
   - UpdateCharacterScore
+  - GetItem
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

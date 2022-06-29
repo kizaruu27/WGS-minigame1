@@ -11,14 +11,14 @@ namespace RunMinigames.Mechanics.Characters
             {
                 Rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
                 IsGrounded = false;
-                TargetAnimator?.SetTrigger("Jump");
+                //! TargetAnimator?.SetTrigger("Jump");
             }
         }
 
         private void OnCollisionEnter(Collision collider)
         {
             IsGrounded = collider.gameObject.tag == "Ground";
-            TargetAnimator?.SetBool("isGrounded", IsGrounded);
+            //! TargetAnimator?.SetBool("isGrounded", IsGrounded);
         }
     }
 }

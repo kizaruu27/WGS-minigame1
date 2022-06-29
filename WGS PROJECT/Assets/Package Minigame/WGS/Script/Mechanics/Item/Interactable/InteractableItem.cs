@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using RunMinigames.Interface;
+using Photon.Pun;
 
 namespace RunMinigames.Mechanics.Items
 {
@@ -20,12 +21,16 @@ namespace RunMinigames.Mechanics.Items
 
         MoveItem moveItem;
 
+        protected PhotonView pv;
+
         protected new void Awake()
         {
             base.Awake();
 
             mesh = GetComponent<MeshRenderer>();
             sphereCollider = GetComponent<SphereCollider>();
+
+            pv = GetComponent<PhotonView>();
         }
 
         protected void Update()

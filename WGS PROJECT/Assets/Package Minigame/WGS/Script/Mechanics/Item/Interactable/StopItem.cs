@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using RunMinigames.Interface;
+using Photon.Pun;
 
 namespace RunMinigames.Mechanics.Items
 {
@@ -20,7 +21,9 @@ namespace RunMinigames.Mechanics.Items
             yield return new WaitForSeconds(LongTimeBehaviour);
 
             character.CanMove = true;
-            Destroy(gameObject);
+
+            if (pv.IsMine)
+                PhotonNetwork.Destroy(gameObject);
         }
     }
 }

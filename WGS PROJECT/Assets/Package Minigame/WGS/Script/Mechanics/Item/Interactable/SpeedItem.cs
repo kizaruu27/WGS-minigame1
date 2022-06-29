@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using RunMinigames.Interface;
+using Photon.Pun;
 
 namespace RunMinigames.Mechanics.Items
 {
@@ -27,7 +28,8 @@ namespace RunMinigames.Mechanics.Items
                 character.CharSpeed = PrevPlayerSpeed;
                 character.IsItemSpeedActive = false;
 
-                Destroy(gameObject);
+                if (pv.IsMine)
+                    PhotonNetwork.Destroy(gameObject);
             }
 
             character.IsItemSpeedActive = false;
