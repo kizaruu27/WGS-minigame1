@@ -48,7 +48,7 @@ namespace RunMinigames.View.ChooseAvatar
 
         public void ApplyLocalChanges()
         {
-            backgroundImage.color = highlightColor;
+            // backgroundImage.color = highlightColor;
             leftArrowButton.SetActive(true);
             rightArrowButton.SetActive(true);
         }

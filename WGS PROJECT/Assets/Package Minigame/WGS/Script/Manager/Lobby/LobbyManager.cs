@@ -110,10 +110,6 @@ namespace RunMinigames.Manager.Lobby
             lobbyPanel.SetActive(false);
             
             searchPlayerPanel.SetActive(true);
-
-            menuUI.SetActive(false);
-            
-            
             roomName.text = PhotonNetwork.CurrentRoom.Name;
             UpdatePlayerList();
         }

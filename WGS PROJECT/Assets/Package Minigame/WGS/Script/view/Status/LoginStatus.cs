@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 namespace RunMinigames.View.Loading
 {
@@ -7,14 +7,14 @@ namespace RunMinigames.View.Loading
     {
 
         public static LoginStatus instance;
-        TextMeshProUGUI StatusMessage;
+        Text StatusMessage;
 
         public bool isConnectingToServer { get; set; }
 
         private void Awake()
         {
             instance = this;
-            StatusMessage = GetComponent<TextMeshProUGUI>();
+            StatusMessage = GetComponent<Text>();
         }
 
 
