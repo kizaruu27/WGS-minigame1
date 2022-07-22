@@ -49,7 +49,7 @@ namespace RunMinigames.View.ChooseAvatar
         public void ApplyLocalChanges()
         {
             // backgroundImage.color = highlightColor;
-            leftArrowButton.SetActive(true);
+            // leftArrowButton.SetActive(true);
             rightArrowButton.SetActive(true);
         }
 
@@ -80,7 +80,7 @@ namespace RunMinigames.View.ChooseAvatar
             PhotonNetwork.LocalPlayer.CustomProperties = playerProperties;
             PhotonNetwork.SetPlayerCustomProperties(playerProperties);
         }
-
+        
         public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
         {
             if (player == targetPlayer)
