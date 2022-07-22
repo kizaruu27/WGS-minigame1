@@ -16,6 +16,8 @@ namespace RunMinigames.Manager.Lobby
 
         [Header("Lobby")]
         public GameObject lobbyPanel;
+        public GameObject menuUI;
+        public GameObject searchPlayerPanel;
 
         [Header("Room")]
         public TMP_InputField roomInputField;
@@ -29,15 +31,12 @@ namespace RunMinigames.Manager.Lobby
         public List<PlayerItem> playerItemsList = new List<PlayerItem>();
         public PlayerItem playerItemPrefab;
         public Transform playerItemParent;
-
-
-
+        
         [Header("Modal")]
         public TextMeshProUGUI modalTitle;
         public TextMeshProUGUI modalMessage;
         public Button closeModal;
         public GameObject modalPanel;
-
 
         [Header("Loading")]
         [SerializeField] GameObject loadingPanel;
@@ -49,12 +48,23 @@ namespace RunMinigames.Manager.Lobby
         public float timeBetweenUpdates = 1.5f;
         float nextUpdateTime;
 
-
-
         private void Start()
         {
             PhotonNetwork.JoinLobby();
             modalPanel.SetActive(false);
+        }
+        
+        private void Update()
+        {
+            if (Application.internetReachability == NetworkReachability.NotReachable || !PhotonNetwork.IsConnected)
+            {
+                Modal("Connection Error", " Check internet connection!");
+            }
+            
+            Invoke("loadRoom", 10);
+            // loadRoom();
+
+            playButton.SetActive(PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 1);
         }
 
         public void OnClickCreate()
@@ -70,7 +80,7 @@ namespace RunMinigames.Manager.Lobby
                 else
                 {
                     Modal("Not Connected", "Please Check Your Internet Connection");
-
+                    
                 }
             }
         }
@@ -85,6 +95,38 @@ namespace RunMinigames.Manager.Lobby
         {
             modalPanel.SetActive(false);
         }
+        
+        public void onClickMatchmaking()
+        {
+            RoomOptions roomOptions = new RoomOptions();
+            roomOptions.IsVisible = true;
+            roomOptions.MaxPlayers = 4;
+            PhotonNetwork.JoinOrCreateRoom("Game", roomOptions, TypedLobby.Default);
+        }
+        
+        public override void OnJoinedRoom()
+        {
+            loadingPanel.SetActive(false);
+            lobbyPanel.SetActive(false);
+            
+            searchPlayerPanel.SetActive(true);
+
+            menuUI.SetActive(false);
+            
+            
+            roomName.text = PhotonNetwork.CurrentRoom.Name;
+            UpdatePlayerList();
+        }
+
+        void loadRoom()
+        {
+            if (PhotonNetwork.CurrentRoom.PlayerCount > 1)
+            {
+                roomPanel.SetActive(true);
+                searchPlayerPanel.SetActive(false);
+            }
+            
+        }
 
         public void Modal(string title, string message)
         {
@@ -94,14 +136,6 @@ namespace RunMinigames.Manager.Lobby
             modalMessage.text = message;
         }
 
-        public override void OnJoinedRoom()
-        {
-            loadingPanel.SetActive(false);
-            lobbyPanel.SetActive(false);
-            roomPanel.SetActive(true);
-            roomName.text = PhotonNetwork.CurrentRoom.Name;
-            UpdatePlayerList();
-        }
 
         public override void OnJoinRoomFailed(short returnCode, string message)
         {
@@ -216,15 +250,6 @@ namespace RunMinigames.Manager.Lobby
                 OnClickDisconnect();
         }
 
-        private void Update()
-        {
-            if (Application.internetReachability == NetworkReachability.NotReachable || !PhotonNetwork.IsConnected)
-            {
-                Modal("Connection Error", " Check internet connection!");
-            }
-
-            playButton.SetActive(PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 1);
-        }
 
         public void OnClickPlayButton(string targetScene)
         {

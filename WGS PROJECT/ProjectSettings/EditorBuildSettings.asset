@@ -20,7 +20,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Package Minigame/WGS/Scene/WGS5_GamePlayMultiplayer.unity
     guid: 858c87f012dfcc74ebadfe0e1a8df96f
-  - enabled: 1
-    path: Assets/Package Minigame/WGS/Scene/Test.unity
-    guid: aa514c0f6e2508b4c8d5b0a7c8c318dc
   m_configObjects: {}
