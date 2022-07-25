@@ -129,7 +129,9 @@ namespace RunMinigames.Manager.Leaderboard
 
             Button playerItem = listButton[playerIndex];
             playerItem.GetComponent<Image>().color = Color.green;
-            playerItem.GetComponentInChildren<Text>().color = Color.black;
+            playerItem.GetComponentInChildren<Text>().color = Color.white; // highloght player
+            //aktifin border
+            
 
             if (playerDisconnected > 0 && type.IsMultiplayer && !PhotonNetwork.OfflineMode)
             {

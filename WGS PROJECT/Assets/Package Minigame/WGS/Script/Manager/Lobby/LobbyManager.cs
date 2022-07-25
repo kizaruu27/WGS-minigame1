@@ -116,7 +116,7 @@ namespace RunMinigames.Manager.Lobby
 
         void loadRoom()
         {
-            if (PhotonNetwork.CurrentRoom.PlayerCount > 1)
+            if (PhotonNetwork.CurrentRoom.PlayerCount == 1) // sementara
             {
                 roomPanel.SetActive(true);
                 searchPlayerPanel.SetActive(false);

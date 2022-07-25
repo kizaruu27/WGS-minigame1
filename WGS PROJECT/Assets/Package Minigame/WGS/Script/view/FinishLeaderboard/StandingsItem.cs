@@ -1,23 +1,23 @@
 
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+using UnityEngine.UI;
 
 public class StandingsItem : MonoBehaviour
 {
     [Header("Text Component")]
-    public TextMeshProUGUI Rank;
-    public TextMeshProUGUI Name;
-    public TextMeshProUGUI Score;
+    public Text Rank;
+    public Text Name;
+    public Text Score;
 
     public void SetColorItem(bool IsMine = false)
     {
         if (IsMine)
         {
-            Image colorItem = gameObject.GetComponent<Image>();
-            colorItem.color = Color.green;
+            // Image colorItem = gameObject.GetComponent<Image>();
+            // colorItem.color = Color.green;
 
-            TextMeshProUGUI[] colorTextItem = gameObject.GetComponentsInChildren<TextMeshProUGUI>();
+            Text[] colorTextItem = gameObject.GetComponentsInChildren<Text>();
 
             foreach (var item in colorTextItem)
             {
@@ -29,9 +29,9 @@ public class StandingsItem : MonoBehaviour
     public void SetHighlightPlayerDC()
     {
         Image colorItem = gameObject.GetComponent<Image>();
-        colorItem.color = Color.red;
+        // colorItem.color = Color.red;
 
-        TextMeshProUGUI[] colorTextItem = gameObject.GetComponentsInChildren<TextMeshProUGUI>();
+        Text[] colorTextItem = gameObject.GetComponentsInChildren<Text>();
 
         foreach (var item in colorTextItem)
         {
