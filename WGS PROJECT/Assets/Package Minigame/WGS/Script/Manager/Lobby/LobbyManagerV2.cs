@@ -10,6 +10,8 @@ namespace RunMinigames.Manager.Lobby
 {
     public class LobbyManagerV2 : MonoBehaviourPunCallbacks
     {
+        public static LobbyManagerV2 instance;
+
         [Header("Canvas")]
         [SerializeField] Canvas canvas;
 
@@ -22,9 +24,10 @@ namespace RunMinigames.Manager.Lobby
         public TMP_InputField roomInputField;
         public GameObject roomPanel;
         public TextMeshProUGUI roomName;
-
         public RoomItem roomItemPrefab;
+        public GameObject DisplayAvatars;
         List<RoomItem> roomItemList = new List<RoomItem>();
+
 
         [Header("Player")]
         public List<PlayerAvatar> playerItemsList = new List<PlayerAvatar>();
@@ -46,7 +49,7 @@ namespace RunMinigames.Manager.Lobby
         public Transform contentObject;
         public float timeBetweenUpdates = 1.5f;
         float nextUpdateTime;
-
+        private void Awake() => instance = this;
         private void Start()
         {
             modalPanel.SetActive(false);

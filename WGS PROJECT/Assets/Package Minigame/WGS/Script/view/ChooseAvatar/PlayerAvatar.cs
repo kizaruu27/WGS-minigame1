@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
+using RunMinigames.Manager.Lobby;
 
 namespace RunMinigames.View.PlayerAvatar
 {
@@ -30,16 +31,22 @@ namespace RunMinigames.View.PlayerAvatar
             PhotonNetwork.SetPlayerCustomProperties(playerProperties);
         }
 
-        public void OnClickChangeAvatar()
+        public void OnClickShowDisplayAvatar()
         {
-            chooseAvatar = 2;
+            LobbyManagerV2.instance.DisplayAvatars.SetActive(true);
+        }
 
-            playerProperties["playerAvatar"] = (int)chooseAvatar;
+        public void OnClickChangeAvatar(int _index)
+        {
+            chooseAvatar = _index;
+
+            playerProperties["playerAvatar"] = (int)_index;
 
             PlayerPrefs.SetInt("playerAvatar", chooseAvatar);
-
             PhotonNetwork.LocalPlayer.CustomProperties = playerProperties;
             PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+
+            LobbyManagerV2.instance.DisplayAvatars.SetActive(false);
         }
 
         public void SetPlayerInfo(Player _player)
