@@ -13,13 +13,16 @@ namespace RunMinigames.View.ChooseAvatar
         public TextMeshProUGUI playerName;
         public Image backgroundImage;
         public Color highlightColor;
-        public GameObject leftArrowButton;
-        public GameObject rightArrowButton;
-
+        // public GameObject leftArrowButton;
+        // public GameObject rightArrowButton;
         ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
         public Image playerAvatar;
         public Sprite[] avatars;
         public int chooseAvatar;
+
+        [Header("Button")]
+        public GameObject objectButton;
+        public Button changeButton;
 
 
         Player player;
@@ -39,6 +42,18 @@ namespace RunMinigames.View.ChooseAvatar
             backgroundImage = GetComponent<Image>();
         }
 
+        private void Update()
+        {
+            changeButton.onClick.AddListener(ShowDisplayCharacter);
+        }
+
+        void ShowDisplayCharacter()
+        {
+            // GameObject display = GameObject.Find("DisplayAvatar");
+            // display.SetActive(true);
+            Debug.Log("test");
+        }
+
         public void SetPlayerInfo(Player _player)
         {
             playerName.text = _player.NickName;
@@ -50,7 +65,8 @@ namespace RunMinigames.View.ChooseAvatar
         {
             // backgroundImage.color = highlightColor;
             // leftArrowButton.SetActive(true);
-            rightArrowButton.SetActive(true);
+            // rightArrowButton.SetActive(true);
+            objectButton.SetActive(true);
         }
 
         public void OnClickLeftArrow()
@@ -80,7 +96,7 @@ namespace RunMinigames.View.ChooseAvatar
             PhotonNetwork.LocalPlayer.CustomProperties = playerProperties;
             PhotonNetwork.SetPlayerCustomProperties(playerProperties);
         }
-        
+
         public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
         {
             if (player == targetPlayer)
@@ -96,7 +112,6 @@ namespace RunMinigames.View.ChooseAvatar
             {
                 playerAvatar.sprite = avatars[(int)player.CustomProperties["playerAvatar"]];
                 playerProperties["playerAvatar"] = (int)player.CustomProperties["playerAvatar"];
-
             }
             else
             {

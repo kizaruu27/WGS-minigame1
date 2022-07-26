@@ -42,7 +42,7 @@ namespace RunMinigames.Services.Photon
             {
                 Destroy(httpManager.gameObject);
                 PhotonNetwork.JoinLobby();
-                SceneManager.LoadScene("WGS3_Lobby");
+                SceneManager.LoadScene("WGS2_Lobby");
             }
 
         }

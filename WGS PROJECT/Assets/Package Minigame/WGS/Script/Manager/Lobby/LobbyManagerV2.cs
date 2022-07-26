@@ -4,12 +4,11 @@ using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 using UnityEngine.UI;
-using RunMinigames.View.ChooseAvatar;
-
+using RunMinigames.View.PlayerAvatar;
 
 namespace RunMinigames.Manager.Lobby
 {
-    public class LobbyManager : MonoBehaviourPunCallbacks
+    public class LobbyManagerV2 : MonoBehaviourPunCallbacks
     {
         [Header("Canvas")]
         [SerializeField] Canvas canvas;
@@ -28,8 +27,8 @@ namespace RunMinigames.Manager.Lobby
         List<RoomItem> roomItemList = new List<RoomItem>();
 
         [Header("Player")]
-        public List<PlayerItem> playerItemsList = new List<PlayerItem>();
-        public PlayerItem playerItemPrefab;
+        public List<PlayerAvatar> playerItemsList = new List<PlayerAvatar>();
+        public PlayerAvatar playerItemPrefab;
         public Transform playerItemParent;
 
         [Header("Modal")]
@@ -50,7 +49,6 @@ namespace RunMinigames.Manager.Lobby
 
         private void Start()
         {
-            // PhotonNetwork.JoinLobby();
             modalPanel.SetActive(false);
         }
 
@@ -205,7 +203,7 @@ namespace RunMinigames.Manager.Lobby
 
         void UpdatePlayerList()
         {
-            foreach (PlayerItem item in playerItemsList)
+            foreach (PlayerAvatar item in playerItemsList)
             {
                 Destroy(item.gameObject);
             }
@@ -218,7 +216,7 @@ namespace RunMinigames.Manager.Lobby
 
             foreach (KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players)
             {
-                PlayerItem newPlayerItem = Instantiate(playerItemPrefab, playerItemParent);  // call the player item
+                PlayerAvatar newPlayerItem = Instantiate(playerItemPrefab, playerItemParent);  // call the player item
                 newPlayerItem.SetPlayerInfo(player.Value);
 
                 if (player.Value == PhotonNetwork.LocalPlayer)
@@ -256,6 +254,5 @@ namespace RunMinigames.Manager.Lobby
         {
             PhotonNetwork.Disconnect();
         }
-
     }
 }
