@@ -5,6 +5,7 @@ using Photon.Realtime;
 using TMPro;
 using UnityEngine.UI;
 using RunMinigames.View.PlayerAvatar;
+using System.Linq;
 
 namespace RunMinigames.Manager.Lobby
 {
@@ -49,6 +50,9 @@ namespace RunMinigames.Manager.Lobby
         public Transform contentObject;
         public float timeBetweenUpdates = 1.5f;
         float nextUpdateTime;
+
+        [SerializeField] int roomIndex;
+        
         private void Awake() => instance = this;
         private void Start()
         {
@@ -62,11 +66,13 @@ namespace RunMinigames.Manager.Lobby
                 Modal("Connection Error", " Check internet connection!");
             }
 
-            Invoke("loadRoom", 10);
+            Invoke("loadRoom", 3);
             // loadRoom();
 
             playButton.SetActive(PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 1);
         }
+
+        
 
         public void OnClickCreate()
         {
@@ -102,7 +108,20 @@ namespace RunMinigames.Manager.Lobby
             RoomOptions roomOptions = new RoomOptions();
             roomOptions.IsVisible = true;
             roomOptions.MaxPlayers = 4;
-            PhotonNetwork.JoinOrCreateRoom("Game", roomOptions, TypedLobby.Default);
+            
+            Debug.Log(PhotonNetwork.CountOfPlayersInRooms);
+
+            if (PhotonNetwork.CountOfPlayersInRooms < roomOptions.MaxPlayers)
+            {
+                Debug.Log("Masuk room");
+                PhotonNetwork.JoinOrCreateRoom("Room " + roomIndex.ToString(), roomOptions, TypedLobby.Default);
+            }
+            else
+            {
+                PhotonNetwork.LeaveRoom();
+                roomIndex++;
+                PhotonNetwork.JoinOrCreateRoom("Room " + roomIndex.ToString(), roomOptions, TypedLobby.Default);
+            }
         }
 
         public override void OnJoinedRoom()
@@ -117,7 +136,7 @@ namespace RunMinigames.Manager.Lobby
 
         void loadRoom()
         {
-            if (PhotonNetwork.CurrentRoom.PlayerCount == 1) // sementara
+            if (PhotonNetwork.CurrentRoom.PlayerCount > 1) // sementara
             {
                 roomPanel.SetActive(true);
                 searchPlayerPanel.SetActive(false);
@@ -150,6 +169,7 @@ namespace RunMinigames.Manager.Lobby
 
         public override void OnRoomListUpdate(List<RoomInfo> roomList)
         {
+            Debug.Log(roomList[0].PlayerCount);
             if (Time.time >= nextUpdateTime)
             {
                 UpdateRoomList(roomList);
