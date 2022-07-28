@@ -5,7 +5,7 @@ using Photon.Realtime;
 using TMPro;
 using UnityEngine.UI;
 using RunMinigames.View.PlayerAvatar;
-using System.Linq;
+using System.Collections;
 
 namespace RunMinigames.Manager.Lobby
 {
@@ -52,11 +52,14 @@ namespace RunMinigames.Manager.Lobby
         float nextUpdateTime;
 
         [SerializeField] int roomIndex;
+        [SerializeField] bool isInRoom;
         
         private void Awake() => instance = this;
         private void Start()
         {
             modalPanel.SetActive(false);
+            isInRoom = false;
+            StartCoroutine(loadRoom());
         }
 
         private void Update()
@@ -66,8 +69,6 @@ namespace RunMinigames.Manager.Lobby
                 Modal("Connection Error", " Check internet connection!");
             }
 
-            Invoke("loadRoom", 3);
-            // loadRoom();
 
             playButton.SetActive(PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 1);
         }
@@ -115,12 +116,14 @@ namespace RunMinigames.Manager.Lobby
             {
                 Debug.Log("Masuk room");
                 PhotonNetwork.JoinOrCreateRoom("Room " + roomIndex.ToString(), roomOptions, TypedLobby.Default);
+                isInRoom = true;
             }
             else
             {
                 PhotonNetwork.LeaveRoom();
                 roomIndex++;
                 PhotonNetwork.JoinOrCreateRoom("Room " + roomIndex.ToString(), roomOptions, TypedLobby.Default);
+                isInRoom = true;
             }
         }
 
@@ -134,15 +137,36 @@ namespace RunMinigames.Manager.Lobby
             UpdatePlayerList();
         }
 
-        void loadRoom()
+        IEnumerator loadRoom()
         {
-            if (PhotonNetwork.CurrentRoom.PlayerCount > 1) // sementara
+            yield return new WaitForSeconds(3);
+            
+            if (isInRoom)
             {
-                roomPanel.SetActive(true);
-                searchPlayerPanel.SetActive(false);
+                yield return new WaitForSeconds(3);
+                GoToRoom();
+            }
+            else
+            {
+                StartCoroutine(loadRoom());
             }
 
         }
+        
+        void GoToRoom()
+        {
+            if (PhotonNetwork.CurrentRoom.PlayerCount > 1)
+            {
+                ActivateRoomPanel();
+            }
+        }
+
+        void ActivateRoomPanel()
+        {
+            roomPanel.SetActive(true);
+            searchPlayerPanel.SetActive(false);
+        }
+        
 
         public void Modal(string title, string message)
         {
@@ -210,6 +234,7 @@ namespace RunMinigames.Manager.Lobby
 
         public void OnClickLeaveRoom()
         {
+            isInRoom = false;
             PhotonNetwork.LeaveRoom();
         }
 
