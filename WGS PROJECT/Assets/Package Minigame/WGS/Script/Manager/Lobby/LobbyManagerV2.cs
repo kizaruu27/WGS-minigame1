@@ -5,7 +5,7 @@ using Photon.Realtime;
 using TMPro;
 using UnityEngine.UI;
 using RunMinigames.View.PlayerAvatar;
-using System.Linq;
+using RunMinigames.Manager.Room;
 
 namespace RunMinigames.Manager.Lobby
 {
@@ -22,11 +22,8 @@ namespace RunMinigames.Manager.Lobby
         public GameObject searchPlayerPanel;
 
         [Header("Room")]
-        public TMP_InputField roomInputField;
         public GameObject roomPanel;
         public TextMeshProUGUI roomName;
-        public RoomItem roomItemPrefab;
-        public GameObject DisplayAvatars;
         List<RoomItem> roomItemList = new List<RoomItem>();
 
 
@@ -52,7 +49,7 @@ namespace RunMinigames.Manager.Lobby
         float nextUpdateTime;
 
         [SerializeField] int roomIndex;
-        
+
         private void Awake() => instance = this;
         private void Start()
         {
@@ -66,37 +63,15 @@ namespace RunMinigames.Manager.Lobby
                 Modal("Connection Error", " Check internet connection!");
             }
 
-            Invoke("loadRoom", 3);
             // loadRoom();
 
             playButton.SetActive(PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 1);
-        }
-
-        
-
-        public void OnClickCreate()
-        {
-            if (roomInputField.text.Length >= 1)
-            {
-                loadingPanel.SetActive(true);
-
-                if (PhotonNetwork.IsConnected)
-                {
-                    PhotonNetwork.CreateRoom(roomInputField.text, new RoomOptions() { MaxPlayers = 4, BroadcastPropsChangeToAll = true });
-                }
-                else
-                {
-                    Modal("Not Connected", "Please Check Your Internet Connection");
-
-                }
-            }
         }
 
         public override void OnCreateRoomFailed(short returnCode, string message)
         {
             Modal("Failed To Create Room", message);
         }
-
 
         public void OnCloseModal()
         {
@@ -108,8 +83,8 @@ namespace RunMinigames.Manager.Lobby
             RoomOptions roomOptions = new RoomOptions();
             roomOptions.IsVisible = true;
             roomOptions.MaxPlayers = 4;
-            
-            Debug.Log(PhotonNetwork.CountOfPlayersInRooms);
+
+            // Debug.Log(PhotonNetwork.CountOfPlayersInRooms);
 
             if (PhotonNetwork.CountOfPlayersInRooms < roomOptions.MaxPlayers)
             {
@@ -132,16 +107,18 @@ namespace RunMinigames.Manager.Lobby
             searchPlayerPanel.SetActive(true);
             roomName.text = PhotonNetwork.CurrentRoom.Name;
             UpdatePlayerList();
+
+            Invoke("loadRoom", 3);
+            RoomManager.instance.SetAllPlayerReady();
         }
 
         void loadRoom()
         {
-            if (PhotonNetwork.CurrentRoom.PlayerCount > 1) // sementara
+            if (PhotonNetwork.CurrentRoom.PlayerCount >= 1) // sementara
             {
                 roomPanel.SetActive(true);
                 searchPlayerPanel.SetActive(false);
             }
-
         }
 
         public void Modal(string title, string message)
@@ -169,43 +146,7 @@ namespace RunMinigames.Manager.Lobby
 
         public override void OnRoomListUpdate(List<RoomInfo> roomList)
         {
-            Debug.Log(roomList[0].PlayerCount);
-            if (Time.time >= nextUpdateTime)
-            {
-                UpdateRoomList(roomList);
-                nextUpdateTime = Time.time + timeBetweenUpdates;
-            }
-        }
 
-        void UpdateRoomList(List<RoomInfo> list)
-        {
-            foreach (RoomItem item in roomItemList)
-            {
-                if (item.gameObject.name != null)
-                    Destroy(item.gameObject);
-            }
-            roomItemList.Clear();
-
-            foreach (RoomInfo room in list)
-            {
-                RoomItem newRoom = Instantiate(roomItemPrefab, contentObject);
-                newRoom.SetRoomName(room.Name);
-                newRoom.roomInfo = room;
-
-                if (!room.IsOpen || room.RemovedFromList)
-                {
-                    roomItemList.Remove(newRoom);
-                }
-
-                roomItemList.Add(newRoom);
-
-            }
-        }
-
-        public void JoinRoom(string roomName)
-        {
-            loadingPanel.SetActive(true);
-            PhotonNetwork.JoinRoom(roomName);
         }
 
         public void OnClickLeaveRoom()
@@ -266,7 +207,6 @@ namespace RunMinigames.Manager.Lobby
             if (Application.internetReachability == NetworkReachability.NotReachable || !PhotonNetwork.IsConnected)
                 OnClickDisconnect();
         }
-
 
         public void OnClickPlayButton(string targetScene)
         {
