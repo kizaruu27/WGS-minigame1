@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
-using RunMinigames.Manager.Lobby;
+using RunMinigames.Manager.Room;
 
 namespace RunMinigames.View.PlayerAvatar
 {
@@ -13,18 +13,19 @@ namespace RunMinigames.View.PlayerAvatar
         public TextMeshProUGUI playerName;
         public Image playerAvatar;
         public Sprite[] avatars;
-        public int chooseAvatar;
+        public int avatarIndex;
 
-        [Header("Button Change")]
+        [Header("Change Properties")]
         public GameObject objectButton;
+        public int _AvIndex;
 
         ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
         Player player;
 
         private void Awake()
         {
-            chooseAvatar = PhotonNetwork.LocalPlayer.ActorNumber - 1;
-            PlayerPrefs.SetInt("playerAvatar", chooseAvatar);
+            avatarIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+            PlayerPrefs.SetInt("playerAvatar", avatarIndex);
 
             playerProperties["playerAvatar"] = PhotonNetwork.LocalPlayer.ActorNumber - 1;
             PhotonNetwork.LocalPlayer.CustomProperties = playerProperties;
@@ -33,20 +34,26 @@ namespace RunMinigames.View.PlayerAvatar
 
         public void OnClickShowDisplayAvatar()
         {
-            LobbyManagerV2.instance.DisplayAvatars.SetActive(true);
+            RoomManager.instance.DisplayAvaParent.SetActive(true);
+            RoomManager.instance.AvaToggleGroup.SetAllTogglesOff();
         }
 
-        public void OnClickChangeAvatar(int _index)
+        public void OnClickGetAvatarIndex(int _index)
         {
-            chooseAvatar = _index;
+            _AvIndex = _index;
+        }
 
-            playerProperties["playerAvatar"] = (int)_index;
+        public void OnClickSetAvatarIndex()
+        {
+            avatarIndex = _AvIndex;
 
-            PlayerPrefs.SetInt("playerAvatar", chooseAvatar);
+            playerProperties["playerAvatar"] = (int)_AvIndex;
+
+            PlayerPrefs.SetInt("playerAvatar", avatarIndex);
             PhotonNetwork.LocalPlayer.CustomProperties = playerProperties;
             PhotonNetwork.SetPlayerCustomProperties(playerProperties);
 
-            LobbyManagerV2.instance.DisplayAvatars.SetActive(false);
+            RoomManager.instance.DisplayAvaParent.SetActive(false);
         }
 
         public void SetPlayerInfo(Player _player)
