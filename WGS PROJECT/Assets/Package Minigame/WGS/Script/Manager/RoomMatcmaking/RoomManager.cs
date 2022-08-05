@@ -10,6 +10,7 @@ namespace RunMinigames.Manager.Room
     {
         public static RoomManager instance;
         bool GameStart = false;
+        public Button readyButton;
 
         [Header("Timer Components")]
         public TextMeshProUGUI TextTimer;
@@ -50,7 +51,7 @@ namespace RunMinigames.Manager.Room
                         SetStartTime();
                     }
 
-                    if (playerReadyCount == PhotonNetwork.CurrentRoom.PlayerCount)
+                    if (PhotonNetwork.CurrentRoom.PlayerCount > 1 && playerReadyCount == PhotonNetwork.CurrentRoom.PlayerCount)
                         StartGame();
                 }
                 else
@@ -119,7 +120,11 @@ namespace RunMinigames.Manager.Room
         public void SetPlayerReady()
         {
             if (PhotonNetwork.LocalPlayer.IsLocal)
+            {
+                readyButton.interactable = false;
                 photonView.RPC("RPC_AddReadyState", RpcTarget.AllBufferedViaServer);
+            }
+
         }
 
         [PunRPC]

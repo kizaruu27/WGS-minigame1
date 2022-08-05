@@ -150,13 +150,13 @@ namespace RunMinigames.Manager.Lobby
         public void OnClickLeaveRoom()
         {
             PhotonNetwork.LeaveRoom();
+            RoomManager.SetActive(false);
         }
 
         public override void OnLeftRoom()
         {
             roomPanel.SetActive(false);
             lobbyPanel.SetActive(true);
-            RoomManager.SetActive(false);
         }
 
         public override void OnConnectedToMaster()

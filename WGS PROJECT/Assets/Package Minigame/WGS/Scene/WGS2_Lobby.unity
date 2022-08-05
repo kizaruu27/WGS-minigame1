@@ -5576,10 +5576,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9066d502fa312b64caebfda407aa7af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playGame: 0
+  readyButton: {fileID: 2073993676}
   TextTimer: {fileID: 1903313183}
   CooldownTime: 10
   startTimer: 0
+  playerReadyCount: 0
   DisplayAvaParent: {fileID: 1832513868}
   AvaToggleGroup: {fileID: 1730162216}
 --- !u!4 &1522020811
