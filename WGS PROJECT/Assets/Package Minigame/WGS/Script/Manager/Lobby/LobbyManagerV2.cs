@@ -25,6 +25,7 @@ namespace RunMinigames.Manager.Lobby
         public GameObject roomPanel;
         public TextMeshProUGUI roomName;
         List<RoomItem> roomItemList = new List<RoomItem>();
+        public GameObject RoomManager;
 
 
         [Header("Player")]
@@ -43,7 +44,6 @@ namespace RunMinigames.Manager.Lobby
 
 
         [Header("Utilities")]
-        public GameObject playButton;
         public Transform contentObject;
         public float timeBetweenUpdates = 1.5f;
         float nextUpdateTime;
@@ -62,10 +62,6 @@ namespace RunMinigames.Manager.Lobby
             {
                 Modal("Connection Error", " Check internet connection!");
             }
-
-            // loadRoom();
-
-            playButton.SetActive(PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 1);
         }
 
         public override void OnCreateRoomFailed(short returnCode, string message)
@@ -108,8 +104,10 @@ namespace RunMinigames.Manager.Lobby
             roomName.text = PhotonNetwork.CurrentRoom.Name;
             UpdatePlayerList();
 
-            Invoke("loadRoom", 3);
-            RoomManager.instance.SetAllPlayerReady();
+            // Invoke("loadRoom", 3);
+            loadRoom();
+
+            RoomManager.SetActive(true);
         }
 
         void loadRoom()
@@ -158,6 +156,7 @@ namespace RunMinigames.Manager.Lobby
         {
             roomPanel.SetActive(false);
             lobbyPanel.SetActive(true);
+            RoomManager.SetActive(false);
         }
 
         public override void OnConnectedToMaster()
@@ -206,11 +205,6 @@ namespace RunMinigames.Manager.Lobby
         {
             if (Application.internetReachability == NetworkReachability.NotReachable || !PhotonNetwork.IsConnected)
                 OnClickDisconnect();
-        }
-
-        public void OnClickPlayButton(string targetScene)
-        {
-            PhotonNetwork.LoadLevel(targetScene);
         }
 
         public void OnClickDisconnect()

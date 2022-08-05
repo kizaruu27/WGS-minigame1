@@ -21,6 +21,7 @@ TagManager:
   - Stop
   - Camera
   - Canvas
+  - PlayerAvatar
   layers:
   - Default
   - TransparentFX

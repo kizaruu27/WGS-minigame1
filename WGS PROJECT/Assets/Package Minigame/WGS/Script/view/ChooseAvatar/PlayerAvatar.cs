@@ -9,25 +9,33 @@ namespace RunMinigames.View.PlayerAvatar
 {
     public class PlayerAvatar : MonoBehaviourPunCallbacks
     {
-        [Header("Component")]
+        [Header("Player Component")]
+        public Button test;
         public TextMeshProUGUI playerName;
         public Image playerAvatar;
         public Sprite[] avatars;
         public int avatarIndex;
+        public GameObject statusReady;
 
         [Header("Change Properties")]
         public GameObject objectButton;
         public int _AvIndex;
+
+        // [SerializeField] GameObject playbutton;
 
         ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
         Player player;
 
         private void Awake()
         {
-            avatarIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+            avatarIndex = Random.Range(0, avatars.Length);
             PlayerPrefs.SetInt("playerAvatar", avatarIndex);
 
-            playerProperties["playerAvatar"] = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+            playerProperties["playerAvatar"] = Random.Range(0, avatars.Length);
+            PhotonNetwork.LocalPlayer.CustomProperties = playerProperties;
+            PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+
+            playerProperties["statusReady"] = false;
             PhotonNetwork.LocalPlayer.CustomProperties = playerProperties;
             PhotonNetwork.SetPlayerCustomProperties(playerProperties);
         }
@@ -56,6 +64,16 @@ namespace RunMinigames.View.PlayerAvatar
             RoomManager.instance.DisplayAvaParent.SetActive(false);
         }
 
+        public void PlayerReady()
+        {
+            playerProperties["statusReady"] = true;
+            PhotonNetwork.LocalPlayer.CustomProperties = playerProperties;
+            PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+
+            if (PhotonNetwork.LocalPlayer.IsLocal)
+                RoomManager.instance.SetPlayerReady();
+        }
+
         public void SetPlayerInfo(Player _player)
         {
             playerName.text = _player.NickName;
@@ -74,6 +92,10 @@ namespace RunMinigames.View.PlayerAvatar
             {
                 UpdatePlayerItem(targetPlayer);
             }
+            else
+            {
+                changedProps.Clear();
+            }
         }
 
         void UpdatePlayerItem(Player player)
@@ -88,6 +110,13 @@ namespace RunMinigames.View.PlayerAvatar
             {
                 playerProperties["playerAvatar"] = 0;
             }
+
+            if (player.CustomProperties.ContainsKey("statusReady") && player.CustomProperties["statusReady"].Equals(true))
+            {
+                // Debug.Log("player ready");
+                statusReady.gameObject.SetActive(false);
+            }
+
         }
     }
 }
