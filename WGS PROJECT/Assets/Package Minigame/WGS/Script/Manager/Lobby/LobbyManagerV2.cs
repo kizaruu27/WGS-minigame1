@@ -48,6 +48,8 @@ namespace RunMinigames.Manager.Lobby
         public float timeBetweenUpdates = 1.5f;
         float nextUpdateTime;
 
+        bool isInRoom;
+
         [SerializeField] int roomIndex;
 
         private void Awake() => instance = this;
@@ -62,6 +64,12 @@ namespace RunMinigames.Manager.Lobby
             {
                 Modal("Connection Error", " Check internet connection!");
             }
+
+            if (isInRoom)
+            {
+                loadRoom();
+            }
+
         }
 
         public override void OnCreateRoomFailed(short returnCode, string message)
@@ -74,6 +82,8 @@ namespace RunMinigames.Manager.Lobby
             modalPanel.SetActive(false);
         }
 
+
+        #region Matchmaking
         public void onClickMatchmaking()
         {
             RoomOptions roomOptions = new RoomOptions();
@@ -105,19 +115,26 @@ namespace RunMinigames.Manager.Lobby
             UpdatePlayerList();
 
             // Invoke("loadRoom", 3);
-            loadRoom();
+            isInRoom = true;
 
             RoomManager.SetActive(true);
         }
 
         void loadRoom()
         {
-            if (PhotonNetwork.CurrentRoom.PlayerCount >= 1) // sementara
+            if (PhotonNetwork.CurrentRoom.PlayerCount > 1) // sementara
             {
-                roomPanel.SetActive(true);
-                searchPlayerPanel.SetActive(false);
+                Invoke("ActivateRoom", 1);
             }
         }
+
+        void ActivateRoom()
+        {
+            roomPanel.SetActive(true);
+            searchPlayerPanel.SetActive(false);
+        }
+        #endregion
+        
 
         public void Modal(string title, string message)
         {
@@ -151,6 +168,7 @@ namespace RunMinigames.Manager.Lobby
         {
             PhotonNetwork.LeaveRoom();
             RoomManager.SetActive(false);
+            isInRoom = false;
         }
 
         public override void OnLeftRoom()
