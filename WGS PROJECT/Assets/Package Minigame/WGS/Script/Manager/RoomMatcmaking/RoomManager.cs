@@ -1,9 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
-
+using Photon.Realtime;
+using RunMinigames.View.PlayerAvatar;
 namespace RunMinigames.Manager.Room
 {
     public class RoomManager : MonoBehaviourPunCallbacks
@@ -21,12 +23,22 @@ namespace RunMinigames.Manager.Room
         ExitGames.Client.Photon.Hashtable CustomeValue = new ExitGames.Client.Photon.Hashtable();
         public int playerReadyCount;
 
-
         [Header("Choose Avatar Components")]
         public GameObject DisplayAvaParent;
         public ToggleGroup AvaToggleGroup;
 
-        private void Awake() => instance = this;
+        [Header("Scenes")]
+        public string[] sceneName;
+
+        [Header("PlayerList")]
+        public List<string> playersList = new List<string>();
+
+        private void Awake()
+        {
+            instance = this;
+            GameStart = false;
+            GetCurrentRoomPlayers();
+        }
 
         void SetText(double _timer)
         {
@@ -35,11 +47,28 @@ namespace RunMinigames.Manager.Room
 
         private void Update()
         {
-            if (GameStart == false)
+            WaitingRoomControl();
+        }
+
+        public override void OnPlayerEnteredRoom(Player newPlayer)
+        {
+            GetCurrentRoomPlayers();
+        }
+
+        public override void OnPlayerLeftRoom(Player otherPlayer)
+        {
+            photonView.RPC("RPC_SetReadyState", RpcTarget.AllBufferedViaServer, false);
+
+            GetCurrentRoomPlayers();
+        }
+
+        public void WaitingRoomControl()
+        {
+            if (GameStart != true)
             {
                 StartCountDown();
 
-                if (PhotonNetwork.LocalPlayer.IsMasterClient)
+                if (PhotonNetwork.IsMasterClient)
                 {
                     if (PhotonNetwork.CurrentRoom.PlayerCount < 2)
                     {
@@ -51,7 +80,7 @@ namespace RunMinigames.Manager.Room
                         SetStartTime();
                     }
 
-                    if (PhotonNetwork.CurrentRoom.PlayerCount > 1 && playerReadyCount == PhotonNetwork.CurrentRoom.PlayerCount)
+                    if (PhotonNetwork.CurrentRoom.PlayerCount > 0 && playerReadyCount == PhotonNetwork.CurrentRoom.PlayerCount)
                         StartGame();
                 }
                 else
@@ -59,6 +88,18 @@ namespace RunMinigames.Manager.Room
                     SetStartTimeClient();
                 }
             }
+        }
+
+        public void GetCurrentRoomPlayers()
+        {
+            playersList.Clear();
+
+            foreach (Player player in PhotonNetwork.PlayerList)
+            {
+                playersList.Add(player.NickName);
+            }
+
+            SetPlayerSpawnIndex();
         }
 
         void SetStartTime()
@@ -104,17 +145,31 @@ namespace RunMinigames.Manager.Room
                 SetText(0);
                 startTimer = false;
 
-                if (PhotonNetwork.IsMasterClient)
-                    StartGame();
+                StartGame();
             }
         }
+
+        public void SetPlayerSpawnIndex()
+        {
+            for (int i = 0; i < playersList.Count; i++)
+            {
+                if (playersList[i] == PhotonNetwork.LocalPlayer.NickName)
+                {
+                    int playerIndex = playersList.IndexOf(playersList[i]);
+                    PlayerPrefs.SetInt("positionIndex", playerIndex);
+                }
+            }
+        }
+
         public void StartGame()
         {
-            if (!PhotonNetwork.IsMasterClient)
-                return;
-            PhotonNetwork.CurrentRoom.IsOpen = false;
             GameStart = true;
-            PhotonNetwork.LoadLevel("WGS4_GamePlayMultiplayer");
+
+            if (PhotonNetwork.IsMasterClient)
+            {
+                PhotonNetwork.CurrentRoom.IsOpen = false;
+                PhotonNetwork.LoadLevel(sceneName[Random.Range(0, sceneName.Length)]);
+            }
         }
 
         public void SetPlayerReady()
@@ -122,15 +177,22 @@ namespace RunMinigames.Manager.Room
             if (PhotonNetwork.LocalPlayer.IsLocal)
             {
                 readyButton.interactable = false;
-                photonView.RPC("RPC_AddReadyState", RpcTarget.AllBufferedViaServer);
+                photonView.RPC("RPC_SetReadyState", RpcTarget.AllBufferedViaServer, true);
             }
-
         }
 
         [PunRPC]
-        public void RPC_AddReadyState()
+        public void RPC_SetReadyState(bool add = true)
         {
-            RoomManager.instance.playerReadyCount++;
+            if (add)
+            {
+                playerReadyCount++;
+            }
+            else
+            {
+                playerReadyCount = 0;
+                readyButton.interactable = true;
+            }
         }
     }
 }

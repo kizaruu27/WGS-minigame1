@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1491,7 +1491,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &424312637
 GameObject:
@@ -3005,6 +3005,7 @@ RectTransform:
   - {fileID: 1197750944}
   - {fileID: 2073993675}
   - {fileID: 1832513869}
+  - {fileID: 1522020811}
   m_Father: {fileID: 1149783270}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3043,7 +3044,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &830375426
 MonoBehaviour:
@@ -3063,7 +3064,7 @@ MonoBehaviour:
   searchPlayerPanel: {fileID: 220479025}
   roomPanel: {fileID: 814467219}
   roomName: {fileID: 1248914888}
-  RoomManager: {fileID: 1522020809}
+  readyButton: {fileID: 0}
   playerItemsList: []
   playerItemPrefab: {fileID: 5606969700763393367, guid: 4caf73a68dfec1a42a37b85cfdc46dd5, type: 3}
   playerItemParent: {fileID: 680824036}
@@ -3904,7 +3905,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1160193827
 GameObject:
@@ -5527,7 +5528,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1522020810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5547,6 +5548,9 @@ MonoBehaviour:
   playerReadyCount: 0
   DisplayAvaParent: {fileID: 1832513868}
   AvaToggleGroup: {fileID: 1730162216}
+  sceneName:
+  - WGS4_GamePlayMultiplayer
+  playersList: []
 --- !u!4 &1522020811
 Transform:
   m_ObjectHideFlags: 0
@@ -5554,12 +5558,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522020809}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 990.0999, y: 521.6103, z: -41.660767}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 30.099915, y: -18.38971, z: -41.660767}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 814467220}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1522020812
 MonoBehaviour:

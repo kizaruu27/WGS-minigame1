@@ -65,6 +65,7 @@ MonoBehaviour:
   - RPC_RequestMasterClient
   - CheckNetworkLag
   - RPC_AddReadyState
+  - RPC_SetReadyState
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

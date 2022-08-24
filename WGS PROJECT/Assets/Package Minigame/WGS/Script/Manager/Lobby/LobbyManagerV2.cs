@@ -25,8 +25,7 @@ namespace RunMinigames.Manager.Lobby
         public GameObject roomPanel;
         public TextMeshProUGUI roomName;
         List<RoomItem> roomItemList = new List<RoomItem>();
-        public GameObject RoomManager;
-
+        public Button readyButton;
 
         [Header("Player")]
         public List<PlayerAvatar> playerItemsList = new List<PlayerAvatar>();
@@ -47,7 +46,7 @@ namespace RunMinigames.Manager.Lobby
         public Transform contentObject;
         public float timeBetweenUpdates = 1.5f;
         float nextUpdateTime;
-        
+
 
         [SerializeField] int roomIndex;
 
@@ -110,7 +109,7 @@ namespace RunMinigames.Manager.Lobby
             // Invoke("loadRoom", 3);
             loadRoom();
 
-            RoomManager.SetActive(true);
+            RoomManager.instance.GetCurrentRoomPlayers();
         }
 
         void loadRoom()
@@ -128,7 +127,7 @@ namespace RunMinigames.Manager.Lobby
             searchPlayerPanel.SetActive(false);
         }
         #endregion
-        
+
 
         public void Modal(string title, string message)
         {
@@ -161,13 +160,14 @@ namespace RunMinigames.Manager.Lobby
         public void OnClickLeaveRoom()
         {
             PhotonNetwork.LeaveRoom();
-            RoomManager.SetActive(false);
         }
 
         public override void OnLeftRoom()
         {
             roomPanel.SetActive(false);
             lobbyPanel.SetActive(true);
+
+            RoomManager.instance.GetCurrentRoomPlayers();
         }
 
         public override void OnConnectedToMaster()

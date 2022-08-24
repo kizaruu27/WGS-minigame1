@@ -28,10 +28,7 @@ namespace RunMinigames.View.PlayerAvatar
 
         private void Awake()
         {
-            avatarIndex = Random.Range(0, avatars.Length);
-            PlayerPrefs.SetInt("playerAvatar", avatarIndex);
-
-            playerProperties["playerAvatar"] = Random.Range(0, avatars.Length);
+            playerProperties["playerAvatar"] = PlayerPrefs.GetInt("playerAvatar");
             PhotonNetwork.LocalPlayer.CustomProperties = playerProperties;
             PhotonNetwork.SetPlayerCustomProperties(playerProperties);
 

@@ -9,11 +9,14 @@ public class PlayerSpawner : MonoBehaviour
     public Transform[] spawnPoints;
     private void Awake()
     {
-        PhotonNetwork.CurrentRoom.IsOpen = false;
-
-        Transform spawnPoint = spawnPoints[PhotonNetwork.LocalPlayer.ActorNumber - 1];
+        Transform spawnPoint = spawnPoints[PlayerPrefs.GetInt("positionIndex")];
         GameObject playerToSpawn = playerPrefabs[PlayerPrefs.GetInt("playerAvatar")];
         GameObject currentPlayer = PhotonNetwork.Instantiate(playerToSpawn.name, spawnPoint.position, Quaternion.identity);
+    }
+
+    private void Update()
+    {
+        Debug.Log(PlayerPrefs.GetInt("playerAvatar"));
     }
 
 }
