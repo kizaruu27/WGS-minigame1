@@ -80,7 +80,7 @@ namespace RunMinigames.Manager.Room
                         SetStartTime();
                     }
 
-                    if (PhotonNetwork.CurrentRoom.PlayerCount > 0 && playerReadyCount == PhotonNetwork.CurrentRoom.PlayerCount)
+                    if (PhotonNetwork.CurrentRoom.PlayerCount > 1 && playerReadyCount == PhotonNetwork.CurrentRoom.PlayerCount)
                         StartGame();
                 }
                 else

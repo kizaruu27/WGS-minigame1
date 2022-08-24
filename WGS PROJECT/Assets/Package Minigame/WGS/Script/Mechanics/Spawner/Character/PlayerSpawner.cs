@@ -13,10 +13,4 @@ public class PlayerSpawner : MonoBehaviour
         GameObject playerToSpawn = playerPrefabs[PlayerPrefs.GetInt("playerAvatar")];
         GameObject currentPlayer = PhotonNetwork.Instantiate(playerToSpawn.name, spawnPoint.position, Quaternion.identity);
     }
-
-    private void Update()
-    {
-        Debug.Log(PlayerPrefs.GetInt("playerAvatar"));
-    }
-
 }
