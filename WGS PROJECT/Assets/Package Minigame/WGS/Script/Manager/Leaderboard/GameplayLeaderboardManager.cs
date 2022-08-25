@@ -127,11 +127,20 @@ namespace RunMinigames.Manager.Leaderboard
 
             int playerIndex = LeaderboardItem.FindIndex(val => type.IsMultiplayer ? val.PlayerID == PhotonNetwork.LocalPlayer.ActorNumber - 1 : val.PlayerID == 0);
 
-            Button playerItem = listButton[playerIndex];
-            playerItem.GetComponent<Image>().color = Color.green;
-            playerItem.GetComponentInChildren<Text>().color = Color.white; // highloght player
-            //aktifin border
-            
+            for (int i = 0; i < listButton.Count; i++)
+            {
+                if (listButton.IndexOf(listButton[i]) == playerIndex)
+                {
+                    Button ownerPosition = listButton[i];
+                    ownerPosition.GetComponent<Image>().enabled = true;
+                    ownerPosition.GetComponentInChildren<Text>().color = Color.white;
+                }
+                else
+                {
+                    Button ownerPosition = listButton[i];
+                    ownerPosition.GetComponent<Image>().enabled = false;
+                }
+            }
 
             if (playerDisconnected > 0 && type.IsMultiplayer && !PhotonNetwork.OfflineMode)
             {
