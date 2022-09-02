@@ -58,7 +58,7 @@ namespace RunMinigames.Manager.Leaderboard
         [Header("Animation Podium")]
         public List<GameObject> UIPositionObj;
 
-        public void ShowPlayerRank(int playerFinish)
+        public void ShowPlayerRank(int playerFinish) //-> finishleaderboard
         {
             // Debug.Log(UIPositionObj[1].activeInHierarchy == false);
             for (int i = 0; i < playerFinish; i++)

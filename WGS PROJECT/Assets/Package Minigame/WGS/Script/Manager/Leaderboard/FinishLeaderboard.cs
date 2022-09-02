@@ -24,7 +24,7 @@ namespace RunMinigames.Manager.Leaderboard
         private void Awake() => pv = GetComponent<PhotonView>();
         private void Update()
         {
-            pv.RPC(nameof(SendCount), RpcTarget.AllBuffered, playerFinishList.Count);
+            //! pv.RPC(nameof(SendCount), RpcTarget.AllBuffered, playerFinishList.Count);
         }
         public int TotalPlayersDisconnect { get; set; }
 
@@ -76,8 +76,8 @@ namespace RunMinigames.Manager.Leaderboard
         }
 
         // send total player finish to leaderboard manager
-        [PunRPC]
-        void SendCount(int total) => GameplayLeaderboardManager.instance.ShowPlayerRank(total);
+        //! [PunRPC]
+        //! void SendCount(int total) => GameplayLeaderboardManager.instance.ShowPlayerRank(total);
     }
 
 }
