@@ -12,7 +12,7 @@ namespace RunMinigames.Mechanics.Items
 
         public override IEnumerator OnCollideBehaviour(ICharacterItem character)
         {
-            mesh.enabled = false;
+            itemMesh.SetActive(false);
             sphereCollider.enabled = false;
 
             Instantiate(itemEffect, transform.position, Quaternion.identity);

@@ -12,7 +12,7 @@ namespace RunMinigames.Mechanics.Items
         [SerializeField] protected float SpeedCharacter = 3f;
         [SerializeField] protected float LongTimeBehaviour = 3f;
 
-        protected MeshRenderer mesh;
+        [SerializeField] protected GameObject itemMesh;
         protected SphereCollider sphereCollider;
         protected bool isObstacles;
 
@@ -26,8 +26,6 @@ namespace RunMinigames.Mechanics.Items
         protected new void Awake()
         {
             base.Awake();
-
-            mesh = GetComponent<MeshRenderer>();
             sphereCollider = GetComponent<SphereCollider>();
 
             pv = GetComponent<PhotonView>();

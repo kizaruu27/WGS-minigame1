@@ -11,7 +11,7 @@ namespace RunMinigames.Mechanics.Items
         {
             Instantiate(itemEffect, transform.position, Quaternion.identity);
 
-            mesh.enabled = false;
+            itemMesh.SetActive(false);
             sphereCollider.enabled = false;
 
             character.CanMove = false;
