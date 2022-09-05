@@ -58,6 +58,7 @@ namespace RunMinigames.Mechanics.Characters
             }
 
             Movement();
+            GroundCheck();
         }
 
         private void OnEnable()

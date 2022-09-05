@@ -15,11 +15,11 @@ namespace RunMinigames.Mechanics.Characters
             }
         }
 
-        private void OnCollisionEnter(Collision collider)
-        {
-            IsGrounded = collider.gameObject.tag == "Ground";
-            //! TargetAnimator?.SetBool("isGrounded", IsGrounded);
-        }
+        // private void OnCollisionEnter(Collision collider)
+        // {
+        //     IsGrounded = collider.gameObject.tag == "Ground";
+        //     //! TargetAnimator?.SetBool("isGrounded", IsGrounded);
+        // }
     }
 }
 

@@ -1514,6 +1514,11 @@ MonoBehaviour:
   canMove: 1
   isItemSpeedActive: 0
   JumpForce: 6
+  groundCheckOffset: {x: 0, y: 0, z: 0}
+  groundCheckRadius: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &127369046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3464,6 +3469,11 @@ MonoBehaviour:
   canMove: 1
   isItemSpeedActive: 0
   JumpForce: 6
+  groundCheckOffset: {x: 0, y: 0, z: 0}
+  groundCheckRadius: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &433185145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5641,6 +5651,18 @@ PrefabInstance:
     - target: {fileID: -6866739939789858169, guid: bc24974799bb94374bb765c4000e3b99, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6866739939789858169, guid: bc24974799bb94374bb765c4000e3b99, type: 3}
+      propertyPath: groundCheckRadius
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: -6866739939789858169, guid: bc24974799bb94374bb765c4000e3b99, type: 3}
+      propertyPath: groundCheckOffset.y
+      value: -0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: -6866739939789858169, guid: bc24974799bb94374bb765c4000e3b99, type: 3}
+      propertyPath: whatIsGround.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: -5138944009684482770, guid: bc24974799bb94374bb765c4000e3b99, type: 3}
       propertyPath: shakeCamera
@@ -11800,6 +11822,11 @@ MonoBehaviour:
   canMove: 1
   isItemSpeedActive: 0
   JumpForce: 6
+  groundCheckOffset: {x: 0, y: 0, z: 0}
+  groundCheckRadius: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1697376126289170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11855,6 +11882,11 @@ MonoBehaviour:
   canMove: 1
   isItemSpeedActive: 0
   JumpForce: 6
+  groundCheckOffset: {x: 0, y: 0, z: 0}
+  groundCheckRadius: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1697376616201762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11910,6 +11942,11 @@ MonoBehaviour:
   canMove: 1
   isItemSpeedActive: 0
   JumpForce: 6
+  groundCheckOffset: {x: 0, y: 0, z: 0}
+  groundCheckRadius: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1697376786828661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11965,6 +12002,11 @@ MonoBehaviour:
   canMove: 1
   isItemSpeedActive: 0
   JumpForce: 6
+  groundCheckOffset: {x: 0, y: 0, z: 0}
+  groundCheckRadius: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1697377101659835
 MonoBehaviour:
   m_ObjectHideFlags: 0

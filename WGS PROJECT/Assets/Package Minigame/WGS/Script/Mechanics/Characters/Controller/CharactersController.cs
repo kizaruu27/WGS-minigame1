@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using RunMinigames.Interface;
 
@@ -23,11 +24,15 @@ namespace RunMinigames.Mechanics.Characters
         public bool CanMove { get => canMove; set => canMove = value; }
         public bool IsItemSpeedActive { get => isItemSpeedActive; set => isItemSpeedActive = value; }
         public bool Active { get => enabled; set => enabled = value; }
-
-
+        
         [Header("Character Jump")]
         public float JumpForce = 6f;
+        
+        [Header("Ground Checker")]
         protected bool IsGrounded;
+        [SerializeField] private Vector3 groundCheckOffset;
+        [SerializeField] private float groundCheckRadius;
+        [SerializeField] private LayerMask whatIsGround;
 
         private void Awake()
         {
@@ -78,6 +83,19 @@ namespace RunMinigames.Mechanics.Characters
                 TargetAnimator.SetBool("isRunning", false);
             }
         }
+
+        public virtual void GroundCheck()
+        {
+            IsGrounded = Physics.CheckSphere(transform.TransformPoint(groundCheckOffset), groundCheckRadius,
+                whatIsGround);
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawSphere(transform.TransformPoint(groundCheckOffset), groundCheckRadius);
+        }
+
 
         public abstract void Jump();
     }
