@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6009,6 +6009,26 @@ PrefabInstance:
     - target: {fileID: 6370552785463446257, guid: dfc695461a4e649cbad7a640a853a0cc, type: 3}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370552785463446257, guid: dfc695461a4e649cbad7a640a853a0cc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370552785463446257, guid: dfc695461a4e649cbad7a640a853a0cc, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370552785463446257, guid: dfc695461a4e649cbad7a640a853a0cc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370552785463446258, guid: dfc695461a4e649cbad7a640a853a0cc, type: 3}
+      propertyPath: LeaderboardUI
+      value: 
+      objectReference: {fileID: 3179623970315826974}
+    - target: {fileID: 6370552785463446263, guid: dfc695461a4e649cbad7a640a853a0cc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 139
       objectReference: {fileID: 0}
     - target: {fileID: 6503912539032303933, guid: dfc695461a4e649cbad7a640a853a0cc, type: 3}
       propertyPath: m_AnchorMax.x
