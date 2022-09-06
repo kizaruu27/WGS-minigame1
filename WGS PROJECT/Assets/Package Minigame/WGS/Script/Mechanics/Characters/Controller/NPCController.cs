@@ -6,7 +6,7 @@ namespace RunMinigames.Mechanics.Characters
     {
         CapsuleCollider Collider;
         float FeetDistance;
-        bool IsJump;
+        [SerializeField] bool IsJump;
 
         private void Start()
         {
@@ -38,7 +38,7 @@ namespace RunMinigames.Mechanics.Characters
             ray.origin = gameObject.transform.position + (transform.forward * 1);
             ray.direction = Vector3.forward;
 
-            IsJump = Physics.Raycast(ray, out hit, 2f);
+            IsJump = Physics.Raycast(ray, out hit, 1f);
         }
 
         public override void Movement()
