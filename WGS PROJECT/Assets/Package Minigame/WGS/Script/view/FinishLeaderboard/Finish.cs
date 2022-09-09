@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using RunMinigames.Manager.Leaderboard;
 using RunMinigames.Manager.Game;
 using RunMinigames.Models;
+using UnityEngine.SceneManagement;
 
 
 public class Finish : MonoBehaviour
@@ -137,10 +138,11 @@ public class Finish : MonoBehaviour
     }
 
 
-    public void OnClickBackToMenu()
+    public void OnClickBackToMenu(string sceneName)
     {
         PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
         PhotonNetwork.LeaveRoom();
-        PhotonNetwork.LoadLevel(2);
+        PhotonNetwork.LoadLevel(sceneName);
+        // PhotonNetwork.LoadLevel(2);
     }
 }
