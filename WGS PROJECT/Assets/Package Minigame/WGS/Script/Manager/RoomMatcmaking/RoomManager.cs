@@ -45,10 +45,8 @@ namespace RunMinigames.Manager.Room
             TextTimer.text = _timer.ToString("0");
         }
 
-        private void Update()
-        {
-            WaitingRoomControl();
-        }
+        private void Update() => WaitingRoomControl();
+
 
         public override void OnPlayerEnteredRoom(Player newPlayer)
         {
@@ -80,7 +78,7 @@ namespace RunMinigames.Manager.Room
                         SetStartTime();
                     }
 
-                    if (PhotonNetwork.CurrentRoom.PlayerCount > 1 && playerReadyCount == PhotonNetwork.CurrentRoom.PlayerCount)
+                    if (PhotonNetwork.CurrentRoom.PlayerCount > 0 && playerReadyCount == PhotonNetwork.CurrentRoom.PlayerCount)
                         StartGame();
                 }
                 else

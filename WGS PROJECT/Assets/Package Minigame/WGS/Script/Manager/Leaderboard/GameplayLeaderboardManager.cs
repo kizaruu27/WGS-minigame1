@@ -125,7 +125,8 @@ namespace RunMinigames.Manager.Leaderboard
 
             }).ToList();
 
-            int playerIndex = LeaderboardItem.FindIndex(val => type.IsMultiplayer ? val.PlayerID == PhotonNetwork.LocalPlayer.ActorNumber - 1 : val.PlayerID == 0);
+            // int playerIndex = LeaderboardItem.FindIndex(val => type.IsMultiplayer ? val.PlayerID == PhotonNetwork.LocalPlayer.ActorNumber - 1 : val.PlayerID == 0);
+            int playerIndex = LeaderboardItem.FindIndex(val => type.IsMultiplayer ? val.PlayerID == PlayerPrefs.GetInt("positionIndex") : val.PlayerID == 0);
 
             for (int i = 0; i < listButton.Count; i++)
             {
@@ -199,7 +200,10 @@ namespace RunMinigames.Manager.Leaderboard
 
         void LateUpdate()
         {
-            ItemFocusToPlayer();
+            if (PhotonNetwork.LocalPlayer.IsLocal)
+            {
+                ItemFocusToPlayer();
+            }
             UpdateLeaderboard();
             RemovePlayerOnDisconnect();
         }

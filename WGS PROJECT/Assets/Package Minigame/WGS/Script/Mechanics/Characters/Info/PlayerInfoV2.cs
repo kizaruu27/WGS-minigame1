@@ -19,11 +19,16 @@ namespace RunMinigames.Mechanics.Characters
                     .GetComponent<RunMinigames.Mechanics.Cam.CameraController>().Player = transform;
             }
 
-            CharaName = type.IsMultiplayer ?
-                view.Owner.NickName :
-                PhotonNetwork.NickName ?? JSON.Parse(PlayerPrefs.GetString("LocalPlayerData"))["uname"];
+            // CharaName = type.IsMultiplayer ?
+            //     view.Owner.NickName :
+            //     PhotonNetwork.NickName ?? JSON.Parse(PlayerPrefs.GetString("LocalPlayerData"))["uname"];
 
-            CharaID = type.IsMultiplayer ? view.Owner.ActorNumber - 1 : 0;
+            CharaName = PhotonNetwork.NickName;
+
+            // CharaID = type.IsMultiplayer ? view.Owner.ActorNumber - 1 : 0;
+
+            int playerIndex = PlayerPrefs.GetInt("positionIndex"); //!-> Index from player list in the room
+            CharaID = type.IsMultiplayer ? playerIndex : 0;
 
             if (type.IsMultiplayer)
             {
