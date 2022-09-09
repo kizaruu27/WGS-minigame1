@@ -110,10 +110,13 @@ namespace RunMinigames.Mechanics.Characters
         {
             if (type.IsMultiplayer)
             {
-                view.RPC(
-                    nameof(UpdateCharacterScore), RpcTarget.AllBuffered, //RPC Arguments
-                    CharaName, CharaScore //Method Arguments
-                    );
+                if (view.IsMine)
+                {
+                    view.RPC(
+                        nameof(UpdateCharacterScore), RpcTarget.AllBuffered, //RPC Arguments
+                        CharaName, CharaScore //Method Arguments
+                        );
+                }
             }
             else
             {
