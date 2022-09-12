@@ -11,6 +11,8 @@ namespace RunMinigames.Mechanics.Characters
             {
                 Rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
                 IsGrounded = false;
+                PlayerSoundManager.instance.PlayJump();
+                
                 //! TargetAnimator?.SetTrigger("Jump");
             }
         }

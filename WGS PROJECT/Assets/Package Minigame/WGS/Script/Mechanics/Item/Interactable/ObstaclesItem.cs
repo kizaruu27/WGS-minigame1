@@ -21,6 +21,7 @@ namespace RunMinigames.Mechanics.Items
 
         public override IEnumerator OnCollideBehaviour(ICharacterItem character)
         {
+            ObjectSoundManager.instance.PlayObstacleSound();
             character.IsItemSpeedActive = false;
             character.MaxSpeed = SpeedCharacter;
 

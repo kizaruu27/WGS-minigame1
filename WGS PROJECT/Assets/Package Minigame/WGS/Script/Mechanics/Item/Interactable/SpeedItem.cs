@@ -12,6 +12,8 @@ namespace RunMinigames.Mechanics.Items
 
         public override IEnumerator OnCollideBehaviour(ICharacterItem character)
         {
+            ObjectSoundManager.instance.PlaySpeedItemSound();
+            
             itemMesh.SetActive(false);
             sphereCollider.enabled = false;
 

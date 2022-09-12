@@ -45,7 +45,10 @@ namespace RunMinigames.Mechanics.Characters
         {
             if (charSpeed >= 0 && !isItemSpeedActive)
             {
-
+                if (!PlayerSoundManager.instance.audioSource.isPlaying)
+                {
+                    PlayerSoundManager.instance.PlayFootstepSound();
+                }
                 charSpeed -= 0.01f;
             }
             else if (charSpeed >= 0 && isItemSpeedActive)
@@ -88,6 +91,11 @@ namespace RunMinigames.Mechanics.Characters
         {
             IsGrounded = Physics.CheckSphere(transform.TransformPoint(groundCheckOffset), groundCheckRadius,
                 whatIsGround);
+
+            if (!IsGrounded)
+            {
+                PlayerSoundManager.instance.StopSound();
+            }
         }
 
         private void OnDrawGizmosSelected()
