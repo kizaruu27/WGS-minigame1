@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class ObjectSoundManager : MonoBehaviour
 {
@@ -11,10 +12,16 @@ public class ObjectSoundManager : MonoBehaviour
     public AudioClip obstacleSound;
 
     public static ObjectSoundManager instance;
+    private PhotonView pv;
 
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
+        pv = GetComponent<PhotonView>();
     }
 
     public void PlaySpeedItemSound()

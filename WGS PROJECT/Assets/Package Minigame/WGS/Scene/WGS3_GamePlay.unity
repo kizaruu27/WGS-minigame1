@@ -5969,6 +5969,10 @@ PrefabInstance:
       value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: -6866739939789858169, guid: bc24974799bb94374bb765c4000e3b99, type: 3}
+      propertyPath: IsControlBtnActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6866739939789858169, guid: bc24974799bb94374bb765c4000e3b99, type: 3}
       propertyPath: groundCheckOffset.y
       value: -0.9
       objectReference: {fileID: 0}
@@ -8638,6 +8642,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2245292518514625307, guid: 4609b029b88967c46a0caae31132d059, type: 3}
+      propertyPath: sceneViewId
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5555818127900763106, guid: 4609b029b88967c46a0caae31132d059, type: 3}
       propertyPath: m_Name
       value: PlayerSoundManager
@@ -10881,6 +10889,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2175573231817020358, guid: a0358df8e6d927743bdce16a5aac13b9, type: 3}
+      propertyPath: sceneViewId
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2055277209010498508, guid: a0358df8e6d927743bdce16a5aac13b9, type: 3}
       propertyPath: m_Name
       value: ObjectSoundManager

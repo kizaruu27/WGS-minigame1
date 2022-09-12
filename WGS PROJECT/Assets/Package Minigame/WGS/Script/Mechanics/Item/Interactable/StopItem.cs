@@ -10,6 +10,7 @@ namespace RunMinigames.Mechanics.Items
         public override IEnumerator OnCollideBehaviour(ICharacterItem character)
         {
             ObjectSoundManager.instance.PlayStopItemSound();
+            
             Instantiate(itemEffect, transform.position, Quaternion.identity);
 
             itemMesh.SetActive(false);
