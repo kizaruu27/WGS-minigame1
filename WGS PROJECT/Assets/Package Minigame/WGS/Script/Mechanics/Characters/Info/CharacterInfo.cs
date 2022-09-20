@@ -82,11 +82,14 @@ namespace RunMinigames.Mechanics.Characters
 
         protected void OnTriggerEnter(Collider other)
         {
-            OnCollideCheckpoint(
-                other,
-                UpdateScore: CheckTypeUpdateScore,
-                UpdatePodium: (checkpoint) => CheckTypeUpdatePodium(checkpoint)
-            );
+            if (view.IsMine)
+            {
+                OnCollideCheckpoint(
+                    other,
+                    UpdateScore: CheckTypeUpdateScore,
+                    UpdatePodium: (checkpoint) => CheckTypeUpdatePodium(checkpoint)
+                );
+            }
         }
 
         [PunRPC]

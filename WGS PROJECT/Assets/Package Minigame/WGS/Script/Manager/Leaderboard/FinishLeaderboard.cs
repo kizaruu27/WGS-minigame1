@@ -45,14 +45,13 @@ namespace RunMinigames.Manager.Leaderboard
         public void Finish(bool isPlayerCrossFinish, int id, float time, string name)
         {
 
-            Debug.Log(name);
+            Debug.Log("player finished" + name);
 
             if (PhotonNetwork.LocalPlayer.NickName == name)
             {
 
                 finishUI.SetActive(isPlayerCrossFinish);
                 LeaderboardUI.SetActive(!isPlayerCrossFinish);
-
 
                 if (PhotonNetwork.LocalPlayer.ActorNumber - 1 == id)
                 {

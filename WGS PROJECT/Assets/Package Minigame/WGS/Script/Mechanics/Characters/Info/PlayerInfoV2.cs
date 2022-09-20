@@ -23,7 +23,8 @@ namespace RunMinigames.Mechanics.Characters
             //     view.Owner.NickName :
             //     PhotonNetwork.NickName ?? JSON.Parse(PlayerPrefs.GetString("LocalPlayerData"))["uname"];
 
-            CharaName = PhotonNetwork.NickName;
+            // CharaName = PhotonNetwork.NickName;
+            CharaName = PhotonNetwork.LocalPlayer.NickName;
 
             // CharaID = type.IsMultiplayer ? view.Owner.ActorNumber - 1 : 0;
 
