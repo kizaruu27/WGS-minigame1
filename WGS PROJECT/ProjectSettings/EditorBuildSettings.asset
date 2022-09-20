@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Package Minigame/WGS/Scene/WGS1_Login.unity
+    path: Assets/_MAIN/_Scenes/WGS1_Login.unity
     guid: abdb98e8903ac4ceda4d6118a4b8b7c2
   - enabled: 1
-    path: Assets/Package Minigame/WGS/Scene/WGS2_Lobby.unity
+    path: Assets/_MAIN/_Scenes/WGS2_Lobby.unity
     guid: 9482ced35119d684ea8b537534620e82
   - enabled: 1
-    path: Assets/Package Minigame/WGS/Scene/WGS3_GamePlay.unity
+    path: Assets/_MAIN/_Scenes/WGS3_GamePlay.unity
     guid: ff14c92b5cf461848bd01ea620480634
   - enabled: 1
-    path: Assets/Package Minigame/WGS/Scene/WGS4_GamePlayMultiplayer.unity
+    path: Assets/_MAIN/_Scenes/WGS4_GamePlayMultiplayer.unity
     guid: 858c87f012dfcc74ebadfe0e1a8df96f
   m_configObjects: {}
