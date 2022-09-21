@@ -26,8 +26,8 @@ namespace RunMinigames.Mechanics.Characters
 
         private void Start()
         {
-            btnJump.gameObject.SetActive((CheckPlatform.isAndroid || CheckPlatform.isIos) && IsControlBtnActive);
-            btnRun.gameObject.SetActive((CheckPlatform.isAndroid || CheckPlatform.isIos) && IsControlBtnActive);
+            // btnJump.gameObject.SetActive((CheckPlatform.isAndroid || CheckPlatform.isIos) && IsControlBtnActive);
+            // btnRun.gameObject.SetActive((CheckPlatform.isAndroid || CheckPlatform.isIos) && IsControlBtnActive);
 
             screenWidth = Screen.width;
         }
@@ -53,7 +53,7 @@ namespace RunMinigames.Mechanics.Characters
 
             if (view.IsMine)
             {
-                Desktop();
+                // Desktop();
                 Mobile();
             }
 
@@ -64,11 +64,11 @@ namespace RunMinigames.Mechanics.Characters
         private void OnEnable()
         {
             //Button Control
-            if (CheckPlatform.isIos || CheckPlatform.isAndroid && IsControlBtnActive && view.IsMine)
-            {
-                btnJump.onClick.AddListener(Jump);
-                btnRun.onClick.AddListener(() => Running());
-            }
+            // if (CheckPlatform.isIos || CheckPlatform.isAndroid && IsControlBtnActive && view.IsMine)
+            // {
+            //     btnJump.onClick.AddListener(Jump);
+            //     btnRun.onClick.AddListener(() => Running());
+            // }
         }
 
         void Desktop()
@@ -95,38 +95,24 @@ namespace RunMinigames.Mechanics.Characters
 
         void Mobile()
         {
-            if (
-                CheckPlatform.isAndroid ||
-                CheckPlatform.isIos ||
-                CheckPlatform.isMobile ||
-                CheckPlatform.isWeb
-            )
+            int i = 0;
+
+            while (i < UnityEngine.Input.touchCount)
             {
-                //Touch Control
-                if (!IsControlBtnActive)
+                if (UnityEngine.Input.GetTouch(i).position.x > screenWidth / 2)
                 {
-
-                    int i = 0;
-
-                    while (i < UnityEngine.Input.touchCount)
+                    if (canMove && !isItemSpeedActive)
                     {
-                        if (UnityEngine.Input.GetTouch(i).position.x > screenWidth / 2)
-                        {
-                            if (canMove && !isItemSpeedActive)
-                            {
-                                Running(.07f);
-                            }
-                        }
-
-                        if (UnityEngine.Input.GetTouch(i).position.x < screenWidth / 2)
-                        {
-                            Jump();
-                        }
-
-                        ++i;
+                        Running(.07f);
                     }
-
                 }
+
+                if (UnityEngine.Input.GetTouch(i).position.x < screenWidth / 2)
+                {
+                    Jump();
+                }
+
+                ++i;
             }
         }
     }

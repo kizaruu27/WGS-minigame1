@@ -5831,7 +5831,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6866739939789858169, guid: bc24974799bb94374bb765c4000e3b99, type: 3}
       propertyPath: IsControlBtnActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6866739939789858169, guid: bc24974799bb94374bb765c4000e3b99, type: 3}
       propertyPath: groundCheckOffset.y
