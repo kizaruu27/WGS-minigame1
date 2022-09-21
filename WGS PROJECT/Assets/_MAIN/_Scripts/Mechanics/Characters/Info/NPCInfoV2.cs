@@ -28,7 +28,7 @@ namespace RunMinigames.Mechanics.Characters
                 GameplayLeaderboardManager.instance.UpdatePlayerName(CharaID, CharaName);
             }
 
-            // CharaViewName.text = CharaName;
+            CharaViewName.text = CharaName;
         }
 
 
