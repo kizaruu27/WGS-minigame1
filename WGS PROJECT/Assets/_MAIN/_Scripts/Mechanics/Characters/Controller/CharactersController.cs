@@ -54,7 +54,9 @@ namespace RunMinigames.Mechanics.Characters
             else if (charSpeed >= 0 && isItemSpeedActive)
             {
                 TargetAnimator.SetBool("isRunning", true);
-                PlayerSoundManager.instance.PlayFootstepSound();
+                
+                if (!PlayerSoundManager.instance.audioSource.isPlaying)
+                    PlayerSoundManager.instance.PlayFootstepSound();
             }
             else
             {
