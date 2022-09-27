@@ -8,7 +8,7 @@ using RunMinigames.Models;
 using UnityEngine.SceneManagement;
 
 
-public class Finish : MonoBehaviour
+public class Finish : MonoBehaviourPunCallbacks
 {
     public static Finish instance;
 
@@ -137,12 +137,22 @@ public class Finish : MonoBehaviour
         return minuteTxt + secondsTxt;
     }
 
-
-    public void OnClickBackToMenu(string sceneName)
+    public void OnClickExitRoom()
     {
-        PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
-        PhotonNetwork.LeaveRoom();
-        PhotonNetwork.LoadLevel(sceneName);
-        // PhotonNetwork.LoadLevel(2);
+        if (GameManager.instance.IsMultiplayer)
+        {
+            PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
+            PhotonNetwork.LeaveRoom();
+        }
+        else
+        {
+            SceneManager.LoadScene("WGS2_Lobby");
+        }
+    }
+
+    public override void OnLeftRoom()
+    {
+        Debug.LogError("Left room");
+        PhotonNetwork.LoadLevel("WGS2_Lobby");
     }
 }

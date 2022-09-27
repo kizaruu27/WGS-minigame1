@@ -18250,7 +18250,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 214458633886504681, guid: dfc695461a4e649cbad7a640a853a0cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 214458633886504681, guid: dfc695461a4e649cbad7a640a853a0cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -18258,7 +18258,7 @@ PrefabInstance:
       objectReference: {fileID: 1338095889}
     - target: {fileID: 214458633886504681, guid: dfc695461a4e649cbad7a640a853a0cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnClickBackToMenu
+      value: OnClickExitRoom
       objectReference: {fileID: 0}
     - target: {fileID: 214458633886504681, guid: dfc695461a4e649cbad7a640a853a0cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
