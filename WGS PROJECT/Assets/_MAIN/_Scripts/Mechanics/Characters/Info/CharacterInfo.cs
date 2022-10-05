@@ -10,123 +10,119 @@ using RunMinigames.Manager.Game;
 
 namespace RunMinigames.Mechanics.Characters
 {
-    public abstract class CharactersInfo : MonoBehaviour
+  public abstract class CharactersInfo : MonoBehaviour
+  {
+    [Header("Character Information")]
+    public static CharactersInfo instance;
+    public int CharaID;
+    public string CharaName;
+    public TMP_Text CharaViewName;
+    public float CharaScore;
+
+    [Header("Check point system")]
+    int passedCheckPointNumber = 0;
+    int lapsCompleted = 0;
+    public bool isPlayerFinish;
+
+    protected float timer = 0f;
+    protected PhotonView view;
+    protected GameManager type;
+
+    FinishLeaderboard FinishUI;
+
+    protected void Awake()
     {
-        [Header("Character Information")]
-        public static CharactersInfo instance;
-        public int CharaID;
-        public string CharaName;
-        public TMP_Text CharaViewName;
-        public float CharaScore;
+      instance = this;
+      view = GetComponent<PhotonView>();
+      type = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        [Header("Check point system")]
-        bool isRaceCompleted = false;
-        int passedCheckPointNumber = 0;
-        int numberOfPassedCheckpoints = 0;
-        float timeAtLastPassCheckpoint = 0;
-        int lapsCompleted = 0;
-        public bool isPlayerFinish;
-
-        protected float timer = 0f;
-        protected PhotonView view;
-        protected GameManager type;
-
-        FinishLeaderboard FinishUI;
-
-        protected void Awake()
-        {
-            instance = this;
-            view = GetComponent<PhotonView>();
-            type = GameObject.Find("GameManager").GetComponent<GameManager>();
-
-            FinishUI = GameObject
-                .FindGameObjectWithTag("Finish UI")
-                .GetComponent<FinishLeaderboard>();
-        }
-
-        protected void Update() => timer += Time.deltaTime;
-
-        protected virtual void OnCollideCheckpoint(Collider coll, Action UpdateScore, Action<GameCheckpoint> UpdatePodium)
-        {
-            if (coll.CompareTag("Checkpoint"))
-            {
-                if (isRaceCompleted) return;
-
-                var checkpoint = coll.GetComponent<GameCheckpoint>();
-                TryGetComponent(out ICharacterItem myCharacter);
-
-                passedCheckPointNumber = checkpoint.checkPointNumber;
-                numberOfPassedCheckpoints++;
-                timeAtLastPassCheckpoint = Time.time;
-                CharaScore = checkpoint.checkPointNumber;
-
-                UpdateScore();
-
-                if (checkpoint.isFinishLine)
-                {
-                    isPlayerFinish = checkpoint.isFinishLine;
-
-                    if (myCharacter is Player)
-                    {
-                        passedCheckPointNumber = 0;
-                        lapsCompleted++;
-                    }
-
-                    UpdatePodium(checkpoint);
-                    myCharacter.MaxSpeed = 2;
-                }
-
-                if (checkpoint.stopAfterFinish) myCharacter.CanMove = false;
-            }
-        }
-
-        protected void OnTriggerEnter(Collider other)
-        {
-            if (view.IsMine)
-            {
-                OnCollideCheckpoint(
-                    other,
-                    UpdateScore: CheckTypeUpdateScore,
-                    UpdatePodium: (checkpoint) => CheckTypeUpdatePodium(checkpoint)
-                );
-            }
-        }
-
-        [PunRPC]
-        protected void UpdatePodiumList(bool isFinish, int id, float timer, string playerName) =>
-            FinishUI.Finish(isFinish, id, timer, playerName);
-
-        [PunRPC]
-        protected void UpdatePodiumList(int id, float timer, string playerName) =>
-            FinishUI.Finish(id, timer, playerName);
-
-        [PunRPC]
-        protected void UpdateCharacterScore(string name, float score)
-        {
-            GameplayLeaderboardManager.instance.UpdatePlayerScore(name, score); //disini rpc nya
-        }
-
-        [PunRPC]
-        protected void UpdateCharacterName(int id, string name) => GameplayLeaderboardManager.instance.UpdatePlayerName(id, name);
-
-        protected virtual void CheckTypeUpdateScore()
-        {
-            if (type.IsMultiplayer)
-            {
-                if (view.IsMine)
-                {
-                    view.RPC(
-                        nameof(UpdateCharacterScore), RpcTarget.AllBuffered, //RPC Arguments
-                        CharaName, CharaScore //Method Arguments
-                        );
-                }
-            }
-            else
-            {
-                GameplayLeaderboardManager.instance.UpdatePlayerScore(CharaName, CharaScore);
-            }
-        }
-
-        protected abstract void CheckTypeUpdatePodium(GameCheckpoint checkpoint);
+      FinishUI = GameObject
+          .FindGameObjectWithTag("Finish UI")
+          .GetComponent<FinishLeaderboard>();
     }
+
+    protected void Update() => timer += Time.deltaTime;
+
+    protected virtual void OnCollideCheckpoint(Collider coll, Action UpdateScore, Action<GameCheckpoint> UpdatePodium)
+    {
+      if (coll.CompareTag("Checkpoint"))
+      {
+
+        var checkpoint = coll.GetComponent<GameCheckpoint>();
+        TryGetComponent(out ICharacterItem myCharacter);
+
+        passedCheckPointNumber = checkpoint.checkPointNumber;
+
+        if (!checkpoint.isFinishLine && !checkpoint.stopAfterFinish)
+          CharaScore = checkpoint.checkPointNumber;
+
+        UpdateScore();
+
+        if (checkpoint.isFinishLine)
+        {
+          isPlayerFinish = checkpoint.isFinishLine;
+
+          if (myCharacter is Player)
+          {
+            passedCheckPointNumber = 0;
+            lapsCompleted++;
+          }
+
+          UpdatePodium(checkpoint);
+          myCharacter.MaxSpeed = 2;
+        }
+
+        if (checkpoint.stopAfterFinish) myCharacter.CanMove = false;
+      }
+    }
+
+    protected void OnTriggerEnter(Collider other)
+    {
+      if (view.IsMine)
+      {
+        OnCollideCheckpoint(
+            other,
+            UpdateScore: CheckTypeUpdateScore,
+            UpdatePodium: (checkpoint) => CheckTypeUpdatePodium(checkpoint)
+        );
+      }
+    }
+
+    [PunRPC]
+    protected void UpdatePodiumList(bool isFinish, int id, float timer, string playerName) =>
+        FinishUI.Finish(isFinish, id, timer, playerName);
+
+    [PunRPC]
+    protected void UpdatePodiumList(int id, float timer, string playerName) =>
+        FinishUI.Finish(id, timer, playerName);
+
+    [PunRPC]
+    protected void UpdateCharacterScore(string name, float score)
+    {
+      GameplayLeaderboardManager.instance.UpdatePlayerScore(name, score); //disini rpc nya
+    }
+
+    [PunRPC]
+    protected void UpdateCharacterName(int id, string name) => GameplayLeaderboardManager.instance.UpdatePlayerName(id, name);
+
+    protected virtual void CheckTypeUpdateScore()
+    {
+      if (type.IsMultiplayer)
+      {
+        if (view.IsMine)
+        {
+          view.RPC(
+              nameof(UpdateCharacterScore), RpcTarget.AllBuffered, //RPC Arguments
+              CharaName, CharaScore //Method Arguments
+              );
+        }
+      }
+      else
+      {
+        GameplayLeaderboardManager.instance.UpdatePlayerScore(CharaName, CharaScore);
+      }
+    }
+
+    protected abstract void CheckTypeUpdatePodium(GameCheckpoint checkpoint);
+  }
 }

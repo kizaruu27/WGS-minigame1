@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace RunMinigames.Services.Photon
 {
-    public class PhotonOfflineRoom : MonoBehaviourPunCallbacks
+  public class PhotonOfflineRoom : MonoBehaviourPunCallbacks
+  {
+    private void Awake()
     {
-        private void Awake()
-        {
-            Debug.Log(PhotonNetwork.InLobby);
-        }
+      // Debug.Log(PhotonNetwork.InLobby);
     }
+  }
 }
