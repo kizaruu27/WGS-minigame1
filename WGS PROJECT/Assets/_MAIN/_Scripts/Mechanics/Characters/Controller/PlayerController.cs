@@ -9,7 +9,7 @@ namespace RunMinigames.Mechanics.Characters
         {
             if (IsGrounded && canMove)
             {
-                Rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+                Rb.AddForce(Vector3.up * 6, ForceMode.Impulse);
                 IsGrounded = false;
                 PlayerSoundManager.instance.PlayJump();
                 

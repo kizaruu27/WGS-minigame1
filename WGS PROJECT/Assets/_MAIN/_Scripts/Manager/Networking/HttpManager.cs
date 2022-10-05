@@ -59,8 +59,13 @@ namespace RunMinigames.Manager.Networking
 #if UNITY_WEBGL && !UNITY_EDITOR
             urlToken = "Bearer " + GetToken();
 #endif
-      int unityInstanceLength = Application.dataPath.Split('/')[7].Split('_').Length;
-      localToken = (CheckPlatform.isMacUnity || CheckPlatform.isWindowsUnity) && unityInstanceLength > 1 ? EditorToken : BuildToken;
+      string[] unityDataPath = Application.dataPath.Split('/');
+      int unityPathLength = unityDataPath.Length - 2;
+      int unityInstanceLength = unityDataPath[unityPathLength].Split('_').Length;
+
+      Debug.Log(unityDataPath[unityPathLength]);
+
+      localToken = unityInstanceLength > 1 ? EditorToken : BuildToken;
       deviceType = CheckPlatform.isWeb && (!CheckPlatform.isMacUnity || !CheckPlatform.isWindowsUnity);
       authToken = deviceType ? urlToken : localToken;
     }
