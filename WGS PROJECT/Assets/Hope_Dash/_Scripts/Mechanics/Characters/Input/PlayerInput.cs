@@ -53,7 +53,7 @@ namespace RunMinigames.Mechanics.Characters
 
       if (view.IsMine)
       {
-        // Desktop();
+        Desktop();
         Mobile();
       }
 
