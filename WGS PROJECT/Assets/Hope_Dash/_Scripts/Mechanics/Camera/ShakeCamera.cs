@@ -20,15 +20,6 @@ namespace RunMinigames.Mechanics.Cam
             cameraInitialPos = mainCamera.transform.localPosition;
         }
 
-        void Update()
-        {
-
-            if (Input.GetMouseButtonDown(1))
-            {
-                Shake();
-            }
-        }
-
         public void Shake()
         {
             InvokeRepeating("StartCameraShaking", 0, 0.005f);
@@ -53,8 +44,6 @@ namespace RunMinigames.Mechanics.Cam
             mainCamera.transform.localPosition = cameraInitialPos;
 
         }
-
-
     }
 }
 
