@@ -109,7 +109,7 @@ namespace RunMinigames.Mechanics.Characters
           }
         }
 
-        if (UnityEngine.Input.GetTouch(i).position.x < screenWidth / 2 && isTap)
+        if (UnityEngine.Input.GetTouch(i).position.x < screenWidth / 2 && isTap && IsGrounded)
         {
           Jump();
         }

@@ -9,19 +9,12 @@ namespace RunMinigames.Mechanics.Characters
         {
             if (IsGrounded && canMove)
             {
-                Rb.AddForce(Vector3.up * 6, ForceMode.Impulse);
+                Rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
                 IsGrounded = false;
                 PlayerSoundManager.instance.PlayJump();
-                
-                //! TargetAnimator?.SetTrigger("Jump");
+
             }
         }
-
-        // private void OnCollisionEnter(Collision collider)
-        // {
-        //     IsGrounded = collider.gameObject.tag == "Ground";
-        //     //! TargetAnimator?.SetBool("isGrounded", IsGrounded);
-        // }
     }
 }
 
