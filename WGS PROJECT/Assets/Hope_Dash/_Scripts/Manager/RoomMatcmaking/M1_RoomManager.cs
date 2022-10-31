@@ -28,7 +28,7 @@ namespace RunMinigames.Manager.Room
         public ToggleGroup AvaToggleGroup;
 
         [Header("Scenes")]
-        public string[] sceneName;
+        public string sceneName;
 
         [Header("PlayerList")]
         public List<string> playersList = new List<string>();
@@ -166,7 +166,7 @@ namespace RunMinigames.Manager.Room
             if (PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.CurrentRoom.IsOpen = false;
-                PhotonNetwork.LoadLevel(sceneName[Random.Range(0, sceneName.Length)]);
+                PhotonNetwork.LoadLevel(sceneName);
             }
         }
 

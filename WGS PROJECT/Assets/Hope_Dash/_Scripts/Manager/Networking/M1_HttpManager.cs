@@ -48,7 +48,7 @@ namespace RunMinigames.Manager.Networking
 
     private void Update()
     {
-      if (currScene.name == "WGS1_Login" && !isStopRequest) GetUserData();
+      if (currScene.name == "M1_WGS1_Login" && !isStopRequest) GetUserData();
       // GetComponent<PhotonServer>().Connect("Play Test");
     }
 

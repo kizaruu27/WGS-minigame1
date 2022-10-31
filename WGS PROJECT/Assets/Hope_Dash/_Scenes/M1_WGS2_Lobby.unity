@@ -2064,7 +2064,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: WGS3_GamePlay
+          m_StringArgument: M1_WGS3_GamePlay
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1679745428}
@@ -5034,8 +5034,7 @@ MonoBehaviour:
   playerReadyCount: 0
   DisplayAvaParent: {fileID: 1832513868}
   AvaToggleGroup: {fileID: 1730162216}
-  sceneName:
-  - WGS4_GamePlayMultiplayer
+  sceneName: M1_WGS4_GamePlayMultiplayer
   playersList: []
 --- !u!4 &1522020811
 Transform:

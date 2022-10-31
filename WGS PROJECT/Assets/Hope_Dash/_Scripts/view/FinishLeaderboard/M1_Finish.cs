@@ -146,13 +146,13 @@ public class M1_Finish : MonoBehaviourPunCallbacks
         }
         else
         {
-            SceneManager.LoadScene("WGS2_Lobby");
+            SceneManager.LoadScene("M1_WGS2_Lobby");
         }
     }
 
     public override void OnLeftRoom()
     {
         Debug.LogError("Left room");
-        PhotonNetwork.LoadLevel("WGS2_Lobby");
+        PhotonNetwork.LoadLevel("M1_WGS2_Lobby");
     }
 }
