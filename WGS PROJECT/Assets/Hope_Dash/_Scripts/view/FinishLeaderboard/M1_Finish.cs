@@ -131,8 +131,8 @@ public class M1_Finish : MonoBehaviourPunCallbacks
 
         int seconds = minute != 0 ? (int)time - (minute * totalSecondsInMinute) : (int)time;
 
-        string minuteTxt = minute >= 1 ? $"{minute} Menit " : "";
-        string secondsTxt = seconds != 0 ? $"{seconds} Detik " : "";
+        string minuteTxt = minute >= 1 ? $"{minute} M " : "";
+        string secondsTxt = seconds != 0 ? $"{seconds} S " : "";
 
         return minuteTxt + secondsTxt;
     }
