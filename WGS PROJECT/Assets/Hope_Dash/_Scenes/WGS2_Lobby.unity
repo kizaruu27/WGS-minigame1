@@ -2562,7 +2562,7 @@ MonoBehaviour:
   roomPanel: {fileID: 814467219}
   roomName: {fileID: 1248914888}
   playerItemsList: []
-  playerItemPrefab: {fileID: 5606969700763393367, guid: 4caf73a68dfec1a42a37b85cfdc46dd5, type: 3}
+  m1PlayerItemPrefab: {fileID: 5606969700763393367, guid: 4caf73a68dfec1a42a37b85cfdc46dd5, type: 3}
   playerItemParent: {fileID: 680824036}
   modalTitle: {fileID: 591229684}
   modalMessage: {fileID: 733495707}

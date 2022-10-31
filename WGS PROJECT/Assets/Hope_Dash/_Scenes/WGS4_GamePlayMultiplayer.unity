@@ -4110,7 +4110,7 @@ MonoBehaviour:
   _CountdownTXT: {fileID: 751895518}
   InitialCountdown: 5
   photonView: {fileID: 751895516}
-  gameManager: {fileID: 1419899903}
+  m1GameManager: {fileID: 1419899903}
 --- !u!114 &751895516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18404,6 +18404,10 @@ PrefabInstance:
       propertyPath: LeaderboardUI
       value: 
       objectReference: {fileID: 3179623970315826974}
+    - target: {fileID: 6370552785463446260, guid: dfc695461a4e649cbad7a640a853a0cc, type: 3}
+      propertyPath: m1FinishManager
+      value: 
+      objectReference: {fileID: 1338095890}
     - target: {fileID: 6370552785463446263, guid: dfc695461a4e649cbad7a640a853a0cc, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 139
@@ -18574,6 +18578,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ba22546f757e4a2dbcced374c55e265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1338095890 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6370552785463446258, guid: dfc695461a4e649cbad7a640a853a0cc, type: 3}
+  m_PrefabInstance: {fileID: 1338095887}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a37c53fbd36455ebf0aa8740fa84ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1340221804
